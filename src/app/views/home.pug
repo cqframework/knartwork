@@ -1,0 +1,7 @@
+h1 TODO Home
+form
+    label Select a KNART XML file.
+    input(type='file' accept='.knart,.xml' "(change)"='openFile($event)')
+
+#preview
+    pre(lang="xml") {{raw}}

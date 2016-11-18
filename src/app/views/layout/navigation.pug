@@ -1,0 +1,45 @@
+//- nav.navbar.navbar-default
+    .container-fluid
+        .navbar-header
+            button.navbar-toggle(type="button" data-toggle="collapse" data-target="#navbar-collapse-1")
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.navbar-brand(href="/")
+                span.glyphicon.glyphicon-file
+                |  Knartwork
+        div.collapse.navbar-collapse#navbar-collapse-1
+            ul.nav.navbar-nav
+                li.dropdown
+                    a.dropdown-toggle(data-toggle="dropdown")
+                        //- span.glyphicon.glyphicon-file
+                        | File
+                        b.caret
+                    ul.dropdown-menu(role="menu")
+                        li
+                            a(ngClick="console.log('click')")
+                                span.glyphicon.glyphicon-cloud-upload
+                                |  Open File...
+                        li
+                            a(ngClick="console.log('click')")
+                                span.glyphicon.glyphicon-cloud-download
+                                |  Download
+                li.dropdown
+                    a.dropdown-toggle(data-toggle="dropdown")
+                        | Learn
+                        b.caret
+                    ul.dropdown-menu(role="menu")
+                        li
+                            a(href="#") Something
+                        li.divider
+                        li
+                            a(href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=337") HL7 CDS Knowledge Artifacts
+            ul.nav.navbar-nav.navbar-right
+                li.dropdown
+                    a.dropdown-toggle(data-toggle="dropdown")
+                        span.glyphicon.glyphicon-cog
+                        |  System
+                        b(class="caret")
+                    ul.dropdown-menu
+                        li TODO

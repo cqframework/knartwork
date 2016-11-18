@@ -1,0 +1,38 @@
+{
+    "dir": {
+        "src": "./src",
+        "build": "./build",
+        "temp": "./temp",
+        "dist": "./dist"
+    },
+    "vendor": {
+        "css": [
+            "./src/bower_components/bootstrap/dist/css/bootstrap.min.css",
+            "./src/bower_components/font-awesome/css/font-awesome.min.css",
+            "./src/bower_components/ionicons/css/ionicons.min.css",
+            "./node_modules/ng2-toasty/style-bootstrap.css",
+            "./src/bower_components/bootstrap/dist/css/bootstrap.min.css.map"
+        ],
+        "fonts": [
+            "./src/bower_components/bootstrap/dist/fonts/**/*",
+            "./src/bower_components/font-awesome/fonts/**/*",
+            "./src/bower_components/ionicons/fonts/**/*"
+        ],
+        "shims": [
+            "./node_modules/es6-shim/es6-shim.min.js"
+        ],
+        "scripts": [
+            "./src/bower_components/jquery/dist/jquery.min.js",
+            "./src/bower_components/bootstrap/dist/js/bootstrap.min.js",
+            "./node_modules/systemjs/dist/system-polyfills.js",
+            "./node_modules/zone.js/dist/zone.js",
+            "./node_modules/reflect-metadata/Reflect.js",
+            "./node_modules/systemjs/dist/system.src.js"
+        ]
+    },
+    "package": {
+        "name": "knartwork-ui",
+        "mode": "zip",
+        "extension": "zip"
+    }
+}

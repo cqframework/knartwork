@@ -1,0 +1,16 @@
+# OS X crap
+.DS_Store
+
+# Generated files
+build
+*.css
+*.map
+*.zip
+*.tar.gz
+
+#Exclude bower components and fonts
+src/bower_components
+
+# Locally-installed dependencies
+node_modules
+bower_components
