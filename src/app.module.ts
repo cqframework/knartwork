@@ -3,7 +3,10 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {AppComponent} from './app/app.component';
 import {HomeComponent} from './app/components/home.component';
+import {MetadataComponent} from './app/components/metadata.component';
 import {ApiComponent} from './app/components/api.component';
+import {ContributionComponent} from './app/components/contribution.component';
+import {ContributionsComponent} from './app/components/contributions.component';
 
 import {KnartworkService} from './app/services/knartwork.service';
 
@@ -33,7 +36,10 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     declarations: [
 		AppComponent,
         ApiComponent,
-        HomeComponent
+        HomeComponent,
+		MetadataComponent,
+		ContributionsComponent,
+		ContributionComponent
     ],   // components and directives
     providers: [
         appRoutingProviders,

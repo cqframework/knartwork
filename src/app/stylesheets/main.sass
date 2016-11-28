@@ -1,4 +1,29 @@
-body
+$shadow: 0 20px 20px rgba(0,0,0,.4)
+$content_background: url('/images/textures/crossword.png') repeat
 
-a
-  color: #00B7FF
+body
+    background-color: none
+    background: url('/images/textures/wild_oliva.png') repeat
+
+[role="tabpanel"] > ul > li a,
+	// border-top: none
+	border-left: none
+	border-right: none
+[role="tabpanel"] > ul > li a:hover
+	cursor: pointer
+
+[role="tabpanel"] > ul > li.active a,
+#editor_tabs > ul > li.active a,
+#editor_tabs > ul > li.active a,
+.tab-content
+	background: $content_background
+
+#loader
+	margin-top: 40px
+	border-radius: 2px
+	padding: 10px
+	box-shadow: $shadow
+	background: $content_background
+
+	input
+		display: inline

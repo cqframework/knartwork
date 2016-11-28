@@ -1,0 +1,13 @@
+.container-fluid
+    button.btn.btn-primary.pull-right("(click)"="createContribution()")
+        span.glyphicon.glyphicon-plus
+        |  Add
+    p.text-muted Contributions document the people and organizations that have contributed to this work. You probably want to specify a primary author and contact information, at minimum, and may want to add your organization as well.
+    hr
+    div("*ngIf"="knart.contributions.length == 0")
+        small
+            i You should add one!
+
+    div("*ngIf"="knart.contributions.length > 0")
+        h2 todo
+    .clearfix

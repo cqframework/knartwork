@@ -1,0 +1,20 @@
+.container-fluid
+    form
+        .form-group
+            label(for="title") Title
+            input.form-control(type="text" name="title" "[(ngModel)]"="knart.title")
+            p.text-muted Keep it short.
+        .form-group
+            label(for="title") Description
+            textarea.form-control(name="description" "[(ngModel)]"="knart.description")
+            p.text-muted Free-from plaintext blurb. No length restriction, though formatting is not supported.
+        .form-group
+            label(for="title") Schema Identifier
+            input.form-control(type="text" name="schemaIdentifier" "[(ngModel)]"="knart.schemaIdentifier")
+            p.text-muted Don't mess with this unless you know what you're doing.
+
+        .form-group
+            label Artifact Type
+            //- select.form-control#artifact_type_select("(change)"="select($event.target.value)")
+            select.form-control#artifact_type_select(name="artifactType" "[(ngModel)]"="knart.artifactType")
+                option("[value]"="t.value" "[selected]"="knart.artifactType == t.value" "*ngFor"="let t of knart.artifactTypes()") {{t.value}}

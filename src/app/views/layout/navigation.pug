@@ -1,4 +1,4 @@
-//- nav.navbar.navbar-default
+nav.navbar.navbar-default("*ngIf"="knart")
     .container-fluid
         .navbar-header
             button.navbar-toggle(type="button" data-toggle="collapse" data-target="#navbar-collapse-1")
@@ -12,21 +12,25 @@
         div.collapse.navbar-collapse#navbar-collapse-1
             ul.nav.navbar-nav
                 li.dropdown
-                    a.dropdown-toggle(data-toggle="dropdown")
+                    a.dropdown-toggle(href="#" data-toggle="dropdown")
                         //- span.glyphicon.glyphicon-file
                         | File
                         b.caret
                     ul.dropdown-menu(role="menu")
                         li
-                            a(ngClick="console.log('click')")
-                                span.glyphicon.glyphicon-cloud-upload
-                                |  Open File...
-                        li
-                            a(ngClick="console.log('click')")
+                            a("(click)"="console.log('click')" "*ngIf"="originalXMLString")
                                 span.glyphicon.glyphicon-cloud-download
-                                |  Download
+                                |  Revert
+                        li
+                            a(href="#" "(click)"="reset()")
+                                span.glyphicon.glyphicon-trash
+                                |  Close
+                        //- li
+                        //-     a("(click)"="")
+                        //-         span.glyphicon.glyphicon-cloud-download
+                        //-         |  Download...
                 li.dropdown
-                    a.dropdown-toggle(data-toggle="dropdown")
+                    a.dropdown-toggle(href="#" data-toggle="dropdown")
                         | Learn
                         b.caret
                     ul.dropdown-menu(role="menu")

@@ -60,6 +60,11 @@ module.exports = function(grunt) {
                     src: "*",
                     dest: 'build/fonts/',
                     expand: true
+                }, {
+                    cwd: 'src/images/',
+                    src: '**/*',
+                    dest: 'build/images/',
+                    expand: true
                 }]
             }
         },
@@ -94,18 +99,18 @@ module.exports = function(grunt) {
                         minChunks: Infinity
                     }),
                     new webpack.optimize.DedupePlugin(),
-                    new webpack.optimize.UglifyJsPlugin({
-                        beautify: false,
-                        mangle: {
-                            screw_ie8: true,
-                            keep_fnames: true
-                        },
-                        compress: {
-                            screw_ie8: true,
-                            warnings: false
-                        },
-                        comments: false
-                    }),
+                    // new webpack.optimize.UglifyJsPlugin({
+                    //     beautify: false,
+                    //     mangle: {
+                    //         screw_ie8: true,
+                    //         keep_fnames: true
+                    //     },
+                    //     compress: {
+                    //         screw_ie8: true,
+                    //         warnings: false
+                    //     },
+                    //     comments: false
+                    // }),
                     new webpack.ResolverPlugin(new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])),
                     new webpack.ProvidePlugin({
                         $: "jquery",
@@ -152,9 +157,9 @@ module.exports = function(grunt) {
             webpack: {
                 files: ['src/**/*.ts'],
                 tasks: ['webpack'],
-				options: {
-					livereload: true
-				}
+                options: {
+                    livereload: true
+                }
             }
         },
 
@@ -166,7 +171,7 @@ module.exports = function(grunt) {
                     base: 'build',
                     // open: true,
                     keepalive: true
-                    // livereload: true
+                        // livereload: true
                 }
             }
         },
