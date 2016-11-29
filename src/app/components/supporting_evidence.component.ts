@@ -1,0 +1,30 @@
+import {Component, Input} from '@angular/core';
+
+import {Knart} from '../models/knart';
+import {SupportingEvidence} from '../models/supporting_evidence';
+
+@Component({
+    selector: 'supporting_evidence',
+    templateUrl: '/supporting_evidence.html'
+})
+export class SupportingEvidenceComponent {
+
+    @Input() knart: Knart;
+
+    constructor() {
+        console.log("SupportingEvidenceComponent has been initialized.");
+    }
+
+    createSupportingEvidence() {
+        let se = new SupportingEvidence();
+        this.knart.supportingEvidence.push(se);
+    }
+
+    deleteSupportingEvidence(se) {
+        let i: number = this.knart.supportingEvidence.indexOf(se, 0);
+        if (i > -1) {
+            this.knart.supportingEvidence.splice(i, 1);
+        }
+    }
+
+}

@@ -39,8 +39,27 @@
             | Contributions
         hr
         .collapse.in#preview_contributions
-            div("*ngFor"="let c of knart.contributions")
-                h3 \#{{knart.contributions.indexOf(c)}} {{c.name}}
+            div.well.row("*ngFor"="let contribution of knart.contributions")
+                //- h3 \#{{knart.contributions.indexOf(c)}} {{c.name}}
+                h3 {{contribution.role}}
+                hr
+                .col-md-6
+                    h4 Names
+                    ul
+                        li("*ngFor"="let name of contribution.names") {{name.given}} {{name.family}}
+                    h4 Addresses
+                    address("*ngFor"="let address of contribution.addresses")
+                        span {{address.street}}
+                        br
+                        span {{address.city}}, {{address.state}}
+                        br
+                        span {{address.zip}}, {{address.country}}
+                .col-md-6
+                    h4 Affiliations
+                    ul
+                        li("*ngFor"="let affiliation of contribution.affiliations") {{affiliation.name}}
+                    h4 Contacts
+                    .contact("*ngFor"="let contact of contribution.contacts") {{contact.use}}: {{contact.value}}
 
 
     section
@@ -54,3 +73,14 @@
                 i {{mr.referencedModel}}
                 br
                 small {{mr.description}}
+
+
+    section
+        h2
+            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_supporting_evidence" aria-expanded="true" aria-controls="preview_supporting_evidence")
+                span.glyphicon.glyphicon-option-vertical
+            | Supporting Evidence
+        hr
+        .collapse.in#preview_supporting_evidence
+            ul
+                li("*ngFor"="let se of knart.supportingEvidence") {{se.citation}}

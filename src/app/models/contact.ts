@@ -1,4 +1,5 @@
 export class Contact {
-    type: string;
+    use: string = 'WP';
     value: string;
+
 }

@@ -6,7 +6,7 @@ import {ArtifactType} from './artifact_type';
 import {Format} from './format';
 import {Status} from './status';
 import {RelatedResource} from './related_resource';
-
+import {SupportingEvidence} from './supporting_evidence';
 
 export class Knart {
 
@@ -24,6 +24,7 @@ export class Knart {
     modelReferences: Array<ModelReference> = new Array<ModelReference>();
     contributions: Array<Contribution> = new Array<Contribution>();
     relatedResources: Array<RelatedResource> = new Array<RelatedResource>();
+    supportingEvidence: Array<SupportingEvidence> = new Array<SupportingEvidence>();
 
     // The meat!
     actionGroup: ActionGroup;

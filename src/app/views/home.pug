@@ -30,13 +30,13 @@ toaster-container
 
 .container-fluid("*ngIf"="knart")
     .row
-        .col-md-7
+        .col-md-6
             #editor_tabs(role="tabpanel")
                 ul.nav.nav-tabs(role="tablist")
                     li(role="presentation" "[class.active]"="editor_tab == 'metadata'")
                         a#metadata_tab_link(aria-controls="metadata" data-toggle="editor_tab" "(click)"="editor_tab = 'metadata'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-pencil
-                            |  Metadata
+                            |  Basics
                     li(role="presentation" "[class.active]"="editor_tab == 'related_resources'")
                         a#related_resources_tab_link(aria-controls="related_resources" data-toggle="editor_tab" "(click)"="editor_tab = 'related_resources'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-book
@@ -48,18 +48,43 @@ toaster-container
                     li(role="presentation" "[class.active]"="editor_tab == 'model_references'")
                         a#model_references_tab_link(aria-controls="model_references" data-toggle="editor_tab" "(click)"="editor_tab = 'model_references'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-link
-                            |  Model References
-                    li(role="presentation" "[class.active]"="editor_tab == 'actions'")
-                        a#actions_tab_link(aria-controls="actions" data-toggle="editor_tab" "(click)"="editor_tab = 'actions'" role="tab" aria-expanded="true")
-                            span.glyphicon.glyphicon-list
-                            |  Actions
+                            |  Model Refs
+                    li(role="presentation" "[class.active]"="editor_tab == 'supporting_evidence'")
+                        a#supporting_evidence_tab_link(aria-controls="supporting_evidence" data-toggle="editor_tab" "(click)"="editor_tab = 'supporting_evidence'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-apple
+                            |  Evidence
+
+
                 .tab-content
                     metadata.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'metadata'" "[knart]"="knart")
                     contributions.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'contributions'" "[knart]"="knart")
                     related_resources.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'related_resources'" "[knart]"="knart")
                     model_references.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'model_references'" "[knart]"="knart")
-                    actions.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'actions'")
-        .col-md-5
+                    supporting_evidence.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'supporting_evidence'" "[knart]"="knart")
+
+        .col-md-6
+            #runtime_tabs(role="tabpanel")
+                ul.nav.nav-tabs(role="tablist")
+                    li(role="presentation" "[class.active]"="runtime_tab == 'conditions'")
+                        a#conditions_tab_link(aria-controls="conditions" data-toggle="runtime_tab" "(click)"="runtime_tab = 'conditions'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-pencil
+                            |  Conditions
+                    li(role="presentation" "[class.active]"="runtime_tab == 'expressions'")
+                        a#expressions_tab_link(aria-controls="expressions" data-toggle="runtime_tab" "(click)"="runtime_tab = 'expressions'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-book
+                            |  Expressions
+                    li(role="presentation" "[class.active]"="runtime_tab == 'actions'")
+                        a#actions_tab_link(aria-controls="actions" data-toggle="runtime_tab" "(click)"="runtime_tab = 'actions'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-list
+                            |  Actions
+
+                .tab-content
+                    conditions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'conditions'" "[knart]"="knart")
+                    expressions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'expressions'" "[knart]"="knart")
+                    actions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'actions'" "[knart]"="knart")
+
+        p.clearfix
+        .col-md-12
             #viewer_tabs(role="tabpanel")
                 ul.nav.nav-tabs(role="tablist")
                     li(role="presentation" "[class.active]"="viewer_tab == 'preview'")
@@ -73,4 +98,7 @@ toaster-container
                 .tab-content
                     preview.tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'preview'" "[knart]"="knart")
                     .tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'original'")
-                        pre(lang="xml") {{originalContentString}}
+                        .container-fluid
+                            pre("*ngIf"="originalContentString" lang="xml") {{originalContentString}}
+                            i.text-muted("*ngIf"="!originalContentString")
+                                small (only applies to artifacts loaded from a local file)

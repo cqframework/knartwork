@@ -4,6 +4,9 @@ import {Knart} from '../models/knart';
 import {Contribution} from '../models/contribution';
 import {Address} from '../models/address';
 import {Contact} from '../models/contact';
+import {Name} from '../models/name';
+import {Role} from '../models/role';
+import {Affiliation} from '../models/affiliation';
 
 @Component({
     selector: 'contributions',
@@ -19,6 +22,9 @@ export class ContributionsComponent {
 
     contributorTypes(): Array<string> {
         return ["Person"];
+    }
+    roleTypes(): Array<Role> {
+        return Role.ALL;
     }
 
     createContribution() {
@@ -42,8 +48,35 @@ export class ContributionsComponent {
         this.knart.contributions[cIndex].addresses.splice(aIndex, 1);
     }
 
-    createContact(c: Contribution) {
-        c.contacts.push(new Contact());
+    createContact(contribution: Contribution) {
+        contribution.contacts.push(new Contact());
+    }
+
+    deleteContact(contribution: Contribution, contact: Contact) {
+        let contributionIndex: number = this.knart.contributions.indexOf(contribution);
+        let contactIndex: number = this.knart.contributions[contributionIndex].contacts.indexOf(contact);
+        this.knart.contributions[contributionIndex].contacts.splice(contactIndex, 1);
+    }
+
+
+    createName(contribution: Contribution) {
+        contribution.names.push(new Name());
+    }
+
+    deleteName(contribution: Contribution, name: Name) {
+        let contributionIndex: number = this.knart.contributions.indexOf(contribution);
+        let nameIndex: number = this.knart.contributions[contributionIndex].names.indexOf(name);
+        this.knart.contributions[contributionIndex].names.splice(nameIndex, 1);
+    }
+
+    createAffiliation(contribution: Contribution) {
+        contribution.affiliations.push(new Affiliation());
+    }
+
+    deleteAffiliation(contribution: Contribution, affiliation: Affiliation) {
+        let contributionIndex: number = this.knart.contributions.indexOf(contribution);
+        let affiliationIndex: number = this.knart.contributions[contributionIndex].affiliations.indexOf(affiliation);
+        this.knart.contributions[contributionIndex].affiliations.splice(affiliationIndex, 1);
     }
 
 }

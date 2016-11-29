@@ -10,10 +10,12 @@ import {MetadataComponent} from './app/components/metadata.component';
 import {ActionsComponent} from './app/components/actions.component';
 import {PreviewComponent} from './app/components/preview.component';
 import {ApiComponent} from './app/components/api.component';
-import {ContributionComponent} from './app/components/contribution.component';
 import {ContributionsComponent} from './app/components/contributions.component';
 import {RelatedResourcesComponent} from './app/components/related_resources.component';
 import {ModelReferencesComponent} from './app/components/model_references.component';
+import {ConditionsComponent} from './app/components/conditions.component';
+import {ExpressionsComponent} from './app/components/expressions.component';
+import {SupportingEvidenceComponent} from './app/components/supporting_evidence.component';
 
 import {KnartworkService} from './app/services/knartwork.service';
 
@@ -49,10 +51,12 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         MetadataComponent,
         ActionsComponent,
         ContributionsComponent,
-        ContributionComponent,
         RelatedResourcesComponent,
-		ModelReferencesComponent,
-        PreviewComponent
+        ModelReferencesComponent,
+        PreviewComponent,
+        ConditionsComponent,
+        ExpressionsComponent,
+        SupportingEvidenceComponent
     ],   // components and directives
     providers: [
         appRoutingProviders,

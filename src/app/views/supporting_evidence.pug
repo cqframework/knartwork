@@ -1,0 +1,21 @@
+.container-fluid
+    a.btn.btn-primary.pull-right("(click)"="createSupportingEvidence()")
+        span.glyphicon.glyphicon-plus
+        |  Add
+    p.text-muted Literature in support of this artifact may be declared here.
+    br.clearfix
+    div("*ngIf"="knart.supportingEvidence.length == 0")
+        small
+            i You should add some!
+
+
+    div#supportingEvidence("*ngIf"="knart.supportingEvidence.length > 0")
+        .supportingEvidence("*ngFor"="let se of knart.supportingEvidence")
+            p.clearfix
+            form.form.row
+                .col-sm-9.form-group
+                    //- label(for="supporting_evidence_citation") Value
+                    textarea.form-control(name="model_reference_value" "[(ngModel)]"="se.citation" placeholder="Citation Text" required="true")
+                .col-sm-3
+                    a.btn.btn-small.btn-danger("(click)"="deleteSupportingEvidence(se)")
+                        span.glyphicon.glyphicon-trash
