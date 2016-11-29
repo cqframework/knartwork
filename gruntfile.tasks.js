@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     var path = require('path');
 
     // Store location settings
-    var settings = grunt.file.readJSON('gruntfile.settings.json');
+    // var settings = grunt.file.readJSON('gruntfile.settings.json');
 
     // Get and store version
     var versionData = grunt.file.readJSON('src/version.json').version,
@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     // Project configuration
     var config = {
         pkg: grunt.file.readJSON('package.json'),
-        settings: settings,
+        // settings: settings,
         // Clean folders or files
         clean: {
             build: {
@@ -74,6 +74,7 @@ module.exports = function(grunt) {
                 files: [{
                     src: [
                         "node_modules/bootstrap/dist/css/bootstrap.min.css",
+						"node_modules/angular2-toaster/lib/toaster.css"
                     ],
                     dest: 'build/css/extra.css'
                 }]

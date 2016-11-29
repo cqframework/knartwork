@@ -1,6 +1,8 @@
 import {ModuleWithProviders, enableProdMode} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
+import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
+
 import {AppComponent} from './app/app.component';
 import {HomeComponent} from './app/components/home.component';
 import {MetadataComponent} from './app/components/metadata.component';
@@ -31,7 +33,8 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
 		BrowserModule,
         routing,
         FormsModule,
-        HttpModule
+        HttpModule,
+		ToasterModule
     ],       // module dependencies
     declarations: [
 		AppComponent,
@@ -43,6 +46,7 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     ],   // components and directives
     providers: [
         appRoutingProviders,
+		ToasterService,
         KnartworkService,
     ],                    // services
     bootstrap: [AppComponent]     // root component

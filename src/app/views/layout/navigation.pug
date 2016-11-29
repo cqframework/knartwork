@@ -23,7 +23,7 @@ nav.navbar.navbar-default("*ngIf"="knart")
                         b.caret
                     ul.dropdown-menu(role="menu")
                         li
-                            a("(click)"="console.log('click')" "*ngIf"="originalXMLString")
+                            a("(click)"="createFromContentString()" "*ngIf"="originalContentString")
                                 span.glyphicon.glyphicon-cloud-download
                                 |  Revert
                         li

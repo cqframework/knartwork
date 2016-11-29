@@ -2,6 +2,7 @@ import {Component, Output} from '@angular/core';
 import {Knart} from '../models/knart';
 import {ArtifactType} from '../models/artifact_type';
 import {Format} from '../models/format';
+import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
 
 @Component({
     selector: 'home',
@@ -14,14 +15,13 @@ export class HomeComponent {
     knart: Knart;
     documentFormat: Format = Format.HL7CDSKnowledgeArtifact13; // Just a default.
 
-    originalXMLString: string;
+    originalContentString: string;
 
-    constructor() {
+    constructor(public toasterService: ToasterService) {
         console.log("HomeComponent has been initialized.");
         this.reset();
         // this.createFromTemplate(); // Uncomment to always start with a new document.
     }
-
 
 
     documentFormats(): Array<Format> {
@@ -32,7 +32,7 @@ export class HomeComponent {
         this.knart = null;
         this.editor_tab = 'metadata';
         this.viewer_tab = 'preview';
-        this.originalXMLString = null;
+        this.originalContentString = null;
     }
 
     createFromTemplate() {
@@ -45,6 +45,20 @@ export class HomeComponent {
         this.knart = k;
     }
 
+    createFromContentString() {
+        let knart = new Knart();
+        var parser = new DOMParser();
+        var doc: Document = parser.parseFromString(this.originalContentString, "application/xml");
+        try {
+            knart.loadFromXMLDocument(doc);
+            this.knart = knart;
+			this.toasterService.pop('success', "Loaded!", "Go do your thing.");
+        } catch (e) {
+            this.toasterService.pop('error', 'Well blarg.', "Your file couldn't be parsed. Is it valid and well-formed?");
+            this.reset();
+        }
+    }
+
     openFile(event) {
         console.log("Reading...");
         let input = event.target;
@@ -52,12 +66,8 @@ export class HomeComponent {
             let reader = new FileReader();
             reader.onload = () => {
                 // this text is the content of the file
-                this.originalXMLString = reader.result;
-                let knart = new Knart();
-                var parser = new DOMParser();
-                var doc: Document = parser.parseFromString(this.originalXMLString, "application/xml");
-                knart.loadFromXMLDocument(doc);
-                this.knart = knart;
+                this.originalContentString = reader.result;
+                this.createFromContentString();
             }
             reader.readAsText(input.files[0]);
         } else {
