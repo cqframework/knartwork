@@ -1,8 +1,8 @@
 # KNARTwork: The Community Knowledge Artifact Editor
 
-KNARTwork is a multi-purpose web application for authoring, viewing, and transforming knowledge artifacts across popular specifications, with a strong slant towards healthcare-specific formats. By default, this application provides a purely standalone experience that does not use any standard-specific APIs (such as FHIR) or databases (such as RDBMS or NoSQL) systems, and may be used as-is by end users wanting to manage source documents as an out-of-band process using git/subversion, Dropbox, email etc. Launch options will be added as appropriate to support such optional backend integration modes as they become available by the CDS community.
+KNARTwork is a multi-purpose web application for authoring, viewing, and transforming knowledge artifacts across popular specifications, with a strong slant towards healthcare-specific formats. By default, this application provides a purely standalone experience that does not use any standard-specific APIs (such as FHIR) or databases (such as RDBMS or NoSQL) systems, and may be used as-is by end users wanting to manage source documents as an out-of-band process using git/subversion, Dropbox, email etc. Server-side persistence options will be added as optional features as backend implementations emerge from the CDS community.
 
-Community contributions -- especially those specific to emerging clinically-relevant standards -- are highly encouraged! Please submit your pull requests (PRs) via the community's public GitHub project page.
+Community contributions -- especially those specific to evolving clinical standards -- are highly encouraged! Please submit your pull requests (PRs) via the community's public GitHub project page.
 
 ## Developer Quick Start
 
