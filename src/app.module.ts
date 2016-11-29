@@ -15,6 +15,8 @@ import {RelatedResourcesComponent} from './app/components/related_resources.comp
 import {ModelReferencesComponent} from './app/components/model_references.component';
 import {ConditionsComponent} from './app/components/conditions.component';
 import {ExpressionsComponent} from './app/components/expressions.component';
+import {CoveragesComponent} from './app/components/coverages.component';
+import {ExternalDataComponent} from './app/components/external_data.component';
 import {SupportingEvidenceComponent} from './app/components/supporting_evidence.component';
 
 import {KnartworkService} from './app/services/knartwork.service';
@@ -56,7 +58,9 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         PreviewComponent,
         ConditionsComponent,
         ExpressionsComponent,
-        SupportingEvidenceComponent
+        SupportingEvidenceComponent,
+        CoveragesComponent,
+        ExternalDataComponent
     ],   // components and directives
     providers: [
         appRoutingProviders,

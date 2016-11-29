@@ -1,0 +1,22 @@
+.container-fluid
+    a.btn.btn-primary.pull-right("(click)"="createExternalData()")
+        span.glyphicon.glyphicon-plus
+        |  Add
+    p.text-muted External data specified here can be used in runtime expressions.
+    br.clearfix
+
+    #externalData("*ngIf"="knart.externalData.length > 0")
+        .externalData.well("*ngFor"="let ed of knart.externalData")
+            .btn-group.pull-right
+                a.btn.btn-small.btn-danger("(click)"="deleteExternalData(ed)")
+                    span.glyphicon.glyphicon-trash
+            .clearfix
+            form.form.row
+                .col-sm-12.form-group
+                    label(for="external_data_name") Data Name
+                    input.form-control(name="external_data_name" type="text" "[(ngModel)]"="ed.name" placeholder="Patient" required="true")
+                    p.text-muted This is how the data element will be referenced by expressions.
+                .col-sm-12.form-group
+                    label(for="external_data_content") Binding Expression
+                    textarea.form-control(name="external_data_content" type="text" "[(ngModel)]"="ed.content" placeholder='<elm:expression xsi:type="elm:SingletonFrom"><elm:operand xsi:type="elm:Retrieve" dataType="vmr:EvaluatedPersion"/></elm:expression>')
+                    p.text-muted This is the ELM expression (or similar blurb) that defines how the data will be bound at runtime.

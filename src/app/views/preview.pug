@@ -17,7 +17,7 @@
                 dd {{knart.artifactType}}
 
 
-    section
+    section("*ngIf"="knart.relatedResources.length > 0")
         h2
             a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_resources" aria-expanded="true" aria-controls="preview_resources")
                 span.glyphicon.glyphicon-option-vertical
@@ -32,7 +32,7 @@
                 small {{rr.resource.description}}
 
 
-    section
+    section("*ngIf"="knart.contributions.length > 0")
         h2
             a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_contributions" aria-expanded="true" aria-controls="preview_contributions")
                 span.glyphicon.glyphicon-option-vertical
@@ -62,7 +62,7 @@
                     .contact("*ngFor"="let contact of contribution.contacts") {{contact.use}}: {{contact.value}}
 
 
-    section
+    section("*ngIf"="knart.modelReferences.length > 0")
         h2
             a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_model_references" aria-expanded="true" aria-controls="preview_model_references")
                 span.glyphicon.glyphicon-option-vertical
@@ -75,7 +75,7 @@
                 small {{mr.description}}
 
 
-    section
+    section("*ngIf"="knart.supportingEvidence.length > 0")
         h2
             a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_supporting_evidence" aria-expanded="true" aria-controls="preview_supporting_evidence")
                 span.glyphicon.glyphicon-option-vertical
@@ -84,3 +84,34 @@
         .collapse.in#preview_supporting_evidence
             ul
                 li("*ngFor"="let se of knart.supportingEvidence") {{se.citation}}
+
+    section("*ngIf"="knart.externalData.length > 0")
+        h2
+            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_external_data" aria-expanded="true" aria-controls="preview_external_data")
+                span.glyphicon.glyphicon-option-vertical
+            | Data Binding
+        hr
+        .collapse.in#preview_external_data
+            .external_data("*ngFor"="let ed of knart.externalData")
+                h4 {{ed.name}}
+                pre(type="xml") {{ed.content}}
+
+    section("*ngIf"="knart.coverages.length > 0")
+        h2
+            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_coverages" aria-expanded="true" aria-controls="preview_coverages")
+                span.glyphicon.glyphicon-option-vertical
+            | Applicability
+        hr
+        .collapse.in.row#preview_coverages
+            .col-sm-4.coverage("*ngFor"="let c of knart.coverages")
+                .well
+                    h4
+                        | {{c.value.displayName}}
+                        i  ({{c.focus}})
+                    small
+                        | {{c.value.codeSystemName}}
+                        i , system:
+                        |  {{c.value.codeSystem}}
+                        i , code:
+                        |  {{c.value.code}}
+                    p {{c.description}}

@@ -7,6 +7,8 @@ import {Format} from './format';
 import {Status} from './status';
 import {RelatedResource} from './related_resource';
 import {SupportingEvidence} from './supporting_evidence';
+import {ExternalData} from './external_data';
+import {Coverage} from './coverage';
 
 export class Knart {
 
@@ -25,6 +27,8 @@ export class Knart {
     contributions: Array<Contribution> = new Array<Contribution>();
     relatedResources: Array<RelatedResource> = new Array<RelatedResource>();
     supportingEvidence: Array<SupportingEvidence> = new Array<SupportingEvidence>();
+    externalData: Array<ExternalData> = new Array<ExternalData>();
+    coverages: Array<Coverage> = new Array<Coverage>();
 
     // The meat!
     actionGroup: ActionGroup;
