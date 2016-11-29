@@ -1,9 +1,33 @@
 $shadow: 0 20px 20px rgba(0,0,0,.4)
 $content_background: url('/images/textures/crossword.png') repeat
 
+.navbar-default .navbar-brand:hover
+	// text-shadow: 20px 0 20px rgba(255,255,255, 0.4)
+	transform: rotateZ(-2deg)
+	transition: transform 1s linear
+
+.navbar-default .navbar-brand
+	color: #aaa
+    text-decoration: none
+    text-shadow: -4px 4px 4px rgba(0, 0, 0, 0.4)
+	transition: transform 1s linear
+
+	span
+		color: #777
+		// text-decoration: underline
+
+	.subtitle
+		text-decoration: overline
+		font-variant: small-caps
+		color: #444
+
+
 body
     background-color: none
     background: url('/images/textures/wild_oliva.png') repeat
+
+.tab-content
+	box-shadow: $shadow
 
 [role="tabpanel"] > ul > li a,
 	// border-top: none

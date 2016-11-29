@@ -1,6 +1,7 @@
 import {Component, Output} from '@angular/core';
 import {Knart} from '../models/knart';
 import {ArtifactType} from '../models/artifact_type';
+import {Format} from '../models/format';
 
 @Component({
     selector: 'home',
@@ -11,18 +12,26 @@ export class HomeComponent {
     editor_tab: 'metadata' | 'contributions' | 'actions';
     viewer_tab: "preview" | 'xml';
     knart: Knart;
+    documentFormat: Format = Format.HL7CDSKnowledgeArtifact13; // Just a default.
 
     originalXMLString: string;
 
     constructor() {
         console.log("HomeComponent has been initialized.");
         this.reset();
-		this.createFromTemplate();
+        // this.createFromTemplate(); // Uncomment to always start with a new document.
+    }
+
+
+
+    documentFormats(): Array<Format> {
+        return Format.All;
     }
 
     reset() {
         this.knart = null;
         this.editor_tab = 'metadata';
+        this.viewer_tab = 'preview';
         this.originalXMLString = null;
     }
 

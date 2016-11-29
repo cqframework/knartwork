@@ -6,15 +6,20 @@ nav.navbar.navbar-default("*ngIf"="knart")
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-            a.navbar-brand(href="/")
-                span.glyphicon.glyphicon-file
+            //- a.navbar-brand(href="/")
                 |  Knartwork
+            .navbar-brand
+                | KNART
+                span.text-info work
+                //- | ::
+                span.subtitle  community knowledge artifact editor
+
         div.collapse.navbar-collapse#navbar-collapse-1
             ul.nav.navbar-nav
                 li.dropdown
                     a.dropdown-toggle(href="#" data-toggle="dropdown")
-                        //- span.glyphicon.glyphicon-file
-                        | File
+                        span.glyphicon.glyphicon-file
+                        |  File
                         b.caret
                     ul.dropdown-menu(role="menu")
                         li
@@ -31,19 +36,28 @@ nav.navbar.navbar-default("*ngIf"="knart")
                         //-         |  Download...
                 li.dropdown
                     a.dropdown-toggle(href="#" data-toggle="dropdown")
-                        | Learn
+                        span.glyphicon.glyphicon-ok-circle
+                        |  Learn
                         b.caret
                     ul.dropdown-menu(role="menu")
                         li
-                            a(href="#") Something
+                            a(href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=337", target="_blank") HL7 CDS Knowledge Artifacts
+                        li
+                            a(href="https://www.hl7.org/fhir/2016Sep/clinicalreasoning-module.html", target="_blank") HL7 FHIR Clinical Reasoning
                         li.divider
                         li
-                            a(href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=337") HL7 CDS Knowledge Artifacts
-            ul.nav.navbar-nav.navbar-right
-                li.dropdown
-                    a.dropdown-toggle(data-toggle="dropdown")
-                        span.glyphicon.glyphicon-cog
-                        |  System
-                        b(class="caret")
-                    ul.dropdown-menu
-                        li TODO
+                            a(href="https://github.com/cqframework/knartwork", target="_blank") Bug Reports &amp; Feature Requests
+
+            //- ul.nav.navbar-nav.navbar-right.navbar-brand
+                li
+                    | KNART
+                    span.text-info work
+                    //- | ::
+                    span.subtitle  community knowledge artifact editor
+            //- li.dropdown
+                a.dropdown-toggle(data-toggle="dropdown")
+                    span.glyphicon.glyphicon-cog
+                    |  System
+                    b(class="caret")
+                ul.dropdown-menu
+                    li TODO

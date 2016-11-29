@@ -3,6 +3,7 @@ import {ModelReference} from './model_reference';
 import {Contribution} from './contribution';
 import {ActionGroup} from './action_group';
 import {ArtifactType} from './artifact_type';
+import {Format} from './format';
 
 
 export class Knart {
@@ -14,7 +15,7 @@ export class Knart {
     schemaIdentifier: string;
     artifactType: string;
 
-	static DEFAULT_SCHEMA_IDENTIFIER = 'urn:hl7-org:knowledgeartifact:r1';
+    static DEFAULT_SCHEMA_IDENTIFIER = 'urn:hl7-org:knowledgeartifact:r1';
 
     // Complex metadata elements
     identifiers: Array<Identifier> = new Array<Identifier>();
@@ -26,9 +27,9 @@ export class Knart {
 
     document: Document;
 
-	artifactTypes(): Array<ArtifactType> {
-		return ArtifactType.All;
-	}
+    artifactTypes(): Array<ArtifactType> {
+        return ArtifactType.All;
+    }
 
     loadFromXMLDocument(doc: Document) {
         this.document = doc;
@@ -40,12 +41,12 @@ export class Knart {
         this.title = doc.evaluate("string(./k:metadata/k:title/@value)", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
         this.description = doc.evaluate("string(./k:metadata/k:description/@value)", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
         let typeString = doc.evaluate("string(./k:metadata/k:artifactType/@value)", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
-		// this.artifactType = ArtifactType.fromString(typeString).value || ArtifactType.DocumentationTemplate.value;
-		this.artifactType = ArtifactType.fromString(typeString).value || ArtifactType.DocumentationTemplate.value;
+        // this.artifactType = ArtifactType.fromString(typeString).value || ArtifactType.DocumentationTemplate.value;
+        this.artifactType = ArtifactType.fromString(typeString).value || ArtifactType.DocumentationTemplate.value;
 
         // title.attributes.
         console.log(this.title);
-		console.log("Loaded KNART!");
+        console.log("Loaded KNART!");
     }
 
     static namespaces: XPathNSResolver = <any>function nsResolver(prefix) {

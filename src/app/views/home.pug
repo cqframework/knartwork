@@ -3,28 +3,32 @@ include layout/navigation
 .container-fluid("*ngIf"="!knart")
     .row
         .col-lg-6.col-lg-offset-3
-            #loader.text-center
-                h1 Let's start!
-                //- p either
-                hr
-                button.btn.btn-lg("(click)"="createFromTemplate()")
-                    span.glyphicon.glyphicon-plus
-                    | Create a new KNART.
-                br
-                small
-                    i ..or..
-
-                .form-group
-                    label
-                        span.glyphicon.glyphicon-folder-open
-                        |  Load an existing KNART XML file.
+            #loader
+                div.text-center
+                    h1 Start fresh and..
+                    button.btn.btn-lg("(click)"="createFromTemplate()")
+                        span.glyphicon.glyphicon-plus
+                        |  Create a new knowledge artifact.
                     br
-                    input.text-center(type='file' accept='.knart,.xml' "(change)"='openFile($event)')
+                    small
+                        i ..or..
+                hr
+                form.form
+                    h1.text-center Load an existing file..
+                    .form-group
+                        label Format
+                        select.form-control#loader_type_select(name="documentType" "[(ngModel)]"="documentFormat")
+                            option("[value]"="f" "[selected]"="documentType == f" "*ngFor"="let f of documentFormats()") {{f.label}}
+
+                    .form-group
+                        label
+                            span.glyphicon.glyphicon-folder-open
+                        input(type='file' accept='.knart,.xml,.json' "(change)"='openFile($event)')
 
 
 .container-fluid("*ngIf"="knart")
     .row
-        .col-lg-6
+        .col-md-6
             #editor_tabs(role="tabpanel")
                 ul.nav.nav-tabs(role="tablist")
                     li(role="presentation" "[class.active]"="editor_tab == 'metadata'")
@@ -41,7 +45,7 @@ include layout/navigation
                     contributions.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'contributions'" "[knart]"="knart")
                     .tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'actions'")
                         h2 todo
-        .col-lg-6
+        .col-md-6
             #viewer_tabs(role="tabpanel")
                 ul.nav.nav-tabs(role="tablist")
                     li(role="presentation" "[class.active]"="viewer_tab == 'preview'")
@@ -52,5 +56,6 @@ include layout/navigation
                             span.glyphicon.glyphicon-chevron-left XML
                 .tab-content
                     .tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'preview'")
+                        div TODO
                     .tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'xml'")
                         pre(lang="xml") {{originalXMLString}}
