@@ -1,6 +1,8 @@
 # KNARTwork: The Community Knowledge Artifact Editor
 
-KNARTwork is a multi-purpose web application for authoring, viewing, and transforming knowledge artifacts across popular specifications. By default, this project provides a purely standalone experience that does not use any standard-specific APIs (such as FHIR) or databases (such as RDBMS or NoSQL) systems, and may be used as-is by end users wanting to manage source documents using git/subversion, Dropbox, email etc. Launch options will be added as appropriate to support such optional backend integration modes as they are made available by the CDS community.
+KNARTwork is a multi-purpose web application for authoring, viewing, and transforming knowledge artifacts across popular specifications, with a strong slant towards healthcare-specific formats. By default, this application provides a purely standalone experience that does not use any standard-specific APIs (such as FHIR) or databases (such as RDBMS or NoSQL) systems, and may be used as-is by end users wanting to manage source documents as an out-of-band process using git/subversion, Dropbox, email etc. Launch options will be added as appropriate to support such optional backend integration modes as they become available by the CDS community.
+
+Community contributions -- especially those specific to emerging clinically-relevant standards -- are highly encouraged! Please submit your pull requests (PRs) via the community's public GitHub project page.
 
 ## Developer Quick Start
 
@@ -32,7 +34,7 @@ Extremely easy in your existing Dockerized hosting environment. Just:
 
 	docker run -d -p 9000:9000 --restart unless-stopped p3000/knartwork:latest # or any official tag
 
-And you're done. No environment variables or further configuration are needed. Jedi's may use your existing Kubernetes, Open Shift etc installations as you see fit. :) 
+And you're done. No environment variables or further configuration are needed. Jedi's may use your existing Kubernetes, Open Shift etc installations as you see fit. :)
 
 ## Attribution
 
