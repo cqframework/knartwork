@@ -2,13 +2,18 @@ import {ModuleWithProviders, enableProdMode} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
+// import {DragulaModule} from 'ng2-dragula/ng2-dragula';
 
 import {AppComponent} from './app/app.component';
 import {HomeComponent} from './app/components/home.component';
 import {MetadataComponent} from './app/components/metadata.component';
+import {ActionsComponent} from './app/components/actions.component';
+import {PreviewComponent} from './app/components/preview.component';
 import {ApiComponent} from './app/components/api.component';
 import {ContributionComponent} from './app/components/contribution.component';
 import {ContributionsComponent} from './app/components/contributions.component';
+import {RelatedResourcesComponent} from './app/components/related_resources.component';
+import {ModelReferencesComponent} from './app/components/model_references.component';
 
 import {KnartworkService} from './app/services/knartwork.service';
 
@@ -30,23 +35,28 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
 
 @NgModule({
     imports: [
-		BrowserModule,
+        BrowserModule,
         routing,
         FormsModule,
         HttpModule,
-		ToasterModule
+        ToasterModule
+        // DragulaModule
     ],       // module dependencies
     declarations: [
-		AppComponent,
+        AppComponent,
         ApiComponent,
         HomeComponent,
-		MetadataComponent,
-		ContributionsComponent,
-		ContributionComponent
+        MetadataComponent,
+        ActionsComponent,
+        ContributionsComponent,
+        ContributionComponent,
+        RelatedResourcesComponent,
+		ModelReferencesComponent,
+        PreviewComponent
     ],   // components and directives
     providers: [
         appRoutingProviders,
-		ToasterService,
+        ToasterService,
         KnartworkService,
     ],                    // services
     bootstrap: [AppComponent]     // root component

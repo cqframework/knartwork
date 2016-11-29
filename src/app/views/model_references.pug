@@ -1,0 +1,24 @@
+.container-fluid
+    a.btn.btn-primary.pull-right("(click)"="createModelReference()")
+        span.glyphicon.glyphicon-plus
+        |  Add
+    p.text-muted Any external data sets that you need to reference should be declared here.
+    br.clearfix
+    div("*ngIf"="knart.modelReferences.length == 0")
+        small
+            i You should add one!
+
+    //- div.container("*ngIf"="knart.contributions.length > 0" "[dragula]"="contributions" "[dragulaModel]"="knart.contributions")
+    #modelReferences("*ngIf"="knart.modelReferences.length > 0")
+        .modelReference.well("*ngFor"="let mr of knart.modelReferences")
+            .btn-group.pull-right
+                a.btn.btn-small.btn-danger("(click)"="deleteModelReference(mr)")
+                    span.glyphicon.glyphicon-trash
+            .clearfix
+            form.form.row
+                .col-sm-12.form-group
+                    label(for="model_reference_value") Value
+                    input.form-control(name="model_reference_value" type="text" "[(ngModel)]"="mr.referencedModel" placeholder="urn:hl7-org:vmr:r2" required="true")
+                .col-sm-12.form-group
+                    label(for="model_reference_description") Description
+                    textarea.form-control(name="model_reference_description" type="text" "[(ngModel)]"="mr.description" placeholder="Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla.")

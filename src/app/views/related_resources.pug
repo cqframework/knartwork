@@ -1,0 +1,31 @@
+.container-fluid
+    a.btn.btn-primary.pull-right("(click)"="createRelatedResource()")
+        span.glyphicon.glyphicon-plus
+        |  Add
+    p.text-muted Related resources are usually external document upon which this artifact is based.
+    br.clearfix
+    div("*ngIf"="knart.relatedResources.length == 0")
+        small
+            i You should add one!
+
+    //- div.container("*ngIf"="knart.contributions.length > 0" "[dragula]"="contributions" "[dragulaModel]"="knart.contributions")
+    #relatedResources("*ngIf"="knart.relatedResources.length > 0")
+        div.relatedResource.well("*ngFor"="let rr of knart.relatedResources")
+            .btn-group.pull-right
+                a.btn.btn-small.btn-danger("(click)"="deleteRelatedResource(rr)")
+                    span.glyphicon.glyphicon-trash
+            .clearfix
+            form.form.row
+                .col-sm-6.form-group
+                    label(for="related_resource_relation_select") Type
+                    select.form-control(name="related_resource_relation_select" "[(ngModel)]"="rr.relationship")
+                        option("[value]"="t.code" "[selected]"="rr.relationship == t.code" "*ngFor"="let t of relationshipTypes()") {{t.label}}
+                .col-sm-6.form-group
+                    label(for="related_resource_title") Title
+                    input.form-control(name="related_resource_title" type="text" "[(ngModel)]"="rr.resource.title")
+                .col-sm-6.form-group
+                    label(for="related_resource_location") Location
+                    input.form-control(name="related_resource_location" type="text" "[(ngModel)]"="rr.resource.location")
+                .col-sm-6.form-group
+                    label(for="related_resource_description") Description
+                    textarea.form-control(name="related_resource_description" type="text" "[(ngModel)]"="rr.resource.description")

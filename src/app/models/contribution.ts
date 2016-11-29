@@ -5,6 +5,8 @@ import {Contact} from './contact';
 export class Contribution {
 
     type: string;
+	name: string
+	role: string;
     addresses: Array<Address> = new Array<Address>();
     names: Array<Name> = new Array<Name>();
     contacts: Array<Contact> = new Array<Contact>();

@@ -1,18 +1,18 @@
 export class ArtifactType {
 
-    static DocumentationTemplate = new ArtifactType("Documentation Template");
-    static Library = new ArtifactType("Library");
-    static OrderSet = new ArtifactType("Order Set");
-    static Rule = new ArtifactType("Rule");
+    static DOCUMENTATION_TEMPLATE = new ArtifactType('Documentation Template', 'Questionnaire / Documentation Template');
+    static LIBRARY = new ArtifactType('Library', 'Library');
+    static ORDER_SET = new ArtifactType('Order Set', 'Order Set');
+    static RULE = new ArtifactType('Rule', 'Rule');
 
-    public static All: Array<ArtifactType> = [ArtifactType.DocumentationTemplate, ArtifactType.Library, ArtifactType.OrderSet, ArtifactType.Rule];
+    public static ALL: Array<ArtifactType> = [ArtifactType.DOCUMENTATION_TEMPLATE, ArtifactType.LIBRARY, ArtifactType.ORDER_SET, ArtifactType.RULE];
 
-    constructor(public value: string) { }
+    constructor(public code: string, public label: string) { }
 
-    static fromString(s: string): ArtifactType {
+    static fromCode(code: string): ArtifactType {
         var t: ArtifactType;
-        for (var n of ArtifactType.All) {
-            if (n.value == s) {
+        for (var n of ArtifactType.ALL) {
+            if (n.code == code) {
                 t = n; break;
             }
         }

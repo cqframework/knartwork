@@ -23,8 +23,13 @@ nav.navbar.navbar-default("*ngIf"="knart")
                         b.caret
                     ul.dropdown-menu(role="menu")
                         li
-                            a("(click)"="createFromContentString()" "*ngIf"="originalContentString")
+                            a(href="#" "(click)"="export()")
                                 span.glyphicon.glyphicon-cloud-download
+                                |  Download
+                        li.divider
+                        li
+                            a("(click)"="createFromContentString()" "*ngIf"="originalContentString")
+                                span.glyphicon.glyphicon-refresh
                                 |  Revert
                         li
                             a(href="#" "(click)"="reset()")

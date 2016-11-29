@@ -3,15 +3,15 @@ import {Component, Input} from '@angular/core';
 import {Knart} from '../models/knart';
 
 @Component({
-    selector: 'metadata',
-    templateUrl: '/metadata.html'
+    selector: 'actions',
+    templateUrl: '/actions.html'
 })
-export class MetadataComponent {
+export class ActionsComponent {
 
     @Input() knart: Knart;
 
     constructor() {
-        console.log("MetadataComponent has been initialized.");
+        console.log("ActionsComponent has been initialized.");
     }
 
 }

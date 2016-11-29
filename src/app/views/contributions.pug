@@ -1,13 +1,50 @@
 .container-fluid
-    button.btn.btn-primary.pull-right("(click)"="createContribution()")
+    a.btn.btn-primary.pull-right("(click)"="createContribution()")
         span.glyphicon.glyphicon-plus
         |  Add
     p.text-muted Contributions document the people and organizations that have contributed to this work. You probably want to specify a primary author and contact information, at minimum, and may want to add your organization as well.
-    hr
+    br.clearfix
     div("*ngIf"="knart.contributions.length == 0")
         small
             i You should add one!
 
+    //- div.container("*ngIf"="knart.contributions.length > 0" "[dragula]"="contributions" "[dragulaModel]"="knart.contributions")
     div("*ngIf"="knart.contributions.length > 0")
-        h2 todo
-    .clearfix
+        div.contribution.well.row("*ngFor"="let c of knart.contributions")
+            .btn-group.pull-right
+                button.btn.btn-small.btn-danger("(click)"="deleteContribution(c)")
+                    span.glyphicon.glyphicon-trash
+            h3
+                //- | \#{{knart.contributions.indexOf(c) + 1}}
+                .form-group
+                    //- label(for="contribution_name") Name
+                    input.form-control(type="text" "[(ngModel)]"="c.name" placeholder="Contributor Name")
+            hr
+            section.col-sm-6.addresses
+                h4
+                    | Addresses
+                    a.pull-right.btn.btn-primary.btn-small("(click)"="createAddress(c)")
+                        span.glyphicon.glyphicon-plus
+                //- hr
+                .address.well("*ngFor"="let a of c.addresses")
+                    form.form.row(name="address_form")
+                        .col-sm-8
+                            input.form-control(name="address_street" "[(ngModel)]"="a.street" placeholder="123 Fake Street")
+                        .col-sm-4
+                            a.btn.btn-small.btn-danger("(click)"="deleteAddress(c, a)")
+                                span.glyphicon.glyphicon-trash
+                        .col-sm-8
+                            input.form-control(name="address_city" "[(ngModel)]"="a.city" placeholder="Phoenix")
+                        .col-sm-4
+                            input.form-control(name="address_state" "[(ngModel)]"="a.state" placeholder="AZ")
+                        .col-sm-8
+                            input.form-control(name="address_zip" "[(ngModel)]"="a.zip" placeholder="55555")
+                        .col-sm-4
+                            input.form-control(name="address_country" "[(ngModel)]"="a.country" placeholder="USA")
+            section.col-sm-6.contacts
+                h4 Contacts
+                p snt
+            section.col-sm-6.affiliations
+                h4 Affiliations
+                //- hr
+                p rcercuh rcoehu
