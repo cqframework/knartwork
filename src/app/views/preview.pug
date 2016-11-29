@@ -16,16 +16,6 @@
                 dt Type
                 dd {{knart.artifactType}}
 
-    section
-        h2
-            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_contributions" aria-expanded="true" aria-controls="preview_contributions")
-                span.glyphicon.glyphicon-option-vertical
-            | Contributions
-        hr
-        .collapse.in#preview_contributions
-            div("*ngFor"="let c of knart.contributions")
-                h3 \#{{knart.contributions.indexOf(c)}} {{c.name}}
-
 
     section
         h2
@@ -40,6 +30,17 @@
                     |  {{rr.resource.title}}
                 br
                 small {{rr.resource.description}}
+
+
+    section
+        h2
+            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_contributions" aria-expanded="true" aria-controls="preview_contributions")
+                span.glyphicon.glyphicon-option-vertical
+            | Contributions
+        hr
+        .collapse.in#preview_contributions
+            div("*ngFor"="let c of knart.contributions")
+                h3 \#{{knart.contributions.indexOf(c)}} {{c.name}}
 
 
     section
