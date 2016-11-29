@@ -4,11 +4,7 @@
         |  Add
     p.text-muted Any external data sets that you need to reference should be declared here.
     br.clearfix
-    div("*ngIf"="knart.modelReferences.length == 0")
-        small
-            i You should add one!
 
-    //- div.container("*ngIf"="knart.contributions.length > 0" "[dragula]"="contributions" "[dragulaModel]"="knart.contributions")
     #modelReferences("*ngIf"="knart.modelReferences.length > 0")
         .modelReference.well("*ngFor"="let mr of knart.modelReferences")
             .btn-group.pull-right

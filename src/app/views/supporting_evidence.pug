@@ -4,10 +4,6 @@
         |  Add
     p.text-muted Literature in support of this artifact may be declared here.
     br.clearfix
-    div("*ngIf"="knart.supportingEvidence.length == 0")
-        small
-            i You should add some!
-
 
     div#supportingEvidence("*ngIf"="knart.supportingEvidence.length > 0")
         .supportingEvidence("*ngFor"="let se of knart.supportingEvidence")

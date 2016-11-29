@@ -69,31 +69,26 @@ toaster-container
                         a#conditions_tab_link(aria-controls="conditions" data-toggle="runtime_tab" "(click)"="runtime_tab = 'conditions'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-pencil
                             |  Conditions
-                    li(role="presentation" "[class.active]"="runtime_tab == 'expressions'")
-                        a#expressions_tab_link(aria-controls="expressions" data-toggle="runtime_tab" "(click)"="runtime_tab = 'expressions'" role="tab" aria-expanded="true")
-                            span.glyphicon.glyphicon-console
-                            |  Expressions
                     li(role="presentation" "[class.active]"="runtime_tab == 'external_data'")
                         a#external_data_tab_link(aria-controls="external_data" data-toggle="runtime_tab" "(click)"="runtime_tab = 'external_data'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-paperclip
                             |  Data Binding
+                    li(role="presentation" "[class.active]"="runtime_tab == 'expressions'")
+                        a#expressions_tab_link(aria-controls="expressions" data-toggle="runtime_tab" "(click)"="runtime_tab = 'expressions'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-console
+                            |  Expressions
                     li(role="presentation" "[class.active]"="runtime_tab == 'coverages'")
                         a#coverages_tab_link(aria-controls="coverages" data-toggle="runtime_tab" "(click)"="runtime_tab = 'coverages'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-check
                             |  Applicability
-
-
                     li(role="presentation" "[class.active]"="runtime_tab == 'actions'")
                         a#actions_tab_link(aria-controls="actions" data-toggle="runtime_tab" "(click)"="runtime_tab = 'actions'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-list
                             |  Actions
-
-
-
                 .tab-content
                     conditions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'conditions'" "[knart]"="knart")
-                    expressions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'expressions'" "[knart]"="knart")
                     external_data.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'external_data'" "[knart]"="knart")
+                    expressions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'expressions'" "[knart]"="knart")
                     coverages.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'coverages'" "[knart]"="knart")
                     actions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'actions'" "[knart]"="knart")
 

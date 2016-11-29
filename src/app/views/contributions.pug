@@ -4,9 +4,6 @@
         |  Add
     p.text-muted Contributions attribute the people and organizations that have contributed to this work. You probably want to specify a primary author and contact information, at minimum, and may want to add your organization as well.
     br.clearfix
-    div("*ngIf"="knart.contributions.length == 0")
-        small
-            i You should add one!
 
     //- div.container("*ngIf"="knart.contributions.length > 0" "[dragula]"="contributions" "[dragulaModel]"="knart.contributions")
     div("*ngIf"="knart.contributions.length > 0")

@@ -9,6 +9,8 @@ import {RelatedResource} from './related_resource';
 import {SupportingEvidence} from './supporting_evidence';
 import {ExternalData} from './external_data';
 import {Coverage} from './coverage';
+import {Condition} from './condition';
+import {Expression} from './expression';
 
 export class Knart {
 
@@ -29,6 +31,8 @@ export class Knart {
     supportingEvidence: Array<SupportingEvidence> = new Array<SupportingEvidence>();
     externalData: Array<ExternalData> = new Array<ExternalData>();
     coverages: Array<Coverage> = new Array<Coverage>();
+    conditions: Array<Condition> = new Array<Condition>();
+    expressions: Array<Expression> = new Array<Expression>();
 
     // The meat!
     actionGroup: ActionGroup;

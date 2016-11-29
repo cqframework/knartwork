@@ -85,6 +85,19 @@
             ul
                 li("*ngFor"="let se of knart.supportingEvidence") {{se.citation}}
 
+
+    section("*ngIf"="knart.conditions.length > 0")
+        h2
+            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_conditions" aria-expanded="true" aria-controls="preview_conditions")
+                span.glyphicon.glyphicon-option-vertical
+            | Conditions
+        hr
+        .collapse.in#preview_conditions
+            .condition("*ngFor"="let c of knart.conditions")
+                .well
+                    h4 {{c.role}}
+                    pre(type="xml") {{c.logic}}
+
     section("*ngIf"="knart.externalData.length > 0")
         h2
             a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_external_data" aria-expanded="true" aria-controls="preview_external_data")
@@ -95,6 +108,17 @@
             .external_data("*ngFor"="let ed of knart.externalData")
                 h4 {{ed.name}}
                 pre(type="xml") {{ed.content}}
+
+    section("*ngIf"="knart.expressions.length > 0")
+        h2
+            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_expressions" aria-expanded="true" aria-controls="preview_expressions")
+                span.glyphicon.glyphicon-option-vertical
+            | Expressions
+        hr
+        .collapse.in#preview_expressions
+            .expression("*ngFor"="let e of knart.expressions")
+                h4 {{e.name}}
+                pre(type="xml") {{e.logic}}
 
     section("*ngIf"="knart.coverages.length > 0")
         h2
