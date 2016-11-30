@@ -64,6 +64,20 @@ export class Knart {
         let typeString = doc.evaluate("string(./k:metadata/k:artifactType/@value)", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
         this.artifactType = ArtifactType.fromCode(typeString).code || ArtifactType.DOCUMENTATION_TEMPLATE.code;
 
+        let relatedResources = doc.evaluate("./k:metadata//k:relatedResource", kd, Knart.namespaces, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+        var node: Node;
+        while (node = relatedResources.iterateNext()) {
+			let rr = new RelatedResource();
+			rr.relationship = doc.evaluate("string(./k:relationship/@value)", node, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue
+			// rr.resource.title =
+			// rr.resource.location =
+			// rr.resource.description =
+			
+            console.log("RR: " + rr);
+
+        }
+        // this.artifactType = ArtifactType.fromCode(typeString).code || ArtifactType.DOCUMENTATION_TEMPLATE.code;
+
         // title.attributes.
         console.log(this.title);
         console.log("Loaded KNART!");
