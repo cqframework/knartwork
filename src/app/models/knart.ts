@@ -1,7 +1,7 @@
 import {Identifier} from './identifier';
 import {ModelReference} from './model_reference';
 import {Contribution} from './contribution';
-import {ActionGroup} from './action_group';
+import {ActionGroup} from './actions/action_group';
 import {ArtifactType} from './artifact_type';
 import {Format} from './format';
 import {Status} from './status';
@@ -35,7 +35,7 @@ export class Knart {
     expressions: Array<Expression> = new Array<Expression>();
 
     // The meat!
-    actionGroup: ActionGroup;
+    actionGroup: ActionGroup = new ActionGroup();
 
     document: Document;
 

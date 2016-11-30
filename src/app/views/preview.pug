@@ -139,3 +139,24 @@
                         i , code:
                         |  {{c.value.code}}
                     p {{c.description}}
+
+    section
+        h2
+            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_action_group" aria-expanded="true" aria-controls="preview_action_group")
+                span.glyphicon.glyphicon-option-vertical
+            | Action Group
+        hr
+        h3 {{knart.actionGroup.title}}
+        .collapse.in#preview_action_group
+            h4 Represented Concepts
+            .row
+                .col-sm-4.coverage("*ngFor"="let rc of knart.actionGroup.representedConcepts")
+                    .well
+                        h4
+                            | {{rc.displayName}}
+                        small
+                            | {{rc.codeSystemName}}
+                            i , system:
+                            |  {{rc.codeSystem}}
+                            i , code:
+                            |  {{rc.code}}

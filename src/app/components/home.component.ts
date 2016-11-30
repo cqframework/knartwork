@@ -12,8 +12,8 @@ import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
 export class HomeComponent {
 
     editor_tab: 'metadata' | 'contributions' | 'related_resources' | 'model_references' | 'supporting_evidence';
-	runtime_tab: 'conditions' | 'expressions' | 'actions' | 'external_data' | 'coverages';
-    viewer_tab: "preview" | 'original';
+	runtime_tab: 'conditions' | 'expressions' | 'external_data' | 'coverages';
+    viewer_tab: 'action_group' | "preview" | 'original';
 
     knart: Knart;
     documentFormat: Format = Format.HL7CDSKnowledgeArtifact13; // Just a default.
@@ -33,11 +33,12 @@ export class HomeComponent {
 
     reset() {
         this.knart = null;
-        // this.editor_tab = 'metadata';
-        this.editor_tab = 'supporting_evidence';
-		// this.runtime_tab = 'conditions';
-		this.runtime_tab = 'coverages';
-		this.viewer_tab = 'preview';
+        this.editor_tab = 'metadata';
+        // this.editor_tab = 'supporting_evidence';
+		this.runtime_tab = 'conditions';
+		// this.runtime_tab = 'coverages';
+		// this.viewer_tab = 'preview';
+		this.viewer_tab = 'action_group';
         this.originalContentString = null;
     }
 

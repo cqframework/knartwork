@@ -7,7 +7,7 @@ import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
 import {AppComponent} from './app/app.component';
 import {HomeComponent} from './app/components/home.component';
 import {MetadataComponent} from './app/components/metadata.component';
-import {ActionsComponent} from './app/components/actions.component';
+import {ActionGroupComponent} from './app/components/action_group.component';
 import {PreviewComponent} from './app/components/preview.component';
 import {ApiComponent} from './app/components/api.component';
 import {ContributionsComponent} from './app/components/contributions.component';
@@ -51,7 +51,7 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         ApiComponent,
         HomeComponent,
         MetadataComponent,
-        ActionsComponent,
+        ActionGroupComponent,
         ContributionsComponent,
         RelatedResourcesComponent,
         ModelReferencesComponent,

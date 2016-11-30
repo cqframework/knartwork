@@ -2,7 +2,7 @@
     a.btn.btn-primary.pull-right("(click)"="createCondition()")
         span.glyphicon.glyphicon-plus
         |  Add
-    p.text-muted Conditions contain logical expressions that evaluate to true or false and that control further execution of an artifact, and are usually based on data binding.
+    p.text-muted Conditions contain logical expressions that evaluate to true or false and control further execution of the artifact. They usually reference data bound at runtime.
     br.clearfix
 
     #conditions("*ngIf"="knart.conditions.length > 0")
