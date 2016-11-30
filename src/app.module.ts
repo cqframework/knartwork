@@ -19,6 +19,8 @@ import {CoveragesComponent} from './app/components/coverages.component';
 import {ExternalDataComponent} from './app/components/external_data.component';
 import {SupportingEvidenceComponent} from './app/components/supporting_evidence.component';
 
+import {PreviewActionGroupComponent} from './app/components/preview_action_group.component';
+
 import {KnartworkService} from './app/services/knartwork.service';
 
 
@@ -60,7 +62,8 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         ExpressionsComponent,
         SupportingEvidenceComponent,
         CoveragesComponent,
-        ExternalDataComponent
+        ExternalDataComponent,
+        PreviewActionGroupComponent
     ],   // components and directives
     providers: [
         appRoutingProviders,

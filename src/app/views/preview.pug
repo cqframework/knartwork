@@ -40,7 +40,6 @@
         hr
         .collapse.in#preview_contributions
             div.well.row("*ngFor"="let contribution of knart.contributions")
-                //- h3 \#{{knart.contributions.indexOf(c)}} {{c.name}}
                 h3 {{contribution.role}}
                 hr
                 .col-md-6
@@ -144,19 +143,7 @@
         h2
             a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_action_group" aria-expanded="true" aria-controls="preview_action_group")
                 span.glyphicon.glyphicon-option-vertical
-            | Action Group
+            | Actions
         hr
-        h3 {{knart.actionGroup.title}}
         .collapse.in#preview_action_group
-            h4 Represented Concepts
-            .row
-                .col-sm-4.coverage("*ngFor"="let rc of knart.actionGroup.representedConcepts")
-                    .well
-                        h4
-                            | {{rc.displayName}}
-                        small
-                            | {{rc.codeSystemName}}
-                            i , system:
-                            |  {{rc.codeSystem}}
-                            i , code:
-                            |  {{rc.code}}
+            preview_action_group("[knart]"="knart" "[actionGroup]"="knart.actionGroup")

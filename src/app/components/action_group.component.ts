@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 
+import {ActionComponent} from './action.component';
+
 import {Knart} from '../models/knart';
 import {Value} from '../models/value';
 
@@ -8,17 +10,19 @@ import {ActionGroup} from '../models/actions/action_group';
 import {DeclareResponseAction} from '../models/actions/declare_response_action';
 import {CollectInformationAction} from '../models/actions/collect_information_action';
 import {CreateAction} from '../models/actions/create_action';
+import {ResponseItem} from '../models/actions/response_item';
 
 @Component({
     selector: 'action_group',
     templateUrl: '/action_group.html'
 })
-export class ActionGroupComponent {
+export class ActionGroupComponent extends ActionComponent {
 
     @Input() knart: Knart;
     @Input() actionGroup: ActionGroup;
 
     constructor() {
+		super();
         console.log("ActionGroupComponent has been initialized.");
     }
 
@@ -37,6 +41,20 @@ export class ActionGroupComponent {
         }
     }
 
+
+
+    createItemCode(action: CollectInformationAction) {
+        action.itemCodes.push(new Value());
+    }
+
+    deleteItemCode(action: CollectInformationAction, itemCode: Value) {
+        let i: number = action.itemCodes.indexOf(itemCode, 0);
+        if (i > -1) {
+            action.itemCodes.splice(i, 1);
+        }
+    }
+
+    // Action types
     createDeclareResponseAction() {
         this.actionGroup.subElements.push(new DeclareResponseAction());
     }
@@ -50,6 +68,18 @@ export class ActionGroupComponent {
         this.actionGroup.subElements.push(new ActionGroup());
     }
 
+    createResponseItem(action: CollectInformationAction) {
+        let ri = new ResponseItem();
+        action.responseItems.push(ri);
+    }
+
+
+    deleteResponseItem(action: CollectInformationAction, responseItem: ResponseItem) {
+        let i: number = action.responseItems.indexOf(responseItem, 0);
+        if (i > -1) {
+            action.responseItems.splice(i, 1);
+        }
+    }
 
     deleteAction(action: Action) {
         let i: number = this.actionGroup.subElements.indexOf(action, 0);
@@ -79,18 +109,6 @@ export class ActionGroupComponent {
             }
         }
     }
-    // Since instanceof does not work in Angular expressions
-    isDeclareResponseAction(action: Action): boolean {
-        return action instanceof DeclareResponseAction;
-    }
-    isCollectInformationAction(action: Action): boolean {
-        return action instanceof CollectInformationAction;
-    }
-    isCreateAction(action: Action): boolean {
-        return action instanceof CreateAction;
-    }
-    isActionGroup(action: Action): boolean {
-        return action instanceof ActionGroup;
-    }
+
 
 }

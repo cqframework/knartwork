@@ -5,6 +5,7 @@ import {ResponseItem} from './response_item';
 export class CollectInformationAction extends Action {
 
     prompt: string;
+	textEquivalent: string;
     responseDataType: 'String' | 'Integer' = 'String';
     responseCardinality: 'Multiple' | 'Single' = 'Single';
     responseItems: Array<ResponseItem> = new Array<ResponseItem>();

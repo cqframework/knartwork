@@ -1,0 +1,77 @@
+h3 {{actionGroup.title}}
+
+h4 Represented Concepts
+.row
+    .col-sm-4.coverage("*ngFor"="let rc of actionGroup.representedConcepts")
+        .well
+            h4
+                | {{rc.displayName}}
+            small
+                | {{rc.codeSystemName}}
+                i , system:
+                |  {{rc.codeSystem}}
+                i , code:
+                |  {{rc.code}}
+
+.actions
+    .action.well("*ngFor"="let action of actionGroup.subElements")
+
+        .declare_response_action("*ngIf"="isDeclareResponseAction(action)")
+            h3 {{action.name}} (Response Declaration)
+        .collect_information_action("*ngIf"="isCollectInformationAction(action)")
+            h3 {{action.prompt}} (Information Collection)
+            .row
+                .col-sm-6
+                    p
+                        b Text equivalent:
+                        |  {{action.textEquivalent}}
+                    dl.dl-horizontal
+                        dt Cardinality
+                        dd {{action.responseCardinality}}
+                        dt Data Type
+                        dd {{action.responseDataType}}
+                        dt Response Binding
+                        dd {{action.responseBinding}}
+                        dt Minimum
+                        dd {{action.responseMinimum}}
+                        dt Maximum
+                        dd {{action.responseMaximum}}
+
+                .col-sm-6
+                    h4 Initial Value Expression
+                    pre(type="xml") {{action.initialValue}}
+                .col-sm-6
+                    h4 Item Codes
+                    table.table.table-condensed.table-striped
+                        thead
+                            tr
+                                th Code
+                                th Code System
+                                th System Name
+                        tbody
+                            tr("*ngFor"="let ic of action.itemCodes")
+                                td {{ic.code}}
+                                td {{ic.codeSystem}}
+                                td {{ic.codeSystemName}}
+
+                .col-sm-6
+                    h4 Enumerated Responses
+                    table.table.table-condensed.table-striped
+                        thead
+                            tr
+                                th Type
+                                th Value
+                                th Value Type
+                                th Display Text
+                        tbody
+                            tr("*ngFor"="let ri of action.responseItems")
+                                td {{ri.type}}
+                                td {{ri.value}}
+                                td {{ri.valueType}}
+                                td {{ri.displayText}}
+
+        .create_action("*ngIf"="isCreateAction(action)")
+            h3 (Create Action)
+        .action_group("*ngIf"="isActionGroup(action)")
+            h3 {{action.prompt}} (Sub Group)
+            preview_action_group("[knart]"="knart" "[actionGroup]"="action")

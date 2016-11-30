@@ -40,7 +40,7 @@ toaster-container
                     li(role="presentation" "[class.active]"="editor_tab == 'related_resources'")
                         a#related_resources_tab_link(aria-controls="related_resources" data-toggle="editor_tab" "(click)"="editor_tab = 'related_resources'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-book
-                            |  Related Resources
+                            |  Related Sources
                     li(role="presentation" "[class.active]"="editor_tab == 'contributions'")
                         a#contributions_tab_link(aria-controls="contributions" data-toggle="editor_tab" "(click)"="editor_tab = 'contributions'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-user
@@ -112,3 +112,4 @@ toaster-container
                             pre("*ngIf"="originalContentString" lang="xml") {{originalContentString}}
                             i.text-muted("*ngIf"="!originalContentString")
                                 small (only applies to artifacts loaded from a local file)
+        p.clearfix

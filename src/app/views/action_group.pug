@@ -1,15 +1,9 @@
 .container-fluid
-    .row
-        .col-sm-9.form-group
-            label(for="title") Title
-            input.form-control(name="title" type="text" "[(ngModel)]"="actionGroup.title" placeholder="Symptoms")
-        .col-sm-3
-            //- .pull-right("*ngIf"="canDelete()")
-                button.btn.btn-small.btn-danger("(click)"="deleteRepresentedConcnept(rc)")
-                    span.glyphicon.glyphicon-trash
-        .clearfix
-        hr
-
+    .form-group
+        label(for="title") Title
+        input.form-control(name="title" type="text" "[(ngModel)]"="actionGroup.title" placeholder="e.g. Symptoms")
+    .clearfix
+    hr
 
     h2
         .btn-group.pull-right
@@ -83,10 +77,13 @@
                 .collect_information_action("*ngIf"="isCollectInformationAction(action)")
                     h4 Information Collection
                     .row
-                        .col-md-6
+                        .col-md-4
                             .form-group
-                                label(for="collect_information_prompt") Name
+                                label(for="collect_information_prompt") Prompt
                                 input.form-control(name="collect_information_prompt" type="text" required="true" "[(ngModel)]"="action.prompt" placeholder="e.g. Quantity")
+                            .form-group
+                                label(for="collect_information_text_equivalent") Text Equivalent
+                                input.form-control(name="collect_information_text_equivalent" type="text" required="true" "[(ngModel)]"="action.textEquivalent" placeholder="")
                             .form-group
                                 label(for="collect_information_response_binding") Response Binding
                                 input.form-control(name="collect_information_response_binding" type="text" required="true" "[(ngModel)]"="action.responseBinding" placeholder="e.g. TotalScore")
@@ -106,12 +103,64 @@
                                 select.form-control(name="collect_information_response_cardinality" "[(ngModel)]"="action.responseCardinality")
                                     option(value="Multiple" "[selected]"="action.responseCardinality == 'Multiple'") Multiple
                                     option(value="Single" "[selected]"="action.responseCardinality == 'Single'") Single
-                        .col-md-6
+                        .col-md-8
                             .form-group
                                 label(for="collect_information_initial_value") Initial Value ELM Expression
-                                textarea.form-control(name="collect_information_initial_value" rows="4" "[(ngModel)]"="action.prompt" placeholder="")
-                            h5 Enumerated Responses
-                            p TODO
+                                textarea.form-control(name="collect_information_initial_value" rows="4" "[(ngModel)]"="action.initialValue" placeholder="")
+                            h5
+                                .pull-right
+                                    a.btn.btn-small.btn-primary("(click)"="createItemCode(action)")
+                                        span.glyphicon.glyphicon-plus
+                                | Item Codes
+                            table.table.table-condensed
+                                thead
+                                    tr
+                                        th Code
+                                        th Code System
+                                        th System Name
+                                        th
+                                tbody
+                                    tr("*ngFor"="let ic of action.itemCodes")
+                                        td
+                                            input.form-control(name="collect_information_item_code" "[(ngModel)]"="ic.code" placeholder="38220-0")
+                                        td
+                                            input.form-control(name="collect_information_item_code_system" "[(ngModel)]"="ic.codeSystem" placeholder="2.16.840.1.113883.6.1")
+                                        td
+                                            input.form-control(name="collect_information_item_code_system_name" "[(ngModel)]"="ic.codeSystemName" placeholder="LOINC")
+                                        td
+                                            a.btn.btn-small.btn-danger("(click)"="deleteItemCode(action, ic)")
+                                                span.glyphicon.glyphicon-trash
+
+
+                            h5
+                                .pull-right
+                                    a.btn.btn-small.btn-primary("(click)"="createResponseItem(action)")
+                                        span.glyphicon.glyphicon-plus
+                                | Enumerated Responses
+                            table.table.table-condensed
+                                thead
+                                    tr
+                                        th Type
+                                        th Value
+                                        th Value Type
+                                        th Display Text
+                                        th
+                                tbody
+                                    tr("*ngFor"="let ri of action.responseItems")
+                                        td
+                                            select.form-control(name="collect_information_response_item_type" "[(ngModel)]"="ri.type")
+                                                option(value="elm:Literal" "[selected]"="ri.type == 'elm:Literal'") elm:Literal
+                                        td
+                                            input.form-control(name="collect_information_response_item_value" "[(ngModel)]"="ri.value" placeholder="")
+                                        td
+                                            select.form-control(name="collect_information_response_value_type" "[(ngModel)]"="ri.valueType")
+                                                option(value="t:Integer" "[selected]"="ri.type == 't:Integer'") t:Integer
+                                        td
+                                            input.form-control(name="collect_information_response_item_display_text" "[(ngModel)]"="ri.displayText" placeholder="No particular expression or smile")
+                                        td
+                                            a.btn.btn-small.btn-danger("(click)"="deleteResponseItem(action, ri)")
+                                                span.glyphicon.glyphicon-trash
+
                 .create_action("*ngIf"="isCreateAction(action)")
                     h4 Create
                     i (nothing else to do for this action type)
