@@ -17,21 +17,6 @@
                 dd {{knart.artifactType}}
 
 
-    section("*ngIf"="knart.relatedResources.length > 0")
-        h2
-            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_resources" aria-expanded="true" aria-controls="preview_resources")
-                span.glyphicon.glyphicon-option-vertical
-            | Resources
-        hr
-        .collapse.in#preview_resources
-            div("*ngFor"="let rr of knart.relatedResources")
-                i {{relationshipLabelForCode(rr.relationship)}}
-                a("[href]"="rr.resource.location" target="_blank")
-                    |  {{rr.resource.title}}
-                br
-                small {{rr.resource.description}}
-
-
     section("*ngIf"="knart.contributions.length > 0")
         h2
             a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_contributions" aria-expanded="true" aria-controls="preview_contributions")
@@ -84,6 +69,22 @@
             ul
                 li("*ngFor"="let se of knart.supportingEvidence") {{se.citation}}
 
+
+    section("*ngIf"="knart.relatedResources.length > 0")
+        h2
+            a.pull-right.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#preview_resources" aria-expanded="true" aria-controls="preview_resources")
+                span.glyphicon.glyphicon-option-vertical
+            | Resources
+        hr
+        .collapse.in#preview_resources
+            div("*ngFor"="let rr of knart.relatedResources")
+                i {{relationshipLabelForCode(rr.relationship)}}
+                ul
+                    li("*ngFor"="let resource of rr.resources")
+                        i {{resource.title}}
+                        b  {{resource.location}}
+                        br
+                        small {{resource.description}}
 
     section("*ngIf"="knart.conditions.length > 0")
         h2

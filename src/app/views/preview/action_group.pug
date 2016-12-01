@@ -38,10 +38,7 @@ h4 Represented Concepts
                         dd {{action.responseMaximum}}
 
                 .col-sm-6
-                    h4 Initial Value Expression
-                    pre(type="xml") {{action.initialValue}}
-                .col-sm-6
-                    h4 Item Codes
+                    h4 Question Codes
                     table.table.table-condensed.table-striped
                         thead
                             tr
@@ -53,9 +50,12 @@ h4 Represented Concepts
                                 td {{ic.code}}
                                 td {{ic.codeSystem}}
                                 td {{ic.codeSystemName}}
+                .col-sm-12
+                    h4 Initial Value Expression
+                    pre(type="xml") {{action.initialValue}}
 
-                .col-sm-6
-                    h4 Enumerated Responses
+                .col-sm-12
+                    h4 Enumerated Responses &amp; Codes
                     table.table.table-condensed.table-striped
                         thead
                             tr
@@ -63,12 +63,18 @@ h4 Represented Concepts
                                 th Value
                                 th Value Type
                                 th Display Text
+                                th Codes
                         tbody
                             tr("*ngFor"="let ri of action.responseItems")
                                 td {{ri.type}}
                                 td {{ri.value}}
                                 td {{ri.valueType}}
                                 td {{ri.displayText}}
+                                td
+                                    ul
+                                        li("*ngFor"="let ic of ri.itemCodes")
+                                            b {{ic.codeSystemName}} {{ic.code}}
+                                            i  (system: {{ic.codeSystem}})
 
         .create_action("*ngIf"="isCreateAction(action)")
             h3 (Create Action)

@@ -29,10 +29,13 @@
                         .clearfix
                     .name.well("*ngFor"="let name of contribution.names")
                         form.form.row(name="name_form")
-                            //- p.clearfix
-                            //- .col-sm-4.col-sm-offset-8
-                            a.pull-right.btn.btn-small.btn-danger("(click)"="deleteName(contribution, name)")
-                                span.glyphicon.glyphicon-trash
+                            .btn-group.pull-right
+                                a.btn.btn-small.btn-primary("(click)"="moveUp(name, contribution.names)" "*ngIf"="canMoveUp(name, contribution.names)")
+                                    span.glyphicon.glyphicon-chevron-up
+                                a.btn.btn-small.btn-primary("(click)"="moveDown(name, contribution.names)" "*ngIf"="canMoveDown(name, contribution.names)")
+                                    span.glyphicon.glyphicon-chevron-down
+                                a.btn.btn-small.btn-danger("(click)"="deleteName(contribution, name)")
+                                    span.glyphicon.glyphicon-trash
                             p.clearfix
                             .col-sm-6
                                 input.form-control(name="name_given" "[(ngModel)]"="name.given" placeholder="Given (e.g. John)")
@@ -50,8 +53,13 @@
                             .col-sm-8
                                 input.form-control(name="affiliation_name" "[(ngModel)]"="affiliation.name" placeholder="Some Organization")
                             .col-sm-4
-                                a.btn.btn-small.btn-danger("(click)"="deleteAffiliation(contribution, affiliation)")
-                                    span.glyphicon.glyphicon-trash
+                                .btn-group
+                                    a.btn.btn-small.btn-primary("(click)"="moveUp(affiliation, contribution.affiliations)" "*ngIf"="canMoveUp(affiliation, contribution.affiliations)")
+                                        span.glyphicon.glyphicon-chevron-up
+                                    a.btn.btn-small.btn-primary("(click)"="moveDown(affiliation, contribution.affiliations)" "*ngIf"="canMoveDown(affiliation, contribution.affiliations)")
+                                        span.glyphicon.glyphicon-chevron-down
+                                    a.btn.btn-small.btn-danger("(click)"="deleteAffiliation(contribution, affiliation)")
+                                        span.glyphicon.glyphicon-trash
 
             .col-sm-6
                 section.addresses
@@ -65,8 +73,13 @@
                             .col-sm-8
                                 input.form-control(name="address_street" "[(ngModel)]"="a.street" placeholder="123 Fake Street")
                             .col-sm-4
-                                a.btn.btn-small.btn-danger("(click)"="deleteAddress(contribution, a)")
-                                    span.glyphicon.glyphicon-trash
+                                .btn-group
+                                    a.btn.btn-small.btn-primary("(click)"="moveUp(a, contribution.addresses)" "*ngIf"="canMoveUp(a, contribution.addresses)")
+                                        span.glyphicon.glyphicon-chevron-up
+                                    a.btn.btn-small.btn-primary("(click)"="moveDown(a, contribution.addresses)" "*ngIf"="canMoveDown(a, contribution.addresses)")
+                                        span.glyphicon.glyphicon-chevron-down
+                                    a.btn.btn-small.btn-danger("(click)"="deleteAddress(contribution, a)")
+                                        span.glyphicon.glyphicon-trash
                             .col-sm-8
                                 input.form-control(name="address_city" "[(ngModel)]"="a.city" placeholder="Phoenix")
                             .col-sm-4
@@ -87,8 +100,13 @@
                             .col-sm-8
                                 input.form-control(name="contact_value" "[(ngModel)]"="contact.value" placeholder="123 Fake Street")
                             .col-sm-4
-                                a.btn.btn-small.btn-danger("(click)"="deleteContact(contribution, contact)")
-                                    span.glyphicon.glyphicon-trash
+                                .btn-group
+                                    a.btn.btn-small.btn-primary("(click)"="moveUp(contact, contribution.contacts)" "*ngIf"="canMoveUp(contact, contribution.contacts)")
+                                        span.glyphicon.glyphicon-chevron-up
+                                    a.btn.btn-small.btn-primary("(click)"="moveDown(contact, contribution.contacts)" "*ngIf"="canMoveDown(contact, contribution.contacts)")
+                                        span.glyphicon.glyphicon-chevron-down
+                                    a.btn.btn-small.btn-danger("(click)"="deleteContact(contribution, contact)")
+                                        span.glyphicon.glyphicon-trash
                             .col-sm-8
                                 select.form-control#contact_use_select(name="contactUse" "[(ngModel)]"="contact.use")
                                     option(value="WP" "[selected]"="contact.use == 'WP'") Work Phone

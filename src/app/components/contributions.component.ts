@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 
+import {BaseComponent} from './base.component';
+
 import {Knart} from '../models/knart';
 import {Contribution} from '../models/contribution';
 import {Address} from '../models/address';
@@ -12,11 +14,12 @@ import {Affiliation} from '../models/affiliation';
     selector: 'contributions',
     templateUrl: '/contributions.html'
 })
-export class ContributionsComponent {
+export class ContributionsComponent extends BaseComponent {
 
     @Input() knart: Knart;
 
     constructor() {
+        super();
         console.log("ContributionsComponent has been initialized.");
     }
 

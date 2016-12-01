@@ -68,11 +68,11 @@ export class Knart {
         var node: Node;
         while (node = relatedResources.iterateNext()) {
 			let rr = new RelatedResource();
-			rr.relationship = doc.evaluate("string(./k:relationship/@value)", node, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue
+			// rr.relationship = doc.evaluate("string(./k:relationship/@value)", node, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue
 			// rr.resource.title =
 			// rr.resource.location =
 			// rr.resource.description =
-			
+
             console.log("RR: " + rr);
 
         }

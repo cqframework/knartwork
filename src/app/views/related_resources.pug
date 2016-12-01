@@ -7,21 +7,42 @@
 
     #relatedResources("*ngIf"="knart.relatedResources.length > 0")
         div.relatedResource.well("*ngFor"="let rr of knart.relatedResources")
-            .btn-group.pull-right
-                a.btn.btn-small.btn-danger("(click)"="deleteRelatedResource(rr)")
-                    span.glyphicon.glyphicon-trash
-            .clearfix
             form.form.row
-                .col-sm-6.form-group
-                    label(for="related_resource_relation_select") Type
+                .col-sm-9.form-group
                     select.form-control(name="related_resource_relation_select" "[(ngModel)]"="rr.relationship")
                         option("[value]"="t.code" "[selected]"="rr.relationship == t.code" "*ngFor"="let t of relationshipTypes()") {{t.label}}
-                .col-sm-6.form-group
-                    label(for="related_resource_title") Title
-                    input.form-control(name="related_resource_title" type="text" "[(ngModel)]"="rr.resource.title")
-                .col-sm-6.form-group
-                    label(for="related_resource_location") Location
-                    input.form-control(name="related_resource_location" type="text" "[(ngModel)]"="rr.resource.location")
-                .col-sm-6.form-group
-                    label(for="related_resource_description") Description
-                    textarea.form-control(name="related_resource_description" type="text" "[(ngModel)]"="rr.resource.description")
+                .col-sm-3.form-group
+                    .btn-group
+                        a.btn.btn-small.btn-primary("(click)"="moveUp(rr, knart.relatedResources)" "*ngIf"="canMoveUp(rr, knart.relatedResources)")
+                            span.glyphicon.glyphicon-chevron-up
+                        a.btn.btn-small.btn-primary("(click)"="moveDown(rr, knart.relatedResources)" "*ngIf"="canMoveDown(rr, knart.relatedResources)")
+                            span.glyphicon.glyphicon-chevron-down
+                        a.btn.btn-small.btn-danger("(click)"="deleteRelatedResource(rr)")
+                            span.glyphicon.glyphicon-trash
+                .col-sm-12
+                    h4
+                        a.btn.btn-primary.pull-right("(click)"="createRelatedResourceResource(rr)")
+                            span.glyphicon.glyphicon-plus
+                            |  Add
+                        | Links
+                    br
+                    .clearfix
+                    table.table
+                        tbody
+                            tr.resource("*ngFor"="let r of rr.resources")
+                                td
+                                    .form-group
+                                        input.form-control(name="rr_resource_title" type="text" "[(ngModel)]"="r.title" placeholder="Title")
+                                td
+                                    .form-group
+                                        input.form-control(name="rr_resource_location" type="text" "[(ngModel)]"="r.location" placeholder="Location")
+                                td.form-group
+                                    input.form-control(name="rr_resource_description" "[(ngModel)]"="r.description" placeholder="Description...")
+                                td.form-group
+                                    .btn-group
+                                        a.btn.btn-small.btn-primary("(click)"="moveUp(r, rr.resources)" "*ngIf"="canMoveUp(r, rr.resources)")
+                                            span.glyphicon.glyphicon-chevron-up
+                                        a.btn.btn-small.btn-primary("(click)"="moveDown(r, rr.resources)" "*ngIf"="canMoveDown(r, rr.resources)")
+                                            span.glyphicon.glyphicon-chevron-down
+                                        a.btn.btn-small.btn-danger("(click)"="deleteRelatedResourceResource(rr, r)")
+                                            span.glyphicon.glyphicon-trash

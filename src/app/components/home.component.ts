@@ -23,7 +23,7 @@ export class HomeComponent {
     constructor(public toasterService: ToasterService) {
         console.log("HomeComponent has been initialized.");
         this.reset();
-        // this.createFromTemplate(); // To always start with a new document.
+        this.createFromTemplate(); // To always start with a new document.
     }
 
 

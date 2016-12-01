@@ -63,9 +63,9 @@
         div("*ngIf"="actionGroup.subElements.length > 0")
             div.action.well("*ngFor"="let action of actionGroup.subElements")
                 .btn-group.pull-right
-                    a.btn.btn-small.btn-primary("(click)"="moveUp(action)" "*ngIf"="actionGroup.subElements.indexOf(action) > 0")
+                    a.btn.btn-small.btn-primary("(click)"="moveUp(action, actionGroup.subElements)" "*ngIf"="canMoveUp(action, actionGroup.subElements)")
                         span.glyphicon.glyphicon-chevron-up
-                    a.btn.btn-small.btn-primary("(click)"="moveDown(action)" "*ngIf"="actionGroup.subElements.indexOf(action) < actionGroup.subElements.length - 1")
+                    a.btn.btn-small.btn-primary("(click)"="moveDown(action, actionGroup.subElements)" "*ngIf"="canMoveDown(action, actionGroup.subElements)")
                         span.glyphicon.glyphicon-chevron-down
                     a.btn.btn-small.btn-danger("(click)"="deleteAction(action)")
                         span.glyphicon.glyphicon-trash
@@ -111,8 +111,9 @@
                                 .pull-right
                                     a.btn.btn-small.btn-primary("(click)"="createItemCode(action)")
                                         span.glyphicon.glyphicon-plus
-                                | Item Codes
-                            table.table.table-condensed
+                                | Question Codes
+                            .clearfix
+                            table.table.table-condensed("*ngIf"="action.itemCodes.length > 0")
                                 thead
                                     tr
                                         th Code
@@ -136,30 +137,53 @@
                                 .pull-right
                                     a.btn.btn-small.btn-primary("(click)"="createResponseItem(action)")
                                         span.glyphicon.glyphicon-plus
-                                | Enumerated Responses
-                            table.table.table-condensed
-                                thead
-                                    tr
-                                        th Type
-                                        th Value
-                                        th Value Type
-                                        th Display Text
-                                        th
-                                tbody
-                                    tr("*ngFor"="let ri of action.responseItems")
-                                        td
-                                            select.form-control(name="collect_information_response_item_type" "[(ngModel)]"="ri.type")
-                                                option(value="elm:Literal" "[selected]"="ri.type == 'elm:Literal'") elm:Literal
-                                        td
-                                            input.form-control(name="collect_information_response_item_value" "[(ngModel)]"="ri.value" placeholder="")
-                                        td
-                                            select.form-control(name="collect_information_response_value_type" "[(ngModel)]"="ri.valueType")
-                                                option(value="t:Integer" "[selected]"="ri.type == 't:Integer'") t:Integer
-                                        td
-                                            input.form-control(name="collect_information_response_item_display_text" "[(ngModel)]"="ri.displayText" placeholder="No particular expression or smile")
-                                        td
-                                            a.btn.btn-small.btn-danger("(click)"="deleteResponseItem(action, ri)")
-                                                span.glyphicon.glyphicon-trash
+                                | Enumerated Responses &amp; Codes
+                            .clearfix
+                            form.well.form("*ngFor"="let ri of action.responseItems")
+                                .col-sm-9.form-group
+                                    input.form-control(name="collect_information_response_item_display_text" "[(ngModel)]"="ri.displayText" placeholder="Display tex, e.g. No particular expression or smile")
+                                .col-sm-3.form-group
+                                    .btn-group
+                                        a.btn.btn-small.btn-primary("(click)"="moveUp(ri, action.responseItems)" "*ngIf"="canMoveUp(ri, action.responseItems)")
+                                            span.glyphicon.glyphicon-chevron-up
+                                        a.btn.btn-small.btn-primary("(click)"="moveDown(ri, action.responseItems)" "*ngIf"="canMoveDown(ri, action.responseItems)")
+                                            span.glyphicon.glyphicon-chevron-down
+                                        a.pull-right.btn.btn-small.btn-danger("(click)"="deleteResponseItem(action, ri)")
+                                            span.glyphicon.glyphicon-trash
+                                .col-sm-3.form-group
+                                    select.form-control(name="collect_information_response_item_type" "[(ngModel)]"="ri.type")
+                                        option(value="elm:Literal" "[selected]"="ri.type == 'elm:Literal'") elm:Literal
+                                .col-sm-3.form-group
+                                    input.form-control(name="collect_information_response_item_value" "[(ngModel)]"="ri.value" placeholder="e.g. 0")
+                                .col-sm-3.form-group
+                                    select.form-control(name="collect_information_response_value_type" "[(ngModel)]"="ri.valueType")
+                                        option(value="t:Integer" "[selected]"="ri.type == 't:Integer'") t:Integer
+                                .col-sm-3
+                                    //- .pull-right
+                                    a.btn.btn-small.btn-primary("(click)"="createResponseItemCode(ri)")
+                                        span.glyphicon.glyphicon-plus
+                                        | Code
+                                .col-sm-12
+                                    .clearfix
+                                    table.table.table-condensed("*ngIf"="ri.itemCodes.length > 0")
+                                        thead
+                                            tr
+                                                th Code
+                                                th Code System
+                                                th System Name
+                                                th
+                                        tbody
+                                            tr("*ngFor"="let ic of ri.itemCodes")
+                                                td
+                                                    input.form-control(name="collect_information_item_code" "[(ngModel)]"="ic.code" placeholder="38220-0")
+                                                td
+                                                    input.form-control(name="collect_information_item_code_system" "[(ngModel)]"="ic.codeSystem" placeholder="2.16.840.1.113883.6.1")
+                                                td
+                                                    input.form-control(name="collect_information_item_code_system_name" "[(ngModel)]"="ic.codeSystemName" placeholder="LOINC")
+                                                td
+                                                    a.btn.btn-small.btn-danger("(click)"="deleteResponseItemCode(ri, ic)")
+                                                        span.glyphicon.glyphicon-trash
+                                .clearfix
 
                 .create_action("*ngIf"="isCreateAction(action)")
                     h4 Create

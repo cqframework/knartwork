@@ -22,7 +22,7 @@ export class ActionGroupComponent extends ActionComponent {
     @Input() actionGroup: ActionGroup;
 
     constructor() {
-		super();
+        super();
         console.log("ActionGroupComponent has been initialized.");
     }
 
@@ -51,6 +51,18 @@ export class ActionGroupComponent extends ActionComponent {
         let i: number = action.itemCodes.indexOf(itemCode, 0);
         if (i > -1) {
             action.itemCodes.splice(i, 1);
+        }
+    }
+
+
+    createResponseItemCode(responseItem: ResponseItem) {
+        responseItem.itemCodes.push(new Value());
+    }
+
+    deleteResponseItemCode(responseItem: ResponseItem, itemCode: Value) {
+        let i: number = responseItem.itemCodes.indexOf(itemCode, 0);
+        if (i > -1) {
+            responseItem.itemCodes.splice(i, 1);
         }
     }
 
@@ -85,28 +97,6 @@ export class ActionGroupComponent extends ActionComponent {
         let i: number = this.actionGroup.subElements.indexOf(action, 0);
         if (i > -1) {
             this.actionGroup.subElements.splice(i, 1);
-        }
-    }
-
-    moveUp(action: Action) {
-        if (this.actionGroup.subElements.length > 1) {
-            let i: number = this.actionGroup.subElements.indexOf(action, 0);
-            if (i > 0) {
-                let tmp: Action = this.actionGroup.subElements[i - 1];
-                this.actionGroup.subElements[i - 1] = this.actionGroup.subElements[i];
-                this.actionGroup.subElements[i] = tmp;
-            }
-
-        }
-    }
-    moveDown(action: Action) {
-        if (this.actionGroup.subElements.length > 1) {
-            let i: number = this.actionGroup.subElements.indexOf(action, 0);
-            if (i < this.actionGroup.subElements.length - 1) {
-                let tmp: Action = this.actionGroup.subElements[i + 1];
-                this.actionGroup.subElements[i + 1] = this.actionGroup.subElements[i];
-                this.actionGroup.subElements[i] = tmp;
-            }
         }
     }
 

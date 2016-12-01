@@ -37,10 +37,6 @@ toaster-container
                         a#metadata_tab_link(aria-controls="metadata" data-toggle="editor_tab" "(click)"="editor_tab = 'metadata'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-pencil
                             |  Basics
-                    li(role="presentation" "[class.active]"="editor_tab == 'related_resources'")
-                        a#related_resources_tab_link(aria-controls="related_resources" data-toggle="editor_tab" "(click)"="editor_tab = 'related_resources'" role="tab" aria-expanded="true")
-                            span.glyphicon.glyphicon-book
-                            |  Related Sources
                     li(role="presentation" "[class.active]"="editor_tab == 'contributions'")
                         a#contributions_tab_link(aria-controls="contributions" data-toggle="editor_tab" "(click)"="editor_tab = 'contributions'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-user
@@ -53,14 +49,18 @@ toaster-container
                         a#supporting_evidence_tab_link(aria-controls="supporting_evidence" data-toggle="editor_tab" "(click)"="editor_tab = 'supporting_evidence'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-education
                             |  Evidence
+                    li(role="presentation" "[class.active]"="editor_tab == 'related_resources'")
+                        a#related_resources_tab_link(aria-controls="related_resources" data-toggle="editor_tab" "(click)"="editor_tab = 'related_resources'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-book
+                            |  Related Sources
 
 
                 .tab-content
                     metadata.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'metadata'" "[knart]"="knart")
                     contributions.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'contributions'" "[knart]"="knart")
-                    related_resources.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'related_resources'" "[knart]"="knart")
                     model_references.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'model_references'" "[knart]"="knart")
                     supporting_evidence.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'supporting_evidence'" "[knart]"="knart")
+                    related_resources.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'related_resources'" "[knart]"="knart")
 
         .col-md-6
             #runtime_tabs(role="tabpanel")
