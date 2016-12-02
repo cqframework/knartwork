@@ -18,11 +18,19 @@ import {ExternalData} from '../models/external_data';
 import {Coverage} from '../models/coverage';
 import {Condition} from '../models/condition';
 import {Expression} from '../models/expression';
+
+import {Contact} from '../models/contact';
 import {Address} from '../models/address';
 import {Name} from '../models/name';
-import {Contact} from '../models/contact';
 import {Role} from '../models/role';
 import {Affiliation} from '../models/affiliation';
+
+import {Action} from '../models/actions/action';
+import {CollectInformationAction} from '../models/actions/collect_information_action';
+import {DeclareResponseAction} from '../models/actions/declare_response_action';
+import {CreateAction} from '../models/actions/create_action';
+import {ResponseItem} from '../models/actions/response_item';
+import {Value} from '../models/value';
 
 
 @Injectable()
@@ -72,13 +80,134 @@ export class XmlLoaderService {
         this.loadExternalData(kd);
         this.loadExpressions(kd);
         this.loadConditions(kd);
+        this.loadIdentifiers(kd);
 
-        // title.attributes.
+        var actionGroup = doc.evaluate("./k:actionGroup", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).iterateNext();
+        this.knart.actionGroup = this.loadActionGroup(actionGroup);
+
         console.log(this.knart.title);
         console.log("Loaded KNART!");
         return this.knart;
     }
 
+    loadActionGroup(agNode: Node): ActionGroup {
+        let ag = new ActionGroup();
+        ag.title = this.getString('string(./k:title/@value)', agNode);
+        let subElementNodes = this.getOrdered('./k:subElements/k:*', agNode);
+        let subElementNode: Node;
+        while (subElementNode = subElementNodes.iterateNext()) {
+            let type: string = (subElementNode as any).nodeName;
+            switch (type) {
+                case 'actionGroup':
+                    ag.subElements.push(this.loadActionGroup(subElementNode));
+                    break;
+                case 'simpleAction':
+                    ag.subElements.push(this.loadSimpleAction(subElementNode));
+                    break;
+                default:
+                    console.log("Unsupported subElement: " + type);
+            }
+        }
+        return ag;
+    }
+
+    loadSimpleAction(saNode: Node): Action {
+        let type: string = this.getString('string(./@xsi:type)', saNode);
+        var action: Action;
+        switch (type) {
+            case 'CollectInformationAction':
+                action = this.loadCollectInformationAction(saNode);
+                break;
+            case 'CreateAction':
+                action = this.loadCreateAction(saNode);
+                break;
+            case 'DeclareResponseAction':
+                action = this.loadDeclareResponseAction(saNode);
+                break;
+            default:
+                console.log("Unsupported simpleAction type: " + type);
+        }
+        return action;
+    }
+
+    loadCollectInformationAction(ciaNode: Node): CollectInformationAction {
+        let action = new CollectInformationAction();
+
+        let dcNode = this.getOrdered('./k:documentationConcept', ciaNode).iterateNext();
+        action.prompt = this.getString('string(./k:prompt/@value)', dcNode);
+        action.responseDataType = this.getString('string(./k:responseDataType/@value)', dcNode);
+        action.responseCardinality = this.getString('string(./k:responseCardinality/@value)', dcNode);
+        action.constraintType = this.getString('string(./k:responseRange/k:constraintType/@value)', dcNode);
+        action.responseRangeType = this.getString('string(./k:responseRange/@xsi:range)', dcNode);
+        action.textEquivalent = this.getString('string(./k:textEquivalent/@value)', dcNode);
+        action.responseBinding = this.getString('string(./k:responseBinding/@property)', ciaNode);
+
+		action.initialValueType = this.getString('string(./k:initialValue/@xsi:type)', ciaNode);
+		action.initialValue = this.serializeChildNodesToString('./k:initialValue/*', ciaNode);
+
+		// Question codes
+		let itemCodeNodes = this.getOrdered('./k:itemCodes/k:itemCode', dcNode);
+        var itemCodeNode: Node;
+        while (itemCodeNode = itemCodeNodes.iterateNext()) {
+            let ic = new Value();
+            ic.code = this.getString('string(./@code)', itemCodeNode);
+            ic.codeSystem = this.getString('string(./@codeSystem)', itemCodeNode);
+            ic.codeSystemName = this.getString('string(./@codeSystemName)', itemCodeNode);
+			action.itemCodes.push(ic);
+        }
+
+		// Responses
+        let itemNodes = this.getOrdered('./k:responseRange/k:item', dcNode);
+        var itemNode: Node;
+        while (itemNode = itemNodes.iterateNext()) {
+            let item = new ResponseItem();
+            item.type = this.getString('string(./k:value/@xsi:type)', itemNode);
+            item.valueType = this.getString('string(./k:value/@valueType)', itemNode);
+            item.value = this.getString('string(./k:value/@value)', itemNode);
+            item.displayText = this.getString('string(./k:displayText/@value)', itemNode);
+			action.responseItems.push(item);
+
+
+			let codeNodes = this.getOrdered('./k:codes/k:code', itemNode);
+	        var codeNode: Node;
+			while (codeNode = codeNodes.iterateNext()) {
+				let code = new Value();
+				code.code = this.getString('string(./@code)', codeNode);
+				code.codeSystem = this.getString('string(./@codeSystem)', codeNode);
+				code.codeSystemName = this.getString('string(./@codeSystemName)', codeNode);
+				item.itemCodes.push(code);
+			}
+        }
+        console.log("Loaded CollectInformationAction");
+        return action;
+    }
+
+	serializeChildNodesToString(query: string, base: Node): string {
+		let children = this.getOrdered(query, base);
+        let childNode: Node;
+        let tmp = '';
+        while (childNode = children.iterateNext()) {
+            tmp += this.serializer.serializeToString(childNode) + "\n";
+        }
+		return tmp;
+	}
+
+    loadCreateAction(caNode: Node): CreateAction {
+        let action = new CreateAction();
+        action.sentenceType = this.getString('string(./k:actionSentence/@xsi:type)', caNode);
+        action.sentenceClassType = this.getString('string(./k:actionSentence/@classType)', caNode);
+        action.textEquivalent = this.getString('string(./k:textEquivalent/@value)', caNode);
+        action.sentence = this.serializeChildNodesToString('./k:actionSentence/*', caNode);
+        console.log("Loaded CreateAction");
+        return action;
+    }
+
+    loadDeclareResponseAction(draNode: Node): DeclareResponseAction {
+        let action = new DeclareResponseAction();
+        action.name = this.getString('string(./@name)', draNode);
+        console.log("Loaded DeclareResponseAction");
+        return action;
+    }
 
     loadRelatedResources(kd: Node) {
         let relatedResources = this.getOrdered("./k:metadata/k:relatedResources/k:relatedResource", kd);
@@ -108,6 +237,17 @@ export class XmlLoaderService {
             let se = new SupportingEvidence();
             se.citation = node.nodeValue;
             this.knart.supportingEvidence.push(se);
+        }
+    }
+
+    loadIdentifiers(kd: Node) {
+        let identifiers = this.getOrdered("./k:metadata/k:identifiers/k:identifier", kd);
+        var node: Node;
+        while (node = identifiers.iterateNext()) {
+            let i = new Identifier();
+            i.root = this.getString('string(./@root)', node);
+            i.version = this.getString('string(./@version)', node);
+            this.knart.identifiers.push(i);
         }
     }
 

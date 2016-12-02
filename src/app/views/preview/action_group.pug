@@ -71,10 +71,9 @@ h4 Represented Concepts
                                 td {{ri.valueType}}
                                 td {{ri.displayText}}
                                 td
-                                    ul
-                                        li("*ngFor"="let ic of ri.itemCodes")
-                                            b {{ic.codeSystemName}} {{ic.code}}
-                                            i  (system: {{ic.codeSystem}})
+                                    p("*ngFor"="let ic of ri.itemCodes")
+                                        b {{ic.codeSystemName}} {{ic.code}}
+                                        i  (system: {{ic.codeSystem}})
 
         .create_action("*ngIf"="isCreateAction(action)")
             h3 (Create Action)

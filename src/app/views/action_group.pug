@@ -105,8 +105,11 @@
                                     option(value="Single" "[selected]"="action.responseCardinality == 'Single'") Single
                         .col-md-8
                             .form-group
-                                label(for="collect_information_initial_value") Initial Value ELM Expression
-                                textarea.form-control(name="collect_information_initial_value" rows="4" "[(ngModel)]"="action.initialValue" placeholder="")
+                                label(for="collect_information_initial_value_type") Initial Value Type
+                                input.form-control(name="collect_information_initial_value_type" type="text" "[(ngModel)]"="action.initialValueType" placeholder="e.g. elm:Sum")
+                            .form-group
+                                label(for="collect_information_initial_value") Initial Value Expression
+                                textarea.form-control(name="collect_information_initial_value" rows="4" "[(ngModel)]"="action.initialValue" placeholder='<elm:source xsi:type="elm:List">...</elm:source>')
                             h5
                                 .pull-right
                                     a.btn.btn-small.btn-primary("(click)"="createItemCode(action)")
@@ -141,7 +144,7 @@
                             .clearfix
                             form.well.form("*ngFor"="let ri of action.responseItems")
                                 .col-sm-9.form-group
-                                    input.form-control(name="collect_information_response_item_display_text" "[(ngModel)]"="ri.displayText" placeholder="Display tex, e.g. No particular expression or smile")
+                                    input.form-control(name="collect_information_response_item_display_text" "[(ngModel)]"="ri.displayText" placeholder="Display text, e.g. No particular expression or smile")
                                 .col-sm-3.form-group
                                     .btn-group
                                         a.btn.btn-small.btn-primary("(click)"="moveUp(ri, action.responseItems)" "*ngIf"="canMoveUp(ri, action.responseItems)")
@@ -158,6 +161,7 @@
                                 .col-sm-3.form-group
                                     select.form-control(name="collect_information_response_value_type" "[(ngModel)]"="ri.valueType")
                                         option(value="t:Integer" "[selected]"="ri.type == 't:Integer'") t:Integer
+                                        option(value="t:String" "[selected]"="ri.type == 't:String'") t:String
                                 .col-sm-3
                                     //- .pull-right
                                     a.btn.btn-small.btn-primary("(click)"="createResponseItemCode(ri)")
@@ -187,7 +191,10 @@
 
                 .create_action("*ngIf"="isCreateAction(action)")
                     h4 Create
-                    i (nothing else to do for this action type)
+                    .form-group(for="create_action_sentence_type") Sentence Type
+                        input.form-control(name="create_action_sentence_type" type="text" "[(ngModel)]"="action.sentenceType" placeholder="e.g. elm:Query")
+                    .form-group(for="create_action_sentence") Sentence
+                        textarea.form-control(name="create_action_sentence" rows="8" "[(ngModel)]"="action.sentence" placeholder='<elm:source alias="O">...</elm:source><elm:return>...</elm:return>')
                 .action_group("*ngIf"="isActionGroup(action)")
                     h4 Sub Group
                     action_group("[knart]"="knart" "[actionGroup]"="action")

@@ -1,4 +1,4 @@
 export class Identifier {
-	name: string;
+	root: string;
 	version: string;
 }

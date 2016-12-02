@@ -10,11 +10,20 @@
                 | {{knart.title}}
                 i  ({{knart.status}})
             p {{knart.description}}
-            dl.dl-horizontal
-                dt Schema
-                dd {{knart.schemaIdentifier}}
-                dt Type
-                dd {{knart.artifactType}}
+            .row
+                .col-sm-6
+                    dl.dl-horizontal
+                    dt Schema
+                    dd {{knart.schemaIdentifier}}
+                    dt Type
+                    dd {{knart.artifactType}}
+                .col-sm-6
+                    h4 Identifiers
+                    hr
+                    ol
+                        li("*ngFor"="let i of knart.identifiers")
+                            | {{i.root}}
+                            i  (version: {{i.version}})
 
 
     section("*ngIf"="knart.contributions.length > 0")

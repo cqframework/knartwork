@@ -22,15 +22,28 @@ export class HomeComponent {
     knart: Knart;
     documentFormat: Format = Format.HL7CDSKnowledgeArtifact13; // Just a default.
 
+    remoteUrl: string = null;
     originalContentString: string;
 
     constructor(public toasterService: ToasterService, private xmlLoader: XmlLoaderService) {
         console.log("HomeComponent has been initialized.");
         this.reset();
 
-        // this.createFromTemplate(); // To always start with a new document.
-        this.loadRemoteFile('https://raw.githubusercontent.com/preston/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml');
+        // To always start with a new document.
+        // this.createFromTemplate();
 
+        // Or to always start with a remote document. (Useful for debugging.)
+        // this.loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml');
+        // this.loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml');
+
+    }
+
+    loadRemoteUrl() {
+        if (!!this.remoteUrl) {
+            this.loadRemoteFile(this.remoteUrl);
+        } else {
+			this.toasterService.pop('warning', "Need URL", "Please provide a URL to load.");
+        }
     }
 
     loadRemoteFile(url: string) {
@@ -53,11 +66,23 @@ export class HomeComponent {
         // this.runtime_tab = 'coverages';
         // this.viewer_tab = 'preview';
         this.viewer_tab = 'action_group';
+        this.remoteUrl = null;
         this.originalContentString = null;
     }
 
     export() {
         this.toasterService.pop('warning', "Not Implemented", "File exports haven't been implemented yet, sorry!");
+    }
+
+    canRevert(): boolean {
+        return !!this.originalContentString
+    }
+    revert(): void {
+        if (this.canRevert()) {
+            this.loadFromContentString(this.originalContentString);
+        } else {
+            this.toasterService.pop('warning', "Not Possible", "The original content isn't available, sorry!");
+        }
     }
 
     createFromTemplate() {
@@ -76,11 +101,12 @@ export class HomeComponent {
         var parser = new DOMParser();
         var doc: Document = parser.parseFromString(content, "application/xml");
         // try {
-			this.knart = this.xmlLoader.loadFromXMLDocument(doc);
-            this.originalContentString = content;
-            this.toasterService.pop('success', "Loaded!", "Go do your thing.");
+        this.knart = this.xmlLoader.loadFromXMLDocument(doc);
+        this.originalContentString = content;
+        this.toasterService.pop('success', "Loaded!", "Go do your thing.");
         // } catch (e) {
-        //     this.toasterService.pop('error', 'Well blarg.', "Your file couldn't be parsed. Is it valid and well-formed?");
+        //     console.log(e);
+        //     this.toasterService.pop('error', 'Well blarg.', "Your file couldn't read or parsed. Is it valid and well-formed?");
         //     this.reset();
         // }
     }

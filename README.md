@@ -36,6 +36,14 @@ Extremely easy in your existing Dockerized hosting environment. Just:
 
 And you're done. No environment variables or further configuration are needed. Jedi's may use your existing Kubernetes, Open Shift etc installations as you see fit. :)
 
+## Screenshots
+
+![Loader](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/1.png)
+![Examples](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/2.png)
+![Metadata](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/3.png)
+![Actions](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/4.png)
+![Preview](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/5.png)
+
 ## Attribution
 
 Please add your name when making contributions!

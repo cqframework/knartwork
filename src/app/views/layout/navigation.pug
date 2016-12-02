@@ -28,7 +28,7 @@ nav.navbar.navbar-default("*ngIf"="knart")
                                 |  Download
                         li.divider
                         li
-                            a("(click)"="createFromContentString()" "*ngIf"="originalContentString")
+                            a("(click)"="revert()" "*ngIf"="canRevert()")
                                 span.glyphicon.glyphicon-refresh
                                 |  Revert
                         li
@@ -55,23 +55,23 @@ nav.navbar.navbar-default("*ngIf"="knart")
                                 |  HL7 FHIR Clinical Reasoning
                         li.divider
                         li
-                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/preston/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml')")
+                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml')")
                                 span.glyphicon.glyphicon-folder-open
                                 |  Example: Documentation Template: FLACC
                         li
-                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/preston/knartwork/master/examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml')")
+                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml')")
                                 span.glyphicon.glyphicon-folder-open
                                 |  Example: Documentation Template: UTI
                         li
-                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/preston/knartwork/master/examples/hl7-cds-ka-r1.3/PHQ9_DocTemplateWithAssessment.xml')")
+                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/PHQ9_DocTemplateWithAssessment.xml')")
                                 span.glyphicon.glyphicon-folder-open
                                 |  Example: Documentation Template: PHQ-9 Assessment
                         li
-                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/preston/knartwork/master/examples/hl7-cds-ka-r1.3/NQF0024A_NQF0421.xml')")
+                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/NQF0024A_NQF0421.xml')")
                                 span.glyphicon.glyphicon-folder-open
                                 |  Example: Rule: Weight Assessment and Counseling
                         li
-                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/preston/knartwork/master/examples/hl7-cds-ka-r1.3/newMentor_HeD_NQF0068_ECArule_example.xml')")
+                            a("(click)"="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/newMentor_HeD_NQF0068_ECArule_example.xml')")
                                 span.glyphicon.glyphicon-folder-open
                                 |  Example: Rule: Ischemic Vascular Disease
 

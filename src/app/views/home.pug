@@ -15,8 +15,25 @@ toaster-container
                     small
                         i ..or..
                 hr
+                div.text-center
+                    h1
+                        span.glyphicon.glyphicon-cloud
+                        |  Load from the web...
+                    .row
+                        .col-sm-9.form-group
+                            input.form-control(name="remote_url" type='text' "[(ngModel)]"="remoteUrl" placeholder="http://example.com/awesome-knart.xml")
+                        .col-sm-3
+                            button.btn.btn-default("(click)"="loadRemoteUrl()") Load it!
+                        .col-sm-12
+                            small
+                                | Anywhere on the Internet, or even "inside the firewall"!
+                                br
+                                i ..or..
+                hr
                 form.form
-                    h1.text-center Load an existing file..
+                    h1.text-center
+                        span.glyphicon.glyphicon-folder-open
+                        |  Load a local file..
                     .form-group
                         label Format
                         select.form-control#loader_type_select(name="documentType" "[(ngModel)]"="documentFormat")
