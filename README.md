@@ -38,10 +38,19 @@ And you're done. No environment variables or further configuration are needed. J
 
 ## Screenshots
 
+Create new files, load from the Internet, or local computer:
 ![Loader](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/1.png)
+
+Load the examples from the official HL7 CDS Knowledge Artifact distribution:
 ![Examples](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/2.png)
+
+Comprehensively manage the "metadata" section of each artifact:
 ![Metadata](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/3.png)
+
+Build complex action structures:
 ![Actions](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/4.png)
+
+Preview your work:
 ![Preview](https://raw.githubusercontent.com/preston/knartwork/master/screenshots/5.png)
 
 ## Attribution
