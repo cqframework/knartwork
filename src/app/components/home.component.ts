@@ -29,7 +29,7 @@ export class HomeComponent {
         this.reset();
 
         // this.createFromTemplate(); // To always start with a new document.
-        // this.loadRemoteFile('https://raw.githubusercontent.com/preston/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml');
+        this.loadRemoteFile('https://raw.githubusercontent.com/preston/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml');
 
     }
 
