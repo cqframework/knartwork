@@ -1,0 +1,4432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="Preston Lee <preston@asu.edu>" name="author" />
+    <title>UTI, Acute</title>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://bootswatch.com/readable/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <style type="text/css">
+      body {
+          background: url('http://ui.healthcreek.org/app/images/textures/wild_oliva.png');
+      }
+      .action_group {
+          margin: 10px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          box-shadow: 0 20px 20px rgba(0,0,0,.4);
+          border-radius: 4px;
+      }
+      
+      .action_group .form-group {
+          margin-left: 0;
+      }
+      #applicability,
+      #contributors,
+      #actions {
+          padding: 10px;
+      }
+      .stuff {
+          background: url('http://ui.healthcreek.org/app/images/textures/crossword.png');
+          padding: 10px;
+          box-shadow: 0 20px 20px rgba(0,0,0,.4);
+          border-radius: 2px;
+      }
+    </style>
+    <script>
+      $(function() {
+          console.log("Loaded!");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="jumbotron">
+        <div class="pull-right">
+          <div class="pull-right">
+            <button class="btn btn-large btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+          </div>
+        </div>
+        <h1>
+          UTI, Acute
+        </h1>
+        <p>
+          
+        </p>
+        <dl class="dl-horizontal">
+          <dt>
+            Schema
+          </dt>
+          <dd>
+            urn:hl7-org:knowledgeartifact:r1
+          </dd>
+          <dt>
+            Identifier(s)
+          </dt>
+          <dd>
+            <span>WKH:CLNID:7982345</span><i> (version 1)</i>
+          </dd>
+          <dt>
+            Status
+          </dt>
+          <dd>
+            Draft
+          </dd>
+        </dl>
+      </div>
+      <div class="row">
+        <div class="col-lg-6" id="applicability">
+          <div class="stuff">
+            <h2>
+              Applicability<div class="pull-right">
+                <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+              </div>
+            </h2>
+            <hr />
+            <table class="table table-condensed table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    Focus
+                  </th>
+                  <th>
+                    Code
+                  </th>
+                  <th>
+                    System
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    ClinicalFocus
+                  </td>
+                  <td>
+                    431309003
+                  </td>
+                  <td>
+                    2.16.840.1.113883.6.96
+                  </td>
+                  <td>
+                    Acute urinary tract infection
+                  </td>
+                  <td>
+                    <div class="btn-group btn-group-xs">
+                      <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    ClinicalVenue
+                  </td>
+                  <td>
+                    261QP2300X
+                  </td>
+                  <td>
+                    2.16.840.1.113883.1.11.13955
+                  </td>
+                  <td>
+                    Primary Care
+                  </td>
+                  <td>
+                    <div class="btn-group btn-group-xs">
+                      <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    TargetUser
+                  </td>
+                  <td>
+                    309343006
+                  </td>
+                  <td>
+                    2.16.840.1.113883.6.96
+                  </td>
+                  <td>
+                    Physician
+                  </td>
+                  <td>
+                    <div class="btn-group btn-group-xs">
+                      <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-lg-6" id="contributors">
+          <div class="stuff">
+            <h2>
+              Contributors<div class="pull-right">
+                <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+              </div>
+            </h2>
+            <hr />
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="well">
+                  <h4>
+                    <div class="pull-right">
+                      <div class="btn-group btn-group-xs">
+                        <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                      </div>
+                    </div>
+                    &nbsp;<small><i>&nbsp;(Author)</i></small>
+                  </h4>
+                  <address><b>800 Washington Avenue N Ste. 400</b><br />minneapolis, MN, 55401</address>
+                  <ul>
+                    <li>
+                      <a href="tel:888-952-6673">tel:888-952-6673</a>
+                    </li>
+                    <li>
+                      <a href="mailto:pvmd_support@wolterskluwer.com">mailto:pvmd_support@wolterskluwer.com</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12" id="actions">
+          <div class="stuff">
+            <h2>
+              Information Collection Actions<div class="pull-right">
+                <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+              </div>
+            </h2>
+            <form class="form-horizontal">
+              <div class="action_group">
+                <h1 class="title">
+                  History of Present Illness
+                </h1>
+                <div class="action_group">
+                  <h2 class="title">
+                    Reason for Visit
+                  </h2>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Visit Type</label><select>
+                          <option value="Initial Evaluation">
+                            Initial Evaluation
+                          </option>
+                          <option value="Follow-Up">
+                            Follow-Up
+                          </option>
+                          <option value="Follow-Up - From Hospitalization">
+                            Follow-Up - From Hospitalization
+                          </option>
+                          <option value="Follow-Up - Previous Urgent Care">
+                            Follow-Up - Previous Urgent Care
+                          </option>
+                          <option value="Follow-Up - From ER">
+                            Follow-Up - From ER
+                          </option>
+                          <option value="Worsening Symptoms">
+                            Worsening Symptoms
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Initial Evaluation
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Follow-Up
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Follow-Up - From Hospitalization
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Follow-Up - Previous Urgent Care
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Follow-Up - From ER
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Worsening Symptoms
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/230993007">230993007</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/267022002">267022002</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="action_group">
+                  <h2 class="title">
+                    Symptoms
+                  </h2>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Symptoms</label><select>
+                          <option value="Dysuria">
+                            Dysuria
+                          </option>
+                          <option value="Urinary Frequency">
+                            Urinary Frequency
+                          </option>
+                          <option value="Urinary Urgency">
+                            Urinary Urgency
+                          </option>
+                          <option value="Hematuria">
+                            Hematuria
+                          </option>
+                          <option value="Flank Pain">
+                            Flank Pain
+                          </option>
+                          <option value="Vaginal Discharge">
+                            Vaginal Discharge
+                          </option>
+                          <option value="Urethral Discharge">
+                            Urethral Discharge
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              EM:HPI:Associated Signs and Symptoms
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              138875005
+                            </td>
+                            <td>
+                              2.16.840.1.113883.6.96
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Dysuria
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/49650001">49650001</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Urinary Frequency
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/300471006">300471006</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Urinary Urgency
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/75088002">75088002</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Hematuria
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/34436003">34436003</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Flank Pain
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/247355005">247355005</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Vaginal Discharge
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/271939006">271939006</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Urethral Discharge
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/9957009">9957009</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Pain Location</label><select>
+                          <option value="Suprapubic Area">
+                            Suprapubic Area
+                          </option>
+                          <option value="Right Flank">
+                            Right Flank
+                          </option>
+                          <option value="Left Flank">
+                            Left Flank
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Location
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Suprapubic Area
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Right Flank
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Left Flank
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Radiation</label><select>
+                          <option value="Penis">
+                            Penis
+                          </option>
+                          <option value="Perineum">
+                            Perineum
+                          </option>
+                          <option value="Scrotum">
+                            Scrotum
+                          </option>
+                          <option value="Right Flank">
+                            Right Flank
+                          </option>
+                          <option value="Left Flank">
+                            Left Flank
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Location
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Penis
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Perineum
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Scrotum
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Right Flank
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Left Flank
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Pain Quality</label><select>
+                          <option value="Sharp">
+                            Sharp
+                          </option>
+                          <option value="Dull">
+                            Dull
+                          </option>
+                          <option value="Aching">
+                            Aching
+                          </option>
+                          <option value="Burning">
+                            Burning
+                          </option>
+                          <option value="Stinging">
+                            Stinging
+                          </option>
+                          <option value="Cramping">
+                            Cramping
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Quality
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Sharp
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Dull
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Aching
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Burning
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Stinging
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Cramping
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Onset Mode</label><select>
+                          <option value="Gradual">
+                            Gradual
+                          </option>
+                          <option value="Sudden">
+                            Sudden
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Timing
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Gradual
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Sudden
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Timing</label><select>
+                          <option value="Constant">
+                            Constant
+                          </option>
+                          <option value="Frequent">
+                            Frequent
+                          </option>
+                          <option value="Intermittent">
+                            Intermittent
+                          </option>
+                          <option value="Daytime">
+                            Daytime
+                          </option>
+                          <option value="Nocturnal">
+                            Nocturnal
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Timing
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Constant
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Frequent
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Intermittent
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Daytime
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Nocturnal
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Severity</label><select>
+                          <option value="Mild">
+                            Mild
+                          </option>
+                          <option value="Moderate">
+                            Moderate
+                          </option>
+                          <option value="Severe">
+                            Severe
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Severity
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Mild
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Moderate
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Severe
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Progression</label><select>
+                          <option value="Worsening">
+                            Worsening
+                          </option>
+                          <option value="Unchanged">
+                            Unchanged
+                          </option>
+                          <option value="Improving">
+                            Improving
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Severity
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Worsening
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Unchanged
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Improving
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Exacerbating Factors</label><select>
+                          <option value="Sexual Intercourse">
+                            Sexual Intercourse
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Modifying Factors
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Sexual Intercourse
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Relieving Factors</label><select>
+                          <option value="Sitz Baths">
+                            Sitz Baths
+                          </option>
+                          <option value="Cranberry Juice">
+                            Cranberry Juice
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Modifying Factors
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Sitz Baths
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Cranberry Juice
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="action_group">
+                    <h3 class="title">
+                      Onset
+                    </h3>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Quantity</label><select>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Duration
+                              </td>
+                              <td>
+                                EMCode
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Units</label><select>
+                            <option value="Hour(s) Ago">
+                              Hour(s) Ago
+                            </option>
+                            <option value="Day(s) Ago">
+                              Day(s) Ago
+                            </option>
+                            <option value="Week(s) Ago">
+                              Week(s) Ago
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Hour(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Day(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Week(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="action_group">
+                    <h3 class="title">
+                      Current Symptom Frequency
+                    </h3>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Quantity</label><select>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Timing
+                              </td>
+                              <td>
+                                EMCode
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Units</label><select>
+                            <option value="x Hour">
+                              x Hour
+                            </option>
+                            <option value="x Day">
+                              x Day
+                            </option>
+                            <option value="x Week">
+                              x Week
+                            </option>
+                            <option value="x Month">
+                              x Month
+                            </option>
+                            <option value="Daily">
+                              Daily
+                            </option>
+                            <option value="Weekly">
+                              Weekly
+                            </option>
+                            <option value="Monthly">
+                              Monthly
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                x Hour
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                x Day
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                x Week
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                x Month
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Daily
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Weekly
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Monthly
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="action_group">
+                    <h3 class="title">
+                      Current Symptom Duration
+                    </h3>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Quantity</label><select>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Duration
+                              </td>
+                              <td>
+                                EMCode
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Units</label><select>
+                            <option value="Minute(s)">
+                              Minute(s)
+                            </option>
+                            <option value="Hour(s)">
+                              Hour(s)
+                            </option>
+                            <option value="Day(s)">
+                              Day(s)
+                            </option>
+                            <option value="Week(s)">
+                              Week(s)
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Minute(s)
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Hour(s)
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Day(s)
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Week(s)
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="action_group">
+                  <h2 class="title">
+                    Current Treatment
+                  </h2>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Current Treatment</label><select>
+                          <option value="TMP-SMX">
+                            TMP-SMX
+                          </option>
+                          <option value="Nitrofurantoin">
+                            Nitrofurantoin
+                          </option>
+                          <option value="Cephalexin">
+                            Cephalexin
+                          </option>
+                          <option value="Ciprofloxacin">
+                            Ciprofloxacin
+                          </option>
+                          <option value="Levofloxacin">
+                            Levofloxacin
+                          </option>
+                          <option value="Doxycycline">
+                            Doxycycline
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Modifying Factors
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              TMP-SMX
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Nitrofurantoin
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Cephalexin
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Ciprofloxacin
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Levofloxacin
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Doxycycline
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="action_group">
+                  <h2 class="title">
+                    Pertinent History
+                  </h2>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Pertinent Medical History</label><select>
+                          <option value="Diabetes">
+                            Diabetes
+                          </option>
+                          <option value="Impaired Immunity">
+                            Impaired Immunity
+                          </option>
+                          <option value="Chronic Kidney Disease">
+                            Chronic Kidney Disease
+                          </option>
+                          <option value="Urolithiasis">
+                            Urolithiasis
+                          </option>
+                          <option value="Interstitial Cystitis">
+                            Interstitial Cystitis
+                          </option>
+                          <option value="BPH">
+                            BPH
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              392521001
+                            </td>
+                            <td>
+                              2.16.840.1.113883.6.96
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Diabetes
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/73211009">73211009</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Impaired Immunity
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/131145007">131145007</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Chronic Kidney Disease
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/236425005">236425005</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Urolithiasis
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/95566004">95566004</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Interstitial Cystitis
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/197834003">197834003</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              BPH
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://www.snomedbrowser.com/Codes/Details/266569009">266569009</a><br /><small>SNOMED-CT (2.16.840.1.113883.6.96)</small>
+                                </li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Risk Factors</label><select>
+                          <option value="Sexual Intercourse">
+                            Sexual Intercourse
+                          </option>
+                          <option value="New Sex Partner">
+                            New Sex Partner
+                          </option>
+                          <option value="Estrogen Deficiency">
+                            Estrogen Deficiency
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Sexual Intercourse
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              New Sex Partner
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Estrogen Deficiency
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="action_group">
+                    <h3 class="title">
+                      First Episode
+                    </h3>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Quantity</label><select>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Duration
+                              </td>
+                              <td>
+                                EMCode
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Units</label><select>
+                            <option value="Week(s) Ago">
+                              Week(s) Ago
+                            </option>
+                            <option value="Month(s) Ago">
+                              Month(s) Ago
+                            </option>
+                            <option value="Years(s) Ago">
+                              Years(s) Ago
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Week(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Month(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Years(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="action_group">
+                    <h3 class="title">
+                      UTI Frequency
+                    </h3>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Quantity</label><select>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Units</label><select>
+                            <option value="UTIs Past 6 Months">
+                              UTIs Past 6 Months
+                            </option>
+                            <option value="UTIs Past 1 Year">
+                              UTIs Past 1 Year
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                UTIs Past 6 Months
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                UTIs Past 1 Year
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="action_group">
+                  <h2 class="title">
+                    Evaluation and Treatment History
+                  </h2>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Previous Evaluation Setting</label><select>
+                          <option value="This Clinic">
+                            This Clinic
+                          </option>
+                          <option value="Urgent Care">
+                            Urgent Care
+                          </option>
+                          <option value="Emergency Room">
+                            Emergency Room
+                          </option>
+                          <option value="Evaluated by Me">
+                            Evaluated by Me
+                          </option>
+                          <option value="Colleague">
+                            Colleague
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Modifying Factors
+                            </td>
+                            <td>
+                              EMCode
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              This Clinic
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Urgent Care
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Emergency Room
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Evaluated by Me
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Colleague
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Presentation</label><select>
+                          <option value="Dysuria">
+                            Dysuria
+                          </option>
+                          <option value="Urinary Frequency">
+                            Urinary Frequency
+                          </option>
+                          <option value="Urinary Urgency">
+                            Urinary Urgency
+                          </option>
+                          <option value="Hematuria">
+                            Hematuria
+                          </option>
+                          <option value="Back Pain">
+                            Back Pain
+                          </option>
+                          <option value="Fever">
+                            Fever
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Dysuria
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Urinary Frequency
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Urinary Urgency
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Hematuria
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Back Pain
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Fever
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="action_group">
+                    <h3 class="title">
+                      Previous Evaluation Timing
+                    </h3>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Quantity</label><select>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Duration
+                              </td>
+                              <td>
+                                EMCode
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Units</label><select>
+                            <option value="Day(s) Ago">
+                              Day(s) Ago
+                            </option>
+                            <option value="Week(s) Ago">
+                              Week(s) Ago
+                            </option>
+                            <option value="Month(s) Ago">
+                              Month(s) Ago
+                            </option>
+                            <option value="Years(s) Ago">
+                              Years(s) Ago
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Item Codes
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Code
+                              </th>
+                              <th>
+                                System
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <div class="pull-right">
+                          <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        </div>
+                        <h4>
+                          Responses
+                        </h4>
+                        <table class="table table-condensed table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                Display
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Value
+                              </th>
+                              <th>
+                                Codes
+                              </th>
+                              <th>
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Day(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Week(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Month(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Years(s) Ago
+                              </td>
+                              <td>
+                                elm:Literal
+                              </td>
+                              <td>
+                                t:String
+                              </td>
+                              <td>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-xs">
+                                  <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="action_group">
+                  <h2 class="title">
+                    Past Evaluation
+                  </h2>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Past Evaluation</label><select>
+                          <option value="Urinalysis">
+                            Urinalysis
+                          </option>
+                          <option value="Urine Culture">
+                            Urine Culture
+                          </option>
+                          <option value="STD Testing">
+                            STD Testing
+                          </option>
+                          <option value="Pregnancy Test">
+                            Pregnancy Test
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Urinalysis
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Urine Culture
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              STD Testing
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Pregnancy Test
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="action_group">
+                  <h2 class="title">
+                    Treatment History
+                  </h2>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Past Treatment</label><select>
+                          <option value="TMP-SMX">
+                            TMP-SMX
+                          </option>
+                          <option value="Nitrofurantoin">
+                            Nitrofurantoin
+                          </option>
+                          <option value="Cephalexin">
+                            Cephalexin
+                          </option>
+                          <option value="Ciprofloxacin">
+                            Ciprofloxacin
+                          </option>
+                          <option value="Levofloxacin">
+                            Levofloxacin
+                          </option>
+                          <option value="Doxycycline">
+                            Doxycycline
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Item Codes
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Code
+                            </th>
+                            <th>
+                              System
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <button class="btn btn-large btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                      </div>
+                      <h4>
+                        Responses
+                      </h4>
+                      <table class="table table-condensed table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Display
+                            </th>
+                            <th>
+                              Type
+                            </th>
+                            <th>
+                              Value
+                            </th>
+                            <th>
+                              Codes
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              TMP-SMX
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Nitrofurantoin
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Cephalexin
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Ciprofloxacin
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Levofloxacin
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Doxycycline
+                            </td>
+                            <td>
+                              elm:Literal
+                            </td>
+                            <td>
+                              t:String
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                              <div class="btn-group btn-group-xs">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <footer class="col-lg-12 text-center">
+          <hr />
+          <small class="help-block">By Preston Lee. All rights reserved.</small>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

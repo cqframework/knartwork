@@ -1,0 +1,1 @@
+These examples are from the HL7 CDS Knowledge Artifacts release 1.3 distribution and are included for debugging and convenience purposes only. Please see the official HL7 release packages for authoritative examples.

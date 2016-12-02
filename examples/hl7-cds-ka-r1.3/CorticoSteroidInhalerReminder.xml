@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?schematron-schema href="../main/schematron/knowledgeartifact.sch"?>
+<?schematron-schema href="../main/schematron/ecarules.sch"?>
+<knowledgeDocument xmlns="urn:hl7-org:knowledgeartifact:r1"
+	xmlns:vmr="urn:hl7-org:vmr:r2"
+	xmlns:dt="urn:hl7-org:cdsdt:r2"
+	xmlns:p1="http://www.w3.org/1999/xhtml"
+	xmlns:elm="urn:hl7-org:elm:r1"
+	xmlns:a="urn:hl7-org:cql-annotations:r1"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:hl7-org:knowledgeartifact:r1 ../schema/knowledgeartifact/knowledgedocument.xsd
+ 		urn:hl7-org:elm:r1 ../elm/clinicalexpression.xsd
+		urn:hl7-org:cql-annotations:r1 ../elm/cqlannotations.xsd">
+	<!-- Inhaled Corticosteroid Reminder This example illustrates the use of 
+		an ECA rule to remind clinicians to prescribe an inhaled corticosteroid for 
+		patients with persistent asthma. The example was chosen as a common clinically 
+		relevant usage for an ECA knowledge artifact. -->
+	<metadata>
+		<identifiers>
+			<identifier root="www.zynx.com/cds/rule/" extension="1234"
+				version="1.0" />
+		</identifiers>
+		<artifactType value="Rule" />
+		<schemaIdentifier
+			root="urn:hl7-org:knowledgeartifact:r1" version="1" />
+		<dataModels>
+			<modelReference>
+				<description value="Virtual Medical Record model" />
+				<referencedModel value="urn:hl7-org:vmr:r2"/>
+			</modelReference>
+		</dataModels>
+		<title value="Inhaled Corticosteroid Reminder" />
+		<description value="Remind provider of inhaled corticosteroid omission." />
+		<documentation>
+			<description value="Explanation" />
+			<content>
+				<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Remind provider of inhaled
+					corticosteroid omission. When an adult patient with the diagnosis
+					of persistent asthma is being seen in an outpatient setting, a
+					reminder that no inhaled corticosteroid (preferred long-term
+					control medication) or acceptable alternative treatment (eg,
+					leukotriene modifier, cromolyn sodium, nedocromil sodium,
+					sustained-release methylxanthine) has been prescribed will be
+					displayed to the user if certain criteria are met.</xhtml:div>
+			</content>
+		</documentation>
+		<relatedResources>
+			<relatedResource>
+				<relationship value="AssociatedResource" />
+				<resources>
+					<!-- An example of linking to the actual source -->
+					<resource>
+						<title
+							value="Centers for Medicare &amp; Medicaid Services Physician Quality Reporting Initiative" />
+						<location
+							value="http://cms.hhs.gov/Medicare/Quality-Initiatives-Patient-Assessment-Instruments/PQRS/index.html" />
+					</resource>
+					<!-- An example of linking to the NQF measure finder search result -->
+					<resource>
+						<title value="National Quality Forum - QPS" />
+						<location
+							value="http://www.qualityforum.org/Qps/QpsTool.aspx#qpsPageState=%7B%22TabType%22%3A1,%22TabContentType%22%3A2,%22SearchCriteriaForStandard%22%3A%7B%22TaxonomyIDs%22%3A%5B%5D,%22SelectedTypeAheadFilterOption%22%3A%7B%22ID%22%3A13609,%22FilterOptionLabel%22%3A%22persistent+asthma%22,%22TypeOfTypeAheadFilterOption%22%3A1,%22TaxonomyId%22%3A0%7D,%22Keyword%22%3A%22persistent+asthma%22,%22PageSize%22%3A%2225%22,%22OrderType%22%3A12,%22OrderBy%22%3A%22DESC%22,%22PageNo%22%3A1,%22IsExactMatch%22%3Atrue,%22QueryStringType%22%3A%22%22,%22ProjectActivityId%22%3A%220%22%7D,%22SearchCriteriaForForPortfolio%22%3A%7B%22Tags%22%3A%5B%5D,%22FilterTypes%22%3A0,%22PageStartIndex%22%3A1,%22PageEndIndex%22%3A25,%22PageNumber%22%3Anull,%22PageSize%22%3A%2225%22,%22SortBy%22%3A%22Title%22,%22SortOrder%22%3A%22ASC%22%7D,%22ItemsToCompare%22%3A%5B%5D,%22StandardID%22%3A367,%22EntityTypeID%22%3A1%7D" />
+					</resource>
+				</resources>
+			</relatedResource>
+		</relatedResources>
+		<supportingEvidence>
+			<evidence>
+				<resources>
+					<!-- A Zynx Health Evidence Link containing the full set of measures, 
+						studies, and guidelines pertaining to the subject -->
+					<resource>
+						<title value="Zynx Evidence" />
+						<location
+							value="https://www.zynx.com/Reference/content.aspx?ItemID=13599" />
+					</resource>
+				</resources>
+			</evidence>
+		</supportingEvidence>
+		<applicability>
+			<!-- Age groups that overlap with age range specified in rule -->
+			<coverage>
+				<focus value="PatientAgeGroup" />
+				<description value="Population between the age of 18 to 50 inclusive" />
+				<value code="D055815" codeSystem="2.16.840.1.113883.11.75"
+					codeSystemName="MeSH - AgeGroupObservationValue"><dt:displayName value="young adult; 19-24 years"
+					 />
+				</value>
+			</coverage>
+			<coverage>
+				<focus value="PatientAgeGroup" />
+				<description value="Population between the age of 18 to 50 inclusive" />
+				<value code="D000328" codeSystem="2.16.840.1.113883.11.75"
+					codeSystemName="MeSH - AgeGroupObservationValue" ><dt:displayName value="adult; 19-44 years"/></value>
+					 
+			</coverage>
+			<coverage>
+				<focus value="PatientAgeGroup" />
+				<description value="Population between the age of 18 to 50 inclusive" />
+				<value code="D008875" codeSystem="2.16.840.1.113883.11.75"
+					codeSystemName="MeSH - AgeGroupObservationValue" ><dt:displayName value="middle aged; 45-64 years"/></value>
+			</coverage>
+			<!-- Clinical focus: Persistent Asthma -->
+			<!-- Note: Need to finalize whether we would represent diagnoses as either 
+				ICD-9, CPT, or SNOMED codes. CMS reference ICD-9 and CPT codes so we used 
+				these codes in this example. -->
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has persistent asthma" />
+				<value code="1038F" codeSystem="2.16.840.1.113883.6.12"
+					codeSystemName="CPT II" ><dt:displayName value="Persistent asthma (mild, moderate or severe)."/></value>
+			</coverage>
+			<!-- ICD 9 codes representing clinical focus: Should really be a value 
+				set for Asthma but individual codes are used in this example -->
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.00" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Extrinsic asthma unspecified"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.01" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Extrinsic asthma with status asthmaticus"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.02" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Extrinsic asthma with (acute) exacerbation"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.10" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Intrinsic asthma unspecified"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.11" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Intrinsic asthma with status asthmaticus"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.12" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Intrinsic asthma with (acute) exacerbation"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.20" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Chronic obstructive asthma unspecified"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.21" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Chronic obstructive asthma with status asthmaticus"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.22" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM"
+					><dt:displayName value="Chronic obstructive asthma with (acute) exacerbation"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.81" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM"
+					><dt:displayName value="Other forms of asthma Exercise induced bronchospasm"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.82" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Other forms of asthma Cough variant asthma"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.90" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Asthma,unspecified type, unspecified"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.91" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM" ><dt:displayName value="Asthma, unspecified type, with status asthmaticus"/></value>
+			</coverage>
+			<coverage>
+				<focus value="ClinicalFocus" />
+				<description value="Patient has asthma diagnosis code" />
+				<value code="493.92" codeSystem="2.16.840.1.113883.6.103"
+					codeSystemName="ICD-9-CM"
+					><dt:displayName value="Asthma, unspecified type, with (acute) exacerbation"/></value>
+			</coverage>
+		</applicability>
+		<status value="Draft" />
+		<eventHistory>
+			<artifactLifeCycleEvent>
+				<eventType value="Created" />
+				<eventDateTime value="20121025" />
+			</artifactLifeCycleEvent>
+			<artifactLifeCycleEvent>
+				<eventType value="Pre-published" />
+				<eventDateTime value="20121025" />
+			</artifactLifeCycleEvent>
+		</eventHistory>
+		<contributions>
+			<contribution>
+				<contributor xsi:type="Organization">
+					<addresses>
+						<address>
+							<dt:part type="SAL" value="10880 Wilshire Boulevard" />
+							<dt:part type="CTY" value="Los Angeles" />
+							<dt:part type="ZIP" value="90024" />
+							<dt:part type="STA" value="CA" />
+							<dt:part type="CNT" value="USA" />
+						</address>
+					</addresses>
+					<contacts>
+						<contact value="310-825-3333" use="WP" />
+					</contacts>
+					<name value="Zynx Health" />
+				</contributor>
+				<role />
+			</contribution>
+		</contributions>
+		<publishers>
+			<publisher xsi:type="Organization">
+				<addresses>
+					<address>
+						<dt:part type="SAL" value="10880 Wilshire Boulevard" />
+						<dt:part type="CTY" value="Los Angeles" />
+						<dt:part type="ZIP" value="90024" />
+						<dt:part type="STA" value="CA" />
+						<dt:part type="CNT" value="USA" />
+					</address>
+				</addresses>
+				<contacts>
+					<contact value="310-825-3333" use="WP" />
+				</contacts>
+				<name value="Zynx Health" />
+			</publisher>
+		</publishers>
+		<usageTerms>
+			<rightsDeclaration>
+				<assertedRights value="Copyright (2012), Zynx Health Inc." />
+				<rightsHolder xsi:type="Organization">
+					<addresses>
+						<address>
+							<dt:part type="SAL" value="10880 Wilshire Boulevard" />
+							<dt:part type="CTY" value="Los Angeles" />
+							<dt:part type="ZIP" value="90024" />
+							<dt:part type="STA" value="CA" />
+							<dt:part type="CNT" value="USA" />
+						</address>
+					</addresses>
+					<contacts>
+						<contact value="310-825-3333" use="WP" />
+					</contacts>
+					<name value="Zynx Health" />
+				</rightsHolder>
+			</rightsDeclaration>
+		</usageTerms>
+	</metadata>
+	<externalData>
+		<codesystem name="CPT" id="2.16.840.1.113883.6.12"/>
+		<codesystem name="ICD-9-CM" id="2.16.840.1.113883.6.103"/>
+		<codesystem name="Zynx" id="TBD"/>
+		<valueset name="Inhaled Corticosteroids Medications" id="12345" version="1"/>
+		<def name="Patient">
+			<elm:expression xsi:type="elm:SingletonFrom">
+				<elm:operand xsi:type="elm:Retrieve" dataType="vmr:EvaluatedPerson"/>
+			</elm:expression>
+		</def>
+		<def name="persistentAsthmaDiagnosisCPT">
+			<elm:expression xsi:type="elm:Retrieve" 
+				dataType="vmr:Problem" codeProperty="conditionCode" dateProperty="diagnosticEventTime.low">
+				<elm:annotation xsi:type="a:Annotation">
+					<a:s>Asthma diagnosis code entered during this or any prior encounter AND Persistent asthma code entered during this or any prior encounter</a:s>
+				</elm:annotation>
+				<elm:codes xsi:type="elm:List">
+					<elm:element xsi:type="elm:Code" code="1038F" display="Persistent asthma (mild, moderate or severe).">
+						<elm:system name="CPT"/>
+					</elm:element>
+				</elm:codes>
+				<!-- Note that for this rule, date range is not relevant -->
+			</elm:expression>
+		</def>
+		<def name="asthmaDiagnosisICD9CM">
+			<elm:expression xsi:type="elm:Retrieve" 
+				dataType="vmr:Problem" codeProperty="conditionCode" dateProperty="diagnosticEventTime.low">
+				<elm:annotation xsi:type="a:Annotation">
+					<a:s>Asthma diagnosis code entered during this or any prior encounter AND Persistent asthma code entered during this or any prior encounter</a:s>
+				</elm:annotation>
+				<elm:codes xsi:type="elm:List">
+					<elm:element xsi:type="elm:Code" code="493.00" display="Extrinsic asthma unspecified" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.01" display="Extrinsic asthma with status asthmaticus" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.02" display="Extrinsic asthma with (acute) exacerbation" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.10" display="Intrinsic asthma unspecified" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.11" display="Intrinsic asthma with status asthmaticus" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.12" display="Intrinsic asthma with (acute) exacerbation" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.20" display="Chronic obstructive asthma unspecified" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.21" display="Chronic obstructive asthma with status asthmaticus" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.22" display="Chronic obstructive asthma with (acute) exacerbation" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.81" display="Other forms of asthma Exercise induced bronchospasm" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.82" display="Other forms of asthma Cough variant asthma" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.90" display="Asthma,unspecified type, unspecified" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.91" display="Asthma, unspecified type, with status asthmaticus" ><elm:system name="ICD-9-CM"/></elm:element>
+					<elm:element xsi:type="elm:Code" code="493.92" display="Asthma, unspecified type, with (acute) exacerbation" ><elm:system name="ICD-9-CM"/></elm:element>
+				</elm:codes>
+				<!-- Note that for this rule, date range is not relevant -->
+			</elm:expression>
+		</def>
+		<def name="administeredInhaledCorticosteroidsOrEquivalent">
+			<elm:expression xsi:type="elm:Retrieve"
+				dataType="vmr:SubstanceAdministrationEvent" codeProperty="substanceAdministrationGeneralPurpose"
+				dateProperty="administrationTimeInterval.low">
+				<elm:annotation xsi:type="a:Annotation"><a:s>Patient prescribed asthma medication in last year</a:s></elm:annotation>
+				<elm:codes xsi:type="elm:ValueSetRef" name="Inhaled Corticosteroids Medications"/>
+				<!--Made up for this example -->
+				<elm:dateRange xsi:type="elm:Interval">
+					<elm:low xsi:type="elm:Add">
+						<elm:operand xsi:type="elm:Today"/>
+						<elm:operand xsi:type="elm:Quantity" unit="a" value="-12"/>
+					</elm:low>
+					<elm:high xsi:type="elm:Today"/>
+				</elm:dateRange>
+			</elm:expression>
+		</def>
+		<def name="prescribedInhaledCorticosteroidsOrEquivalent">
+			<elm:expression xsi:type="elm:Retrieve"
+				dataType="vmr:SubstanceAdministrationEvent" codeProperty="substanceAdministrationGeneralPurpose"
+				dateProperty="administrationTimeInterval.low">
+				<elm:annotation xsi:type="a:Annotation"><a:s>Patient prescribed asthma medication in last year</a:s></elm:annotation>
+				<elm:codes xsi:type="elm:ValueSetRef" name="Inhaled Corticosteroids Medications"/>
+				<!--Made up for this example -->
+				<elm:dateRange xsi:type="elm:Interval">
+					<elm:low xsi:type="elm:Add">
+						<elm:operand xsi:type="elm:Today"/>
+						<elm:operand xsi:type="elm:Quantity" unit="a" value="-12"/>
+					</elm:low>
+					<elm:high xsi:type="elm:Today"/>
+				</elm:dateRange>
+			</elm:expression>
+		</def>
+		<def name="intermittentAsthmaDiagnosisCPT">
+			<elm:expression xsi:type="elm:Retrieve"
+				dataType="vmr:Problem" codeProperty="conditionCode" dateProperty="diagnosticEventTime.low">
+				<elm:annotation xsi:type="a:Annotation"><a:s>Patient has intermittent asthma</a:s></elm:annotation>
+				<elm:codes xsi:type="elm:List">
+					<elm:element xsi:type="elm:Code" code="1039F" display="Intermittent Asthma"><elm:system name="CPT"/></elm:element>
+				</elm:codes>
+				<!-- Note that for this rule, date range is not relevant -->
+			</elm:expression>
+		</def>
+		<def name="medicationNotPrescribedForPatientOrOtherReason">
+			<elm:expression xsi:type="elm:Retrieve"
+				dataType="vmr:ObservationResult" codeProperty="observationFocus"
+				dateProperty="observationEventTime.low">
+				<elm:annotation xsi:type="a:Annotation"><a:s>Patient reason or other reason for not prescribing medication has been documented</a:s></elm:annotation>
+				<elm:codes xsi:type="elm:List">
+					<elm:element xsi:type="elm:Code" code="4015F-2P" 
+						display="Documentation of patient reason(s) for not prescribing either the preferred long-term control medication or an acceptable alternative treatment (eg, patient declined, economic, social, religious, other patient reason)">
+						<elm:system name="CPT"/>
+					</elm:element>
+					<elm:element xsi:type="elm:Code" code="4015F-8P"
+						display="Persistent asthma, preferred long term control medication or acceptable alternative treatment not prescribed, reason not otherwise specified" >
+						<elm:system name="CPT"/>
+					</elm:element>
+				</elm:codes>
+				<!-- Note that for this rule, date range is not relevant -->
+			</elm:expression>
+		</def>
+	</externalData>
+	<expressions>
+		<def name="PatientAge">
+			<elm:expression xsi:type="elm:Property" path="age">
+				<elm:source xsi:type="elm:ExpressionRef" name="Patient" />
+			</elm:expression>
+		</def>
+	</expressions>
+	<conditions>
+		<condition>
+			<logic xsi:type="elm:And">
+				<elm:operand xsi:type="elm:And">
+					<elm:operand xsi:type="elm:And">
+						<elm:operand xsi:type="elm:And">
+							<elm:operand xsi:type="elm:And">
+								<elm:operand xsi:type="elm:And">
+									<elm:operand xsi:type="elm:And">
+										<elm:operand xsi:type="elm:Exists">
+											<elm:annotation xsi:type="a:Annotation"><a:s>Persistent asthma code entered during this or any prior encounter</a:s></elm:annotation>
+											<elm:operand xsi:type="elm:ExpressionRef" name="persistentAsthmaDiagnosisCPT" />
+										</elm:operand>
+										<elm:operand xsi:type="elm:Exists">
+											<elm:annotation xsi:type="a:Annotation"><a:s>Asthma diagnosis code entered during this or any prior encounter</a:s></elm:annotation>
+											<elm:operand xsi:type="elm:ExpressionRef" name="asthmaDiagnosisICD9CM" />
+										</elm:operand>
+									</elm:operand>
+									<elm:operand xsi:type="elm:GreaterOrEqual">
+										<elm:annotation xsi:type="a:Annotation"><a:s>Patient age greater than or equal to 18</a:s></elm:annotation>
+										<elm:operand xsi:type="elm:Literal" valueType="xsi:decimal" value="18" />
+										<elm:operand xsi:type="elm:Property" path="value">
+											<elm:source xsi:type="elm:ExpressionRef" name="PatientAge" />
+										</elm:operand>
+									</elm:operand>
+								</elm:operand>
+								<elm:operand xsi:type="elm:LessOrEqual">
+									<elm:annotation xsi:type="a:Annotation"><a:s>Patient age less than or equal to 50</a:s></elm:annotation>
+									<elm:operand xsi:type="elm:Literal" valueType="xsi:decimal" value="50" />
+									<elm:operand xsi:type="elm:Property" path="value">
+										<elm:source xsi:type="elm:ExpressionRef" name="PatientAge" />
+									</elm:operand>
+								</elm:operand>
+							</elm:operand>
+							<elm:operand xsi:type="elm:Not">
+								<elm:operand xsi:type="elm:Exists">
+									<elm:annotation xsi:type="a:Annotation"><a:s>Exclusion - Patient has intermittent asthma</a:s></elm:annotation>
+									<elm:operand xsi:type="elm:ExpressionRef" name="intermittentAsthmaDiagnosisCPT" />
+								</elm:operand>
+							</elm:operand>
+						</elm:operand>
+						<elm:operand xsi:type="elm:Not">
+							<elm:operand xsi:type="elm:Exists">
+								<elm:annotation xsi:type="a:Annotation"><a:s>Exclusion - Patient has been prescribed inhaled corticosteroid or equivalent medication</a:s></elm:annotation>
+								<elm:operand xsi:type="elm:ExpressionRef"
+									name="prescribedInhaledCorticosteroidsOrEquivalent" />
+							</elm:operand>
+						</elm:operand>
+					</elm:operand>
+					<elm:operand xsi:type="elm:Not">
+						<elm:operand xsi:type="elm:Exists">
+							<elm:annotation xsi:type="a:Annotation"><a:s>Exclusion - Patient has been prescribed inhaled corticosteroid or equivalent medication</a:s></elm:annotation>
+							<elm:operand xsi:type="elm:ExpressionRef"
+								name="administeredInhaledCorticosteroidsOrEquivalent" />
+						</elm:operand>
+					</elm:operand>
+				</elm:operand>
+				<elm:operand xsi:type="elm:Not">
+					<elm:operand xsi:type="elm:Exists">
+						<elm:annotation xsi:type="a:Annotation"><a:s>Exclusion - Patient not prescribed med for Patient or Other Reasons</a:s></elm:annotation>
+						<elm:operand xsi:type="elm:ExpressionRef"
+							name="medicationNotPrescribedForPatientOrOtherReason" />
+					</elm:operand>
+				</elm:operand>
+			</logic>
+			<conditionRole value="ApplicableScenario"/>
+		</condition>
+	</conditions>
+	<actionGroup>
+		<behaviors>
+			<behavior xsi:type="GroupSelectionBehavior" value="All"/>
+				<!-- If no action is selected, reminder is simply dismissed -->
+		</behaviors>
+		<subElements>
+			<!-- Display Reminder Message -->
+			<actionGroup>
+				<title value="Persistent Asthma Management - Display message" />
+				<!-- A message will be displayed if any of the rule's conditions were 
+					true. -->
+				<description
+					value="No inhaled corticosteroid (preferred long-term control medication for persistent asthma) or acceptable alternative treatment has been prescribed." />
+				<subElements>
+					<simpleAction xsi:type="CreateAction">
+						<actionSentence xsi:type="elm:Instance" classType="vmr:CommunicationProposal">
+							<elm:element name="message.value">
+								<elm:value xsi:type="elm:Literal"
+									valueType="xsi:string"
+									value="No inhaled corticosteroid (preferred long-term control medication for persistent asthma) or acceptable alternative treatment has been prescribed."
+									/> 
+							</elm:element>
+						</actionSentence>
+					</simpleAction>
+<!-- 					<simpleAction xsi:type="MessageAction">
+						<message xsi:type="ObjectExpression" objectType="vmr:ObservationResult">
+							<property name="observationFocus">
+								<value xsi:type="CodeLiteral" code="1038F"
+									codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT II" />
+							</property>
+							<property name="observationValue.text">
+								<value xsi:type="StringLiteral"
+									value="No inhaled corticosteroid (preferred long-term control medication for persistent asthma) or acceptable alternative treatment has been prescribed." />
+							</property>
+							<property name="observationEventTime.low">
+								<value xsi:type="Today" />
+							</property>
+							<property name="observationEventTime.high">
+								<value xsi:type="Today" />
+							</property>
+						</message>
+					</simpleAction>
+-->
+				</subElements>
+			</actionGroup>
+			<actionGroup>
+				<behaviors>
+					<behavior xsi:type="GroupSelectionBehavior" value="AtMostOne"/>
+				</behaviors>
+				<title value="Response Options" />
+				<description
+					value="Response options if no prescribed inhaled corticosteroid observation found in patient record" />
+				<subElements>
+					<simpleAction xsi:type="CreateAction">
+						<textEquivalent value="Prescribe an inhaled corticosteroid" />
+						<actionSentence xsi:type="elm:Instance"
+							classType="vmr:SubstanceAdministrationProposal">
+							<elm:annotation xsi:type="a:Annotation"><a:s>Prescribe an inhaled corticosteroid</a:s></elm:annotation>
+							<elm:element name="substance.substanceCode">
+								<!-- NOTE: The code specified here is the identifier for a value 
+									set. The intended semantics are that the target system would allow selection 
+									by the provider of a medication from this value set. Note also that contraindications 
+									would need to be resolved on selection of a specific medication, potentially 
+									with another call to a separate artifact. -->
+								<elm:value xsi:type="elm:Code" code="1.111.111.1.111.11" display="Select a medication from this value set."><elm:system name="Zynx"/></elm:value>
+							</elm:element>
+						</actionSentence>
+					</simpleAction>
+					<simpleAction xsi:type="CreateAction">
+						<textEquivalent value="Update patient's active medication list" />
+						<actionSentence xsi:type="elm:Instance"
+							classType="vmr:SubstanceAdministrationEvent">
+							<elm:annotation xsi:type="a:Annotation"><a:s>Update patient's active medication list</a:s></elm:annotation>
+							<elm:element name="substance.substanceCode">
+								<!-- NOTE: The code specified here is the identifier for a value 
+									set. The intended semantics are that the target system would allow selection 
+									by the provider of a medication from this value set. Note also that contraindications 
+									would need to be resolved on selection of a specific medication, potentially 
+									with another call to a separate artifact. -->
+								<elm:value xsi:type="elm:Code" code="1.111.111.1.111.11" display="Select a medication from this value set."><elm:system name="Zynx"/></elm:value>
+							</elm:element>
+						</actionSentence>
+					</simpleAction>
+					<simpleAction xsi:type="CollectInformationAction">
+						<textEquivalent value="Document reason for not prescribing an inhaled corticosteroid - Patient Reason" />
+						<documentationConcept>
+							<prompt value="Patient reason for not prescribing an inhaled corticosteroid" />
+							<itemCodes>
+								<itemCode code="4015F-2P" codeSystem="2.16.840.1.113883.6.12"
+									codeSystemName="CPT II"
+									><dt:displayName value="Documentation of patient reason(s) for not prescribing either the preferred long-term control medication or an acceptable alternative treatment (eg, patient declined, economic, social, religious, other patient reason)"/></itemCode>
+							</itemCodes>
+							<responseDataType value="String"/>
+							<responseCardinality value="Single"/>
+						</documentationConcept>
+					</simpleAction>
+					<simpleAction xsi:type="CollectInformationAction">
+						<textEquivalent
+							value="Document reason for not prescribing an inhaled corticosteroid - Other Reason" />
+						<documentationConcept>
+							<prompt
+								value="Other reason for not prescribing an inhaled corticosteroid" />
+							<itemCodes>
+								<itemCode code="4015F-8P" codeSystem="2.16.840.1.113883.6.12"
+									codeSystemName="CPT II"
+									><dt:displayName value="Persistent asthma, preferred long term control medication or acceptable alternative treatment not prescribed, reason not otherwise specified"/></itemCode>
+							</itemCodes>
+							<responseDataType value="String"/>
+							<responseCardinality value="Single"/>
+						</documentationConcept>
+					</simpleAction>
+				</subElements>
+			</actionGroup>
+		</subElements>
+	</actionGroup>
+</knowledgeDocument>
