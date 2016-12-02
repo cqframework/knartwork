@@ -18,5 +18,5 @@
                     p.text-muted This is how the data element will be referenced by expressions.
                 .col-sm-12.form-group
                     label(for="external_data_content") Binding Expression
-                    textarea.form-control(name="external_data_content" type="text" "[(ngModel)]"="ed.content" placeholder='<elm:expression xsi:type="elm:SingletonFrom"><elm:operand xsi:type="elm:Retrieve" dataType="vmr:EvaluatedPersion"/></elm:expression>')
+                    textarea.form-control(name="external_data_content" rows="10" "[(ngModel)]"="ed.content" placeholder='<elm:expression xsi:type="elm:SingletonFrom"><elm:operand xsi:type="elm:Retrieve" dataType="vmr:EvaluatedPersion"/></elm:expression>')
                     p.text-muted This is the ELM expression (or similar blurb) that defines how the data will be bound at runtime.

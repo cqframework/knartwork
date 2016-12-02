@@ -1,5 +1,6 @@
 import {ModuleWithProviders, enableProdMode} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+// import {Http} from '@angular/http';
 
 import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
 // import {DragulaModule} from 'ng2-dragula/ng2-dragula';
@@ -22,7 +23,7 @@ import {SupportingEvidenceComponent} from './app/components/supporting_evidence.
 import {PreviewActionGroupComponent} from './app/components/preview_action_group.component';
 
 import {KnartworkService} from './app/services/knartwork.service';
-
+import {XmlLoaderService} from './app/services/xml_loader.service';
 
 enableProdMode();
 
@@ -69,6 +70,7 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         appRoutingProviders,
         ToasterService,
         KnartworkService,
+		XmlLoaderService
     ],                    // services
     bootstrap: [AppComponent]     // root component
 })

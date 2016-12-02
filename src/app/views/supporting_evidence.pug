@@ -11,7 +11,7 @@
             form.form.row
                 .col-sm-9.form-group
                     //- label(for="supporting_evidence_citation") Value
-                    textarea.form-control(name="model_reference_value" "[(ngModel)]"="se.citation" placeholder="Citation Text" required="true")
+                    textarea.form-control(name="model_reference_value" rows="8" "[(ngModel)]"="se.citation" placeholder="Citation Text" required="true")
                 .col-sm-3
                     a.btn.btn-small.btn-danger("(click)"="deleteSupportingEvidence(se)")
                         span.glyphicon.glyphicon-trash

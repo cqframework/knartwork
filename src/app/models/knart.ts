@@ -47,42 +47,6 @@ export class Knart {
         return Status.ALL;
     }
 
-    loadFromXMLDocument(doc: Document) {
-        this.document = doc;
-        let k = new Knart;
-        var result = doc.evaluate("/k:knowledgeDocument", doc, Knart.namespaces, XPathResult.ANY_TYPE, null);
-        var kd: Node = result.iterateNext();
-        console.log(kd);
-
-        this.title = doc.evaluate("string(./k:metadata/k:title/@value)", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
-        this.description = doc.evaluate("string(./k:metadata/k:description/@value)", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
-        this.schemaIdentifier = doc.evaluate("string(./k:metadata/k:schemaIdentifier/@root)", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
-
-        let statusString = doc.evaluate("string(./k:metadata/k:status/@value)", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
-        this.status = Status.fromCode(statusString).code || Status.IN_TEST.code;
-
-        let typeString = doc.evaluate("string(./k:metadata/k:artifactType/@value)", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
-        this.artifactType = ArtifactType.fromCode(typeString).code || ArtifactType.DOCUMENTATION_TEMPLATE.code;
-
-        let relatedResources = doc.evaluate("./k:metadata//k:relatedResource", kd, Knart.namespaces, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-        var node: Node;
-        while (node = relatedResources.iterateNext()) {
-			let rr = new RelatedResource();
-			// rr.relationship = doc.evaluate("string(./k:relationship/@value)", node, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue
-			// rr.resource.title =
-			// rr.resource.location =
-			// rr.resource.description =
-
-            console.log("RR: " + rr);
-
-        }
-        // this.artifactType = ArtifactType.fromCode(typeString).code || ArtifactType.DOCUMENTATION_TEMPLATE.code;
-
-        // title.attributes.
-        console.log(this.title);
-        console.log("Loaded KNART!");
-    }
-
     static namespaces: XPathNSResolver = <any>function nsResolver(prefix) {
         var ns = {
             'k': 'urn:hl7-org:knowledgeartifact:r1',
