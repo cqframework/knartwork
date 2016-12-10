@@ -1,0 +1,212 @@
+.container-fluid
+    .row
+        section.col-md-12
+            h2 If you download your work, this will be the contents of the file.
+        section.col-md-12
+            //- pre(type="xml")
+            knowledgeDocument(xmlns='urn:hl7-org:knowledgeartifact:r1', xmlns:vmr='urn:hl7-org:vmr:r2', xmlns:dt='urn:hl7-org:cdsdt:r2', xmlns:elm='urn:hl7-org:elm:r1', xmlns:t='urn:hl7-org:elm-types:r1', xmlns:a='urn:hl7-org:cql-annotations:r1', xmlns:p1='http://www.w3.org/1999/xhtml', xmlns:xml='http://www.w3.org/XML/1998/namespace', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance')
+                metadata
+                    identifiers
+                        identifier("*ngFor"="let i of knart.identifiers", root='{{i.root}}', "[version]"='i.version')
+                    artifacttype(value='{{knart.artifactType}}')
+                    schemaIdentifier(root='{{knart.schemaIdentifier}}' version='1')
+                    dataModels
+                        modelReference("*ngFor"="let mr of knart.modelReferences")
+                            description(value='{{mr.description}}')
+                                referencedModel(value='{{mr.referencedModel}}')
+                    title(value='{{knart.title}}')
+                    relatedResources
+                        relatedResource("*ngFor"="let rr of knart.relatedResources")
+                            relationship(value='{{rr.relationship}}')
+                                resources
+                                    resource("*ngFor"="let r of rr.resources")
+                                        title(value='{{r.title}}')
+                                            location(value='{{r.location}}')
+                                                description(value='{{r.description}}')
+                    status(value='{{knart.status}}')
+                    supportingEvidence
+                        evidence("*ngFor"="let se of knart.supportingEvidence")
+                            resources
+                                resource
+                                    citation(value='{{se.citation}}')
+                    applicability
+                        coverage("*ngFor"="let c of knart.coverages")
+                            focus(value='{{c.focus}}')
+                                description(value='{{c.description}}')
+                                    value(code='{{c.value.code}}', codeSystem='{{c.value.codeSystem}}', codeSystemName='{{c.value.codeSystemName}}')
+                                        dt:displayname(value='{{c.value.displayName}}')
+                    contributions
+                        contribution("*ngFor"="let contribution of knart.contributions")
+                            contributor(xsi:type='{{contribution.type}}')
+                                contacts
+                                    contact("*ngFor"="let c of contribution.contacts" value='{{c.value}}' use='{{c.use}}')
+                                name("*ngFor"="let n of contribution.names")
+                                    dt:part(value='{{n.given}}', type='GIV')
+                                    dt:part(value='{{n.family}}', type='FAM')
+                                affiliation("*ngFor"="let a of contribution.affiliations")
+                                    name(value='{{a.name}}')
+                                addresses
+                                    address("*ngFor"="let a of contribution.addresses")
+                                        dt:part(type="SAL" value="{{a.street}}")
+                                        dt:part(type="CTY" value="{{a.city}}")
+                                        dt:part(type="ZIP" value="{{a.zip}}")
+                                        dt:part(type="STA" value="{{a.state}}")
+                                        dt:part(type="CNT" value="{{a.country}}")
+                            role(value='{{contribution.role}}')
+                    externalData
+                        def(name='Patient')
+                            elm:expression(xsi:type='elm:SingletonFrom')
+                                elm:operand(xsi:type='elm:Retrieve', datatype='vmr:EvaluatedPerson')
+                    expressions
+                        def(name='PatientAgeInMonths')
+                            elm:expression(xsi:type='elm:DurationBetween', precision='Month')
+                                elm:annotation(xsi:type='a:Annotation')
+                                    a:s Number of months from patient's birth time to today
+                                elm:operand(xsi:type='elm:Property', path='birthTime')
+                                    elm:source(xsi:type='elm:ExpressionRef', name='Patient')
+                                elm:operand(xsi:type='elm:Today')
+                    conditions
+                        condition
+                            logic(xsi:type='elm:And')
+                                elm:annotation(xsi:type='a:Annotation')
+                                    a:s Patient is between 2 months and 7 years of age
+                                elm:operand(xsi:type='elm:GreaterOrEqual')
+                                    elm:annotation(xsi:type='a:Annotation')
+                                        a:s Patient is more than 2 months old
+                                    elm:operand(xsi:type='elm:ExpressionRef', name='PatientAgeInMonths')
+                                    elm:operand(xsi:type='elm:Literal', valuetype='t:Integer', value='2')
+                                    elm:operand(xsi:type='elm:LessOrEqual')
+                                        elm:annotation(xsi:type='a:Annotation')
+                                            a:s Patient is less than 7 years old (or 84 months)
+                                        elm:operand(xsi:type='elm:ExpressionRef', name='PatientAgeInMonths')
+                                        elm:operand(xsi:type='elm:Literal', valuetype='t:Integer', value='84')
+                            conditionRole(value='ApplicableScenario')
+                actionGroup
+                    title(value='knart.actionGroup.title')
+                    //- representedConcepts
+                        concept(code='38213-5', codesystem='2.16.840.1.113883.6.1', codesystemname='LOINC')
+                            dt:displayName(value='FLACC pain assessment panel:-:Pt:^Patient:-')
+                    //- subelements
+                    //-     simpleaction(xsi:type='DeclareResponseAction', name='Responses')
+                    //-         simpleaction(xsi:type='CollectInformationAction')
+                    //-             documentationconcept
+                    //-                 prompt(value='Face')
+                    //-                     itemcodes
+                    //-                         itemcode(code='38216-8', codesystem='2.16.840.1.113883.6.1', codesystemname='LOINC')
+                    //-                     responsedatatype(value='Integer')
+                    //-                         responsecardinality(value='Single')
+                    //-                             responserange(xsi:type='EnumerationConstraint', strictselection='true')
+                    //-                                 constrainttype(value='List')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='0')
+                    //-                                             displaytext(value='No particular expression or smile')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='1')
+                    //-                                             displaytext(value='Occasional grimace or frown, withdrawn, disinterested')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='2')
+                    //-                                             displaytext(value='Frequent to constant quivering chin, clenched jaw')
+                    //-             responsebinding(property='Face')
+                    //-         simpleaction(xsi:type='CollectInformationAction')
+                    //-             documentationconcept
+                    //-                 prompt(value='Legs')
+                    //-                     itemcodes
+                    //-                         itemcode(code='38217-6', codesystem='2.16.840.1.113883.6.1', codesystemname='LOINC')
+                    //-                     responsedatatype(value='Integer')
+                    //-                         responsecardinality(value='Single')
+                    //-                             responserange(xsi:type='EnumerationConstraint', strictselection='true')
+                    //-                                 constrainttype(value='List')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='0')
+                    //-                                             displaytext(value='Normal position or relaxed')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='1')
+                    //-                                             displaytext(value='Uneasy, restless, tense')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='2')
+                    //-                                             displaytext(value='Kicking, or legs drawn up')
+                    //-             responsebinding(property='Legs')
+                    //-         simpleaction(xsi:type='CollectInformationAction')
+                    //-             documentationconcept
+                    //-                 prompt(value='Activity')
+                    //-                     itemcodes
+                    //-                         itemcode(code='38218-4', codesystem='2.16.840.1.113883.6.1', codesystemname='LOINC')
+                    //-                     responsedatatype(value='Integer')
+                    //-                         responsecardinality(value='Single')
+                    //-                             responserange(xsi:type='EnumerationConstraint', strictselection='true')
+                    //-                                 constrainttype(value='List')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='0')
+                    //-                                             displaytext(value='Lying quietly, normal position, moves easily')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='1')
+                    //-                                             displaytext(value='Squirming, shifting back and forth, tense')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='2')
+                    //-                                             displaytext(value='Arched, rigid or jerking')
+                    //-             responsebinding(property='Activity')
+                    //-         simpleaction(xsi:type='CollectInformationAction')
+                    //-             documentationconcept
+                    //-                 prompt(value='Cry')
+                    //-                     itemcodes
+                    //-                         itemcode(code='38219-2', codesystem='2.16.840.1.113883.6.1', codesystemname='LOINC')
+                    //-                     responsedatatype(value='Integer')
+                    //-                         responsecardinality(value='Single')
+                    //-                             responserange(xsi:type='EnumerationConstraint', strictselection='true')
+                    //-                                 constrainttype(value='List')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='0')
+                    //-                                             displaytext(value='No cry (awake or asleep)')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='1')
+                    //-                                             displaytext(value='Moans or whimpers; occasional complaint')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='2')
+                    //-                                             displaytext(value='Crying steadily, screams or sobs, frequent complaints')
+                    //-             responsebinding(property='Cry')
+                    //-         simpleaction(xsi:type='CollectInformationAction')
+                    //-             documentationconcept
+                    //-                 prompt(value='Consolability')
+                    //-                     itemcodes
+                    //-                         itemcode(code='38220-0', codesystem='2.16.840.1.113883.6.1', codesystemname='LOINC')
+                    //-                     responsedatatype(value='Integer')
+                    //-                         responsecardinality(value='Single')
+                    //-                             responserange(xsi:type='EnumerationConstraint', strictselection='true')
+                    //-                                 constrainttype(value='List')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='0')
+                    //-                                             displaytext(value='Content, relaxed')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='1')
+                    //-                                             displaytext(value='Reassured by occasional touching, hugging or being talked to, distractible')
+                    //-                                     item
+                    //-                                         value(xsi:type='elm:Literal', valuetype='t:Integer', value='2')
+                    //-                                             displaytext(value='Difficult to console or comfort')
+                    //-             responsebinding(property='Consolability')
+                    //-         simpleaction(xsi:type='CollectInformationAction')
+                    //-             documentationconcept
+                    //-                 prompt(value='Total Score')
+                    //-                     description(value='Each of the five (5) categories is scored from 0-2, which results in a total score between 0 and 10.')
+                    //-                         itemcodes
+                    //-                             itemcode(code='38215-0', codesystem='2.16.840.1.113883.6.1', codesystemname='LOINC')
+                    //-                         responsedatatype(value='Integer')
+                    //-                             responsecardinality(value='Single')
+                    //-                                 responserange(xsi:type='ExpressionConstraint')
+                    //-                                     constrainttype(value='Minimum')
+                    //-                                         constraint(xsi:type='elm:Literal', valuetype='t:Integer', value='0')
+                    //-                                 responserange(xsi:type='ExpressionConstraint')
+                    //-                                     constrainttype(value='Maximum')
+                    //-                                         constraint(xsi:type='elm:Literal', valuetype='t:Integer', value='10')
+                    //-             initialvalue(xsi:type='elm:Sum')
+                    //-                 elm:source(xsi:type='elm:List')
+                    //-                     elm:element(xsi:type='elm:Property', path='Face')
+                    //-                         elm:source(xsi:type='elm:ParameterRef', name='Responses')
+                    //-                     elm:element(xsi:type='elm:Property', path='Legs')
+                    //-                         elm:source(xsi:type='elm:ParameterRef', name='Responses')
+                    //-                     elm:element(xsi:type='elm:Property', path='Activity')
+                    //-                         elm:source(xsi:type='elm:ParameterRef', name='Responses')
+                    //-                     elm:element(xsi:type='elm:Property', path='Cry')
+                    //-                         elm:source(xsi:type='elm:ParameterRef', name='Responses')
+                    //-                     elm:element(xsi:type='elm:Property', path='Consolability')
+                    //-                         elm:source(xsi:type='elm:ParameterRef', name='Responses')
+                    //-             responsebinding(property='TotalScore')

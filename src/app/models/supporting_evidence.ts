@@ -1,3 +1,3 @@
 export class SupportingEvidence {
-	citation: string;
+	citation: string = '';
 }

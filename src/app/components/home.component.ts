@@ -1,11 +1,14 @@
-import {Component, Output} from '@angular/core';
+import {Component, Output, Inject} from '@angular/core';
 import {Knart} from '../models/knart';
 import {ArtifactType} from '../models/artifact_type';
 import {Format} from '../models/format';
 import {Status} from '../models/status';
 import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
 
+// import {window} from '@angular/browser';
+
 import {XmlLoaderService} from '../services/xml_loader.service';
+import {XmlExporterService} from '../services/xml_exporter.service';
 
 import {Http} from '@angular/http';
 
@@ -17,15 +20,16 @@ export class HomeComponent {
 
     editor_tab: 'metadata' | 'contributions' | 'related_resources' | 'model_references' | 'supporting_evidence';
     runtime_tab: 'conditions' | 'expressions' | 'external_data' | 'coverages';
-    viewer_tab: 'action_group' | "preview" | 'original';
+    viewer_tab: 'action_group' | "preview" | 'original' | 'export';
 
     knart: Knart;
     documentFormat: Format = Format.HL7CDSKnowledgeArtifact13; // Just a default.
 
     remoteUrl: string = null;
     originalContentString: string;
+    originalFileName: string;
 
-    constructor(public toasterService: ToasterService, private xmlLoader: XmlLoaderService) {
+    constructor( @Inject('Window') private window: Window, public toasterService: ToasterService, private xmlLoader: XmlLoaderService, private xmlExporter: XmlExporterService) {
         console.log("HomeComponent has been initialized.");
         this.reset();
 
@@ -33,7 +37,7 @@ export class HomeComponent {
         // this.createFromTemplate();
 
         // Or to always start with a remote document. (Useful for debugging.)
-        // this.loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml');
+        this.loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml');
         // this.loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml');
 
     }
@@ -42,7 +46,7 @@ export class HomeComponent {
         if (!!this.remoteUrl) {
             this.loadRemoteFile(this.remoteUrl);
         } else {
-			this.toasterService.pop('warning', "Need URL", "Please provide a URL to load.");
+            this.toasterService.pop('warning', "Need URL", "Please provide a URL to load.");
         }
     }
 
@@ -65,18 +69,27 @@ export class HomeComponent {
         this.runtime_tab = 'conditions';
         // this.runtime_tab = 'coverages';
         // this.viewer_tab = 'preview';
-        this.viewer_tab = 'action_group';
+        this.viewer_tab = 'export';
         this.remoteUrl = null;
         this.originalContentString = null;
+        this.originalFileName = null;
     }
 
-    export() {
-        this.toasterService.pop('warning', "Not Implemented", "File exports haven't been implemented yet, sorry!");
+    download() {
+        this.toasterService.pop('warning', "Not Fully Implemented", "Some data will be missing from the export!");
+        let doc = this.xmlExporter.createXMLDocumentFrom(this.knart);
+        let serializer: XMLSerializer = new XMLSerializer();
+        let str = serializer.serializeToString(doc);
+
+        console.log(doc);
+        window.open("data:text/json;charset=utf-8," + str);
+
+        var pom = document.createElement('a');
+        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(str));
+        pom.setAttribute('download', this.originalFileName ? this.originalFileName : 'knart.xml');
+        pom.click();
     }
 
-    canRevert(): boolean {
-        return !!this.originalContentString
-    }
     revert(): void {
         if (this.canRevert()) {
             this.loadFromContentString(this.originalContentString);
@@ -85,13 +98,16 @@ export class HomeComponent {
         }
     }
 
+
+    canRevert(): boolean {
+        return !!this.originalContentString
+    }
+
     createFromTemplate() {
         let k = new Knart();
-        // k.title = "My New Knart";
         k.title = null;
-        // k.description = 'Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.';
         k.description = null;
-        k.schemaIdentifier = Knart.DEFAULT_SCHEMA_IDENTIFIER;
+        k.schemaIdentifier = Knart.KNART_NAMESPACE;
         // k.artifactType = ArtifactType.OrderSet.value;
         this.knart = k;
     }

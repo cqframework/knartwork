@@ -21,9 +21,13 @@ import {ExternalDataComponent} from './app/components/external_data.component';
 import {SupportingEvidenceComponent} from './app/components/supporting_evidence.component';
 
 import {PreviewActionGroupComponent} from './app/components/preview_action_group.component';
+// import {ExportComponent} from './app/components/export.component';
 
 import {KnartworkService} from './app/services/knartwork.service';
 import {XmlLoaderService} from './app/services/xml_loader.service';
+import {XmlExporterService} from './app/services/xml_exporter.service';
+
+// import {ExportModule} from './app/modules/export.module';
 
 enableProdMode();
 
@@ -47,8 +51,8 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         FormsModule,
         HttpModule,
         ToasterModule
-        // DragulaModule
-    ],       // module dependencies
+        // ExportModule // Our own custom voodoo.
+    ],
     declarations: [
         AppComponent,
         ApiComponent,
@@ -65,12 +69,15 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         CoveragesComponent,
         ExternalDataComponent,
         PreviewActionGroupComponent
+        // ExportComponent
     ],   // components and directives
     providers: [
         appRoutingProviders,
         ToasterService,
         KnartworkService,
-		XmlLoaderService
+        XmlLoaderService,
+        XmlExporterService,
+		{ provide: 'Window',  useValue: window }
     ],                    // services
     bootstrap: [AppComponent]     // root component
 })

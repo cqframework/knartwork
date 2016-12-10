@@ -1,4 +1,4 @@
 export class ModelReference {
-	description: string;
-	referencedModel: string;
+	description: string = '';
+	referencedModel: string = '';
 }

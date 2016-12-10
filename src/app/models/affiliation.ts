@@ -1,3 +1,3 @@
 export class Affiliation {
-    name: string;
+    name: string = '';
 }

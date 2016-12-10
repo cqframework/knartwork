@@ -1,4 +1,4 @@
 export class Expression {
-    name: string;
-    logic: string;
+    name: string = '';
+    logic: string = '';
 }

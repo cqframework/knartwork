@@ -11,17 +11,18 @@ import {ExternalData} from './external_data';
 import {Coverage} from './coverage';
 import {Condition} from './condition';
 import {Expression} from './expression';
+import {LifeCycleEvent} from './life_cycle_event';
 
 export class Knart {
 
     // Simple metadata elements
-    title: string;
-    description: string;
-    schemaIdentifier: string;
+    title: string = '';
+    description: string = '';
+    schemaIdentifier: string = '';
     status: string = Status.DRAFT.code; // Reasonable default
     artifactType: string = ArtifactType.DOCUMENTATION_TEMPLATE.code; // Reasonable default
 
-    static DEFAULT_SCHEMA_IDENTIFIER = 'urn:hl7-org:knowledgeartifact:r1';
+    static KNART_NAMESPACE = 'urn:hl7-org:knowledgeartifact:r1';
 
     // Complex metadata elements
     identifiers: Array<Identifier> = new Array<Identifier>();
@@ -33,8 +34,9 @@ export class Knart {
     coverages: Array<Coverage> = new Array<Coverage>();
     conditions: Array<Condition> = new Array<Condition>();
     expressions: Array<Expression> = new Array<Expression>();
+    lifeCycleEvents: Array<LifeCycleEvent> = new Array<LifeCycleEvent>();
 
-    // The meat!
+    // The recursive part.
     actionGroup: ActionGroup = new ActionGroup();
 
     document: Document;

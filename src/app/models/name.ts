@@ -1,4 +1,4 @@
 export class Name {
-	family: string;
-	given: string;
+	family: string = '';
+	given: string = '';
 }

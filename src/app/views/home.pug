@@ -4,7 +4,7 @@ toaster-container
 .container-fluid("*ngIf"="!knart")
     .row
         //- button("(click)"="popToast()") pop toast
-        .col-lg-6.col-lg-offset-3
+        .col-sm-6.col-sm-offset-3
             #loader
                 div.text-center
                     h1 Start fresh and..
@@ -119,7 +119,11 @@ toaster-container
                     li(role="presentation" "[class.active]"="viewer_tab == 'original'")
                         a#actions_tab_link(aria-controls="original" data-toggle="viewer_tab" "(click)"="viewer_tab = 'original'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-chevron-left
-                            |  Original
+                            |  Original XML
+                    //- li(role="presentation" "[class.active]"="viewer_tab == 'export'")
+                        a#export_tab_link(aria-controls="original" data-toggle="viewer_tab" "(click)"="viewer_tab = 'export'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-chevron-left
+                            |  Current XML
                 .tab-content
 
                     action_group.tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'action_group'" "[knart]"="knart" "[actionGroup]"="knart.actionGroup")
@@ -129,4 +133,6 @@ toaster-container
                             pre("*ngIf"="originalContentString" lang="xml") {{originalContentString}}
                             i.text-muted("*ngIf"="!originalContentString")
                                 small (only applies to artifacts loaded from a local file)
+                    //- export.tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'export'" "[knart]"="knart")
+
         p.clearfix
