@@ -19,8 +19,8 @@ import {Http} from '@angular/http';
 export class HomeComponent {
 
     editor_tab: 'metadata' | 'contributions' | 'related_resources' | 'model_references' | 'supporting_evidence';
-    runtime_tab: 'conditions' | 'expressions' | 'external_data' | 'coverages';
-    viewer_tab: 'action_group' | "preview" | 'original' | 'export';
+    runtime_tab: 'conditions' | 'expressions' | 'external_data' | 'coverages' | 'history';
+    viewer_tab: 'action_group' | "preview" | 'original';// | 'export';
 
     knart: Knart;
     documentFormat: Format = Format.HL7CDSKnowledgeArtifact13; // Just a default.
@@ -50,11 +50,17 @@ export class HomeComponent {
         }
     }
 
+    filenameFor(url: string): string {
+        let path = url.substring(url.lastIndexOf("/") + 1);
+        return (path.match(/[^.]+(\.[^?#]+)?/) || [])[0];
+    }
+
     loadRemoteFile(url: string) {
         this.xmlLoader.loadXMLFromURL(url).subscribe(data => {
             let raw: string = data.text();
             console.log('Loaded raw remote file from: ' + url);
             this.loadFromContentString(raw);
+            this.originalFileName = this.filenameFor(url);
         });
     }
 
@@ -69,7 +75,7 @@ export class HomeComponent {
         this.runtime_tab = 'conditions';
         // this.runtime_tab = 'coverages';
         // this.viewer_tab = 'preview';
-        this.viewer_tab = 'export';
+        this.viewer_tab = 'action_group';
         this.remoteUrl = null;
         this.originalContentString = null;
         this.originalFileName = null;
@@ -82,8 +88,11 @@ export class HomeComponent {
         let str = serializer.serializeToString(doc);
 
         console.log(doc);
-        window.open("data:text/json;charset=utf-8," + str);
 
+        // To open in a new tab. (Useful for debugging)
+        // window.open("data:text/json;charset=utf-8," + str);
+
+        // To download the file.
         var pom = document.createElement('a');
         pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(str));
         pom.setAttribute('download', this.originalFileName ? this.originalFileName : 'knart.xml');
@@ -116,15 +125,15 @@ export class HomeComponent {
         let knart = new Knart();
         var parser = new DOMParser();
         var doc: Document = parser.parseFromString(content, "application/xml");
-        // try {
-        this.knart = this.xmlLoader.loadFromXMLDocument(doc);
-        this.originalContentString = content;
-        this.toasterService.pop('success', "Loaded!", "Go do your thing.");
-        // } catch (e) {
-        //     console.log(e);
-        //     this.toasterService.pop('error', 'Well blarg.', "Your file couldn't read or parsed. Is it valid and well-formed?");
-        //     this.reset();
-        // }
+        try {
+            this.knart = this.xmlLoader.loadFromXMLDocument(doc);
+            this.originalContentString = content;
+            this.toasterService.pop('success', "Loaded!", "Go do your thing.");
+        } catch (e) {
+            console.log(e);
+            this.toasterService.pop('error', 'Well blarg.', "Your file couldn't read or parsed. Is it valid and well-formed?");
+            this.reset();
+        }
     }
 
     openFile(event) {
@@ -136,7 +145,10 @@ export class HomeComponent {
                 // this text is the content of the file
                 this.loadFromContentString(reader.result);
             }
-            reader.readAsText(input.files[0]);
+            let file: File = input.files[0];
+            reader.readAsText(file);
+            this.originalFileName = file.name;
+            console.log("File name: " + this.originalFileName);
         } else {
             this.reset();
         }

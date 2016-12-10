@@ -41,6 +41,10 @@ export class Knart {
 
     document: Document;
 
+	// constructor() {
+	// 	this.lifeCycleEvents.push(new LifeCycleEvent());
+	// }
+
     artifactTypes(): Array<ArtifactType> {
         return ArtifactType.ALL;
     }

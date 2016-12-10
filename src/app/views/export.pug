@@ -1,88 +1,88 @@
-.container-fluid
-    .row
-        section.col-md-12
-            h2 If you download your work, this will be the contents of the file.
-        section.col-md-12
-            //- pre(type="xml")
-            knowledgeDocument(xmlns='urn:hl7-org:knowledgeartifact:r1', xmlns:vmr='urn:hl7-org:vmr:r2', xmlns:dt='urn:hl7-org:cdsdt:r2', xmlns:elm='urn:hl7-org:elm:r1', xmlns:t='urn:hl7-org:elm-types:r1', xmlns:a='urn:hl7-org:cql-annotations:r1', xmlns:p1='http://www.w3.org/1999/xhtml', xmlns:xml='http://www.w3.org/XML/1998/namespace', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance')
-                metadata
-                    identifiers
-                        identifier("*ngFor"="let i of knart.identifiers", root='{{i.root}}', "[version]"='i.version')
-                    artifacttype(value='{{knart.artifactType}}')
-                    schemaIdentifier(root='{{knart.schemaIdentifier}}' version='1')
-                    dataModels
-                        modelReference("*ngFor"="let mr of knart.modelReferences")
-                            description(value='{{mr.description}}')
-                                referencedModel(value='{{mr.referencedModel}}')
-                    title(value='{{knart.title}}')
-                    relatedResources
-                        relatedResource("*ngFor"="let rr of knart.relatedResources")
-                            relationship(value='{{rr.relationship}}')
-                                resources
-                                    resource("*ngFor"="let r of rr.resources")
-                                        title(value='{{r.title}}')
-                                            location(value='{{r.location}}')
-                                                description(value='{{r.description}}')
-                    status(value='{{knart.status}}')
-                    supportingEvidence
-                        evidence("*ngFor"="let se of knart.supportingEvidence")
-                            resources
-                                resource
-                                    citation(value='{{se.citation}}')
-                    applicability
-                        coverage("*ngFor"="let c of knart.coverages")
-                            focus(value='{{c.focus}}')
-                                description(value='{{c.description}}')
-                                    value(code='{{c.value.code}}', codeSystem='{{c.value.codeSystem}}', codeSystemName='{{c.value.codeSystemName}}')
-                                        dt:displayname(value='{{c.value.displayName}}')
-                    contributions
-                        contribution("*ngFor"="let contribution of knart.contributions")
-                            contributor(xsi:type='{{contribution.type}}')
-                                contacts
-                                    contact("*ngFor"="let c of contribution.contacts" value='{{c.value}}' use='{{c.use}}')
-                                name("*ngFor"="let n of contribution.names")
-                                    dt:part(value='{{n.given}}', type='GIV')
-                                    dt:part(value='{{n.family}}', type='FAM')
-                                affiliation("*ngFor"="let a of contribution.affiliations")
-                                    name(value='{{a.name}}')
-                                addresses
-                                    address("*ngFor"="let a of contribution.addresses")
-                                        dt:part(type="SAL" value="{{a.street}}")
-                                        dt:part(type="CTY" value="{{a.city}}")
-                                        dt:part(type="ZIP" value="{{a.zip}}")
-                                        dt:part(type="STA" value="{{a.state}}")
-                                        dt:part(type="CNT" value="{{a.country}}")
-                            role(value='{{contribution.role}}')
-                    externalData
-                        def(name='Patient')
-                            elm:expression(xsi:type='elm:SingletonFrom')
-                                elm:operand(xsi:type='elm:Retrieve', datatype='vmr:EvaluatedPerson')
-                    expressions
-                        def(name='PatientAgeInMonths')
-                            elm:expression(xsi:type='elm:DurationBetween', precision='Month')
-                                elm:annotation(xsi:type='a:Annotation')
-                                    a:s Number of months from patient's birth time to today
-                                elm:operand(xsi:type='elm:Property', path='birthTime')
-                                    elm:source(xsi:type='elm:ExpressionRef', name='Patient')
-                                elm:operand(xsi:type='elm:Today')
-                    conditions
-                        condition
-                            logic(xsi:type='elm:And')
-                                elm:annotation(xsi:type='a:Annotation')
-                                    a:s Patient is between 2 months and 7 years of age
-                                elm:operand(xsi:type='elm:GreaterOrEqual')
-                                    elm:annotation(xsi:type='a:Annotation')
-                                        a:s Patient is more than 2 months old
-                                    elm:operand(xsi:type='elm:ExpressionRef', name='PatientAgeInMonths')
-                                    elm:operand(xsi:type='elm:Literal', valuetype='t:Integer', value='2')
-                                    elm:operand(xsi:type='elm:LessOrEqual')
-                                        elm:annotation(xsi:type='a:Annotation')
-                                            a:s Patient is less than 7 years old (or 84 months)
-                                        elm:operand(xsi:type='elm:ExpressionRef', name='PatientAgeInMonths')
-                                        elm:operand(xsi:type='elm:Literal', valuetype='t:Integer', value='84')
-                            conditionRole(value='ApplicableScenario')
-                actionGroup
-                    title(value='knart.actionGroup.title')
+//- .container-fluid
+//-     .row
+//-         section.col-md-12
+//-             h2 If you download your work, this will be the contents of the file.
+//-         section.col-md-12
+//-             //- pre(type="xml")
+//-             knowledgeDocument(xmlns='urn:hl7-org:knowledgeartifact:r1', xmlns:vmr='urn:hl7-org:vmr:r2', xmlns:dt='urn:hl7-org:cdsdt:r2', xmlns:elm='urn:hl7-org:elm:r1', xmlns:t='urn:hl7-org:elm-types:r1', xmlns:a='urn:hl7-org:cql-annotations:r1', xmlns:p1='http://www.w3.org/1999/xhtml', xmlns:xml='http://www.w3.org/XML/1998/namespace', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance')
+//-                 metadata
+//-                     identifiers
+//-                         identifier("*ngFor"="let i of knart.identifiers", root='{{i.root}}', "[version]"='i.version')
+//-                     artifacttype(value='{{knart.artifactType}}')
+//-                     schemaIdentifier(root='{{knart.schemaIdentifier}}' version='1')
+//-                     dataModels
+//-                         modelReference("*ngFor"="let mr of knart.modelReferences")
+//-                             description(value='{{mr.description}}')
+//-                                 referencedModel(value='{{mr.referencedModel}}')
+//-                     title(value='{{knart.title}}')
+//-                     relatedResources
+//-                         relatedResource("*ngFor"="let rr of knart.relatedResources")
+//-                             relationship(value='{{rr.relationship}}')
+//-                                 resources
+//-                                     resource("*ngFor"="let r of rr.resources")
+//-                                         title(value='{{r.title}}')
+//-                                             location(value='{{r.location}}')
+//-                                                 description(value='{{r.description}}')
+//-                     status(value='{{knart.status}}')
+//-                     supportingEvidence
+//-                         evidence("*ngFor"="let se of knart.supportingEvidence")
+//-                             resources
+//-                                 resource
+//-                                     citation(value='{{se.citation}}')
+//-                     applicability
+//-                         coverage("*ngFor"="let c of knart.coverages")
+//-                             focus(value='{{c.focus}}')
+//-                                 description(value='{{c.description}}')
+//-                                     value(code='{{c.value.code}}', codeSystem='{{c.value.codeSystem}}', codeSystemName='{{c.value.codeSystemName}}')
+//-                                         dt:displayname(value='{{c.value.displayName}}')
+//-                     contributions
+//-                         contribution("*ngFor"="let contribution of knart.contributions")
+//-                             contributor(xsi:type='{{contribution.type}}')
+//-                                 contacts
+//-                                     contact("*ngFor"="let c of contribution.contacts" value='{{c.value}}' use='{{c.use}}')
+//-                                 name("*ngFor"="let n of contribution.names")
+//-                                     dt:part(value='{{n.given}}', type='GIV')
+//-                                     dt:part(value='{{n.family}}', type='FAM')
+//-                                 affiliation("*ngFor"="let a of contribution.affiliations")
+//-                                     name(value='{{a.name}}')
+//-                                 addresses
+//-                                     address("*ngFor"="let a of contribution.addresses")
+//-                                         dt:part(type="SAL" value="{{a.street}}")
+//-                                         dt:part(type="CTY" value="{{a.city}}")
+//-                                         dt:part(type="ZIP" value="{{a.zip}}")
+//-                                         dt:part(type="STA" value="{{a.state}}")
+//-                                         dt:part(type="CNT" value="{{a.country}}")
+//-                             role(value='{{contribution.role}}')
+//-                     externalData
+//-                         def(name='Patient')
+//-                             elm:expression(xsi:type='elm:SingletonFrom')
+//-                                 elm:operand(xsi:type='elm:Retrieve', datatype='vmr:EvaluatedPerson')
+//-                     expressions
+//-                         def(name='PatientAgeInMonths')
+//-                             elm:expression(xsi:type='elm:DurationBetween', precision='Month')
+//-                                 elm:annotation(xsi:type='a:Annotation')
+//-                                     a:s Number of months from patient's birth time to today
+//-                                 elm:operand(xsi:type='elm:Property', path='birthTime')
+//-                                     elm:source(xsi:type='elm:ExpressionRef', name='Patient')
+//-                                 elm:operand(xsi:type='elm:Today')
+//-                     conditions
+//-                         condition
+//-                             logic(xsi:type='elm:And')
+//-                                 elm:annotation(xsi:type='a:Annotation')
+//-                                     a:s Patient is between 2 months and 7 years of age
+//-                                 elm:operand(xsi:type='elm:GreaterOrEqual')
+//-                                     elm:annotation(xsi:type='a:Annotation')
+//-                                         a:s Patient is more than 2 months old
+//-                                     elm:operand(xsi:type='elm:ExpressionRef', name='PatientAgeInMonths')
+//-                                     elm:operand(xsi:type='elm:Literal', valuetype='t:Integer', value='2')
+//-                                     elm:operand(xsi:type='elm:LessOrEqual')
+//-                                         elm:annotation(xsi:type='a:Annotation')
+//-                                             a:s Patient is less than 7 years old (or 84 months)
+//-                                         elm:operand(xsi:type='elm:ExpressionRef', name='PatientAgeInMonths')
+//-                                         elm:operand(xsi:type='elm:Literal', valuetype='t:Integer', value='84')
+//-                             conditionRole(value='ApplicableScenario')
+//-                 actionGroup
+//-                     title(value='knart.actionGroup.title')
                     //- representedConcepts
                         concept(code='38213-5', codesystem='2.16.840.1.113883.6.1', codesystemname='LOINC')
                             dt:displayName(value='FLACC pain assessment panel:-:Pt:^Patient:-')

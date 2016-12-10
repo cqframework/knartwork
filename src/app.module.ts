@@ -19,6 +19,7 @@ import {ExpressionsComponent} from './app/components/expressions.component';
 import {CoveragesComponent} from './app/components/coverages.component';
 import {ExternalDataComponent} from './app/components/external_data.component';
 import {SupportingEvidenceComponent} from './app/components/supporting_evidence.component';
+import {HistoryComponent} from './app/components/history.component';
 
 import {PreviewActionGroupComponent} from './app/components/preview_action_group.component';
 // import {ExportComponent} from './app/components/export.component';
@@ -68,7 +69,8 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         SupportingEvidenceComponent,
         CoveragesComponent,
         ExternalDataComponent,
-        PreviewActionGroupComponent
+        PreviewActionGroupComponent,
+		HistoryComponent
         // ExportComponent
     ],   // components and directives
     providers: [

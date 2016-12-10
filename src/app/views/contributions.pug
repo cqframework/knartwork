@@ -9,7 +9,6 @@
     div("*ngIf"="knart.contributions.length > 0")
         div.contribution.well.row("*ngFor"="let contribution of knart.contributions")
             .col-sm-6.form-group
-                //- label(for="contribution_role_select") Type
                 select.form-control(name="contribution_role_select" "[(ngModel)]"="contribution.role")
                     option("[value]"="role.code" "[selected]"="contribution.role == role.code" "*ngFor"="let role of roleTypes()") {{role.label}}
             .col-sm-6

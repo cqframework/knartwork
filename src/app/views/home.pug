@@ -98,11 +98,16 @@ toaster-container
                         a#coverages_tab_link(aria-controls="coverages" data-toggle="runtime_tab" "(click)"="runtime_tab = 'coverages'" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-check
                             |  Applicability
+                    li(role="presentation" "[class.active]"="runtime_tab == 'history'")
+                        a#coverages_tab_link(aria-controls="history" data-toggle="runtime_tab" "(click)"="runtime_tab = 'history'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-list
+                            |  History
                 .tab-content
                     conditions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'conditions'" "[knart]"="knart")
                     external_data.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'external_data'" "[knart]"="knart")
                     expressions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'expressions'" "[knart]"="knart")
                     coverages.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'coverages'" "[knart]"="knart")
+                    history.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'history'" "[knart]"="knart")
 
         p.clearfix
         .col-md-12

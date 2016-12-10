@@ -31,6 +31,7 @@ import {DeclareResponseAction} from '../models/actions/declare_response_action';
 import {CreateAction} from '../models/actions/create_action';
 import {ResponseItem} from '../models/actions/response_item';
 import {Value} from '../models/value';
+import {LifeCycleEvent} from '../models/life_cycle_event';
 
 
 @Injectable()
@@ -76,6 +77,7 @@ export class XmlLoaderService {
         this.loadSupportingEvidence(kd);
         this.loadCoverages(kd);
         this.loadContributions(kd);
+        this.loadLifeCycleEvents(kd);
         this.loadModelReferences(kd);
         this.loadExternalData(kd);
         this.loadExpressions(kd);
@@ -142,21 +144,21 @@ export class XmlLoaderService {
         action.textEquivalent = this.getString('string(./k:textEquivalent/@value)', dcNode);
         action.responseBinding = this.getString('string(./k:responseBinding/@property)', ciaNode);
 
-		action.initialValueType = this.getString('string(./k:initialValue/@xsi:type)', ciaNode);
-		action.initialValue = this.serializeChildNodesToString('./k:initialValue/*', ciaNode);
+        action.initialValueType = this.getString('string(./k:initialValue/@xsi:type)', ciaNode);
+        action.initialValue = this.serializeChildNodesToString('./k:initialValue/*', ciaNode);
 
-		// Question codes
-		let itemCodeNodes = this.getOrdered('./k:itemCodes/k:itemCode', dcNode);
+        // Question codes
+        let itemCodeNodes = this.getOrdered('./k:itemCodes/k:itemCode', dcNode);
         var itemCodeNode: Node;
         while (itemCodeNode = itemCodeNodes.iterateNext()) {
             let ic = new Value();
             ic.code = this.getString('string(./@code)', itemCodeNode);
             ic.codeSystem = this.getString('string(./@codeSystem)', itemCodeNode);
             ic.codeSystemName = this.getString('string(./@codeSystemName)', itemCodeNode);
-			action.itemCodes.push(ic);
+            action.itemCodes.push(ic);
         }
 
-		// Responses
+        // Responses
         let itemNodes = this.getOrdered('./k:responseRange/k:item', dcNode);
         var itemNode: Node;
         while (itemNode = itemNodes.iterateNext()) {
@@ -165,32 +167,32 @@ export class XmlLoaderService {
             item.valueType = this.getString('string(./k:value/@valueType)', itemNode);
             item.value = this.getString('string(./k:value/@value)', itemNode);
             item.displayText = this.getString('string(./k:displayText/@value)', itemNode);
-			action.responseItems.push(item);
+            action.responseItems.push(item);
 
 
-			let codeNodes = this.getOrdered('./k:codes/k:code', itemNode);
-	        var codeNode: Node;
-			while (codeNode = codeNodes.iterateNext()) {
-				let code = new Value();
-				code.code = this.getString('string(./@code)', codeNode);
-				code.codeSystem = this.getString('string(./@codeSystem)', codeNode);
-				code.codeSystemName = this.getString('string(./@codeSystemName)', codeNode);
-				item.itemCodes.push(code);
-			}
+            let codeNodes = this.getOrdered('./k:codes/k:code', itemNode);
+            var codeNode: Node;
+            while (codeNode = codeNodes.iterateNext()) {
+                let code = new Value();
+                code.code = this.getString('string(./@code)', codeNode);
+                code.codeSystem = this.getString('string(./@codeSystem)', codeNode);
+                code.codeSystemName = this.getString('string(./@codeSystemName)', codeNode);
+                item.itemCodes.push(code);
+            }
         }
         console.log("Loaded CollectInformationAction");
         return action;
     }
 
-	serializeChildNodesToString(query: string, base: Node): string {
-		let children = this.getOrdered(query, base);
+    serializeChildNodesToString(query: string, base: Node): string {
+        let children = this.getOrdered(query, base);
         let childNode: Node;
         let tmp = '';
         while (childNode = children.iterateNext()) {
             tmp += this.serializer.serializeToString(childNode) + "\n";
         }
-		return tmp;
-	}
+        return tmp;
+    }
 
     loadCreateAction(caNode: Node): CreateAction {
         let action = new CreateAction();
@@ -286,6 +288,17 @@ export class XmlLoaderService {
             ed.name = this.getString('string(./@name)', node);
             ed.content = this.serializer.serializeToString((node as any).children[0]);
             this.knart.externalData.push(ed);
+        }
+    }
+
+    loadLifeCycleEvents(kd: Node) {
+        let artifactLifeCycleEvents = this.getOrdered("./k:metadata/k:eventHistory/k:artifactLifeCycleEvent", kd);
+        var node: Node;
+        while (node = artifactLifeCycleEvents.iterateNext()) {
+            let e = new LifeCycleEvent();
+            e.type = this.getString('string(./k:eventType/@value)', node);
+            e.datetime = this.getString('string(./k:eventDateTime/@value)', node);
+            this.knart.lifeCycleEvents.push(e);
         }
     }
 
