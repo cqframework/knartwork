@@ -11,10 +11,6 @@ export class ExpressionsComponent {
 
     @Input() knart: Knart;
 
-    constructor() {
-        console.log("ExpressionsComponent has been initialized.");
-    }
-
 	createExpression() {
         let c = new Expression();
         this.knart.expressions.push(c);

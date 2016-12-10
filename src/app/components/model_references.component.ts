@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 
+import {BaseComponent} from './base.component';
+
 import {Knart} from '../models/knart';
 import {ModelReference} from '../models/model_reference';
 
@@ -7,13 +9,9 @@ import {ModelReference} from '../models/model_reference';
     selector: 'model_references',
     templateUrl: '/model_references.html'
 })
-export class ModelReferencesComponent {
+export class ModelReferencesComponent extends BaseComponent {
 
     @Input() knart: Knart;
-
-    constructor() {
-        console.log("ModelReferencesComponent has been initialized.");
-    }
 
     createModelReference() {
         let mr = new ModelReference();

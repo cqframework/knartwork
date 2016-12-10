@@ -8,6 +8,10 @@
     #coverages("*ngIf"="knart.coverages.length > 0")
         .coverage.well("*ngFor"="let c of knart.coverages")
             .btn-group.pull-right
+                a.btn.btn-small.btn-primary("(click)"="moveUp(c, knart.coverages)" "*ngIf"="canMoveUp(c, knart.coverages)")
+                    span.glyphicon.glyphicon-chevron-up
+                a.btn.btn-small.btn-primary("(click)"="moveDown(c, knart.coverages)" "*ngIf"="canMoveDown(c, knart.coverages)")
+                    span.glyphicon.glyphicon-chevron-down
                 a.btn.btn-small.btn-danger("(click)"="deleteCoverage(c)")
                     span.glyphicon.glyphicon-trash
             .clearfix

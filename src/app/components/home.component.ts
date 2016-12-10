@@ -30,7 +30,7 @@ export class HomeComponent {
     originalFileName: string;
 
     constructor( @Inject('Window') private window: Window, public toasterService: ToasterService, private xmlLoader: XmlLoaderService, private xmlExporter: XmlExporterService) {
-        console.log("HomeComponent has been initialized.");
+        // console.log("HomeComponent has been initialized.");
         this.reset();
 
         // To always start with a new document.

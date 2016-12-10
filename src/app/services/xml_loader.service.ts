@@ -41,8 +41,8 @@ export class XmlLoaderService {
     private serializer: XMLSerializer = new XMLSerializer();
 
     constructor(private http: Http) {
-        console.log("HomeComponent has been initialized.");
     }
+
     loadXMLFromURL(url: string): Observable<Response> {
         return this.http.get(url); //.map(res => res.responseText);
     }

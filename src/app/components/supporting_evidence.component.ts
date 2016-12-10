@@ -11,10 +11,6 @@ export class SupportingEvidenceComponent {
 
     @Input() knart: Knart;
 
-    constructor() {
-        console.log("SupportingEvidenceComponent has been initialized.");
-    }
-
     createSupportingEvidence() {
         let se = new SupportingEvidence();
         this.knart.supportingEvidence.push(se);

@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 
+import {BaseComponent} from './base.component';
+
 import {Knart} from '../models/knart';
 import {Coverage} from '../models/coverage';
 
@@ -7,13 +9,9 @@ import {Coverage} from '../models/coverage';
     selector: 'coverages',
     templateUrl: '/coverages.html'
 })
-export class CoveragesComponent {
+export class CoveragesComponent extends BaseComponent {
 
     @Input() knart: Knart;
-
-    constructor() {
-        console.log("CoveragesComponent has been initialized.");
-    }
 
     createCoverage() {
         let c = new Coverage();

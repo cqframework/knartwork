@@ -11,8 +11,4 @@ export class ExportComponent {
 
     @Input() knart: Knart;
 
-    constructor() {
-        console.log("ExportComponent has been initialized.");
-    }
-
 }

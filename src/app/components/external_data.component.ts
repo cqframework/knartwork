@@ -11,10 +11,6 @@ export class ExternalDataComponent {
 
     @Input() knart: Knart;
 
-    constructor() {
-        console.log("ExternalDataComponent has been initialized.");
-    }
-
     createExternalData() {
         let ed = new ExternalData();
         this.knart.externalData.push(ed);

@@ -42,7 +42,6 @@ export class XmlExporterService {
     private serializer: XMLSerializer = new XMLSerializer();
 
     constructor( @Inject('Window') private window: Window, private http: Http) {
-        console.log("HomeComponent has been initialized. PROBABLY DELETE THIS CLASS");
     }
 
     createXMLDocumentFrom(knart: Knart): Document {

@@ -6,13 +6,7 @@ import {Component} from '@angular/core';
 })
 export class ApiComponent {
 
-
     verses: Object[] = [];
-
-    constructor() {
-        console.log("ApiComponent has been initialized.");
-    }
-
 
     stringify(obj: any): string {
         return JSON.stringify(obj, null, "\t").trim();

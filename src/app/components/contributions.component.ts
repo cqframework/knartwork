@@ -18,11 +18,6 @@ export class ContributionsComponent extends BaseComponent {
 
     @Input() knart: Knart;
 
-    constructor() {
-        super();
-        console.log("ContributionsComponent has been initialized.");
-    }
-
     contributorTypes(): Array<string> {
         return ["Person"];
     }

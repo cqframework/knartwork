@@ -11,10 +11,6 @@ export class ConditionsComponent {
 
     @Input() knart: Knart;
 
-    constructor() {
-        console.log("ConditionsComponent has been initialized.");
-    }
-
 
     createCondition() {
         let c = new Condition();

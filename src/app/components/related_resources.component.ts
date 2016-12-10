@@ -15,11 +15,6 @@ export class RelatedResourcesComponent extends BaseComponent {
 
     @Input() knart: Knart;
 
-    constructor() {
-        super();
-        console.log("RelatedResourcesComponent has been initialized.");
-    }
-
     relationshipTypes(): Array<Relationship> {
         return Relationship.ALL
     }

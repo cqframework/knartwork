@@ -13,10 +13,6 @@ export class HistoryComponent extends BaseComponent {
 
     @Input() knart: Knart;
 
-    // constructor() {
-        // console.log("HistoryComponent has been initialized.");
-    // }
-
 	lifeCycleEventTypes(): Array<string> {
 		return LifeCycleEvent.TYPES;
 	}

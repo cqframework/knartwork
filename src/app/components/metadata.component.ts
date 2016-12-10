@@ -13,11 +13,6 @@ export class MetadataComponent extends BaseComponent {
 
     @Input() knart: Knart;
 
-    constructor() {
-        super();
-        console.log("MetadataComponent has been initialized.");
-    }
-
     createIdentifier() {
         let i = new Identifier();
         this.knart.identifiers.push(i);

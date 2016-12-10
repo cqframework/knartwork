@@ -21,11 +21,6 @@ export class ActionGroupComponent extends ActionComponent {
     @Input() knart: Knart;
     @Input() actionGroup: ActionGroup;
 
-    constructor() {
-        super();
-        console.log("ActionGroupComponent has been initialized.");
-    }
-
     canDelete() {
         return this.knart.actionGroup != this.actionGroup;
     }
