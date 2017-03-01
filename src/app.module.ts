@@ -38,6 +38,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { SnomedctModule } from './app/modules/snomedct/snomedct.module';
+
+
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'api', component: ApiComponent }
@@ -51,8 +54,8 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         routing,
         FormsModule,
         HttpModule,
-        ToasterModule
-        // ExportModule // Our own custom voodoo.
+        ToasterModule,
+		SnomedctModule // Our own custom voodoo.
     ],
     declarations: [
         AppComponent,
