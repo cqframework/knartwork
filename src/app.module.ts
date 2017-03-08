@@ -4,7 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
 // import {DragulaModule} from 'ng2-dragula/ng2-dragula';
-import { CqlRunnerModule } from 'cql-runner';
+// import { CqlRunnerModule } from 'cql-runner';
 
 import {AppComponent} from './app/app.component';
 import {HomeComponent} from './app/components/home.component';
