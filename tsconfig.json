@@ -8,10 +8,14 @@
         "experimentalDecorators": true,
         "removeComments": false,
         "noImplicitAny": false,
-        "outDir": "build",
-        "rootDir": "src"
+        "outDir": "build"
     },
     "compileOnSave": false,
+    "include": [
+        "src/**/*",
+        "node_modules/ng2-ace-editor/**/*",
+        "node_modules/cql-ace-syntax/*"
+    ],
     "exclude": [
         "node_modules",
         "bower_components",

@@ -4,7 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
 // import {DragulaModule} from 'ng2-dragula/ng2-dragula';
-import { CqlRunnerModule } from 'cql-runner';
+import { RunnerModule, ApiService } from 'cql-runner';
 
 import {AppComponent} from './app/app.component';
 import {HomeComponent} from './app/components/home.component';
@@ -56,7 +56,7 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         FormsModule,
         HttpModule,
         ToasterModule,
-		CqlRunnerModule, // Waiting on a fix for https://github.com/DBCG/cql_runner/issues/5
+		RunnerModule,
 		SnomedctModule // Our own custom voodoo.
     ],
     declarations: [
@@ -84,6 +84,7 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
         KnartworkService,
         XmlLoaderService,
         XmlExporterService,
+        ApiService,
 		{ provide: 'Window',  useValue: window }
     ],                    // services
     bootstrap: [AppComponent]     // root component
