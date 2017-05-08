@@ -65,6 +65,11 @@ module.exports = function(grunt) {
                     src: '**/*',
                     dest: 'build/images/',
                     expand: true
+                }, {
+                    cwd: 'node_modules/cql-ace-syntax/',
+                    src: "ace.js",
+                    dest: 'build/',
+                    expand: true
                 }]
             }
         },
