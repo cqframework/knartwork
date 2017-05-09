@@ -1,8 +1,8 @@
 {
-  "name": "knartwork-ui",
-  "description": "Frontend for Knartwork.",
+  "name": "knartwork",
+  "description": "Knartwork integrated knowledge environment.",
   "license": "ISC",
-  "repository": "git@github.com:preston/knartwork.git",
+  "repository": "git@github.com:cqframework/knartwork.git",
   "author": "Preston Lee",
   "scripts": {
     "start": "grunt",
