@@ -14,7 +14,7 @@ This is an [AngularJS 4](https://angular.io) project using `grunt` as the build 
 
 To run in development mode, just:
 
-	grunt # to serve the project and aautomatically recompile on file changes
+	grunt # to serve the project and automatically recompile on file changes
 
 Visit [http://localhost:9000](http://localhost:9000) and do your thang. :)
 
