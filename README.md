@@ -59,6 +59,7 @@ Please add your name when making contributions!
 
 * Preston Lee <preston@asu.edu>
 * Bryn Rhodes <bryn@databaseconsultinggroup.com>
+* Austin Michne <amichne@asu.edu>
 
 ## License
 
