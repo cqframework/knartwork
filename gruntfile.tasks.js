@@ -126,24 +126,24 @@ module.exports = function(grunt) {
 					})
 				],
 				resolve: {
-					// extensions: ['', '.ts', '.js'],
-					modules: ["src", "node_modules"]
+					extensions: ['.ts', '.js'],
+					modules: [path.resolve(__dirname, './src'),"node_modules"]
+				},
+				module: {
+				// 	preLoaders: [{
+				// 	    loader: "source-map-loader"
+				// 	}],
+				// 	rules: [{
+				// 		test: /\.js$/,
+				// 		use: ["source-map-loader"],
+				// 		enforce: "pre"
+				// 	}],
+					loaders: [{
+						test: /\.ts$/,
+						loaders: ['ts-loader', 'angular2-router-loader']
+					}],
+					noParse: [path.join(path.resolve(__dirname, 'node_modules'), '@angular', 'bower_components')],
 				}
-				// module: {
-					// preLoaders: [{
-					//     loader: "source-map-loader"
-					// }],
-					// rules: [{
-					// 	test: /\.js$/,
-					// 	use: ["source-map-loader"],
-					// 	enforce: "pre"
-					// }],
-					// loaders: [{
-					// 	test: /\.ts$/,
-					// 	loaders: ['ts-loader', 'angular2-router-loader']
-					// }]
-					// noParse: [path.join('node_modules', '@angular', 'bower_components')]
-				// },
 				// devServer: {
 				// 	historyApiFallback: true
 				// },
