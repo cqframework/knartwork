@@ -6,7 +6,7 @@ Community contributions -- especially those specific to evolving clinical standa
 
 ## Developer Quick Start
 
-This is an [AngularJS 4](https://angular.io) project using `grunt` as the build system, [pug](https://pugjs.org/api/getting-started.html) for HTML templates, [SASS](http://sass-lang.com) for CSS and [Bootstrap](http://getbootstrap.com/) for layout. `npm` is the package manager. Assuming you already have node installed via `brew install node` or similar:
+This is an [AngularJS 5](https://angular.io) project using `grunt` as the build system, [pug](https://pugjs.org/api/getting-started.html) for HTML templates, [SASS](http://sass-lang.com) for CSS and [Bootstrap](http://getbootstrap.com/) for layout. `npm` is the package manager. Assuming you already have node installed via `brew install node` or similar:
 
 	npm install -g grunt typings
 	npm install # to install project development dependencies
@@ -64,7 +64,7 @@ Please add your name when making contributions!
 ## License
 
 **The MIT License (MIT)**
-Copyright (c) 2016 Preston Lee
+Copyright (c) 2016-2017 Preston Lee
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
