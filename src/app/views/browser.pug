@@ -1,0 +1,10 @@
+.jumbotron(ngIf="!manifest")
+
+div(ngIf="manifest")
+    h1 {{manifest.name}}
+    p {{manifest.description}}
+
+    section("ngFor"="let i of manifest.items")
+        h2 {i.name}
+        p {i.type}
+        a.btn.btn-default([href]="i.url") Load

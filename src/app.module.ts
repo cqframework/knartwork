@@ -1,6 +1,7 @@
 import {ModuleWithProviders, enableProdMode} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 // import {Http} from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
@@ -45,7 +46,8 @@ import { SnomedctModule } from './app/modules/snomedct/snomedct.module';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'api', component: ApiComponent }
+    { path: 'api', component: ApiComponent },
+    { path: 'browser', component: ApiComponent }
 ]
 const appRoutingProviders: any[] = [];
 const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
@@ -54,6 +56,7 @@ const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     imports: [
         BrowserModule,
         routing,
+        HttpClientModule,
         FormsModule,
         HttpModule,
         ToasterModule,
