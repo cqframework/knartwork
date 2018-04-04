@@ -7,11 +7,13 @@ import { Manifest } from '../models/browser/manifest';
 @Injectable()
 export class BrowserService {
 
+    public MANIFEST_FILE_NAME: string = "manifest.json";
+
     constructor(private http: HttpClient) {
     }
 
-    getManifest(url: string): Observable<Manifest> {
-        return this.http.get<Manifest>(url);
+    getManifest(repository: string): Observable<Manifest> {
+        return this.http.get<Manifest>(repository + '/' + this.MANIFEST_FILE_NAME);
 
     }
 }

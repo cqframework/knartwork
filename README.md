@@ -4,6 +4,16 @@ KNARTwork is a multi-purpose web application for authoring, viewing, and transfo
 
 Community contributions -- especially those specific to evolving clinical standards -- are highly encouraged! Please submit your pull requests (PRs) via the community's public GitHub project page.
 
+## Repository Browsing
+
+If you have an existing library of KNARTs, KNARTwork supports browsing an opening your existing content through a special built-in launch page. To use it, create a manifest.json file like [this], and host it, along with your KNART files, on a website directory accessible to your users. This "repository" URL is then passed to KNARTwork's brower page as a url parameter. The website directory doesn't have to be on the public Internet.. just somewhere your users can access it from their local browsers. Be sure the server allows for "CORS" requests: otherwise KNARTwork won't be able to load the manifest and content.
+
+KNARTwork comes with a fully working example of the manifest format, referencing example KNARTs from the HL7 specification. You can organize your content any way you want, as long as the "path" for each KNART is relative to the URL. Here is an example of a working repository-based launch:
+
+	https://knartwork.healthcreek.org/browser?repository=https://knartwork.healthcreek.org/examples
+
+This decoupling of repository structure allows authors to easily share entire libraries of KNARTs by simply dropping them into a directory on the web.
+
 ## Developer Quick Start
 
 This is an [AngularJS 5](https://angular.io) project using `grunt` as the build system, [pug](https://pugjs.org/api/getting-started.html) for HTML templates, [SASS](http://sass-lang.com) for CSS and [Bootstrap](http://getbootstrap.com/) for layout. `npm` is the package manager. Assuming you already have node installed via `brew install node` or similar:

@@ -5,37 +5,37 @@
         {
             "name": "Cortico Steroid Inhaler Reminder",
             "type": "Rule",
-            "url": "examples/hl7-cds-ka-r1.3/CorticoSteroidInhalerReminder.xml"
+            "path": "examples/hl7-cds-ka-r1.3/CorticoSteroidInhalerReminder.xml"
         },
         {
             "name": "Dopamine Complex IV Order",
             "type": "Order Set",
-            "url": "examples/hl7-cds-ka-r1.3/DopamineComplexIVOrder.xml"
+            "path": "examples/hl7-cds-ka-r1.3/DopamineComplexIVOrder.xml"
         },
         {
             "name": "FLACC",
             "type": "Documentation Template",
-            "url": "examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml"
+            "path": "examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml"
         },
         {
             "name": "HeartFailureAdmissionToMedSurgOrderSet",
             "type": "Order Set",
-            "url": "examples/hl7-cds-ka-r1.3/HeartFailureAdmissionToMedSurgOrderSet.xml"
+            "path": "examples/hl7-cds-ka-r1.3/HeartFailureAdmissionToMedSurgOrderSet.xml"
         },
         {
             "name": "PHQ9_DocTemplateWithAssessment",
             "type": "Documentation Template",
-            "url": "examples/hl7-cds-ka-r1.3/PHQ9_DocTemplateWithAssessment.xml"
+            "path": "examples/hl7-cds-ka-r1.3/PHQ9_DocTemplateWithAssessment.xml"
         },
         {
             "name": "RegularInsulinSlidingScaleRegime",
             "type": "Order Set",
-            "url": "examples/hl7-cds-ka-r1.3/RegularInsulinSlidingScaleRegime.xml"
+            "path": "examples/hl7-cds-ka-r1.3/RegularInsulinSlidingScaleRegime.xml"
         },
         {
             "name": "Urinary Tract Infection",
             "type": "Documentation Template",
-            "url": "examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml"
+            "path": "examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml"
         }
     ]
 }
