@@ -7,7 +7,10 @@ div(ngIf="manifest")
     p {{manifest.description}}
 
     .row
-        .col-md-4.well.("ngFor"="let i of manifest.items")
+        .col-md-4.well("ngFor"="let i of manifest.items")
             h2 {i.name}
             p {i.type}
-            a.btn.btn-default(target="_blank" [href]="repository + '/' + i.path") Load
+            div(ngIf="i.knart")
+                a.btn.btn-default(target="_blank" [href]="repository + '/' + i.knart") Load
+            div(ngIf="!i.knart")
+                i KNART location unknown. 
