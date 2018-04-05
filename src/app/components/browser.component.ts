@@ -14,6 +14,7 @@ import { ManifestItem } from '../models/browser/manifest_item';
 })
 export class BrowserComponent implements OnInit {
 
+    repository: string;
     manifest: Manifest;
 
     constructor(private route: ActivatedRoute, public toasterService: ToasterService, public browserService: BrowserService) {
@@ -22,15 +23,22 @@ export class BrowserComponent implements OnInit {
 
     ngOnInit() {
         let url = this.route.snapshot.queryParams["manifest"];
-        this.browserService.getManifest(url).subscribe(data => {
-            this.toasterService.pop("success", "Loaded!", "Content manifest has been loaded from: " + url);
-            this.manifest = data;
-        }, error => {
-            this.toasterService.pop("error", "Uh oh", "The manifest file couldn't be loaded. Are you sure it's accessible from your browser environment? Check your browser console, and make sure the host has CORS enabled! URL: " + url);
-            this.manifest = null;
-        });
+        this.repository = this.route.snapshot.queryParams["repository"];
+        if (this.repository) {
+            this.browserService.getManifest(this.repository).subscribe(data => {
+                this.toasterService.pop("success", "Loaded!", "Content manifest has been loaded from: " + this.repository);
+                this.manifest = data;
+            }, error => {
+                this.failureToLoad();
+            });
+        } else {
+            this.failureToLoad();
+        }
     }
-
+    failureToLoad() {
+        this.toasterService.pop("error", "Uh oh", "The manifest file couldn't be loaded. Are you sure it's accessible from your browser environment? Check your browser console, and make sure the host has CORS enabled! URL: " + this.repository);
+        this.manifest = null;
+    }
     stringify(obj: any): string {
         return JSON.stringify(obj, null, "\t").trim();
     }
