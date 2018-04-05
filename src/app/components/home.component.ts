@@ -1,4 +1,4 @@
-import {Component, Output, Inject, ViewEncapsulation } from '@angular/core';
+import {Component, Output, Inject} from '@angular/core';
 import {Knart} from '../models/knart';
 import {ArtifactType} from '../models/artifact_type';
 import {Format} from '../models/format';
@@ -14,8 +14,7 @@ import {Http} from '@angular/http';
 
 @Component({
     selector: 'home',
-    templateUrl: '../views/home.pug',
-    encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/home.pug'
 })
 export class HomeComponent {
 

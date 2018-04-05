@@ -1,12 +1,11 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {Knart} from '../models/knart';
 import {Expression} from '../models/expression';
 
 @Component({
     selector: 'expressions',
-    templateUrl: '../views/expressions.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/expressions.pug'
 })
 export class ExpressionsComponent {
 

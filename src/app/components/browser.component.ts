@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ToasterService } from 'angular2-toaster/angular2-toaster';
@@ -9,8 +9,7 @@ import { ManifestItem } from '../models/browser/manifest_item';
 
 @Component({
     selector: 'browser',
-    templateUrl: '../views/browser.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/browser.pug'
 })
 export class BrowserComponent implements OnInit {
 

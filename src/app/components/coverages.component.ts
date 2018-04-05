@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
 
@@ -7,8 +7,7 @@ import {Coverage} from '../models/coverage';
 
 @Component({
     selector: 'coverages',
-    templateUrl: '../views/coverages.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/coverages.pug'
 })
 export class CoveragesComponent extends BaseComponent {
 

@@ -1,12 +1,11 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {Knart} from '../models/knart';
 import {Relationship} from '../models/relationship';
 
 @Component({
     selector: 'preview',
-    templateUrl: '../views/preview/preview.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/preview/preview.pug'
 })
 export class PreviewComponent {
 

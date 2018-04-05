@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
 
@@ -9,8 +9,7 @@ import {Resource} from '../models/resource';
 
 @Component({
     selector: 'related_resources',
-    templateUrl: '../views/related_resources.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/related_resources.pug'
 })
 export class RelatedResourcesComponent extends BaseComponent {
 

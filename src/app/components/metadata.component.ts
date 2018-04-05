@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
 
@@ -7,8 +7,7 @@ import {Identifier} from '../models/identifier';
 
 @Component({
     selector: 'metadata',
-    templateUrl: '../views/metadata.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/metadata.pug'
 })
 export class MetadataComponent extends BaseComponent {
 

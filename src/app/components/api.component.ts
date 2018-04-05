@@ -1,9 +1,8 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'api',
     templateUrl: '../views/api.pug',
-    encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
 })
 export class ApiComponent {
 

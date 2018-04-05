@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
 
@@ -7,8 +7,7 @@ import {LifeCycleEvent} from '../models/life_cycle_event';
 
 @Component({
     selector: 'history',
-    templateUrl: '../views/history.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/history.pug'
 })
 export class HistoryComponent extends BaseComponent {
 

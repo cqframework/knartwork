@@ -1,12 +1,11 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {Knart} from '../models/knart';
 import {SupportingEvidence} from '../models/supporting_evidence';
 
 @Component({
     selector: 'supporting_evidence',
-    templateUrl: '../views/supporting_evidence.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/supporting_evidence.pug'
 })
 export class SupportingEvidenceComponent {
 

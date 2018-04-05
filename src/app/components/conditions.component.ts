@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {Knart} from '../models/knart';
 import {Condition} from '../models/condition';
@@ -6,7 +6,6 @@ import {Condition} from '../models/condition';
 @Component({
     selector: 'conditions',
     templateUrl: '../views/conditions.pug',
-    encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
 })
 export class ConditionsComponent {
 

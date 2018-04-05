@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {ActionComponent} from './action.component';
 
@@ -9,8 +9,7 @@ import {ActionGroup} from '../models/actions/action_group';
 
 @Component({
     selector: 'preview_action_group',
-    templateUrl: '../views/preview/action_group.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/preview/action_group.pug'
 })
 export class PreviewActionGroupComponent extends ActionComponent {
 

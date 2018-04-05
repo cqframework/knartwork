@@ -1,12 +1,11 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {Knart} from '../models/knart';
 import {Relationship} from '../models/relationship';
 
 @Component({
     selector: 'export',
-    templateUrl: '../views/export.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/export.pug'
 })
 export class ExportComponent {
 

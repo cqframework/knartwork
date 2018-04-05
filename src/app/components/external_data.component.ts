@@ -1,12 +1,11 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {Knart} from '../models/knart';
 import {ExternalData} from '../models/external_data';
 
 @Component({
     selector: 'external_data',
-    templateUrl: '../views/external_data.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/external_data.pug'
 })
 export class ExternalDataComponent {
 

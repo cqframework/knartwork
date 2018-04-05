@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
 
@@ -12,8 +12,7 @@ import {Affiliation} from '../models/affiliation';
 
 @Component({
     selector: 'contributions',
-    templateUrl: '../views/contributions.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/contributions.pug'
 })
 export class ContributionsComponent extends BaseComponent {
 

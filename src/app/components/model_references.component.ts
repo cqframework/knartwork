@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
 
@@ -7,8 +7,7 @@ import {ModelReference} from '../models/model_reference';
 
 @Component({
     selector: 'model_references',
-    templateUrl: '../views/model_references.pug',
-  encapsulation: ViewEncapsulation.None  // Use to disable CSS Encapsulation for this component
+    templateUrl: '../views/model_references.pug'
 })
 export class ModelReferencesComponent extends BaseComponent {
 
