@@ -1,0 +1,113 @@
+.container-fluid
+    a.btn.btn-primary.pull-right("(click)"="createContribution()")
+        span.glyphicon.glyphicon-plus
+        |  Add
+    p.text-muted Contributions attribute the people and organizations that have contributed to this work. You probably want to specify a primary author and contact information, at minimum, and may want to add your organization as well.
+    br.clearfix
+
+    //- div.container("*ngIf"="knart.contributions.length > 0" "[dragula]"="contributions" "[dragulaModel]"="knart.contributions")
+    div("*ngIf"="knart.contributions.length > 0")
+        div.contribution.well.row("*ngFor"="let contribution of knart.contributions")
+            .col-sm-6.form-group
+                select.form-control(name="contribution_role_select" "[(ngModel)]"="contribution.role")
+                    option("[value]"="role.code" "[selected]"="contribution.role == role.code" "*ngFor"="let role of roleTypes()") {{role.label}}
+            .col-sm-6
+                .pull-right
+                    button.btn.btn-small.btn-danger("(click)"="deleteContribution(contribution)")
+                        span.glyphicon.glyphicon-trash
+            .clearfix
+            hr
+
+
+            .col-sm-6
+                section.contacts
+                    h4
+                        | Names
+                        a.pull-right.btn.btn-primary.btn-small("(click)"="createName(contribution)")
+                            span.glyphicon.glyphicon-plus
+                        .clearfix
+                    .name.well("*ngFor"="let name of contribution.names")
+                        form.form.row(name="name_form")
+                            .btn-group.pull-right
+                                a.btn.btn-small.btn-primary("(click)"="moveUp(name, contribution.names)" "*ngIf"="canMoveUp(name, contribution.names)")
+                                    span.glyphicon.glyphicon-chevron-up
+                                a.btn.btn-small.btn-primary("(click)"="moveDown(name, contribution.names)" "*ngIf"="canMoveDown(name, contribution.names)")
+                                    span.glyphicon.glyphicon-chevron-down
+                                a.btn.btn-small.btn-danger("(click)"="deleteName(contribution, name)")
+                                    span.glyphicon.glyphicon-trash
+                            p.clearfix
+                            .col-sm-6
+                                input.form-control(name="name_given" "[(ngModel)]"="name.given" placeholder="Given (e.g. John)")
+                            .col-sm-6
+                                input.form-control(name="name_family" "[(ngModel)]"="name.family" placeholder="Family (e.g. Doe)")
+
+                section.affiliations
+                    h4
+                        | Affiliations
+                        a.pull-right.btn.btn-primary.btn-small("(click)"="createAffiliation(contribution)")
+                            span.glyphicon.glyphicon-plus
+                        .clearfix
+                    .affiliation.well("*ngFor"="let affiliation of contribution.affiliations")
+                        form.form.row(name="affiliation_form")
+                            .col-sm-8
+                                input.form-control(name="affiliation_name" "[(ngModel)]"="affiliation.name" placeholder="Some Organization")
+                            .col-sm-4
+                                .btn-group
+                                    a.btn.btn-small.btn-primary("(click)"="moveUp(affiliation, contribution.affiliations)" "*ngIf"="canMoveUp(affiliation, contribution.affiliations)")
+                                        span.glyphicon.glyphicon-chevron-up
+                                    a.btn.btn-small.btn-primary("(click)"="moveDown(affiliation, contribution.affiliations)" "*ngIf"="canMoveDown(affiliation, contribution.affiliations)")
+                                        span.glyphicon.glyphicon-chevron-down
+                                    a.btn.btn-small.btn-danger("(click)"="deleteAffiliation(contribution, affiliation)")
+                                        span.glyphicon.glyphicon-trash
+
+            .col-sm-6
+                section.addresses
+                    h4
+                        | Addresses
+                        a.pull-right.btn.btn-primary.btn-small("(click)"="createAddress(contribution)")
+                            span.glyphicon.glyphicon-plus
+                        .clearfix
+                    .address.well("*ngFor"="let a of contribution.addresses")
+                        form.form.row(name="address_form")
+                            .col-sm-8
+                                input.form-control(name="address_street" "[(ngModel)]"="a.street" placeholder="123 Fake Street")
+                            .col-sm-4
+                                .btn-group
+                                    a.btn.btn-small.btn-primary("(click)"="moveUp(a, contribution.addresses)" "*ngIf"="canMoveUp(a, contribution.addresses)")
+                                        span.glyphicon.glyphicon-chevron-up
+                                    a.btn.btn-small.btn-primary("(click)"="moveDown(a, contribution.addresses)" "*ngIf"="canMoveDown(a, contribution.addresses)")
+                                        span.glyphicon.glyphicon-chevron-down
+                                    a.btn.btn-small.btn-danger("(click)"="deleteAddress(contribution, a)")
+                                        span.glyphicon.glyphicon-trash
+                            .col-sm-8
+                                input.form-control(name="address_city" "[(ngModel)]"="a.city" placeholder="Phoenix")
+                            .col-sm-4
+                                input.form-control(name="address_state" "[(ngModel)]"="a.state" placeholder="AZ")
+                            .col-sm-8
+                                input.form-control(name="address_zip" "[(ngModel)]"="a.zip" placeholder="55555")
+                            .col-sm-4
+                                input.form-control(name="address_country" "[(ngModel)]"="a.country" placeholder="USA")
+
+                section.contacts
+                    h4
+                        | Contacts
+                        a.pull-right.btn.btn-primary.btn-small("(click)"="createContact(contribution)")
+                            span.glyphicon.glyphicon-plus
+                        .clearfix
+                    .contact.well("*ngFor"="let contact of contribution.contacts")
+                        form.form.row(name="contact_form")
+                            .col-sm-8
+                                input.form-control(name="contact_value" "[(ngModel)]"="contact.value" placeholder="123 Fake Street")
+                            .col-sm-4
+                                .btn-group
+                                    a.btn.btn-small.btn-primary("(click)"="moveUp(contact, contribution.contacts)" "*ngIf"="canMoveUp(contact, contribution.contacts)")
+                                        span.glyphicon.glyphicon-chevron-up
+                                    a.btn.btn-small.btn-primary("(click)"="moveDown(contact, contribution.contacts)" "*ngIf"="canMoveDown(contact, contribution.contacts)")
+                                        span.glyphicon.glyphicon-chevron-down
+                                    a.btn.btn-small.btn-danger("(click)"="deleteContact(contribution, contact)")
+                                        span.glyphicon.glyphicon-trash
+                            .col-sm-8
+                                select.form-control#contact_use_select(name="contactUse" "[(ngModel)]"="contact.use")
+                                    option(value="WP" "[selected]"="contact.use == 'WP'") Work Phone
+                                    option(value="HP" "[selected]"="contact.use == 'HP'") Home Phone
+                                    option(value="Email" "[selected]"="contact.use == 'Email'") Email Phone

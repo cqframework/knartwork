@@ -1,0 +1,200 @@
+.container-fluid
+    .form-group
+        label(for="title") Title
+        input.form-control(name="title" type="text" "[(ngModel)]"="actionGroup.title" placeholder="e.g. Symptoms")
+    .clearfix
+    hr
+
+    h2
+        .btn-group.pull-right
+            a.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#represented_concepts" aria-expanded="true" aria-controls="represented_concepts")
+                span.glyphicon.glyphicon-option-vertical
+            a.btn.btn-primary("(click)"="createRepresentedConcept()")
+                span.glyphicon.glyphicon-plus
+                |  Add
+
+        | Represented Concepts
+    .clearfix
+    hr
+    .collapse.in#represented_concepts
+
+        div("*ngIf"="actionGroup.representedConcepts.length > 0")
+            div.contribution.well.row("*ngFor"="let rc of actionGroup.representedConcepts")
+                .pull-right
+                    button.btn.btn-small.btn-danger("(click)"="deleteRepresentedConcept(rc)")
+                        span.glyphicon.glyphicon-trash
+                .clearfix
+                .col-sm-6.form-group
+                    label(for="value_code") Code
+                    input.form-control(name="value_code" type="text" "[(ngModel)]"="rc.code" placeholder="D002675")
+                .col-sm-6.form-group
+                    label(for="value_code_system") Code System
+                    input.form-control(name="value_code_system" type="text" "[(ngModel)]"="rc.codeSystem" placeholder="2.16.840.1.113883.11.75")
+                .col-sm-6.form-group
+                    label(for="value_code_system_name") System Name
+                    input.form-control(name="value_code_system_name" type="text" "[(ngModel)]"="rc.codeSystemName" placeholder="MeSH - AgeGroupObservationValue")
+                .col-sm-6.form-group
+                    label(for="value_display_name") Display Name
+                    input.form-control(name="value_display_name" type="text" "[(ngModel)]"="rc.displayName" placeholder="child, preschool; 2 to 5 years")
+
+
+    h2
+        .btn-group.pull-right
+            a.btn.btn-default.btn-small(type="button" data-toggle="collapse" data-target="#actions_collapse" aria-expanded="true" aria-controls="actions_collapse")
+                span.glyphicon.glyphicon-option-vertical
+            a.btn.btn-primary("(click)"="createDeclareResponseAction()")
+                span.glyphicon.glyphicon-plus
+                |  Declare Response
+            a.btn.btn-primary("(click)"="createCollectInformationAction()")
+                span.glyphicon.glyphicon-plus
+                |  Collection Information
+            a.btn.btn-primary("(click)"="createActionGroup()")
+                span.glyphicon.glyphicon-plus
+                |  Action Group
+            a.btn.btn-primary("(click)"="createCreateAction()")
+                span.glyphicon.glyphicon-plus
+                |  Creation Stub
+
+        | Action List
+    .clearfix
+    hr
+    .collapse.in#actions_collapse
+
+        div("*ngIf"="actionGroup.subElements.length > 0")
+            div.action.well("*ngFor"="let action of actionGroup.subElements")
+                .btn-group.pull-right
+                    a.btn.btn-small.btn-primary("(click)"="moveUp(action, actionGroup.subElements)" "*ngIf"="canMoveUp(action, actionGroup.subElements)")
+                        span.glyphicon.glyphicon-chevron-up
+                    a.btn.btn-small.btn-primary("(click)"="moveDown(action, actionGroup.subElements)" "*ngIf"="canMoveDown(action, actionGroup.subElements)")
+                        span.glyphicon.glyphicon-chevron-down
+                    a.btn.btn-small.btn-danger("(click)"="deleteAction(action)")
+                        span.glyphicon.glyphicon-trash
+
+                .declare_response_action("*ngIf"="isDeclareResponseAction(action)")
+                    h4 Response Declaration
+                    .form-group(for="declare_response_name") Name
+                        input.form-control(name="declare_response_name" type="text" required="true" "[(ngModel)]"="action.name" placeholder="e.g. Responses")
+                .collect_information_action("*ngIf"="isCollectInformationAction(action)")
+                    h4 Information Collection
+                    .row
+                        .col-md-4
+                            .form-group
+                                label(for="collect_information_prompt") Prompt
+                                input.form-control(name="collect_information_prompt" type="text" required="true" "[(ngModel)]"="action.prompt" placeholder="e.g. Quantity")
+                            .form-group
+                                label(for="collect_information_text_equivalent") Text Equivalent
+                                input.form-control(name="collect_information_text_equivalent" type="text" required="true" "[(ngModel)]"="action.textEquivalent" placeholder="")
+                            .form-group
+                                label(for="collect_information_response_binding") Response Binding
+                                input.form-control(name="collect_information_response_binding" type="text" required="true" "[(ngModel)]"="action.responseBinding" placeholder="e.g. TotalScore")
+                            .form-group
+                                label(for="collect_information_response_data_type") Data Type
+                                select.form-control(name="collect_information_response_data_type" "[(ngModel)]"="action.responseDataType")
+                                    option(value="String" "[selected]"="action.responseDataType == 'String'") String
+                                    option(value="Integer" "[selected]"="action.responseDataType == 'Integer'") Integer
+                            .form-group
+                                label(for="collect_information_response_minimum") Minimum
+                                input.form-control(name="collect_information_response_minimum" type="number" min="0" required="true" "[(ngModel)]"="action.responseMinimum" placeholder="0")
+                            .form-group
+                                label(for="collect_information_response_maximum") Maximum
+                                input.form-control(name="collect_information_response_maximum" type="number" min="0" required="true" "[(ngModel)]"="action.responseMaximum" placeholder="42")
+                            .form-group
+                                label(for="collect_information_response_cardinality") Cardinality
+                                select.form-control(name="collect_information_response_cardinality" "[(ngModel)]"="action.responseCardinality")
+                                    option(value="Multiple" "[selected]"="action.responseCardinality == 'Multiple'") Multiple
+                                    option(value="Single" "[selected]"="action.responseCardinality == 'Single'") Single
+                        .col-md-8
+                            .form-group
+                                label(for="collect_information_initial_value_type") Initial Value Type
+                                input.form-control(name="collect_information_initial_value_type" type="text" "[(ngModel)]"="action.initialValueType" placeholder="e.g. elm:Sum")
+                            .form-group
+                                label(for="collect_information_initial_value") Initial Value Expression
+                                textarea.form-control(name="collect_information_initial_value" rows="4" "[(ngModel)]"="action.initialValue" placeholder='<elm:source xsi:type="elm:List">...</elm:source>')
+                            h5
+                                .pull-right
+                                    a.btn.btn-small.btn-primary("(click)"="createItemCode(action)")
+                                        span.glyphicon.glyphicon-plus
+                                | Question Codes
+                            .clearfix
+                            table.table.table-condensed("*ngIf"="action.itemCodes.length > 0")
+                                thead
+                                    tr
+                                        th Code
+                                        th Code System
+                                        th System Name
+                                        th
+                                tbody
+                                    tr("*ngFor"="let ic of action.itemCodes")
+                                        td
+                                            input.form-control(name="collect_information_item_code" "[(ngModel)]"="ic.code" placeholder="38220-0")
+                                        td
+                                            input.form-control(name="collect_information_item_code_system" "[(ngModel)]"="ic.codeSystem" placeholder="2.16.840.1.113883.6.1")
+                                        td
+                                            input.form-control(name="collect_information_item_code_system_name" "[(ngModel)]"="ic.codeSystemName" placeholder="LOINC")
+                                        td
+                                            a.btn.btn-small.btn-danger("(click)"="deleteItemCode(action, ic)")
+                                                span.glyphicon.glyphicon-trash
+
+
+                            h5
+                                .pull-right
+                                    a.btn.btn-small.btn-primary("(click)"="createResponseItem(action)")
+                                        span.glyphicon.glyphicon-plus
+                                | Enumerated Responses &amp; Codes
+                            .clearfix
+                            form.well.form("*ngFor"="let ri of action.responseItems")
+                                .col-sm-9.form-group
+                                    input.form-control(name="collect_information_response_item_display_text" "[(ngModel)]"="ri.displayText" placeholder="Display text, e.g. No particular expression or smile")
+                                .col-sm-3.form-group
+                                    .btn-group
+                                        a.btn.btn-small.btn-primary("(click)"="moveUp(ri, action.responseItems)" "*ngIf"="canMoveUp(ri, action.responseItems)")
+                                            span.glyphicon.glyphicon-chevron-up
+                                        a.btn.btn-small.btn-primary("(click)"="moveDown(ri, action.responseItems)" "*ngIf"="canMoveDown(ri, action.responseItems)")
+                                            span.glyphicon.glyphicon-chevron-down
+                                        a.pull-right.btn.btn-small.btn-danger("(click)"="deleteResponseItem(action, ri)")
+                                            span.glyphicon.glyphicon-trash
+                                .col-sm-3.form-group
+                                    select.form-control(name="collect_information_response_item_type" "[(ngModel)]"="ri.type")
+                                        option(value="elm:Literal" "[selected]"="ri.type == 'elm:Literal'") elm:Literal
+                                .col-sm-3.form-group
+                                    input.form-control(name="collect_information_response_item_value" "[(ngModel)]"="ri.value" placeholder="e.g. 0")
+                                .col-sm-3.form-group
+                                    select.form-control(name="collect_information_response_value_type" "[(ngModel)]"="ri.valueType")
+                                        option(value="t:Integer" "[selected]"="ri.type == 't:Integer'") t:Integer
+                                        option(value="t:String" "[selected]"="ri.type == 't:String'") t:String
+                                .col-sm-3
+                                    //- .pull-right
+                                    a.btn.btn-small.btn-primary("(click)"="createResponseItemCode(ri)")
+                                        span.glyphicon.glyphicon-plus
+                                        | Code
+                                .col-sm-12
+                                    .clearfix
+                                    table.table.table-condensed("*ngIf"="ri.itemCodes.length > 0")
+                                        thead
+                                            tr
+                                                th Code
+                                                th Code System
+                                                th System Name
+                                                th
+                                        tbody
+                                            tr("*ngFor"="let ic of ri.itemCodes")
+                                                td
+                                                    input.form-control(name="collect_information_item_code" "[(ngModel)]"="ic.code" placeholder="38220-0")
+                                                td
+                                                    input.form-control(name="collect_information_item_code_system" "[(ngModel)]"="ic.codeSystem" placeholder="2.16.840.1.113883.6.1")
+                                                td
+                                                    input.form-control(name="collect_information_item_code_system_name" "[(ngModel)]"="ic.codeSystemName" placeholder="LOINC")
+                                                td
+                                                    a.btn.btn-small.btn-danger("(click)"="deleteResponseItemCode(ri, ic)")
+                                                        span.glyphicon.glyphicon-trash
+                                .clearfix
+
+                .create_action("*ngIf"="isCreateAction(action)")
+                    h4 Create
+                    .form-group(for="create_action_sentence_type") Sentence Type
+                        input.form-control(name="create_action_sentence_type" type="text" "[(ngModel)]"="action.sentenceType" placeholder="e.g. elm:Query")
+                    .form-group(for="create_action_sentence") Sentence
+                        textarea.form-control(name="create_action_sentence" rows="8" "[(ngModel)]"="action.sentence" placeholder='<elm:source alias="O">...</elm:source><elm:return>...</elm:return>')
+                .action_group("*ngIf"="isActionGroup(action)")
+                    h4 Sub Group
+                    action_group("[knart]"="knart" "[actionGroup]"="action")

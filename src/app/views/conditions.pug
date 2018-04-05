@@ -1,0 +1,22 @@
+.container-fluid
+    a.btn.btn-primary.pull-right("(click)"="createCondition()")
+        span.glyphicon.glyphicon-plus
+        |  Add
+    p.text-muted Conditions contain logical expressions that evaluate to true or false and control further execution of the artifact. They usually reference data bound at runtime.
+    br.clearfix
+
+    #conditions("*ngIf"="knart.conditions.length > 0")
+        .condition.well("*ngFor"="let c of knart.conditions")
+            .btn-group.pull-right
+                a.btn.btn-small.btn-danger("(click)"="deleteCondition(c)")
+                    span.glyphicon.glyphicon-trash
+            .clearfix
+            form.form.row
+                .col-sm-12.form-group
+                    label(for="condition_role") Role
+                    input.form-control(name="condition_role" type="text" "[(ngModel)]"="c.role" disabled="true")
+                    p.text-muted This isn't really useful in the current specification.
+                .col-sm-12.form-group
+                    label(for="condition_logic") ELM Logic
+                    textarea.form-control(name="condition_logic" rows="10" "[(ngModel)]"="c.logic" placeholder='<elm:annotation xsi:type="a:Annotation"><a:s>Patient is between 2 months and 7 years of age</a:s></elm:annotation><elm:operand xsi:type="elm:GreaterOrEqual"><elm:annotation xsi:type="a:Annotation"><a:s>Patient is more than 2 months old</a:s></elm:annotation><elm:operand xsi:type="elm:ExpressionRef" name="PatientAgeInMonths"></elm:operand><elm:operand xsi:type="elm:Literal" valueType="t:Integer" value="2" /></elm:operand><elm:operand xsi:type="elm:LessOrEqual"><elm:annotation xsi:type="a:Annotation"><a:s>Patient is less than 7 years old (or 84 months)</a:s></elm:annotation><elm:operand xsi:type="elm:ExpressionRef" name="PatientAgeInMonths"></elm:operand><elm:operand xsi:type="elm:Literal" valueType="t:Integer" value="84" /></elm:operand>')
+                    p.text-muted This must be a valid ELM expression, and may reference your bound data objects.

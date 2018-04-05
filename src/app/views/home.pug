@@ -1,0 +1,144 @@
+include layout/navigation
+toaster-container
+
+.container-fluid("*ngIf"="!knart")
+    .row
+        //- button("(click)"="popToast()") pop toast
+        .col-sm-6.col-sm-offset-3
+            //- cql-runner(engineUri="'http://cql.dataphoria.org/cql/evaluate'", engineUser="'username'", enginePass="'password'", termUri="'http://fhirtest.uhn.ca/baseDstu3'", termUser="'username'", termPass="'password'", dataUri="'http://fhirtest.uhn.ca/baseDstu3'", dataUser="'username'", dataPass="'password'")
+            #loader
+                div.text-center
+                    h1 Start fresh and..
+                    button.btn.btn-lg("(click)"="createFromTemplate()")
+                        span.glyphicon.glyphicon-plus
+                        |  Create a new knowledge artifact.
+                    //- br
+                    //- small
+                    //-     i ..or..
+                hr
+                div.text-center
+                    h1
+                        span.glyphicon.glyphicon-cloud
+                        |  Or load from the web...
+                    .row
+                        .col-sm-9.form-group
+                            input.form-control(name="remote_url" type='text' "[(ngModel)]"="remoteUrl" placeholder="http://example.com/awesome-knart.xml")
+                        .col-sm-3
+                            button.btn.btn-default("(click)"="loadRemoteUrl()") Load it!
+                        .col-sm-12
+                            small
+                                | Works "inside the firewall"!
+                                //- br
+                                //- i ..or..
+                hr
+                form.form
+                    h1.text-center
+                        span.glyphicon.glyphicon-folder-open
+                        |  Or load a local file..
+                    .form-group
+                        label Format
+                        select.form-control#loader_type_select(name="documentType" "[(ngModel)]"="documentFormat")
+                            option("[value]"="f" "[selected]"="documentType == f" "*ngFor"="let f of documentFormats()") {{f.label}}
+
+                    .form-group
+                        label
+                            span.glyphicon.glyphicon-folder-open
+                        input(type='file' accept='.knart,.xml,.json' "(change)"='openFile($event)')
+
+
+.container-fluid("*ngIf"="knart")
+    .row
+        .col-md-6
+            #editor_tabs(role="tabpanel")
+                ul.nav.nav-tabs(role="tablist")
+                    li(role="presentation" "[class.active]"="editor_tab == 'metadata'")
+                        a#metadata_tab_link(aria-controls="metadata" data-toggle="editor_tab" "(click)"="editor_tab = 'metadata'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-pencil
+                            |  Basics
+                    li(role="presentation" "[class.active]"="editor_tab == 'contributions'")
+                        a#contributions_tab_link(aria-controls="contributions" data-toggle="editor_tab" "(click)"="editor_tab = 'contributions'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-user
+                            |  Contributions
+                    li(role="presentation" "[class.active]"="editor_tab == 'model_references'")
+                        a#model_references_tab_link(aria-controls="model_references" data-toggle="editor_tab" "(click)"="editor_tab = 'model_references'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-paperclip
+                            |  Model Refs
+                    li(role="presentation" "[class.active]"="editor_tab == 'supporting_evidence'")
+                        a#supporting_evidence_tab_link(aria-controls="supporting_evidence" data-toggle="editor_tab" "(click)"="editor_tab = 'supporting_evidence'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-education
+                            |  Evidence
+                    li(role="presentation" "[class.active]"="editor_tab == 'related_resources'")
+                        a#related_resources_tab_link(aria-controls="related_resources" data-toggle="editor_tab" "(click)"="editor_tab = 'related_resources'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-book
+                            |  Related Sources
+
+
+                .tab-content
+                    metadata.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'metadata'" "[knart]"="knart")
+                    contributions.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'contributions'" "[knart]"="knart")
+                    model_references.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'model_references'" "[knart]"="knart")
+                    supporting_evidence.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'supporting_evidence'" "[knart]"="knart")
+                    related_resources.tab-pane(role="tabpanel" "[class.active]"="editor_tab == 'related_resources'" "[knart]"="knart")
+
+        .col-md-6
+            #runtime_tabs(role="tabpanel")
+                ul.nav.nav-tabs(role="tablist")
+                    li(role="presentation" "[class.active]"="runtime_tab == 'conditions'")
+                        a#conditions_tab_link(aria-controls="conditions" data-toggle="runtime_tab" "(click)"="runtime_tab = 'conditions'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-flash
+                            |  Conditions
+                    li(role="presentation" "[class.active]"="runtime_tab == 'external_data'")
+                        a#external_data_tab_link(aria-controls="external_data" data-toggle="runtime_tab" "(click)"="runtime_tab = 'external_data'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-link
+                            |  Data Binding
+                    li(role="presentation" "[class.active]"="runtime_tab == 'expressions'")
+                        a#expressions_tab_link(aria-controls="expressions" data-toggle="runtime_tab" "(click)"="runtime_tab = 'expressions'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-console
+                            |  Expressions
+                    li(role="presentation" "[class.active]"="runtime_tab == 'coverages'")
+                        a#coverages_tab_link(aria-controls="coverages" data-toggle="runtime_tab" "(click)"="runtime_tab = 'coverages'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-check
+                            |  Applicability
+                    li(role="presentation" "[class.active]"="runtime_tab == 'history'")
+                        a#coverages_tab_link(aria-controls="history" data-toggle="runtime_tab" "(click)"="runtime_tab = 'history'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-list
+                            |  History
+                .tab-content
+                    conditions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'conditions'" "[knart]"="knart")
+                    external_data.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'external_data'" "[knart]"="knart")
+                    expressions.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'expressions'" "[knart]"="knart")
+                    coverages.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'coverages'" "[knart]"="knart")
+                    history.tab-pane(role="tabpanel" "[class.active]"="runtime_tab == 'history'" "[knart]"="knart")
+
+        p.clearfix
+        .col-md-12
+            #viewer_tabs(role="tabpanel")
+                ul.nav.nav-tabs(role="tablist")
+                    li(role="presentation" "[class.active]"="viewer_tab == 'action_group'")
+                        a#actions_tab_link(aria-controls="action_group" data-toggle="viewer_tab" "(click)"="viewer_tab = 'action_group'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-list
+                            |  Actions
+                    li(role="presentation" "[class.active]"="viewer_tab == 'preview'")
+                        a#preview_tab_link(aria-controls="preview" data-toggle="viewer_tab" "(click)"="viewer_tab = 'preview'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-eye-open
+                            |  Preview
+                    li(role="presentation" "[class.active]"="viewer_tab == 'original'")
+                        a#actions_tab_link(aria-controls="original" data-toggle="viewer_tab" "(click)"="viewer_tab = 'original'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-chevron-left
+                            |  Original XML
+                    //- li(role="presentation" "[class.active]"="viewer_tab == 'export'")
+                        a#export_tab_link(aria-controls="original" data-toggle="viewer_tab" "(click)"="viewer_tab = 'export'" role="tab" aria-expanded="true")
+                            span.glyphicon.glyphicon-chevron-left
+                            |  Current XML
+                .tab-content
+
+                    action_group.tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'action_group'" "[knart]"="knart" "[actionGroup]"="knart.actionGroup")
+                    preview.tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'preview'" "[knart]"="knart")
+                    .tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'original'")
+                        .container-fluid
+                            pre("*ngIf"="originalContentString" lang="xml") {{originalContentString}}
+                            i.text-muted("*ngIf"="!originalContentString")
+                                small (only applies to artifacts loaded from a local file)
+                    //- export.tab-pane(role="tabpanel" "[class.active]"="viewer_tab == 'export'" "[knart]"="knart")
+
+        p.clearfix

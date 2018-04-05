@@ -1,0 +1,60 @@
+@import "ribbons"
+
+$shadow: 0 20px 20px rgba(0,0,0,.4)
+$content_background: url('/assets/textures/crossword.png') repeat
+
+.navbar-default .navbar-brand:hover
+	transform: rotateZ(-2deg)
+	transition: transform 1s linear
+
+.navbar-default .navbar-brand
+	color: #aaa
+    text-decoration: none
+    text-shadow: -4px 4px 4px rgba(0, 0, 0, 0.4)
+	transition: transform 1s linear
+
+	span
+		color: #777
+		// text-decoration: underline
+
+	.subtitle
+		text-decoration: overline
+		font-variant: small-caps
+		color: #444
+
+body
+    background-color: none
+    background: url('/assets/textures/wild_oliva.png') repeat
+
+.tab-content
+	box-shadow: $shadow
+
+[role="tabpanel"] > ul > li a,
+	// border-top: none
+	border-left: none
+	border-right: none
+[role="tabpanel"] > ul > li a:hover
+	cursor: pointer
+
+[role="tabpanel"] > ul > li.active a,
+#editor_tabs > ul > li.active a,
+#editor_tabs > ul > li.active a,
+.tab-content
+	background: $content_background
+	border-left: none
+	border-right: none
+	// border-top: none
+
+.tab-pane > .container-fluid
+	padding: 20px
+	min-height: 300px
+
+#loader
+	margin-top: 40px
+	border-radius: 2px
+	padding: 10px
+	box-shadow: $shadow
+	background: $content_background
+
+	input
+		display: inline
