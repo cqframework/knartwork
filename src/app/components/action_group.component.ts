@@ -13,8 +13,8 @@ import {CreateAction} from '../models/actions/create_action';
 import {ResponseItem} from '../models/actions/response_item';
 
 @Component({
-    selector: '../views/action_group.pug',
-    templateUrl: '/action_group.html'
+    selector: 'action_group',
+    templateUrl: '../views/action_group.pug'
 })
 export class ActionGroupComponent extends ActionComponent {
 
