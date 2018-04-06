@@ -7,7 +7,7 @@ import {ModelReference} from '../models/model_reference';
 
 @Component({
     selector: 'model_references',
-    templateUrl: '/model_references.html'
+    templateUrl: '../views/model_references.pug'
 })
 export class ModelReferencesComponent extends BaseComponent {
 

@@ -5,7 +5,7 @@ import {SupportingEvidence} from '../models/supporting_evidence';
 
 @Component({
     selector: 'supporting_evidence',
-    templateUrl: '/supporting_evidence.html'
+    templateUrl: '../views/supporting_evidence.pug'
 })
 export class SupportingEvidenceComponent {
 

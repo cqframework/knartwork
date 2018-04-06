@@ -7,7 +7,7 @@ import {Coverage} from '../models/coverage';
 
 @Component({
     selector: 'coverages',
-    templateUrl: '/coverages.html'
+    templateUrl: '../views/coverages.pug'
 })
 export class CoveragesComponent extends BaseComponent {
 

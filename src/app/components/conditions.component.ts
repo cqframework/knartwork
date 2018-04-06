@@ -5,7 +5,7 @@ import {Condition} from '../models/condition';
 
 @Component({
     selector: 'conditions',
-    templateUrl: '/conditions.html'
+    templateUrl: '../views/conditions.pug',
 })
 export class ConditionsComponent {
 

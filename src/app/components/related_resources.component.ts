@@ -9,7 +9,7 @@ import {Resource} from '../models/resource';
 
 @Component({
     selector: 'related_resources',
-    templateUrl: '/related_resources.html'
+    templateUrl: '../views/related_resources.pug'
 })
 export class RelatedResourcesComponent extends BaseComponent {
 

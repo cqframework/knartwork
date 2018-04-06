@@ -7,7 +7,7 @@ import {Identifier} from '../models/identifier';
 
 @Component({
     selector: 'metadata',
-    templateUrl: '/metadata.html'
+    templateUrl: '../views/metadata.pug'
 })
 export class MetadataComponent extends BaseComponent {
 

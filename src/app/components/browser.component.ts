@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ToasterService } from 'angular2-toaster/angular2-toaster';
@@ -9,7 +9,7 @@ import { ManifestItem } from '../models/browser/manifest_item';
 
 @Component({
     selector: 'browser',
-    templateUrl: '/browser.html'
+    templateUrl: '../views/browser.pug'
 })
 export class BrowserComponent implements OnInit {
 
@@ -21,6 +21,7 @@ export class BrowserComponent implements OnInit {
     }
 
     ngOnInit() {
+        let url = this.route.snapshot.queryParams["manifest"];
         this.repository = this.route.snapshot.queryParams["repository"];
         if (this.repository) {
             this.browserService.getManifest(this.repository).subscribe(data => {
@@ -33,12 +34,10 @@ export class BrowserComponent implements OnInit {
             this.failureToLoad();
         }
     }
-
     failureToLoad() {
         this.toasterService.pop("error", "Uh oh", "The manifest file couldn't be loaded. Are you sure it's accessible from your browser environment? Check your browser console, and make sure the host has CORS enabled! URL: " + this.repository);
         this.manifest = null;
     }
-
     stringify(obj: any): string {
         return JSON.stringify(obj, null, "\t").trim();
     }

@@ -14,6 +14,5 @@ export class BrowserService {
 
     getManifest(repository: string): Observable<Manifest> {
         return this.http.get<Manifest>(repository + '/' + this.MANIFEST_FILE_NAME);
-
     }
 }

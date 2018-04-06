@@ -5,7 +5,7 @@ import {Relationship} from '../models/relationship';
 
 @Component({
     selector: 'export',
-    templateUrl: '/export.html'
+    templateUrl: '../views/export.pug'
 })
 export class ExportComponent {
 

@@ -1,24 +1,3 @@
-doctype html
-html
-    head
-        //- For Angular's routing.
-        base(href="/")
-        meta(charset="utf-8")
-        meta(name="viewport" content="width=device-width initial-scale=1.0")
-        meta(name="description" content="Web-based HL7 CDS Knowledge Artifact editor, preview and conversion tools.")
-        meta(name="author" content="Preston Lee")
-
-        include icons
-
-        link(rel='stylesheet' href='/css/extra.css')
-        link(rel='stylesheet' href='/css/theme.css')
-        link(rel='stylesheet' href='/css/main.css')
-
-        script(src="ace.js")
-        script(src="vendor.bundle.js")
-        script(src="main.bundle.js")
-
-    body(class="#{yield(:body_class)}")
-        .corner-ribbon.bottom-right.sticky.green.shadow Alpha
-        block content
-        include footer
+.corner-ribbon.bottom-right.sticky.green.shadow Alpha
+  block content
+  include footer

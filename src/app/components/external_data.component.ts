@@ -5,7 +5,7 @@ import {ExternalData} from '../models/external_data';
 
 @Component({
     selector: 'external_data',
-    templateUrl: '/external_data.html'
+    templateUrl: '../views/external_data.pug'
 })
 export class ExternalDataComponent {
 

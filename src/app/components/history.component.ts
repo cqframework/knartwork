@@ -7,7 +7,7 @@ import {LifeCycleEvent} from '../models/life_cycle_event';
 
 @Component({
     selector: 'history',
-    templateUrl: '/history.html'
+    templateUrl: '../views/history.pug'
 })
 export class HistoryComponent extends BaseComponent {
 

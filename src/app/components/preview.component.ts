@@ -5,7 +5,7 @@ import {Relationship} from '../models/relationship';
 
 @Component({
     selector: 'preview',
-    templateUrl: '/preview/preview.html'
+    templateUrl: '../views/preview/preview.pug'
 })
 export class PreviewComponent {
 

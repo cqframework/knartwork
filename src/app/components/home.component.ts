@@ -14,7 +14,7 @@ import {Http} from '@angular/http';
 
 @Component({
     selector: 'home',
-    templateUrl: '/home.html'
+    templateUrl: '../views/home.pug'
 })
 export class HomeComponent {
 

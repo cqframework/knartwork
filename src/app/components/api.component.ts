@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'api',
-    templateUrl: '/api.html'
+    templateUrl: '../views/api.pug',
 })
 export class ApiComponent {
 

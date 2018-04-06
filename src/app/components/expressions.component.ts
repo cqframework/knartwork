@@ -5,7 +5,7 @@ import {Expression} from '../models/expression';
 
 @Component({
     selector: 'expressions',
-    templateUrl: '/expressions.html'
+    templateUrl: '../views/expressions.pug'
 })
 export class ExpressionsComponent {
 

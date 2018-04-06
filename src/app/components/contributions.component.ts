@@ -12,7 +12,7 @@ import {Affiliation} from '../models/affiliation';
 
 @Component({
     selector: 'contributions',
-    templateUrl: '/contributions.html'
+    templateUrl: '../views/contributions.pug'
 })
 export class ContributionsComponent extends BaseComponent {
 

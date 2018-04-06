@@ -9,7 +9,7 @@ import {ActionGroup} from '../models/actions/action_group';
 
 @Component({
     selector: 'preview_action_group',
-    templateUrl: '/preview/action_group.html'
+    templateUrl: '../views/preview/action_group.pug'
 })
 export class PreviewActionGroupComponent extends ActionComponent {
 

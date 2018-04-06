@@ -14,7 +14,7 @@ import {ResponseItem} from '../models/actions/response_item';
 
 @Component({
     selector: 'action_group',
-    templateUrl: '/action_group.html'
+    templateUrl: '../views/action_group.pug'
 })
 export class ActionGroupComponent extends ActionComponent {
 

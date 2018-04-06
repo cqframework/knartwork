@@ -1,19 +1,49 @@
-# OS X crap
-.DS_Store
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# TypeScript cache
-.tscache
+# compiled output
+/dist
+/build
+/dist-server
+/tmp
+/out-tsc
 
-# Generated files
-build
-*.css
+# dependencies
+/node_modules
+
+# IDEs and editors
+.idea/
+*.iml
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
 *.map
 *.zip
 *.tar.gz
 
-#Exclude bower components and fonts
-src/bower_components
+# e2e
+/e2e/*.js
+/e2e/*.map
 
-# Locally-installed dependencies
-node_modules
-bower_components
+# System Files
+.DS_Store
+Thumbs.db
