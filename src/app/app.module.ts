@@ -20,6 +20,7 @@ import { MetadataComponent } from './components/metadata.component';
 import { ActionGroupComponent } from './components/action_group.component';
 import { PreviewComponent } from './components/preview.component';
 import { ApiComponent } from './components/api.component';
+import { BrowserComponent } from './components/browser.component';
 import { ContributionsComponent } from './components/contributions.component';
 import { RelatedResourcesComponent } from './components/related_resources.component';
 import { ModelReferencesComponent } from './components/model_references.component';
@@ -33,6 +34,7 @@ import { PreviewActionGroupComponent } from './components/preview_action_group.c
 
 // Services
 import { KnartworkService } from './services/knartwork.service';
+import { BrowserService } from './services/browser.service';
 import { XmlLoaderService } from './services/xml_loader.service';
 import { XmlExporterService } from './services/xml_exporter.service';
 
@@ -40,7 +42,7 @@ const routing = RouterModule.forRoot(
   [
     { path: '', component: HomeComponent },
     { path: 'api', component: ApiComponent },
-    { path: 'browser', component: ApiComponent }
+    { path: 'browser', component: BrowserComponent }
   ],
   { enableTracing: true } // <-- debugging purposes only
 );
@@ -49,6 +51,7 @@ const routing = RouterModule.forRoot(
   declarations: [
     AppComponent,
     ApiComponent,
+    BrowserComponent,
     HomeComponent,
     MetadataComponent,
     ActionGroupComponent,
@@ -77,6 +80,7 @@ const routing = RouterModule.forRoot(
   providers: [
     ToasterService,
     KnartworkService,
+    BrowserService,
     XmlLoaderService,
     XmlExporterService,
     { provide: 'Window', useValue: window }

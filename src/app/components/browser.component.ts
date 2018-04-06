@@ -16,8 +16,8 @@ export class BrowserComponent implements OnInit {
     repository: string;
     manifest: Manifest;
 
-    constructor(private route: ActivatedRoute, public toasterService: ToasterService, public browserService: BrowserService) {
-
+    constructor(private route: ActivatedRoute, private toasterService: ToasterService, private browserService: BrowserService) {
+        console.log("Browser initializing.");
     }
 
     ngOnInit() {

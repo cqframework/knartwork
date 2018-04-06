@@ -1,7 +1,7 @@
-import {ManifestItem} from './manifest_item';
+import {ManifestGroup} from './manifest_group';
 
 export class Manifest {
     name: string;
     description: string;
-    content: Array<ManifestItem>;
+    groups: Array<ManifestGroup>;
 }
