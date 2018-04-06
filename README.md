@@ -14,7 +14,6 @@ KNARTwork comes with a fully working example of the manifest format, referencing
 
 This decoupling of repository structure allows authors to easily share entire libraries of KNARTs by simply dropping them into a directory on the web.
 
-
 ## Developer Quick Start
 
 This is an [Angular](https://angular.io) project using `Angular CLI` as the build system, [pug](https://pugjs.org/api/getting-started.html) for HTML templates, [SASS](http://sass-lang.com) for CSS and [Bootstrap](http://getbootstrap.com/) for layout. `npm` is the package manager. Assuming you already have node installed via `brew install node` or similar:
