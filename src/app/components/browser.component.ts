@@ -14,9 +14,21 @@ import { ManifestItem } from '../models/browser/manifest_item';
 export class BrowserComponent implements OnInit {
 
     repository: string;
-    manifest: Manifest;
+	manifest: Manifest;
+	
+	public static MIME_TYPE_MAP = {
+		"application/pdf" : "PDF",
+		"application/msword" : "Word",
+		"application/vnd.openxmlformats-officedocument.wordprocessingml.document" : "Word",
+		"application/hl7-cds-knowledge-artifact-1.3+xml" : "HL7 KNART v1.3"
+	}
 
-    constructor(private route: ActivatedRoute, private toasterService: ToasterService, private browserService: BrowserService) {
+	public static KNART_MIME_TYPES = [
+		"application/hl7-cds-knowledge-artifact-1.3+xml"
+	]
+
+    constructor(private route: ActivatedRoute, private browserService: BrowserService) {
+		// private toasterService: ToasterService, 
         console.log("Browser initializing.");
     }
 
@@ -25,7 +37,8 @@ export class BrowserComponent implements OnInit {
         this.repository = this.route.snapshot.queryParams["repository"];
         if (this.repository) {
             this.browserService.getManifest(this.repository).subscribe(data => {
-                this.toasterService.pop("success", "Loaded!", "Content manifest has been loaded from: " + this.repository);
+				// this.toasterService.pop("success", "Loaded!", "Content manifest has been loaded from: " + this.repository);
+				console.log(data);
                 this.manifest = data;
             }, error => {
                 this.failureToLoad();
@@ -33,9 +46,15 @@ export class BrowserComponent implements OnInit {
         } else {
             this.failureToLoad();
         }
-    }
+	}
+	mimeTypeToName(type: string) {
+		return BrowserComponent.MIME_TYPE_MAP[type] || "?"
+	}
+	isKnartMimeType(type: string) {
+		return BrowserComponent.KNART_MIME_TYPES.includes(type);
+	}
     failureToLoad() {
-        this.toasterService.pop("error", "Uh oh", "The manifest file couldn't be loaded. Are you sure it's accessible from your browser environment? Check your browser console, and make sure the host has CORS enabled! URL: " + this.repository);
+        // this.toasterService.pop("error", "Uh oh", "The manifest file couldn't be loaded. Are you sure it's accessible from your browser environment? Check your browser console, and make sure the host has CORS enabled! URL: " + this.repository);
         this.manifest = null;
     }
     stringify(obj: any): string {

@@ -1,4 +1,4 @@
-import {Component, Output, Inject} from '@angular/core';
+import {Component, Output, Inject, OnInit} from '@angular/core';
 import {Knart} from '../models/knart';
 import {ArtifactType} from '../models/artifact_type';
 import {Format} from '../models/format';
@@ -11,12 +11,13 @@ import {XmlLoaderService} from '../services/xml_loader.service';
 import {XmlExporterService} from '../services/xml_exporter.service';
 
 import {Http} from '@angular/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'home',
     templateUrl: '../views/home.pug'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
     editor_tab: 'metadata' | 'contributions' | 'related_resources' | 'model_references' | 'supporting_evidence';
     runtime_tab: 'conditions' | 'expressions' | 'external_data' | 'coverages' | 'history';
@@ -29,7 +30,7 @@ export class HomeComponent {
     originalContentString: string;
     originalFileName: string;
 
-    constructor( @Inject('Window') private window: Window, public toasterService: ToasterService, private xmlLoader: XmlLoaderService, private xmlExporter: XmlExporterService) {
+    constructor( @Inject('Window') private window: Window, private route: ActivatedRoute, public toasterService: ToasterService, private xmlLoader: XmlLoaderService, private xmlExporter: XmlExporterService) {
         // console.log("HomeComponent has been initialized.");
         this.reset();
 
@@ -40,6 +41,23 @@ export class HomeComponent {
         // this.loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml');
         // this.loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml');
 
+    }
+
+    ngOnInit() {
+        let url = this.route.snapshot.queryParams["url"];
+        if (url) {
+            this.remoteUrl = url
+            this.loadRemoteUrl();
+        //     this.browserService.getManifest(this.repository).subscribe(data => {
+		// 		// this.toasterService.pop("success", "Loaded!", "Content manifest has been loaded from: " + this.repository);
+		// 		console.log(data);
+        //         this.manifest = data;
+        //     }, error => {
+        //         this.failureToLoad();
+        //     });
+        // } else {
+        //     this.failureToLoad();
+        }
     }
 
     loadRemoteUrl() {

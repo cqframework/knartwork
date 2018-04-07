@@ -1,17 +1,33 @@
 toaster-container
-p aoeu
-//- .jumbotron(ngIf="!manifest")
-//- h1 No repository provided.
-//-     .lead You've launched the repository browser without a working or accessible repository URL. Please see the KNARTwork project documentation for properly using this page.
-//- div(ngIf="manifest")
-//-     h1 {{manifest.name}}
-//-     p {{manifest.description}}
+//- h1 OESUNTOEHUSNTOEUH seohTEHU
+.jumbotron("*ngIf"="!manifest")
+    .well
+        h1 No repository provided.
+        p.lead You've launched the repository browser without a working or accessible repository URL. Please see the KNARTwork project documentation for properly using this page.
+div("*ngIf"="manifest")
+    .jumbotron
+        h1 {{manifest.name}}
+        p {{manifest.description}}
 
-//-     .row
-//-         .col-md-4.well("ngFor"="let i of manifest.items")
-//-             h2 {i.name}
-//-             p {i.type}
-//-             div(ngIf="i.knart")
-//-                 a.btn.btn-default(target="_blank" [href] = "repository + '/' + i.knart") Load
-//-             div(ngIf="!i.knart")
-//-                 i KNART location unknown.
+    .row
+        .manifest-group.col-md-4.well("*ngFor"="let g of manifest.groups")
+            h2 {{g.name}}
+            p {{g.description}}
+            table.table-condensed.table-striped
+                thead
+                    tr
+                        th Type
+                        th Name
+                        th Download
+                        th Special
+                tbody
+                    tr("*ngFor"="let i of g.items")
+                        td {{mimeTypeToName(i.mimeType)}}
+                        td {{i.name}}
+                        td
+                            a("*ngIf"="i.path" "[href]"="repository + '/' + i.path" target="_blank")
+                                i.glyphicon.glyphicon-download
+                            a("*ngIf"="i.url" "[href]"="i.url" target="_blank")
+                                i.glyphicon.glyphicon-download
+                        td
+                            a("*ngIf"="isKnartMimeType(i.mimeType)" target="_blank" "[routerLink]"="['/']" "[queryParams]"="{ url: (i.url || (repository + '/' + i.path))}") Open
