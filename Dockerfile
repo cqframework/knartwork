@@ -10,7 +10,7 @@ RUN npm i -g --unsafe-perm @angular/cli
 
 # Cache project dependency installation prior to project files, since code changes more often than dependencies.
 # The custom pug script is necessary for the post-install hook of the package.json
-COPY package*.json pug-rule-insert.js ./
+COPY package*.json additional-build-steps.js ./
 RUN npm i --unsafe-perm
 
 # Now install everything else.
