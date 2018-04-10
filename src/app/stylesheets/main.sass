@@ -59,12 +59,30 @@ body
 	input
 		display: inline
 
-browser
+.jumbotron
+	padding: 10px
+	box-shadow: 0 20px 20px rgba(0,0,0,.8)
+	background-color: rgba(255,255,255,.9)
+
+.highlight
+	background-color: rgba(230,230,0,.5)
+
+#browser
 	padding: 20px
 
 	h1
 		text-align: center
 		background-color: rgba(255,255,255,0.5)
+
 	.manifest-group
-		margin: 5px
-		box-shadow: 0 20px 20px rgba(0,0,0,0.5)
+
+		section
+			box-shadow: 0 4px 4px rgba(0,0,0,0.8)
+			transition: all 1s ease-out
+			
+		section:hover
+			transition: all 1s ease-out
+			background: #fff
+			border-color: #fff
+			border-radius: 4px
+			box-shadow: 0 20px 20px rgba(0,0,0,0.6)

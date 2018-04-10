@@ -1,33 +1,40 @@
 toaster-container
-//- h1 OESUNTOEHUSNTOEUH seohTEHU
-.jumbotron("*ngIf"="!manifest")
-    .well
-        h1 No repository provided.
-        p.lead You've launched the repository browser without a working or accessible repository URL. Please see the KNARTwork project documentation for properly using this page.
-div("*ngIf"="manifest")
-    .jumbotron
-        h1 {{manifest.name}}
-        p {{manifest.description}}
+#browser
+    .jumbotron("*ngIf"="!manifest")
+        .well
+            h1 No repository provided.
+            p.lead You've launched the repository browser without a working or accessible repository URL. Please see the KNARTwork project documentation for properly using this page.
 
-    .row
-        .manifest-group.col-md-4.well("*ngFor"="let g of manifest.groups")
-            h2 {{g.name}}
-            p {{g.description}}
-            table.table-condensed.table-striped
-                thead
-                    tr
-                        th Type
-                        th Name
-                        th Download
-                        th Special
-                tbody
-                    tr("*ngFor"="let i of g.items")
-                        td {{mimeTypeToName(i.mimeType)}}
-                        td {{i.name}}
-                        td
-                            a("*ngIf"="i.path" "[href]"="repository + '/' + i.path" target="_blank")
-                                i.glyphicon.glyphicon-download
-                            a("*ngIf"="i.url" "[href]"="i.url" target="_blank")
-                                i.glyphicon.glyphicon-download
-                        td
-                            a("*ngIf"="isKnartMimeType(i.mimeType)" target="_blank" "[routerLink]"="['/']" "[queryParams]"="{ url: (i.url || (repository + '/' + i.path))}") Open
+    div("*ngIf"="manifest")
+        .jumbotron
+            h1 {{manifest.name}}
+            p {{manifest.description}}
+            .form-group
+               .input-group-prepend
+                    input.input-lg.form-control("name"="filter" "autofocus"="true" "[(ngModel)]"="filter" placeholder="filter")
+
+        .row
+            .manifest-group.col-md-6("*ngFor"="let g of manifest.groups")
+                section.well
+                    h2 {{g.name}}
+                    p {{g.description}}
+                    table.table-condensed
+                        thead
+                            tr
+                                th Type
+                                th Name
+                                th Download
+                                th Special
+                        tbody
+
+                            ng-container("*ngFor"="let i of g.items")              
+                                tr("*ngIf"="showItem(i)" "[class.highlight]"="filter.length > 0")
+                                    td {{mimeTypeToName(i.mimeType)}}
+                                    td {{i.name}}
+                                    td
+                                        a("*ngIf"="i.path" "[href]"="repository + '/' + i.path" target="_blank")
+                                            i.glyphicon.glyphicon-download
+                                        a("*ngIf"="i.url" "[href]"="i.url" target="_blank")
+                                            i.glyphicon.glyphicon-link
+                                    td
+                                        a("*ngIf"="isKnartMimeType(i.mimeType)" target="_blank" "[routerLink]"="['/']" "[queryParams]"="{ url: (i.url || (repository + '/' + i.path))}") Open
