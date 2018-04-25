@@ -31,18 +31,25 @@
     br.clearfix
 
     .identifiers("*ngIf"="knart.identifiers.length > 0")
-        .identifier("*ngFor"="let i of knart.identifiers")
-            form.form.row
-                .col-sm-6.form-group
-                    //- label(for="identifier_root") Root
-                    input.form-control(name="identifier_root" type="text" "[(ngModel)]"="i.root" placeholder="e.g. deadbeef-b8b5-11e6-80f5-76304dec7eb7" required="true")
-                .col-sm-2.form-group
-                    //- label(for="identifier_version") Version
-                    input.form-control(name="identifier_version" type="text" "[(ngModel)]"="i.version" placeholder="Version (e.g. 0)")
-                .col-sm-4.btn-group
-                    a.btn.btn-small.btn-primary("(click)"="moveUp(i, knart.identifiers)" "*ngIf"="canMoveUp(i, knart.identifiers)")
-                        span.glyphicon.glyphicon-chevron-up
-                    a.btn.btn-small.btn-primary("(click)"="moveDown(i, knart.identifiers)" "*ngIf"="canMoveDown(i, knart.identifiers)")
-                        span.glyphicon.glyphicon-chevron-down
-                    a.btn.btn-small.btn-danger("(click)"="deleteIdentifier(i)")
-                        span.glyphicon.glyphicon-trash
+        .identifier("*ngFor"="let i of knart.identifiers; let idx = index")
+            form.form
+                hr("*ngIf"="idx > 0")
+                .row.text-right
+                    .col-sm-8.form-group
+                        //- label(for="identifier_root") Root
+                        input.form-control(name="identifier_root" type="text" "[(ngModel)]"="i.root" placeholder="Roote (e.g. deadbeef-b8b5-11e6-80f5-76304dec7eb7)" required="true")
+                    .col-sm-4
+                        a.btn.btn-small.btn-primary("(click)"="moveUp(i, knart.identifiers)" "*ngIf"="canMoveUp(i, knart.identifiers)")
+                            span.glyphicon.glyphicon-chevron-up
+                        a.btn.btn-small.btn-primary("(click)"="moveDown(i, knart.identifiers)" "*ngIf"="canMoveDown(i, knart.identifiers)")
+                            span.glyphicon.glyphicon-chevron-down
+                        a.btn.btn-small.btn-danger("(click)"="deleteIdentifier(i)")
+                            span.glyphicon.glyphicon-trash
+                .row
+                    .col-sm-3.form-group
+                        //- label(for="identifier_version") Version
+                        input.form-control(name="identifier_version" type="text" "[(ngModel)]"="i.version" placeholder="Version (e.g. 0)")
+                    .col-sm-3.form-group
+                        //- label(for="identifier_extension") Extension
+                        input.form-control(name="identifier_extension" type="text" "[(ngModel)]"="i.extension" placeholder="Ext. (e.g. 1234)")
+                    

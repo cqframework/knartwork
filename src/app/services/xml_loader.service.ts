@@ -249,6 +249,7 @@ export class XmlLoaderService {
             let i = new Identifier();
             i.root = this.getString('string(./@root)', node);
             i.version = this.getString('string(./@version)', node);
+            i.extension = this.getString('string(./@extension)', node);
             this.knart.identifiers.push(i);
         }
     }
