@@ -22,7 +22,8 @@
         "app/stylesheets/ribbons.sass",
         "app/stylesheets/theme.sass",
         "app/stylesheets/main.sass",
-        "styles.sass"
+        "styles.sass",
+        "../node_modules/angular2-toaster/toaster.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",

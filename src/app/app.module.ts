@@ -38,6 +38,8 @@ import { BrowserService } from './services/browser.service';
 import { XmlLoaderService } from './services/xml_loader.service';
 import { XmlExporterService } from './services/xml_exporter.service';
 
+import "reflect-metadata";
+
 const routing = RouterModule.forRoot(
   [
     { path: '', component: HomeComponent },

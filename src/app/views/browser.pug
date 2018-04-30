@@ -12,29 +12,19 @@ toaster-container
             .form-group
                .input-group-prepend
                     input.input-lg.form-control("name"="filter" "autofocus"="true" "[(ngModel)]"="filter" placeholder="filter")
-
         .row
-            .manifest-group.col-md-6("*ngFor"="let g of manifest.groups")
-                section.well
-                    h2 {{g.name}}
-                    p {{g.description}}
-                    table.table-condensed
-                        thead
-                            tr
-                                th Type
-                                th Name
-                                th Download
-                                th Special
-                        tbody
-
-                            ng-container("*ngFor"="let i of g.items")              
-                                tr("*ngIf"="showItem(i)" "[class.highlight]"="filter.length > 0")
-                                    td {{mimeTypeToName(i.mimeType)}}
-                                    td {{i.name}}
-                                    td
-                                        a("*ngIf"="i.path" "[href]"="repository + '/' + i.path" target="_blank")
-                                            i.glyphicon.glyphicon-download
-                                        a("*ngIf"="i.url" "[href]"="i.url" target="_blank")
-                                            i.glyphicon.glyphicon-link
-                                    td
-                                        a("*ngIf"="isKnartMimeType(i.mimeType)" target="_blank" "[routerLink]"="['/']" "[queryParams]"="{ url: (i.url || (repository + '/' + i.path))}") Open
+            ul.nav.nav-tabs(role="tablist")
+                li.nav-item
+                    a#group_tab.nav-link.active(href="#group" role="tab" data-toggle="tab" aria-selected="true") Groups
+                li.nav-item
+                    a#type_tab.nav-link(href="#type" role="tab" data-toggle="tab" aria-selected="false") Content Type
+                li.nav-item
+                    a#tag_tab.nav-link(href="#tag" role="tab" data-toggle="tab" aria-selected="false") Tag
+            br
+            .tab-content
+                #group.tab-pane.show.active(role="tabpanel" aria-labelledby="group_tab")
+                    include browser/groups
+                #type.tab-pane(role="tabpanel" aria-labelledby="type_tab")
+                    include browser/types
+                #tag.tab-pane(role="tabpanel" aria-labelledby="tag_tab")
+                    include browser/tags
