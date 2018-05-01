@@ -13,8 +13,8 @@ toaster-container
                .input-group-prepend
                     input.input-lg.form-control("name"="filter" "autofocus"="true" "[(ngModel)]"="filter" placeholder="filter")
 
-        .row
-            .manifest-group.col-md-6("*ngFor"="let g of manifest.groups")
+        .row.card-columns
+            .manifest-group.card("*ngFor"="let g of manifest.groups")
                 section.well
                     h2 {{g.name}}
                     p {{g.description}}
