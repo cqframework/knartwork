@@ -95,10 +95,10 @@ export class BrowserComponent implements OnInit {
     return BrowserComponent.KNART_MIME_TYPES.includes(type);
   }
   getMimeTypesFor(manifest: Manifest): Array<String> {
-    return Array.from(manifest.mimeTypes.keys());
+    return Array.from(manifest.mimeTypes.keys()).sort();
   }
   getTagsFor(manifest: Manifest): Array<String> {
-    return Array.from(manifest.tags.keys());
+    return Array.from(manifest.tags.keys()).sort();
   }
   failureToLoad() {
     // this.toasterService.pop("error", "Uh oh", "The manifest file couldn't be loaded. Are you sure it's accessible from your browser environment? Check your browser console, and make sure the host has CORS enabled! URL: " + this.repository);

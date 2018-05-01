@@ -24,4 +24,5 @@
 						td {{i.status}}
 						td {{mimeTypeToName(i.mimeType)}}
 						td
-							a("*ngIf"="isKnartMimeType(t)" target="_blank" "[routerLink]"="['/']" "[queryParams]"="{ url: (i.url || (repository + '/' + i.path))}") Open
+							a("*ngIf"="isKnartMimeType(i.mimeType)" target="_blank" "[routerLink]"="['/']" "[queryParams]"="{ url: (i.url || (repository + '/' + i.path))}")
+									i.glyphicon.glyphicon-folder-open
