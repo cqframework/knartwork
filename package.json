@@ -17,7 +17,7 @@
     "e2e": "ng e2e",
     "env-setup": "node -e \"require('./additional-build-steps').env()\"",
     "pug-rule": "node -e \"require('./additional-build-steps').pug()\"",
-    "postinstall": "npm run pug-compile && npm run env-setup"
+    "postinstall": "npm run pug-rule && npm run env-setup"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +37,7 @@
     "angular2-toaster": "^5.0.1",
     "angular2-uuid": "^1.1.1",
     "bootstrap": "^4.0.0",
+    "class-transformer": "^0.1.9",
     "core-js": "^2.4.1",
     "cql-ace-syntax": "latest",
     "cql-runner": "latest",
@@ -45,12 +46,12 @@
     "ngx-bootstrap": "^2.0.2",
     "popper": "^1.0.1",
     "popper.js": "^1.12.9",
-    "reflect-metadata": "^0.1.10",
+    "reflect-metadata": "^0.1.12",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/cli": "~1.7.3",
+    "@angular/cli": "~1.7.4",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",

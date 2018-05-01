@@ -70,6 +70,7 @@ Please add your name when making contributions!
 * Bryn Rhodes <bryn@databaseconsultinggroup.com>
 * Austin Michne <amichne@asu.edu>
 * Parker Lawson <parker@frostbytedata.com>
+* Paul Williams <paulwilliams0@gmail.com>
 
 ## License
 

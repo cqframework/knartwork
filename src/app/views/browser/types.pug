@@ -1,0 +1,29 @@
+.manifest-group.col-md-6("*ngFor"="let t of getMimeTypesFor(manifest)")
+	section.well
+		h2 {{mimeTypeToName(t)}}
+		p.text-default
+			i MIME Type: {{t}}
+		table.table-condensed
+			thead
+				tr
+					th Name
+					th Group
+					th Status
+					th Tags
+					th Special
+			tbody
+
+				ng-container("*ngFor"="let i of manifest.mimeTypes.get(t)")              
+					tr("*ngIf"="showItem(i)" "[class.highlight]"="filter.length > 0")
+						td
+							a("*ngIf"="i.path" "[href]"="repository + '/' + i.path" target="_blank")
+								//- i.glyphicon.glyphicon-download
+								| {{i.name}}
+							a("*ngIf"="i.url" "[href]"="i.url" target="_blank")
+								//- i.glyphicon.glyphicon-link
+								| {{i.name}}
+						td {{i.group}}
+						td {{i.status}}
+						td {{i.tags}}
+						td
+							a("*ngIf"="isKnartMimeType(t)" target="_blank" "[routerLink]"="['/']" "[queryParams]"="{ url: (i.url || (repository + '/' + i.path))}") Open
