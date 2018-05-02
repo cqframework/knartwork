@@ -10,6 +10,9 @@
 # dependencies
 /node_modules
 
+# Custom environment config we generate on each machine so we don't want to track this file.
+/src/environments/environment.ts
+
 # IDEs and editors
 .idea/
 *.iml
@@ -28,7 +31,6 @@
 !.vscode/extensions.json
 
 # misc
-/src/environments/*.ts
 /.sass-cache
 /connect.lock
 /coverage
