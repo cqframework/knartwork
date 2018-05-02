@@ -18,5 +18,5 @@ COPY . .
 RUN ng build
 
 EXPOSE 3000
-ENTRYPOINT ["serve", "-C", "-s", "-p", "3000", "dist"]
+ENTRYPOINT ["serve", "-C", "-s", "-p", "3000", "--cache", "0", "dist"]
 # ENTRYPOINT node env-setup.js && serve -C -s dist

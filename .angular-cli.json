@@ -23,7 +23,8 @@
         "app/stylesheets/theme.sass",
         "app/stylesheets/main.sass",
         "styles.sass",
-        "../node_modules/angular2-toaster/toaster.css"
+        "../node_modules/angular2-toaster/toaster.css",
+        "app/stylesheets/print.sass"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",

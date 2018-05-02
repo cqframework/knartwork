@@ -3,34 +3,36 @@
 		i.glyphicon.glyphicon-list
 		|  Audit Resource Availability
 	br
-.manifest-group.col-md-6("*ngFor"="let g of manifest.groups")
-	section.well
-		h2 {{g.name}}
-		p {{g.description}}
-		small
-			i {{g.status}}
-		table.table-condensed
-			thead
-				tr
-					th Type
-					th Name
-					th Special
-			tbody
+.row.card-columns
+	.manifest-group.card("*ngFor"="let g of manifest.groups")
+		section.well
+			h2 {{g.name}}
+			p {{g.description}}
+			small
+				i {{g.status}}
+			table.table-condensed
+				thead
+					tr
+						th Name
+						th Tags
+						th Type
+						th Special
+				tbody
 
-				ng-container("*ngFor"="let i of g.items")              
-					tr("*ngIf"="showItem(i)" "[class.highlight]"="filter.length > 0" "[class.available]"="i.audit == 'available'" "[class.unavailable]"="i.audit == 'unavailable'")
-						td {{mimeTypeToName(i.mimeType)}}
-						//- td {{i.name}}
-						td
-							a("*ngIf"="i.path" "[href]"="repository + '/' + i.path" target="_blank")
-								//- i.glyphicon.glyphicon-download
-								| {{i.name}}
-							a("*ngIf"="i.url" "[href]"="i.url" target="_blank")
-								//- i.glyphicon.glyphicon-link
-								| {{i.name}}
-						td
-							i.glyphicon.glyphicon-ok("*ngIf"="i.audit == 'available'")
-							i.glyphicon.glyphicon-remove("*ngIf"="i.audit == 'unavailable'")
-							| &nbsp;
-							a("*ngIf"="isKnartMimeType(i.mimeType)" target="_blank" "[routerLink]"="['/']" "[queryParams]"="{ url: (i.url || (repository + '/' + i.path))}")
-								i.glyphicon.glyphicon-folder-open
+					ng-container("*ngFor"="let i of g.items")              
+						tr("*ngIf"="showItem(i)" "[class.highlight]"="filter.length > 0" "[class.available]"="i.audit == 'available'" "[class.unavailable]"="i.audit == 'unavailable'")
+							td
+								a("*ngIf"="i.path" "[href]"="repository + '/' + i.path" target="_blank")
+									//- i.glyphicon.glyphicon-download
+									| {{i.name}}
+								a("*ngIf"="i.url" "[href]"="i.url" target="_blank")
+									//- i.glyphicon.glyphicon-link
+									| {{i.name}}
+							td {{i.tags.join(',')}}
+							td {{mimeTypeToName(i.mimeType)}}
+							td
+								//- i.glyphicon.glyphicon-ok("*ngIf"="i.audit == 'available'")
+								//- i.glyphicon.glyphicon-remove("*ngIf"="i.audit == 'unavailable'")
+								//- | &nbsp;
+								a("*ngIf"="isKnartMimeType(i.mimeType)" target="_blank" "[routerLink]"="['/']" "[queryParams]"="{ url: (i.url || (repository + '/' + i.path))}")
+									i.glyphicon.glyphicon-folder-open
