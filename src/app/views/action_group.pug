@@ -16,7 +16,7 @@
         | Represented Concepts
     .clearfix
     hr
-    .collapse.in#represented_concepts
+    .collapse.show#represented_concepts
 
         div("*ngIf"="actionGroup.representedConcepts.length > 0")
             div.contribution.well.row("*ngFor"="let rc of actionGroup.representedConcepts")
@@ -58,7 +58,7 @@
         | Action List
     .clearfix
     hr
-    .collapse.in#actions_collapse
+    .collapse.show#actions_collapse
 
         div("*ngIf"="actionGroup.subElements.length > 0")
             div.action.well("*ngFor"="let action of actionGroup.subElements")
