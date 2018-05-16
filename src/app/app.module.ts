@@ -39,10 +39,13 @@ import { XmlLoaderService } from './services/xml_loader.service';
 import { XmlExporterService } from './services/xml_exporter.service';
 
 import "reflect-metadata";
+import {LaunchComponent} from "./components/launch.component";
+import {AuthenticationService} from "./services/authentication.service";
 
 const routing = RouterModule.forRoot(
   [
     { path: '', component: HomeComponent },
+    { path: 'launch', component: LaunchComponent },
     { path: 'api', component: ApiComponent },
     { path: 'browser', component: BrowserComponent }
   ],
@@ -52,6 +55,7 @@ const routing = RouterModule.forRoot(
 @NgModule({
   declarations: [
     AppComponent,
+    LaunchComponent,
     ApiComponent,
     BrowserComponent,
     HomeComponent,
@@ -80,6 +84,7 @@ const routing = RouterModule.forRoot(
     SnomedctModule
   ],
   providers: [
+    AuthenticationService,
     ToasterService,
     KnartworkService,
     BrowserService,

@@ -105,7 +105,8 @@ module.exports.env = function environmentVariables() {
     // This file is dynamically generated to match OS environment variables.
     // All the magic is done in \`additional-build-steps.js\`. Go there for details.
     export const environment = {
-      production: "${environment === 'production'}"
+      production: "${environment === 'production'}",
+      KNARTWORK_OAUTH_CLIENT_ID: "${process.env.KNARTWORK_OAUTH_CLIENT_ID}"
     };
   `;
 
