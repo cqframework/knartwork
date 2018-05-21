@@ -1,6 +1,6 @@
 import {Injectable, Inject} from '@angular/core';
 
 @Injectable()
-export class XmlExporterService {
+export class XmlImporterService {
 
 }

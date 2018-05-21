@@ -35,8 +35,8 @@ import { PreviewActionGroupComponent } from './components/preview_action_group.c
 // Services
 import { KnartworkService } from './services/knartwork.service';
 import { BrowserService } from './services/browser.service';
-import { XmlLoaderService } from './services/xml_loader.service';
-import { XmlExporterService } from './services/xml_exporter.service';
+import { KnartImporterService } from './services/knart_importer.service';
+import { KnartExporterService } from './services/knart_exporter.service';
 
 import "reflect-metadata";
 import {LaunchComponent} from "./components/launch.component";
@@ -88,8 +88,8 @@ const routing = RouterModule.forRoot(
     ToasterService,
     KnartworkService,
     BrowserService,
-    XmlLoaderService,
-    XmlExporterService,
+    KnartImporterService,
+    KnartExporterService,
     { provide: 'Window', useValue: window }
   ],
   bootstrap: [AppComponent]

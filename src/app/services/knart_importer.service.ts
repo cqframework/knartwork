@@ -32,15 +32,17 @@ import {CreateAction} from '../models/actions/create_action';
 import {ResponseItem} from '../models/actions/response_item';
 import {Value} from '../models/value';
 import {LifeCycleEvent} from '../models/life_cycle_event';
+import { XmlImporterService } from './xml_importer.service';
 
 
 @Injectable()
-export class XmlLoaderService {
+export class KnartImporterService extends XmlImporterService {
 
     knart: Knart;
     private serializer: XMLSerializer = new XMLSerializer();
 
     constructor(private http: Http) {
+        super();
     }
 
     loadXMLFromURL(url: string): Observable<Response> {

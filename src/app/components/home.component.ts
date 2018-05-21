@@ -7,11 +7,11 @@ import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
 
 // import {window} from '@angular/browser';
 
-import {XmlLoaderService} from '../services/xml_loader.service';
-import {XmlExporterService} from '../services/xml_exporter.service';
+import {KnartImporterService} from '../services/knart_importer.service';
+import {KnartExporterService} from '../services/knart_exporter.service';
 
 import {Http} from '@angular/http';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'home',
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     originalContentString: string;
     originalFileName: string;
 
-    constructor( @Inject('Window') private window: Window, private route: ActivatedRoute, public toasterService: ToasterService, private xmlLoader: XmlLoaderService, private xmlExporter: XmlExporterService) {
+    constructor( @Inject('Window') private window: Window, private route: ActivatedRoute, public toasterService: ToasterService, private xmlImporter: KnartImporterService, private xmlExporter: KnartExporterService) {
         // console.log("HomeComponent has been initialized.");
         this.reset();
 
@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
     }
 
     loadRemoteFile(url: string) {
-        this.xmlLoader.loadXMLFromURL(url).subscribe(data => {
+        this.xmlImporter.loadXMLFromURL(url).subscribe(data => {
             let raw: string = data.text();
             console.log('Loaded raw remote file from: ' + url);
             this.loadFromContentString(raw);
@@ -144,7 +144,7 @@ export class HomeComponent implements OnInit {
         var parser = new DOMParser();
         var doc: Document = parser.parseFromString(content, "application/xml");
         try {
-            this.knart = this.xmlLoader.loadFromXMLDocument(doc);
+            this.knart = this.xmlImporter.loadFromXMLDocument(doc);
             this.originalContentString = content;
             this.toasterService.pop('success', "Loaded!", "Go do your thing.");
         } catch (e) {
