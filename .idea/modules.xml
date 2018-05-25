@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/knartwork.iml" filepath="$PROJECT_DIR$/.idea/knartwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knartwork.iml" filepath="$PROJECT_DIR$/knartwork.iml" />
     </modules>
   </component>
 </project>
