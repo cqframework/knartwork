@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import ces, { EventModel } from './services/ces';
+import { ContextEventService, CES, EventModel, JWTResponse } from 'context-event-client';
 @Component({
   selector: 'app',
   template: '<router-outlet></router-outlet>',
@@ -8,6 +7,7 @@ import ces, { EventModel } from './services/ces';
 })
 export class AppComponent implements OnInit{
   title = 'app';
+  CES: CES = new CES();
   constructor() {
     console.log("AppComponent has been initialized to establish router element.");
   }
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
       agent_uri:"artaka://agents/knartwork",
       parameters: {anything : "some data"}
     };
-    ces.send(event).then((response) => {
+    this.CES.send(event).then((response) => {
       console.info(response);
     });
   }
