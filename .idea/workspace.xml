@@ -108,7 +108,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>-F 'event</find>
+      <find />
       <find>&quot;</find>
       <find>es5</find>
     </findStrings>
@@ -633,7 +633,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
