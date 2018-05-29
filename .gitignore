@@ -15,6 +15,9 @@
 
 # IDEs and editors
 .idea/
+.idea/*
+.idea/workspace.xml
+.idea
 /.idea
 *.iml
 .project
