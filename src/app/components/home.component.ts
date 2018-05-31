@@ -68,6 +68,12 @@ export class HomeComponent implements OnInit {
 
     loadRemoteUrl() {
         if (!!this.remoteUrl) {
+            this.ces.send({
+              topic_uri: "load",
+              controller_uri: "knartwork://controllers/home",
+              model_uri: "file://knowledgeartifact.xml/knowledgeDocument",
+              parameters: {"url" : this.remoteUrl }
+            });
             this.loadRemoteFile(this.remoteUrl);
         } else {
             this.toasterService.pop('warning', "Need URL", "Please provide a URL to load.");
