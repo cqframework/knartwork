@@ -38,6 +38,7 @@ import { KnartworkService } from './services/knartwork.service';
 import { BrowserService } from './services/browser.service';
 import { KnartImporterService } from './services/knart_importer.service';
 import { KnartExporterService } from './services/knart_exporter.service';
+import { CESService } from './services/ces.service';
 
 import "reflect-metadata";
 import {LaunchComponent} from "./components/launch.component";
@@ -91,6 +92,7 @@ const routing = RouterModule.forRoot(
     BrowserService,
     KnartImporterService,
     KnartExporterService,
+    CESService,
     { provide: 'Window', useValue: window }
   ],
   bootstrap: [AppComponent]
