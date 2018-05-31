@@ -12,6 +12,7 @@ import {KnartExporterService} from '../services/knart_exporter.service';
 
 import {Http} from '@angular/http';
 import {ActivatedRoute} from '@angular/router';
+import {CESService} from "../services/ces.service";
 
 @Component({
     selector: 'home',
@@ -30,7 +31,12 @@ export class HomeComponent implements OnInit {
     originalContentString: string;
     originalFileName: string;
 
-    constructor( @Inject('Window') private window: Window, private route: ActivatedRoute, public toasterService: ToasterService, private xmlImporter: KnartImporterService, private xmlExporter: KnartExporterService) {
+    constructor( @Inject('Window') private window: Window,
+                 private route: ActivatedRoute,
+                 public toasterService: ToasterService,
+                 private xmlImporter: KnartImporterService,
+                 private xmlExporter: KnartExporterService,
+                 private ces: CESService) {
         // console.log("HomeComponent has been initialized.");
         this.reset();
 
@@ -137,6 +143,13 @@ export class HomeComponent implements OnInit {
         k.schemaIdentifier = Knart.KNART_NAMESPACE;
         // k.artifactType = ArtifactType.OrderSet.value;
         this.knart = k;
+
+        this.ces.send({
+          topic_uri: "create-information-object",
+          controller_uri: "knartwork://controllers/home",
+          model_uri: "file://newknowledgeartifact.xml/knowledgeDocument",
+          parameters: {"template" : "new"}
+        });
     }
 
     loadFromContentString(content: string) {

@@ -5,7 +5,7 @@ import { CESService } from './services/ces.service';
   template: '<router-outlet></router-outlet>',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'app';
   constructor(private ces: CESService) {
     console.log("AppComponent has been initialized to establish router element.");
