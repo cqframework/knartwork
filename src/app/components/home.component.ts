@@ -186,6 +186,13 @@ export class HomeComponent implements OnInit {
             reader.readAsText(file);
             this.originalFileName = file.name;
             console.log("File name: " + this.originalFileName);
+            this.ces.send({
+              topic_uri: "file-picker",
+              controller_uri: "knartwork://controllers/home",
+              model_uri: "file://filename.xml/knowledgeDocument",
+              parameters: {"filename" : this.originalFileName}
+            });
+
         } else {
             this.reset();
         }
