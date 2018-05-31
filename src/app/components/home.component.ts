@@ -1,4 +1,4 @@
-import {Component, Output, Inject, OnInit} from '@angular/core';
+import {Component, Output, Inject, OnInit, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import {Knart} from '../models/knart';
 import {ArtifactType} from '../models/artifact_type';
 import {Format} from '../models/format';
@@ -16,7 +16,8 @@ import {CESService} from "../services/ces.service";
 
 @Component({
     selector: 'home',
-    templateUrl: '../views/home.pug'
+    templateUrl: '../views/home.pug',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
 
@@ -196,6 +197,44 @@ export class HomeComponent implements OnInit {
         } else {
             this.reset();
         }
+    }
+
+    tabClicked(tab){
+      this.editor_tab = tab;
+      let event = {
+        topic_uri: "view",
+        controller_uri: "knartwork://controllers/",
+        model_uri: "",
+        parameters: {view : tab }
+      };
+      switch(tab){
+        case 'contributions':
+          event.controller_uri += tab;
+          event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata/contributions';
+          event.parameters = {view : tab };
+          break;
+        case 'metadata':
+          event.controller_uri += tab;
+          event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata';
+          event.parameters = {view : tab };
+          break;
+        case 'related_resources':
+          event.controller_uri += 'relatedResources';
+          event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata/relatedResources';
+          event.parameters = {view : 'relatedResources' };
+          break;
+        case 'model_references':
+          event.controller_uri += 'dataModels';
+          event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata/dataModels';
+          event.parameters = {view : 'dataModels' };
+          break;
+        case 'supporting_evidence':
+          event.controller_uri += 'supportingEvidence';
+          event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata/supportingEvidence';
+          event.parameters = {view : 'supportingEvidence' };
+          break;
+      }
+      this.ces.send(event);
     }
 
 }

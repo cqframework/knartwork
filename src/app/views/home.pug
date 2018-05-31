@@ -52,23 +52,23 @@ toaster-container
             #editor_tabs(role="tabpanel")
                 ul.nav.nav-tabs(role="tablist")
                     li(role="presentation" "[class.active]"="editor_tab == 'metadata'")
-                        a#metadata_tab_link(aria-controls="metadata" data-toggle="editor_tab" "(click)"="editor_tab = 'metadata'" role="tab" aria-expanded="true")
+                        a#metadata_tab_link(aria-controls="metadata" data-toggle="editor_tab" "(click)"="tabClicked('metadata')" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-pencil
                             |  Basics
                     li(role="presentation" "[class.active]"="editor_tab == 'contributions'")
-                        a#contributions_tab_link(aria-controls="contributions" data-toggle="editor_tab" "(click)"="editor_tab = 'contributions'" role="tab" aria-expanded="true")
+                        a#contributions_tab_link(aria-controls="contributions" data-toggle="editor_tab" "(click)"="tabClicked('contributions')" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-user
                             |  Contributions
                     li(role="presentation" "[class.active]"="editor_tab == 'model_references'")
-                        a#model_references_tab_link(aria-controls="model_references" data-toggle="editor_tab" "(click)"="editor_tab = 'model_references'" role="tab" aria-expanded="true")
+                        a#model_references_tab_link(aria-controls="model_references" data-toggle="editor_tab" "(click)"="tabClicked('model_references')" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-paperclip
                             |  Model Refs
                     li(role="presentation" "[class.active]"="editor_tab == 'supporting_evidence'")
-                        a#supporting_evidence_tab_link(aria-controls="supporting_evidence" data-toggle="editor_tab" "(click)"="editor_tab = 'supporting_evidence'" role="tab" aria-expanded="true")
+                        a#supporting_evidence_tab_link(aria-controls="supporting_evidence" data-toggle="editor_tab" "(click)"="tabClicked('supporting_evidence')" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-education
                             |  Evidence
                     li(role="presentation" "[class.active]"="editor_tab == 'related_resources'")
-                        a#related_resources_tab_link(aria-controls="related_resources" data-toggle="editor_tab" "(click)"="editor_tab = 'related_resources'" role="tab" aria-expanded="true")
+                        a#related_resources_tab_link(aria-controls="related_resources" data-toggle="editor_tab" "(click)"="tabClicked('related_resources')" role="tab" aria-expanded="true")
                             span.glyphicon.glyphicon-book
                             |  Related Sources
 
