@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CESService } from './services/ces.service';
+import { CESService, ActionEvent } from "context-event-client";
 @Component({
   selector: 'app',
   template: '<router-outlet></router-outlet>',
@@ -11,11 +11,11 @@ export class AppComponent implements OnInit {
     console.log("AppComponent has been initialized to establish router element.");
   }
   ngOnInit(){
-    this.ces.send({
-      topic_uri: "load",
-      controller_uri: "knartwork://controllers/app",
-      model_uri: "file://filename.xml/knowledgeDocument",
-      parameters: {"app" : "Knartwork"}
-    });
+    this.ces.send(new ActionEvent(
+      "load",
+      "knartwork://controllers/app",
+      "file://knowledgeartifact.xml/knowledgeDocument",
+      {"app" : "Knartwork"}
+    ));
   }
 }

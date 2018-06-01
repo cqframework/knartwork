@@ -12,7 +12,7 @@ import {KnartExporterService} from '../services/knart_exporter.service';
 
 import {Http} from '@angular/http';
 import {ActivatedRoute} from '@angular/router';
-import {CESService} from "../services/ces.service";
+import { CESService, ActionEvent } from "context-event-client";
 
 @Component({
     selector: 'home',
@@ -68,17 +68,17 @@ export class HomeComponent implements OnInit {
     }
 
     loadRemoteUrl() {
-        if (!!this.remoteUrl) {
-            this.ces.send({
-              topic_uri: "load",
-              controller_uri: "knartwork://controllers/home",
-              model_uri: "file://knowledgeartifact.xml/knowledgeDocument",
-              parameters: {"url" : this.remoteUrl }
-            });
-            this.loadRemoteFile(this.remoteUrl);
-        } else {
-            this.toasterService.pop('warning', "Need URL", "Please provide a URL to load.");
-        }
+      if (!!this.remoteUrl) {
+        this.ces.send(new ActionEvent(
+          "load",
+          "knartwork://controllers/home",
+          "file://knowledgeartifact.xml/knowledgeDocument",
+          {"url" : this.remoteUrl }
+        ));
+        this.loadRemoteFile(this.remoteUrl);
+      } else {
+          this.toasterService.pop('warning', "Need URL", "Please provide a URL to load.");
+      }
     }
 
     filenameFor(url: string): string {
@@ -151,12 +151,12 @@ export class HomeComponent implements OnInit {
         // k.artifactType = ArtifactType.OrderSet.value;
         this.knart = k;
 
-        this.ces.send({
-          topic_uri: "create-information-object",
-          controller_uri: "knartwork://controllers/home",
-          model_uri: "file://newknowledgeartifact.xml/knowledgeDocument",
-          parameters: {"template" : "new"}
-        });
+        this.ces.send(new ActionEvent(
+          "create-information-object",
+          "knartwork://controllers/home",
+          "file://newknowledgeartifact.xml/knowledgeDocument",
+          {"template" : "new"}
+        ));
     }
 
     loadFromContentString(content: string) {
@@ -187,12 +187,13 @@ export class HomeComponent implements OnInit {
             reader.readAsText(file);
             this.originalFileName = file.name;
             console.log("File name: " + this.originalFileName);
-            this.ces.send({
-              topic_uri: "file-picker",
-              controller_uri: "knartwork://controllers/home",
-              model_uri: "file://filename.xml/knowledgeDocument",
-              parameters: {"filename" : this.originalFileName}
-            });
+
+          this.ces.send(new ActionEvent(
+            "file-picker",
+            "knartwork://controllers/home",
+            "file://filename.xml/knowledgeDocument",
+            {"filename" : this.originalFileName}
+          ));
 
         } else {
             this.reset();
@@ -201,35 +202,35 @@ export class HomeComponent implements OnInit {
 
     tabClicked(tab){
       this.editor_tab = tab;
-      let event = {
-        topic_uri: "view",
-        controller_uri: "knartwork://controllers/",
-        model_uri: "",
-        parameters: {view : tab }
-      };
+      let event = new ActionEvent(
+        "view",
+        "knartwork://controllers/home",
+        "",
+        {view : tab }
+      );
       switch(tab){
         case 'contributions':
-          event.controller_uri += tab;
+          event.controller_uri += '/' + tab;
           event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata/contributions';
           event.parameters = {view : tab };
           break;
         case 'metadata':
-          event.controller_uri += tab;
+          event.controller_uri += '/' + tab;
           event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata';
           event.parameters = {view : tab };
           break;
         case 'related_resources':
-          event.controller_uri += 'relatedResources';
+          event.controller_uri += '/' + 'relatedResources';
           event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata/relatedResources';
           event.parameters = {view : 'relatedResources' };
           break;
         case 'model_references':
-          event.controller_uri += 'dataModels';
+          event.controller_uri += '/' + 'dataModels';
           event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata/dataModels';
           event.parameters = {view : 'dataModels' };
           break;
         case 'supporting_evidence':
-          event.controller_uri += 'supportingEvidence';
+          event.controller_uri += '/' + 'supportingEvidence';
           event.model_uri = 'file://knowledgeartifact.xml/knowledgeDocument/metadata/supportingEvidence';
           event.parameters = {view : 'supportingEvidence' };
           break;
