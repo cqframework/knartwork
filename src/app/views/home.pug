@@ -9,7 +9,10 @@ toaster-container
             #loader
                 div.text-center
                     h1 Start fresh and..
-                    button.btn.btn-lg("(click)"="createFromTemplate()")
+                    button.btn.btn-lg("(click)"="createFromTemplate()"
+                    "[cesEvent]"="'file://knowledgeartifact.xml/knowledgeDocument'",
+                    "[cesTopic]"="'create-information-object'",
+                    "[cesParameters]"="{\"template\" : \"new\" }")
                         span.glyphicon.glyphicon-plus
                         |  Create a new knowledge artifact.
                     //- br
@@ -24,7 +27,10 @@ toaster-container
                         .col-sm-9.form-group
                             input.form-control(name="remote_url" type='text' "[(ngModel)]"="remoteUrl" placeholder="http://example.com/awesome-knart.xml")
                         .col-sm-3
-                            button.btn.btn-default("(click)"="loadRemoteUrl()") Load it!
+                            button.btn.btn-default("(click)"="loadRemoteUrl()",
+                            "[cesEvent]"="'file://knowledgeartifact.xml/knowledgeDocument'",
+                            "[cesTopic]"="'load'",
+                            "[cesParameters]"="{\"url\" : remoteUrl }") Load it!
                         .col-sm-12
                             small
                                 | Works "inside the firewall"!
@@ -43,7 +49,10 @@ toaster-container
                     .form-group
                         label
                             span.glyphicon.glyphicon-folder-open
-                        input(type='file' accept='.knart,.xml,.json' "(change)"='openFile($event)')
+                        input(type='file' accept='.knart,.xml,.json' "(change)"='openFile($event)'
+                        "[cesEvent]"="'file://filename.xml/knowledgeDocument'",
+                        "[cesTopic]"="'file-picker'",
+                        "[cesParameters]"="{\"filename\" : originalFileName}")
 
 
 .container-fluid("*ngIf"="knart")
@@ -56,19 +65,31 @@ toaster-container
                             span.glyphicon.glyphicon-pencil
                             |  Basics
                     li(role="presentation" "[class.active]"="editor_tab == 'contributions'")
-                        a#contributions_tab_link(aria-controls="contributions" data-toggle="editor_tab" "(click)"="tabClicked('contributions')" role="tab" aria-expanded="true")
+                        a#contributions_tab_link(aria-controls="contributions" data-toggle="editor_tab" "(click)"="tabClicked('contributions')" role="tab" aria-expanded="true"
+                        "[cesEvent]"="'file://knowledgeartifact.xml/knowledgeDocument/metadata/contributions'",
+                        "[cesTopic]"="'view'",
+                        "[cesParameters]"="{view : \"contributions\" }")
                             span.glyphicon.glyphicon-user
                             |  Contributions
                     li(role="presentation" "[class.active]"="editor_tab == 'model_references'")
-                        a#model_references_tab_link(aria-controls="model_references" data-toggle="editor_tab" "(click)"="tabClicked('model_references')" role="tab" aria-expanded="true")
+                        a#model_references_tab_link(aria-controls="model_references" data-toggle="editor_tab" "(click)"="tabClicked('model_references')" role="tab" aria-expanded="true"
+                        "[cesEvent]"="'file://knowledgeartifact.xml/knowledgeDocument/metadata/model_references'",
+                        "[cesTopic]"="'view'",
+                        "[cesParameters]"="{view : \"model_references\" }")
                             span.glyphicon.glyphicon-paperclip
                             |  Model Refs
                     li(role="presentation" "[class.active]"="editor_tab == 'supporting_evidence'")
-                        a#supporting_evidence_tab_link(aria-controls="supporting_evidence" data-toggle="editor_tab" "(click)"="tabClicked('supporting_evidence')" role="tab" aria-expanded="true")
+                        a#supporting_evidence_tab_link(aria-controls="supporting_evidence" data-toggle="editor_tab" "(click)"="tabClicked('supporting_evidence')" role="tab" aria-expanded="true"
+                        "[cesEvent]"="'file://knowledgeartifact.xml/knowledgeDocument/metadata/supporting_evidence'",
+                        "[cesTopic]"="'view'",
+                        "[cesParameters]"="{view : \"supporting_evidence\" }")
                             span.glyphicon.glyphicon-education
                             |  Evidence
                     li(role="presentation" "[class.active]"="editor_tab == 'related_resources'")
-                        a#related_resources_tab_link(aria-controls="related_resources" data-toggle="editor_tab" "(click)"="tabClicked('related_resources')" role="tab" aria-expanded="true")
+                        a#related_resources_tab_link(aria-controls="related_resources" data-toggle="editor_tab" "(click)"="tabClicked('related_resources')" role="tab" aria-expanded="true"
+                        "[cesEvent]"="'file://knowledgeartifact.xml/knowledgeDocument/metadata/related_resources'",
+                        "[cesTopic]"="'view'",
+                        "[cesParameters]"="{view : \"related_resources\" }")
                             span.glyphicon.glyphicon-book
                             |  Related Sources
 

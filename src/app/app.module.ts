@@ -32,6 +32,7 @@ import { ExternalDataComponent } from './components/external_data.component';
 import { SupportingEvidenceComponent } from './components/supporting_evidence.component';
 import { HistoryComponent } from './components/history.component';
 import { PreviewActionGroupComponent } from './components/preview_action_group.component';
+import { LaunchComponent } from "./components/launch.component";
 
 // Services
 import { KnartworkService } from './services/knartwork.service';
@@ -40,10 +41,11 @@ import { KnartImporterService } from './services/knart_importer.service';
 import { KnartExporterService } from './services/knart_exporter.service';
 import { CESService as VanillaCESService } from './services/ces.service';
 import { CESService } from 'context-event-client';
+import { CESModule } from 'context-event-client';
+import { AuthenticationService } from "./services/authentication.service";
+
 
 import "reflect-metadata";
-import {LaunchComponent} from "./components/launch.component";
-import {AuthenticationService} from "./services/authentication.service";
 
 const routing = RouterModule.forRoot(
   [
@@ -84,7 +86,8 @@ const routing = RouterModule.forRoot(
     HttpClientModule,
     BrowserAnimationsModule, // For Toaster
     ToasterModule,
-    SnomedctModule
+    SnomedctModule,
+    CESModule
   ],
   providers: [
     AuthenticationService,
