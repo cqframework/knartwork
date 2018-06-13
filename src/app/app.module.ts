@@ -29,6 +29,7 @@ import { ConditionsComponent } from './components/conditions.component';
 import { ExpressionsComponent } from './components/expressions.component';
 import { CoveragesComponent } from './components/coverages.component';
 import { ExternalDataComponent } from './components/external_data.component';
+import { LiteratureReferenceComponent } from './components/literature_reference.component'
 import { SupportingEvidenceComponent } from './components/supporting_evidence.component';
 import { HistoryComponent } from './components/history.component';
 import { PreviewActionGroupComponent } from './components/preview_action_group.component';
@@ -75,6 +76,7 @@ const routing = RouterModule.forRoot(
     SupportingEvidenceComponent,
     CoveragesComponent,
     ExternalDataComponent,
+    LiteratureReferenceComponent,
     PreviewActionGroupComponent,
     HistoryComponent
   ],

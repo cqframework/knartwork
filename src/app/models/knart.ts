@@ -12,6 +12,7 @@ import {Coverage} from './coverage';
 import {Condition} from './condition';
 import {Expression} from './expression';
 import {LifeCycleEvent} from './life_cycle_event';
+import { LiteratureReference } from './literature_reference';
 
 export class Knart {
 
@@ -31,6 +32,7 @@ export class Knart {
     relatedResources: Array<RelatedResource> = new Array<RelatedResource>();
     supportingEvidence: Array<SupportingEvidence> = new Array<SupportingEvidence>();
     externalData: Array<ExternalData> = new Array<ExternalData>();
+    literatureRefernce: Array<LiteratureReference> = new Array<LiteratureReference>();
     coverages: Array<Coverage> = new Array<Coverage>();
     conditions: Array<Condition> = new Array<Condition>();
     expressions: Array<Expression> = new Array<Expression>();
