@@ -18,10 +18,10 @@ export class AppComponent implements OnInit {
     this.ces.getEventStream()
       // Here we can use any RxJs operators!
       .filter((event) => {
-        return eventFilter(['artaka'], event);
+        return eventFilter(['artaka://*'], event);
       })
       .subscribe((event)=>{
-      console.info('Godlike: ', event);
+      console.info('Event received: ', event);
     });
 
     // setInterval(() => {

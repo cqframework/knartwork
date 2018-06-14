@@ -39,7 +39,7 @@
     "angular2-uuid": "^1.1.1",
     "bootstrap": "^4.1.1",
     "class-transformer": "^0.1.9",
-    "context-event-client": "^0.3.21",
+    "context-event-client": "^0.3.30",
     "core-js": "^2.5.7",
     "cql-ace-syntax": "latest",
     "cql-runner": "latest",
