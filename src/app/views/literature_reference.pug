@@ -1,0 +1,14 @@
+.container-fluid
+    p.text-muted Literature References
+    br.clearfix
+
+    #literatureReference("*ngIf"="knart.literatureReference.length > 0")
+        .literatureReference.well("*ngFor"="let lr of knart.literatureReference")
+            .row
+                .col-sm-12
+                    h4 {{lr.title}}
+                .col-sm-12
+                    ul("*ngIf"="lr.references.length > 0")
+                        li("*ngFor"="let i of lr.references")
+                            a("*ngIf"="i.url" "[href]"="i.url" target="_blank")
+                                | {{i.name}}
