@@ -54,7 +54,7 @@ const routing = RouterModule.forRoot(
     { path: 'api', component: ApiComponent },
     { path: 'browser', component: BrowserComponent }
   ],
-  { enableTracing: true } // <-- debugging purposes only
+  { enableTracing: false } // <-- debugging purposes only
 );
 
 @NgModule({

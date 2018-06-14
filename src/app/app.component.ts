@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CESService, ActionEvent } from "context-event-client";
+import { CESService, ActionEvent, eventFilter } from "context-event-client";
+import { Observable } from "rxjs/Observable";
+import { Subject } from "rxjs/Subject";
+import 'rxjs/add/operator/filter';
 @Component({
   selector: 'app',
   template: '<router-outlet></router-outlet>',
@@ -11,11 +14,23 @@ export class AppComponent implements OnInit {
     console.log("AppComponent has been initialized to establish router element.");
   }
   ngOnInit(){
-    this.ces.send(new ActionEvent(
-      "load",
-      "knartwork://controllers/app",
-      "file://knowledgeartifact.xml/knowledgeDocument",
-      {"app" : "Knartwork"}
-    ));
+    this.ces.initialize(['artaka://ticks/second']);
+    this.ces.getEventStream()
+      // Here we can use any RxJs operators!
+      .filter((event) => {
+        return eventFilter(['artaka'], event);
+      })
+      .subscribe((event)=>{
+      console.info('Godlike: ', event);
+    });
+
+    // setInterval(() => {
+    //   this.ces.send(new ActionEvent(
+    //     "load",
+    //     "knartwork://controllers/app",
+    //     "file://knowledgeartifact.xml/knowledgeDocument",
+    //     {"app" : "Knartwork"}
+    //   ));
+    // }, 5000);
   }
 }

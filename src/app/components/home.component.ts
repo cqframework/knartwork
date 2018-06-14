@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         let url = this.route.snapshot.queryParams["url"];
         if (url) {
-            this.remoteUrl = url
+            this.remoteUrl = url;
             this.loadRemoteUrl();
         //     this.browserService.getManifest(this.repository).subscribe(data => {
 		// 		// this.toasterService.pop("success", "Loaded!", "Content manifest has been loaded from: " + this.repository);
