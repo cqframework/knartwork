@@ -1,7 +1,7 @@
 include layout/navigation
 toaster-container
 
-.container-fluid("*ngIf"="!knart")
+.container-fluid("*ngIf"="!knart","[cesEvent]"="'home'","[cesTopic]" = "'select-value'")
     .row
         //- button("(click)"="popToast()") pop toast
         .col-sm-6.col-sm-offset-3
