@@ -16,14 +16,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.ces.initialize(['app','artaka://ticks/second']);
+    this.ces.initialize(['http://www.ke.tu-darmstadt.de/ontologies/ui_detail_level.owl#select-value']);
     this.ces.getEventStream()
       // Here we can use any RxJs operators!
       .filter((event) => {
-        return eventFilter(['artaka://*'], event);
+        return eventFilter(['select-value*'], event);
       })
       .subscribe((event)=>{
-      //console.info('Event received: ', event);
+        console.info('Event received: ', event);
     });
 
     // setInterval(() => {

@@ -55,7 +55,7 @@ toaster-container
                         "[cesParameters]"="{\"filename\" : originalFileName}")
 
 
-.container-fluid("*ngIf"="knart")
+.container-fluid("*ngIf"="knart","[cesEvent]"="'home'","[cesTopic]" = "'select-value'")
     .row
         .col-md-6
             #editor_tabs(role="tabpanel")
