@@ -1,7 +1,7 @@
 h3 {{actionGroup.title}}
 
-h4 Represented Concepts
-.row
+h4("*ngIf"="actionGroup.representedConcepts.length > 0") Represented Concepts
+.row("*ngIf"="actionGroup.representedConcepts.length > 0")
     .col-sm-4.coverage("*ngFor"="let rc of actionGroup.representedConcepts")
         .well
             h4
@@ -14,8 +14,8 @@ h4 Represented Concepts
                 |  {{rc.code}}
 
 .actions
-    .action.well("*ngFor"="let action of actionGroup.subElements")
-
+    .action("*ngIf"="actionGroup.subElements.length > 0")
+      .well("*ngFor"="let action of actionGroup.subElements")
         .declare_response_action("*ngIf"="isDeclareResponseAction(action)")
             h3 {{action.name}} (Response Declaration)
         .collect_information_action("*ngIf"="isCollectInformationAction(action)")
@@ -51,6 +51,8 @@ h4 Represented Concepts
                                 td {{ic.codeSystem}}
                                 td {{ic.codeSystemName}}
                 .col-sm-12
+                    b Initial Value Type:
+                    | {{action.initialValueType}}
                     h4 Initial Value Expression
                     pre(type="xml") {{action.initialValue}}
 
@@ -77,6 +79,12 @@ h4 Represented Concepts
 
         .create_action("*ngIf"="isCreateAction(action)")
             h3 (Create Action)
+            .row
+              .col-sm-12
+                    b Sentence Type:&nbsp;
+                    | {{action.sentenceType}}
+                    h4 Sentence
+                    pre(type="xml") {{action.sentence}}
         .action_group("*ngIf"="isActionGroup(action)")
-            h3 {{action.prompt}} (Sub Group)
+            h3("*ngIf"="action.prompt") {{action.prompt}} (Sub Group)
             preview_action_group("[knart]"="knart" "[actionGroup]"="action")
