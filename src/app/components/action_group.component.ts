@@ -95,5 +95,10 @@ export class ActionGroupComponent extends ActionComponent {
         }
     }
 
+    movePageTo(idx: Value) {
+        const el = document.getElementById('action-'+idx);
+        el.scrollIntoView({block: 'start', behavior: 'smooth'})
+    }
+
 
 }
