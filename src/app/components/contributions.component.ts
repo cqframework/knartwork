@@ -34,7 +34,7 @@ export class ContributionsComponent extends BaseComponent {
 
     deleteContribution(c: Contribution) {
         let index = this.knart?.contributions.indexOf(c, 0);
-        if (index && index > -1) {
+        if (index !== undefined && index > -1) {
             this.knart?.contributions.splice(index, 1);
         }
     }
@@ -43,11 +43,11 @@ export class ContributionsComponent extends BaseComponent {
         c.addresses.push(new Address());
     }
     deleteAddress(c: Contribution, a: Address) {
-        let cIndex = this.knart?.contributions.indexOf(c);
-        if (cIndex) {
-            let aIndex = this.knart?.contributions[cIndex].addresses.indexOf(a);
-            if (aIndex) {
-                this.knart?.contributions[cIndex].addresses.splice(aIndex, 1);
+        let i = this.knart?.contributions.indexOf(c);
+        if (i !== undefined && i > -1) {
+            let aIndex = this.knart?.contributions[i].addresses.indexOf(a);
+            if (aIndex !== undefined) {
+                this.knart?.contributions[i].addresses.splice(aIndex, 1);
             }
         }
     }
@@ -57,11 +57,11 @@ export class ContributionsComponent extends BaseComponent {
     }
 
     deleteContact(contribution: Contribution, contact: Contact) {
-        let contributionIndex = this.knart?.contributions.indexOf(contribution);
-        if (contributionIndex) {
-            let contactIndex = this.knart?.contributions[contributionIndex].contacts.indexOf(contact);
-            if (contactIndex) {
-                this.knart?.contributions[contributionIndex].contacts.splice(contactIndex, 1);
+        let i = this.knart?.contributions.indexOf(contribution);
+        if (i !== undefined && i > -1) {
+            let contactIndex = this.knart?.contributions[i].contacts.indexOf(contact);
+            if (contactIndex !== undefined) {
+                this.knart?.contributions[i].contacts.splice(contactIndex, 1);
             }
         }
     }
@@ -71,11 +71,11 @@ export class ContributionsComponent extends BaseComponent {
     }
 
     deleteName(contribution: Contribution, name: Name) {
-        let contributionIndex = this.knart?.contributions.indexOf(contribution);
-        if (contributionIndex) {
-            let nameIndex = this.knart?.contributions[contributionIndex].names.indexOf(name);
-            if (nameIndex) {
-                this.knart?.contributions[contributionIndex].names.splice(nameIndex, 1);
+        let i = this.knart?.contributions.indexOf(contribution);
+        if (i !== undefined && i > -1) {
+            let nameIndex = this.knart?.contributions[i].names.indexOf(name);
+            if (nameIndex !== undefined) {
+                this.knart?.contributions[i].names.splice(nameIndex, 1);
             }
         }
     }
@@ -85,11 +85,11 @@ export class ContributionsComponent extends BaseComponent {
     }
 
     deleteAffiliation(contribution: Contribution, affiliation: Affiliation) {
-        let contributionIndex = this.knart?.contributions.indexOf(contribution);
-        if (contributionIndex) {
-            let affiliationIndex = this.knart?.contributions[contributionIndex].affiliations.indexOf(affiliation);
-            if (affiliationIndex) {
-                this.knart?.contributions[contributionIndex].affiliations.splice(affiliationIndex, 1);
+        let i = this.knart?.contributions.indexOf(contribution);
+        if (i !== undefined && i > -1) {
+            let affiliationIndex = this.knart?.contributions[i].affiliations.indexOf(affiliation);
+            if (affiliationIndex !== undefined) {
+                this.knart?.contributions[i].affiliations.splice(affiliationIndex, 1);
             }
         }
     }

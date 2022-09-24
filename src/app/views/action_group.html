@@ -6,7 +6,7 @@
     <div class="clearfix"></div>
     <hr />
     <h2>
-        <div class="btn-group pull-right"><a class="btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#represented_concepts" aria-expanded="true" aria-controls="represented_concepts"><span
+        <div class="btn-group float-end"><a class="btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#represented_concepts" aria-expanded="true" aria-controls="represented_concepts"><span
                     class="bi bi-option"></span></a><a class="btn btn-primary" (click)="createRepresentedConcept()"><span class="bi bi-plus"></span> Add</a></div>
         Represented Concepts
     </h2>
@@ -15,7 +15,7 @@
     <div class="collapse in" id="represented_concepts">
         <div *ngIf="actionGroup.representedConcepts.length > 0">
             <div class="contribution well row" *ngFor="let rc of actionGroup.representedConcepts">
-                <div class="pull-right">
+                <div class="float-end">
                     <button class="btn btn-small btn-danger" (click)="deleteRepresentedConcept(rc)"><span
                             class="bi bi-trash"></span></button>
                 </div>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <h2>
-        <div class="btn-group pull-right"><a class="btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#actions_collapse" aria-expanded="true" aria-controls="actions_collapse"><span
+        <div class="btn-group float-end"><a class="btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#actions_collapse" aria-expanded="true" aria-controls="actions_collapse"><span
                     class="bi bi-option"></span></a><a class="btn btn-primary" (click)="createDeclareResponseAction()"><span class="bi bi-plus"></span> Declare
                 Response</a><a class="btn btn-primary" (click)="createCollectInformationAction()"><span
                     class="bi bi-plus"></span> Collection Information</a>
@@ -54,7 +54,7 @@
     <div class="collapse in" id="actions_collapse">
         <div *ngIf="actionGroup.subElements.length > 0">
             <div class="action well" *ngFor="let action of actionGroup.subElements">
-                <div class="btn-group pull-right"><a class="btn btn-small btn-primary" (click)="moveUp(action, actionGroup.subElements)" *ngIf="canMoveUp(action, actionGroup.subElements)"><span
+                <div class="btn-group float-end"><a class="btn btn-small btn-primary" (click)="moveUp(action, actionGroup.subElements)" *ngIf="canMoveUp(action, actionGroup.subElements)"><span
                             class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(action, actionGroup.subElements)" *ngIf="canMoveDown(action, actionGroup.subElements)"><span
                             class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteAction(action)"><span class="bi bi-trash"></span></a></div>
                 <div class="declare_response_action" *ngIf="isDeclareResponseAction(action)">
@@ -116,7 +116,7 @@
                                 <textarea class="form-control" name="collect_information_initial_value" rows="4" [(ngModel)]="action.initialValue" placeholder="&lt;elm:source xsi:type=&quot;elm:List&quot;&gt;...&lt;/elm:source&gt;"></textarea>
                             </div>
                             <h5>
-                                <div class="pull-right"><a class="btn btn-small btn-primary" (click)="createItemCode(action)"><span
+                                <div class="float-end"><a class="btn btn-small btn-primary" (click)="createItemCode(action)"><span
                                             class="bi bi-plus"></span></a></div>Question Codes
                             </h5>
                             <div class="clearfix"></div>
@@ -146,7 +146,7 @@
                                 </tbody>
                             </table>
                             <h5>
-                                <div class="pull-right"><a class="btn btn-small btn-primary" (click)="createResponseItem(action)"><span
+                                <div class="float-end"><a class="btn btn-small btn-primary" (click)="createResponseItem(action)"><span
                                             class="bi bi-plus"></span></a></div>Enumerated Responses &amp; Codes
                             </h5>
                             <div class="clearfix"></div>
@@ -158,7 +158,7 @@
                                     <div class="btn-group"><a class="btn btn-small btn-primary" (click)="moveUp(ri, action.responseItems)" *ngIf="canMoveUp(ri, action.responseItems)"><span
                                                 class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(ri, action.responseItems)" *ngIf="canMoveDown(ri, action.responseItems)"><span
                                                 class="bi bi-chevron-down"></span></a>
-                                        <a class="pull-right btn btn-small btn-danger" (click)="deleteResponseItem(action, ri)"><span
+                                        <a class="float-end btn btn-small btn-danger" (click)="deleteResponseItem(action, ri)"><span
                                                 class="bi bi-trash"></span></a>
                                     </div>
                                 </div>

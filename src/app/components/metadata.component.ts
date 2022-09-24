@@ -22,7 +22,7 @@ export class MetadataComponent extends BaseComponent {
 
     deleteIdentifier(i: Identifier) {
         let index = this.knart?.identifiers.indexOf(i, 0);
-        if (index && index > -1) {
+        if (index !== undefined && index > -1) {
             this.knart?.identifiers.splice(index, 1);
         }
     }

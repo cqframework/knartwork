@@ -20,7 +20,7 @@ export class ExpressionsComponent {
 
     deleteExpression(e: Expression) {
         let i = this.knart?.expressions.indexOf(e, 0);
-        if (i  && i> -1) {
+        if (i !== undefined && i> -1) {
             this.knart?.expressions.splice(i, 1);
         }
     }

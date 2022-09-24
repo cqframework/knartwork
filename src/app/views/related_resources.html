@@ -1,33 +1,51 @@
-<div class="container-fluid"><a class="btn btn-primary pull-right" (click)="createRelatedResource()"><span
-            class="bi bi-plus"></span> Add</a>
-    <p class="text-muted">Related resources are external documents of notable provenance.</p><br class="clearfix" />
+<div class="container-fluid"><a class="btn btn-primary float-end" (click)="createRelatedResource()"><span
+            class="bi bi-plus"></span> Add Related Source</a>
+    <div class="form-text">Related resources are external documents of notable provenance.</div><br class="clearfix" />
     <div id="relatedResources" *ngIf="knart && knart.relatedResources.length > 0">
-        <div class="relatedResource well" *ngFor="let rr of knart.relatedResources">
+        <div class="relatedResource well mb-4 p-3" *ngFor="let rr of knart.relatedResources">
             <form class="form row">
-                <div class="col-sm-9 form-group"><select class="form-control" name="related_resource_relation_select" [(ngModel)]="rr.relationship">
-                        <option [value]="t.code" [selected]="rr.relationship == t.code"
-                            *ngFor="let t of relationshipTypes()">{{t.label}}</option>
-                    </select></div>
-                <div class="col-sm-3 form-group">
-                    <div class="btn-group"><a class="btn btn-small btn-primary" (click)="moveUp(rr, knart.relatedResources)" *ngIf="canMoveUp(rr, knart.relatedResources)"><span
-                                class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(rr, knart.relatedResources)" *ngIf="canMoveDown(rr, knart.relatedResources)"><span
-                                class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteRelatedResource(rr)"><span class="bi bi-trash"></span></a>
+                <div class="input-group mb-3">
+                    <div class="form-floating">
+                        <select class="form-select" name="related_resource_relation_select" [(ngModel)]="rr.relationship">
+                            <option [value]="t.code" [selected]="rr.relationship == t.code"
+                                *ngFor="let t of relationshipTypes()">{{t.label}}</option>
+                        </select>
+                        <label for="related_resource_relation_select">Relationship</label>
                     </div>
+                    <!-- <div class="form-group"> -->
+                    <!-- <div class="btn-group"> -->
+                    <a class="btn btn-small btn-primary" (click)="moveUp(rr, knart.relatedResources)" *ngIf="canMoveUp(rr, knart.relatedResources)"><span class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(rr, knart.relatedResources)"
+                        *ngIf="canMoveDown(rr, knart.relatedResources)"><span class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteRelatedResource(rr)"><span
+                            class="bi bi-trash"></span>
+                    </a>
+                    <!-- </div> -->
+                    <!-- </div> -->
                 </div>
-                <div class="col-sm-12">
-                    <h4><a class="btn btn-primary pull-right" (click)="createRelatedResourceResource(rr)"><span
-                                class="bi bi-plus"></span> Add</a>Links</h4><br />
-                    <div class="clearfix"></div>
+                <div class="col-sm-12"><a class="btn btn-primary float-end" (click)="createRelatedResourceResource(rr)"><span class="bi bi-plus"></span> Add Link</a>
+                    <h4>Links</h4>
+                    <!-- <br /> -->
+                    <!-- <div class="clearfix"></div> -->
                     <table class="table">
                         <tbody>
                             <tr class="resource" *ngFor="let r of rr.resources">
                                 <td>
-                                    <div class="form-group"><input class="form-control" name="rr_resource_title" type="text" [(ngModel)]="r.title" placeholder="Title" /></div>
+                                    <div class="form-floating">
+                                        <input class="form-control" name="rr_resource_title" type="text" [(ngModel)]="r.title" placeholder="Title" />
+                                        <label for="rr_resource_title">Title</label>
+                                    </div>
                                 </td>
                                 <td>
-                                    <div class="form-group"><input class="form-control" name="rr_resource_location" type="text" [(ngModel)]="r.location" placeholder="Location" /></div>
+                                    <div class="form-floating">
+                                        <input class="form-control" name="rr_resource_location" type="text" [(ngModel)]="r.location" placeholder="Location" />
+                                        <label for="rr_resource_location">Location</label>
+                                    </div>
                                 </td>
-                                <td class="form-group"><input class="form-control" name="rr_resource_description" [(ngModel)]="r.description" placeholder="Description..." /></td>
+                                <td>
+                                    <div class="form-floating">
+                                        <input class="form-control" name="rr_resource_description" [(ngModel)]="r.description" placeholder="Description..." />
+                                        <label for="rr_resource_description">Description</label>
+                                    </div>
+                                </td>
                                 <td class="form-group">
                                     <div class="btn-group"><a class="btn btn-small btn-primary" (click)="moveUp(r, rr.resources)" *ngIf="canMoveUp(r, rr.resources)"><span
                                                 class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(r, rr.resources)" *ngIf="canMoveDown(r, rr.resources)"><span

@@ -22,7 +22,7 @@ export class ModelReferencesComponent extends BaseComponent {
 
     deleteModelReference(mr: ModelReference) {
         let i = this.knart?.modelReferences.indexOf(mr, 0);
-        if (i && i > -1) {
+        if (i !== undefined && i > -1) {
             this.knart?.modelReferences.splice(i, 1);
         }
     }

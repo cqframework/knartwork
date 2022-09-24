@@ -22,7 +22,7 @@ export class CoveragesComponent extends BaseComponent {
 
     deleteCoverage(c: Coverage) {
         let i = this.knart?.coverages.indexOf(c, 0);
-        if (i && i > -1) {
+        if (i !== undefined && i > -1) {
             this.knart?.coverages.splice(i, 1);
         }
     }

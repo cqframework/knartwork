@@ -1,14 +1,26 @@
-<div class="container-fluid"><a class="btn btn-primary pull-right" (click)="createSupportingEvidence()"><span
+<div class="container-fluid">
+    <a class="btn btn-primary float-end" (click)="createSupportingEvidence()"><span
             class="bi bi-plus"></span> Add</a>
-    <p class="text-muted">Literature in support of this artifact may be declared here.</p><br class="clearfix" />
+    <div class="form-text">Literature in support of this artifact may be declared here.</div><br class="clearfix" />
     <div id="supportingEvidence" *ngIf="knart && knart.supportingEvidence.length > 0">
-        <div class="supportingEvidence" *ngFor="let se of knart.supportingEvidence">
-            <p class="clearfix"></p>
-            <form class="form row">
-                <div class="col-sm-9 form-group"><textarea class="form-control" name="model_reference_value" rows="8" [(ngModel)]="se.citation" placeholder="Citation Text" required="true"></textarea></div>
-                <div class="col-sm-3"><a class="btn btn-small btn-danger" (click)="deleteSupportingEvidence(se)"><span
-                            class="bi bi-trash"></span></a></div>
-            </form>
+        <div class="supportingEvidence mb-3" *ngFor="let se of knart.supportingEvidence">
+            <!-- <p class="clearfix"></p> -->
+            <div class="input-group">
+                <div class="form-floating">
+                    <textarea class="form-control" name="model_reference_value" [(ngModel)]="se.citation" placeholder="Citation Text" required="true"></textarea>
+                    <label for="model_reference_value">Citation Text</label>
+                </div>
+
+                <!-- <div class="btn-group float-end mb-3"> -->
+                <a class="btn btn-primary" (click)="moveUp(se, knart.supportingEvidence)" *ngIf="canMoveUp(se, knart.supportingEvidence)"><span class="bi bi-chevron-up"></span></a>
+                <a class="btn btn-primary" (click)="moveDown(se, knart.supportingEvidence)" *ngIf="canMoveDown(se, knart.supportingEvidence)"><span class="bi bi-chevron-down"></span></a>
+                <a class="btn btn-danger" (click)="deleteSupportingEvidence(se)"><span class="bi bi-trash"></span></a>
+                <!-- </div> -->
+
+
+                <!-- <button class="btn btn-danger" (click)="deleteSupportingEvidence(se)"><span
+                            class="bi bi-trash"></span></button> -->
+            </div>
         </div>
     </div>
 </div>

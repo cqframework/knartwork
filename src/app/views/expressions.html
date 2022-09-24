@@ -1,18 +1,18 @@
-<div class="container-fluid"><a class="btn btn-primary pull-right" (click)="createExpression()"><span
+<div class="container-fluid"><a class="btn btn-primary float-end" (click)="createExpression()"><span
             class="bi bi-plus"></span> Add</a>
-    <p class="text-muted">Named expressions can be referenced through the artifact, allowing for reuse as well a improved readability.</p><br class="clearfix" />
+    <div class="form-text">Named expressions can be referenced through the artifact, allowing for reuse as well a improved readability.</div><br class="clearfix" />
     <div id="expressions" *ngIf="knart && knart.expressions.length > 0">
         <div class="expression well" *ngFor="let e of knart.expressions">
-            <div class="btn-group pull-right"><a class="btn btn-small btn-danger" (click)="deleteExpression(e)"><span
+            <div class="btn-group float-end"><a class="btn btn-small btn-danger" (click)="deleteExpression(e)"><span
                         class="bi bi-trash"></span></a></div>
             <div class="clearfix"></div>
             <form class="form row">
                 <div class="col-sm-12 form-group"><label for="expression_name">Name</label><input class="form-control" name="expression_name" type="text" [(ngModel)]="e.name" placeholder="PatientAgeInMonths" />
-                    <p class="text-muted">String by which the expression can be referenced.</p>
+                    <div class="form-text">String by which the expression can be referenced.</div>
                 </div>
                 <div class="col-sm-12 form-group"><label for="expression_logic">ELM Logic</label><textarea class="form-control" name="expression_logic" rows="10" [(ngModel)]="e.logic" placeholder="&lt;elm:expression xsi:type=&quot;elm:DurationBetween&quot; precision=&quot;Month&quot;&gt;&lt;elm:annotation xsi:type=&quot;a:Annotation&quot;&gt;&lt;a:s&gt;Number of months from patient birth time to today&lt;/a:s&gt;&lt;/elm:annotation&gt;&lt;elm:operand xsi:type=&quot;elm:Property&quot; path=&quot;birthTime&quot;&gt;&lt;elm:source xsi:type=&quot;elm:ExpressionRef&quot; name=&quot;Patient&quot;/&gt;&lt;/elm:operand&gt;&lt;elm:operand xsi:type=&quot;elm:Today&quot; /&gt;&lt;/elm:expression&gt;"></textarea>
-                    <p class="text-muted">This must be a valid ELM expression, and may reference your bound data objects.
-                    </p>
+                    <div class="form-text">This must be a valid ELM expression, and may reference your bound data objects.
+                    </div>
                 </div>
             </form>
         </div>

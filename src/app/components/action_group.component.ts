@@ -33,7 +33,7 @@ export class ActionGroupComponent extends ActionComponent {
 
     deleteRepresentedConcept(rc: Value) {
         let i = this.actionGroup?.representedConcepts.indexOf(rc, 0);
-        if (i && i > -1) {
+        if (i !== undefined && i > -1) {
             this.actionGroup?.representedConcepts.splice(i, 1);
         }
     }
@@ -89,7 +89,7 @@ export class ActionGroupComponent extends ActionComponent {
 
     deleteAction(action: Action) {
         let i = this.actionGroup?.subElements.indexOf(action, 0);
-        if (i && i > -1) {
+        if (i !== undefined && i > -1) {
             this.actionGroup?.subElements.splice(i, 1);
         }
     }

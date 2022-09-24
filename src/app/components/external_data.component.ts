@@ -20,7 +20,7 @@ export class ExternalDataComponent {
 
     deleteExternalData(ed: ExternalData) {
         let i = this.knart?.externalData.indexOf(ed, 0);
-        if (i && i > -1) {
+        if (i !== undefined && i > -1) {
             this.knart?.externalData.splice(i, 1);
         }
     }

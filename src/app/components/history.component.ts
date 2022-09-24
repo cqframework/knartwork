@@ -26,7 +26,7 @@ export class HistoryComponent extends BaseComponent {
 
     deleteLifeCycleEvent(e: LifeCycleEvent) {
         let i = this.knart?.lifeCycleEvents.indexOf(e, 0);
-        if (i && i > -1) {
+        if (i !== undefined && i > -1) {
             this.knart?.lifeCycleEvents.splice(i, 1);
         }
     }

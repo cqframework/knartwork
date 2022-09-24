@@ -20,7 +20,7 @@ export class LiteratureReferenceComponent {
 
     deleteLiteratureReference(lr: LiteratureReference) {
         let i = this.knart?.literatureReference.indexOf(lr, 0);
-        if (i && i > -1) {
+        if (i !== undefined && i > -1) {
             this.knart?.literatureReference.splice(i, 1);
         }
     }

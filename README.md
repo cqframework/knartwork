@@ -16,14 +16,10 @@ This decoupling of repository structure allows authors to easily share entire li
 
 ## Developer Quick Start
 
-This is an [Angular](https://angular.io) project using `Angular CLI` as the build system, [pug](https://pugjs.org/api/getting-started.html) for HTML templates, [SASS](http://sass-lang.com) for CSS and [Bootstrap](http://getbootstrap.com/) for layout. `npm` is the package manager. Assuming you already have node installed via `brew install node` or similar:
+This is an [Angular](https://angular.io) project using `Angular CLI` as the build system, [pug](https://pugjs.org/api/getting-started.html) for HTML templates, [SASS](http://sass-lang.com) for CSS and [Bootstrap](http://getbootstrap.com/) for layout. `npm` is the package manager. Assuming you already have node installed via [Node Version Manager](https://github.com/nvm-sh/nvm) or similar:
 
-	npm install -g @angular/cli
-	npm install # to install project development dependencies
-
-To run in development mode, just:
-
-	ng serve # to serve the project and automatically recompile on file changes
+	npm i # to install project development dependencies
+	npm run start # to serve the project and automatically recompile on file changes
 
 Visit [http://localhost:4200](http://localhost:4200) and do your thang. :)
 
@@ -31,11 +27,11 @@ Visit [http://localhost:4200](http://localhost:4200) and do your thang. :)
 
 First, build:
 
-	ng build # to build your local copy with any local changes
+	npm run build # to build your local copy with any local changes
 
-Then, assuming you've already familiar with [Docker](https://www.docker.com) awesomeness and have it installed, plop the build into a wicked-fast [nginx](http://nginx.org) web server container using the including Dockerfile with:
+Then, assuming you've already familiar with [Docker](https://www.docker.com) and have it installed, you can plop the build into wicked-fast [nginx](http://nginx.org) web server image for multiple platforms using the including Dockerfile with:
 
-	docker build -t p3000/knartwork:latest . # though you probably want your own repo and tag strings :)
+	docker buildx build --platform linux/arm64,linux/amd64 -t p3000/knartwork:latest . # use your own repo and tag strings :)
 
 ## Production Deployment
 
@@ -75,7 +71,8 @@ Please add your name when making contributions!
 ## License
 
 **The MIT License (MIT)**
-Copyright (c) 2016-2017 Preston Lee
+
+Copyright (c) 2016-2022 Preston Lee
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

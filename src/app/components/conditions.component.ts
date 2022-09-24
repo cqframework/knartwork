@@ -21,7 +21,7 @@ export class ConditionsComponent {
 
     deleteCondition(c: Condition) {
         let i = this.knart?.conditions.indexOf(c, 0);
-        if (i && i > -1) {
+        if (i !== undefined && i > -1) {
             this.knart?.conditions.splice(i, 1);
         }
     }

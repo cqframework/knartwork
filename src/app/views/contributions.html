@@ -1,27 +1,34 @@
-<div class="container-fluid"><a class="btn btn-primary pull-right" (click)="createContribution()"><span
+<div class="container-fluid"><a class="btn btn-primary float-end" (click)="createContribution()"><span
             class="bi bi-plus"></span> Add</a>
-    <p class="text-muted">Contributions attribute the people and organizations that have contributed to this work. You probably want to specify a primary author and contact information, at minimum, and may want to add your organization as well.</p><br class="clearfix" />
+    <div class="form-text">Contributions attribute the people and organizations that have contributed to this work. You probably want to specify a primary author and contact information, at minimum, and may want to add your organization as well.</div><br class="clearfix" />
     <div *ngIf="knart && knart.contributions.length > 0">
-        <div class="contribution well row" *ngFor="let contribution of knart.contributions">
-            <div class="col-sm-6 form-group"><select class="form-control" name="contribution_role_select" [(ngModel)]="contribution.role">
+        <div class="contribution card row mb-3" *ngFor="let contribution of knart.contributions">
+
+            <div class="col-sm-9 form-floating">
+                <select class="form-control" name="contribution_role_select" [(ngModel)]="contribution.role">
                     <option [value]="role.code" [selected]="contribution.role == role.code"
                         *ngFor="let role of roleTypes()">{{role.label}}</option>
-                </select></div>
-            <div class="col-sm-6">
-                <div class="pull-right"><button class="btn btn-small btn-danger" (click)="deleteContribution(contribution)"><span
-                            class="bi bi-trash"></span></button></div>
+                </select>
+                <label for="contribution_role_select">Role</label>
             </div>
-            <div class="clearfix"></div>
-            <hr />
+
+            <div class="col-sm-3">
+                <!-- <div class="col-sm-6"> --><button class="btn btn-small btn-danger" (click)="deleteContribution(contribution)"><span
+                        class="bi bi-trash"></span></button>
+                <!-- </div> -->
+            </div>
+            <!-- <div class="clearfix"></div> -->
+            <!-- <hr /> -->
+
             <div class="col-sm-6">
                 <section class="contacts">
-                    <h4>Names<a class="pull-right btn btn-primary btn-small" (click)="createName(contribution)"><span
+                    <h4>Names<a class="float-end btn btn-primary btn-small" (click)="createName(contribution)"><span
                                 class="bi bi-plus"></span></a>
                         <div class="clearfix"></div>
                     </h4>
                     <div class="name well" *ngFor="let name of contribution.names">
                         <form class="form row" name="name_form">
-                            <div class="btn-group pull-right"><a class="btn btn-small btn-primary" (click)="moveUp(name, contribution.names)" *ngIf="canMoveUp(name, contribution.names)"><span
+                            <div class="btn-group align-self-end"><a class="btn btn-small btn-primary" (click)="moveUp(name, contribution.names)" *ngIf="canMoveUp(name, contribution.names)"><span
                                         class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(name, contribution.names)" *ngIf="canMoveDown(name, contribution.names)"><span
                                         class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteName(contribution, name)"><span
                                         class="bi bi-trash"></span></a></div>
@@ -32,7 +39,7 @@
                     </div>
                 </section>
                 <section class="affiliations">
-                    <h4>Affiliations<a class="pull-right btn btn-primary btn-small" (click)="createAffiliation(contribution)"><span class="bi bi-plus"></span></a>
+                    <h4>Affiliations<a class="align-self-end btn btn-primary btn-small" (click)="createAffiliation(contribution)"><span class="bi bi-plus"></span></a>
                         <div class="clearfix"></div>
                     </h4>
                     <div class="affiliation well" *ngFor="let affiliation of contribution.affiliations">
@@ -51,7 +58,7 @@
             </div>
             <div class="col-sm-6">
                 <section class="addresses">
-                    <h4>Addresses<a class="pull-right btn btn-primary btn-small" (click)="createAddress(contribution)"><span class="bi bi-plus"></span></a>
+                    <h4>Addresses<a class="float-end btn btn-primary btn-small" (click)="createAddress(contribution)"><span class="bi bi-plus"></span></a>
                         <div class="clearfix"></div>
                     </h4>
                     <div class="address well" *ngFor="let a of contribution.addresses">
@@ -71,7 +78,7 @@
                     </div>
                 </section>
                 <section class="contacts">
-                    <h4>Contacts<a class="pull-right btn btn-primary btn-small" (click)="createContact(contribution)"><span class="bi bi-plus"></span></a>
+                    <h4>Contacts<a class="float-end btn btn-primary btn-small" (click)="createContact(contribution)"><span class="bi bi-plus"></span></a>
                         <div class="clearfix"></div>
                     </h4>
                     <div class="contact well" *ngFor="let contact of contribution.contacts">

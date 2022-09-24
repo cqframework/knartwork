@@ -1,26 +1,38 @@
 @import "ribbons";
 $shadow: 0 20px 20px rgba(0, 0, 0, .4);
 $content_background: url('/assets/textures/crossword.png') repeat;
-.navbar-default .navbar-brand:hover {
-    transform: rotateZ(-2deg);
-    transition: transform 1s linear;
-}
-
-.navbar-default .navbar-brand {
-    color: #aaa;
-    text-decoration: none;
-    text-shadow: -4px 4px 4px rgba(0, 0, 0, 0.4);
-    transition: transform 1s linear;
-    span {
-        color: #777;
+.navbar {
+    .navbar-brand:hover {
+        transform: rotateZ(-2deg);
+        transition: transform 1s linear;
     }
-    .subtitle {
-        text-decoration: overline;
-        font-variant: small-caps;
-        color: #444;
+    .navbar-brand {
+        // transform: rotateZ(-2deg);
+        transition: transform 1s linear;
+    }
+    a {
+        text-decoration: none;
     }
 }
 
+.well {
+    border: 1px solid #ccc;
+}
+
+// .navbar-default .navbar-brand {
+//     color: #aaa;
+//     text-decoration: none;
+//     text-shadow: -4px 4px 4px rgba(0, 0, 0, 0.4);
+//     transition: transform 1s linear;
+//     span {
+//         color: #777;
+//     }
+//     .subtitle {
+//         text-decoration: overline;
+//         font-variant: small-caps;
+//         color: #444;
+//     }
+// }
 body {
     background-color: none;
     background: url('/assets/textures/wild_oliva.png') repeat;

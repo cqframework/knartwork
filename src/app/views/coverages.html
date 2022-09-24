@@ -1,16 +1,16 @@
-<div class="container-fluid"><a class="btn btn-primary pull-right" (click)="createCoverage()"><span
+<div class="container-fluid"><a class="btn btn-primary float-end" (click)="createCoverage()"><span
             class="bi bi-plus"></span> Add</a>
-    <p class="text-muted">Defining how this document relates to various standards allows the artifact to be indexed for semantic search.</p><br class="clearfix" />
+    <div class="form-text">Defining how this document relates to various standards allows the artifact to be indexed for semantic search.</div><br class="clearfix" />
     <div id="coverages" *ngIf="knart && knart.coverages.length > 0">
         <div class="coverage well" *ngFor="let c of knart.coverages">
-            <div class="btn-group pull-right"><a class="btn btn-small btn-primary" (click)="moveUp(c, knart.coverages)" *ngIf="canMoveUp(c, knart.coverages)"><span class="bi bi-chevron-up"></span></a>
+            <div class="btn-group float-end"><a class="btn btn-small btn-primary" (click)="moveUp(c, knart.coverages)" *ngIf="canMoveUp(c, knart.coverages)"><span class="bi bi-chevron-up"></span></a>
                 <a class="btn btn-small btn-primary" (click)="moveDown(c, knart.coverages)" *ngIf="canMoveDown(c, knart.coverages)"><span class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteCoverage(c)"><span
                         class="bi bi-trash"></span></a></div>
             <div class="clearfix"></div>
             <form class="form row">
                 <div class="col-sm-12 form-group"><label for="coverage_focus">Focus</label><input class="form-control" name="coverage_focus" type="text" [(ngModel)]="c.focus" placeholder="PatientAgeGroup" required="true" /></div>
                 <div class="col-sm-12 form-group"><label for="coverage_description">Description</label><textarea class="form-control" name="coverage_description" type="text" [(ngModel)]="c.description" placeholder="Population between the age of 2 months to 7 years"></textarea>
-                    <p class="text-muted">This is the ELM expression (or similar blurb) that defines how the data will be bound at runtime.</p>
+                    <div class="form-text">This is the ELM expression (or similar blurb) that defines how the data will be bound at runtime.</div>
                 </div>
                 <div class="col-sm-6 form-group"><label for="coverage_value_code">Code</label><input class="form-control" name="coverage_value_code" type="text" [(ngModel)]="c.value.code" placeholder="D002675" /></div>
                 <div class="col-sm-6 form-group"><label for="coverage_value_code_system">Code System</label><input class="form-control" name="coverage_value_code_system" type="text" [(ngModel)]="c.value.codeSystem" placeholder="2.16.840.1.113883.11.75" /></div>

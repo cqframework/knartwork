@@ -29,7 +29,7 @@ export class RelatedResourcesComponent extends BaseComponent {
 
     deleteRelatedResource(rr: RelatedResource) {
         let i = this.knart?.relatedResources.indexOf(rr, 0);
-        if (i && i > -1) {
+        if (i !== undefined && i > -1) {
             this.knart?.relatedResources.splice(i, 1);
         }
     }

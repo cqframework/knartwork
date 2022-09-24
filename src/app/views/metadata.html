@@ -1,41 +1,72 @@
 <div class="container-fluid" *ngIf="knart">
     <form>
-        <div class="form-group"><label for="title">Title</label><input class="form-control" type="text" name="title" [(ngModel)]="knart.title" placeholder="My New Artifact" required="true" autofocus="true" />
-            <p class="text-muted">Keep it short.</p>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" name="title" [(ngModel)]="knart.title" placeholder="My New Artifact" required="true" autofocus="true" />
+            <label for="title">Title</label>
+            <div class="form-text">Keep it short.</div>
         </div>
-        <div class="form-group"><label for="title">Description</label><textarea class="form-control" name="description" [(ngModel)]="knart.description" placeholder="Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."></textarea>
-            <p class="text-muted">Free-from plaintext blurb. No length restriction, though formatting is not supported.
-            </p>
+        <div class="form-floating">
+            <textarea class="form-control" name="description" [(ngModel)]="knart.description" placeholder="Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."></textarea>
+            <label for="title">Description</label>
+            <div class="form-text">Free-from plaintext blurb. No length restriction, though formatting is not supported.
+            </div>
         </div>
-        <div class="form-group"><label for="title">Schema Identifier</label><input class="form-control" type="text" name="schemaIdentifier" [(ngModel)]="knart.schemaIdentifier" required="true" />
-            <p class="text-muted">Don't mess with this unless you know what you're doing.</p>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" name="schemaIdentifier" [(ngModel)]="knart.schemaIdentifier" required="true" />
+            <label for="title">Schema Identifier</label>
+            <div class="form-text">Don't mess with this unless you know what you're doing.</div>
         </div>
-        <div class="form-group"><label>Status</label><select class="form-control" id="artifact_status_select" name="status" [(ngModel)]="knart.status">
-                <option [value]="s.code" [selected]="knart && knart.status == s.code" *ngFor="let s of knart.statuses()">
+        <div class="form-floating mb-3">
+            <select class="form-control" id="artifact_status_select" name="status" [(ngModel)]="knart.status">
+                <option [value]="s.code" [selected]="knart && knart.status == s.code"
+                    *ngFor="let s of knart.statuses()">
                     {{s.label}}</option>
-            </select></div>
-        <div class="form-group"><label>Document Type</label><select class="form-control" id="artifact_type_select" name="artifactType" [(ngModel)]="knart.artifactType">
+            </select>
+            <label>Status</label>
+        </div>
+        <div class="form-floating mb-3">
+            <select class="form-control" id="artifact_type_select" name="artifactType" [(ngModel)]="knart.artifactType">
                 <option [value]="t.code" [selected]="knart && knart.artifactType == t.code"
                     *ngFor="let t of knart.artifactTypes()">{{t.label}}</option>
-            </select></div>
+            </select>
+            <label>Document Type</label>
+        </div>
     </form>
-    <hr /><a class="btn btn-primary pull-right" (click)="createIdentifier()"><span
-            class="bi bi-plus"></span> Add</a>
+    <hr />
+    <!-- <div class="d-flex"> -->
+    <a class="btn btn-primary float-end" (click)="createIdentifier()"><span class="bi bi-plus"></span> Add</a>
     <h4>Identifiers</h4>
-    <p class="text-muted">Any authoritative IDs for the entirety of this artifact may be declared here.</p><br class="clearfix" />
+    <!-- </div> -->
+    <div class="form-text">Any authoritative IDs for the entirety of this artifact may be declared here.</div><br class="clearfix" />
     <div class="identifiers" *ngIf="knart && knart.identifiers.length > 0">
         <div class="identifier" *ngFor="let i of knart.identifiers; let idx = index">
             <form class="form">
                 <hr *ngIf="idx > 0" />
-                <div class="row text-right">
-                    <div class="col-sm-8 form-group"><input class="form-control" name="identifier_root" type="text" [(ngModel)]="i.root" placeholder="Roote (e.g. deadbeef-b8b5-11e6-80f5-76304dec7eb7)" required="true" /></div>
-                    <div class="col-sm-4"><a class="btn btn-small btn-primary" (click)="moveUp(i, knart.identifiers)" *ngIf="canMoveUp(i, knart.identifiers)"><span
-                                class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(i, knart.identifiers)" *ngIf="canMoveDown(i, knart.identifiers)"><span
-                                class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteIdentifier(i)"><span class="bi bi-trash"></span></a></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3 form-group"><input class="form-control" name="identifier_version" type="text" [(ngModel)]="i.version" placeholder="Version (e.g. 0)" /></div>
-                    <div class="col-sm-3 form-group"><input class="form-control" name="identifier_extension" type="text" [(ngModel)]="i.extension" placeholder="Ext. (e.g. 1234)" /></div>
+                <div class="card mb-1 p-1">
+                    <div class="mb-1 align-self-end">
+                        <div class="btn-group">
+                            <a class="btn btn-small btn-primary" (click)="moveUp(i, knart.identifiers)" *ngIf="canMoveUp(i, knart.identifiers)"><span class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(i, knart.identifiers)"
+                                *ngIf="canMoveDown(i, knart.identifiers)"><span class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteIdentifier(i)"><span
+                                    class="bi bi-trash"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12 form-floating mb-1">
+                            <input class="form-control" name="identifier_root" type="text" [(ngModel)]="i.root" placeholder="Root (e.g. deadbeef-b8b5-11e6-80f5-76304dec7eb7)" required="true" />
+                            <label for="identifier_root">Root</label>
+                        </div>
+
+                        <div class="col-sm-6 form-floating">
+                            <input class="form-control" name="identifier_version" type="text" [(ngModel)]="i.version" placeholder="Version (e.g. 0)" />
+                            <label for="identifier_version">Version</label>
+                        </div>
+                        <div class="col-sm-6 form-floating">
+                            <input class="form-control" name="identifier_extension" type="text" [(ngModel)]="i.extension" placeholder="Ext. (e.g. 1234)" />
+                            <label for="identifier_extension">Extension</label>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

@@ -67,10 +67,10 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
+            <!-- <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </form> -->
         </div>
     </div>
 
@@ -128,54 +128,67 @@
 </nav>
 
 <div class="container-fluid" *ngIf="!knart">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
             <div id="loader">
-                <div class="text-center">
-                    <h1>Start fresh and..</h1><button class="btn btn-lg" (click)="createFromTemplate()"><span
+                <div class="text-center mb-6">
+                    <h1>Start fresh and..</h1><button class="btn btn-lg btn-dark" (click)="createFromTemplate()"><span
                             class="bi bi-plus"></span> Create a new knowledge artifact.</button>
                 </div>
                 <hr />
-                <div class="text-center">
-                    <h1><span class="bi bi-cloud"></span> Or load from the web...</h1>
+                <div class="text-center mb-6">
+                    <h1><span class="bi bi-cloud"></span> ..or load from the web</h1>
                     <div class="row">
-                        <div class="col-sm-9 form-group"><input class="form-control" name="remote_url" type="text" [(ngModel)]="remoteUrl" placeholder="http://example.com/awesome-knart.xml" /></div>
-                        <div class="col-sm-3"><button class="btn btn-default" (click)="loadRemoteUrl()">Load
-                                it!</button></div>
-                        <div class="col-sm-12"><small>Works "inside the firewall"!</small></div>
+                        <div class="col-sm-9 input-group">
+                            <input class="form-control" name="remote_url" type="text" [(ngModel)]="remoteUrl" placeholder="http://example.com/awesome-knart.xml" />
+                            <button class="btn btn-outline-dark" (click)="loadRemoteUrl()">Load it!</button>
+                        </div>
+                        <div class="col-sm-12"><i>Works "inside the firewall"!</i></div>
                     </div>
                 </div>
                 <hr />
                 <form class="form">
-                    <h1 class="text-center"><span class="bi bi-file-earmark"></span> Or load a local file..
+                    <h1 class="text-center"><span class="bi bi-file-earmark"></span> ..or a local file.
                     </h1>
-                    <div class="form-group">
-                        <label>Format</label>
-                        <select class="form-control" id="loader_type_select" name="documentType" [(ngModel)]="documentFormat">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Format</span>
+                        <select class="form-select" id="loader_type_select" name="documentType" [(ngModel)]="documentFormat">
                             <option [value]="f" [selected]="documentFormat == f" *ngFor="let f of documentFormats()">
                                 {{f.label}}</option>
                         </select>
                     </div>
-                    <div class="form-group"><label><span class="bi bi-file-earmark"></span></label><input type="file" accept=".knart,.xml,.json" (change)="openFile($event)" /></div>
+                    <div class="input-group justify-content-center">
+                        <!-- <span class="bi bi-file-earmark"></span> -->
+                        <input class="form-control" type="file" accept=".knart,.xml,.json" (change)="openFile($event)" />
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<div class="container-fluid" *ngIf="knart">
+
+<div class="container-fluid mt-3" *ngIf="knart">
     <div class="row">
         <div class="col-md-6">
             <div id="editor_tabs" role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" [class.active]="editor_tab == 'metadata'"><a id="metadata_tab_link" aria-controls="metadata" data-toggle="editor_tab" (click)="tabClicked('metadata')" role="tab" aria-expanded="true"><span class="bi bi-pencil"></span> Basics</a>
+                    <li role="presentation" [class.active]="editor_tab == 'metadata'">
+                        <a id="metadata_tab_link" class="nav-link" aria-controls="metadata" data-toggle="editor_tab" (click)="tabClicked('metadata')" role="tab" aria-expanded="true"><span
+                                class="bi bi-pencil"></span> Basics</a>
                     </li>
-                    <li role="presentation" [class.active]="editor_tab == 'contributions'"><a id="contributions_tab_link" aria-controls="contributions" data-toggle="editor_tab" (click)="tabClicked('contributions')" role="tab" aria-expanded="true"><span
+                    <li role="presentation" [class.active]="editor_tab == 'contributions'"><a id="contributions_tab_link" class="nav-link" aria-controls="contributions" data-toggle="editor_tab" (click)="tabClicked('contributions')" role="tab" aria-expanded="true"><span
                                 class="bi bi-user"></span> Contributions</a></li>
-                    <li role="presentation" [class.active]="editor_tab == 'model_references'"><a id="model_references_tab_link" aria-controls="model_references" data-toggle="editor_tab" (click)="tabClicked('model_references')" role="tab" aria-expanded="true"><span
-                                class="bi bi-paperclip"></span> Model Refs</a></li>
-                    <li role="presentation" [class.active]="editor_tab == 'supporting_evidence'"><a id="supporting_evidence_tab_link" aria-controls="supporting_evidence" data-toggle="editor_tab" (click)="tabClicked('supporting_evidence')" role="tab" aria-expanded="true"><span class="bi bi-education"></span> Evidence</a></li>
-                    <li role="presentation" [class.active]="editor_tab == 'related_resources'"><a id="related_resources_tab_link" aria-controls="related_resources" data-toggle="editor_tab" (click)="tabClicked('related_resources')" role="tab" aria-expanded="true"><span
-                                class="bi bi-book"></span> Related Sources</a></li>
+                    <li role="presentation" [class.active]="editor_tab == 'model_references'">
+                        <a id="model_references_tab_link" class="nav-link" aria-controls="model_references" data-toggle="editor_tab" (click)="tabClicked('model_references')" role="tab" aria-expanded="true"><span
+                                class="bi bi-paperclip"></span> Model Refs</a>
+                    </li>
+                    <li role="presentation" [class.active]="editor_tab == 'supporting_evidence'">
+                        <a id="supporting_evidence_tab_link" class="nav-link" aria-controls="supporting_evidence" data-toggle="editor_tab" (click)="tabClicked('supporting_evidence')" role="tab" aria-expanded="true"><span class="bi bi-education"></span> Evidence</a>
+                    </li>
+                    <li role="presentation" [class.active]="editor_tab == 'related_resources'">
+                        <a id="related_resources_tab_link" class="nav-link" aria-controls="related_resources" data-toggle="editor_tab" (click)="tabClicked('related_resources')" role="tab" aria-expanded="true"><span
+                                class="bi bi-book"></span> Related Sources</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <metadata class="tab-pane" role="tabpanel" [class.active]="editor_tab == 'metadata'" [knart]="knart"></metadata>
@@ -189,15 +202,15 @@
         <div class="col-md-6">
             <div id="runtime_tabs" role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" [class.active]="runtime_tab == 'conditions'"><a id="conditions_tab_link" aria-controls="conditions" data-toggle="runtime_tab" (click)="runtime_tab = 'conditions'" role="tab" aria-expanded="true"><span class="bi bi-flash"></span>
+                    <li class="nav-item" [class.active]="runtime_tab == 'conditions'"><a id="conditions_tab_link" class="nav-link" aria-controls="conditions" data-toggle="runtime_tab" (click)="runtime_tab = 'conditions'" role="tab" aria-expanded="true"><span class="bi bi-flash"></span>
                             Conditions</a></li>
-                    <li role="presentation" [class.active]="runtime_tab == 'external_data'"><a id="external_data_tab_link" aria-controls="external_data" data-toggle="runtime_tab" (click)="runtime_tab = 'external_data'" role="tab" aria-expanded="true"><span
+                    <li class="nav-item" [class.active]="runtime_tab == 'external_data'"><a id="external_data_tab_link" class="nav-link" aria-controls="external_data" data-toggle="runtime_tab" (click)="runtime_tab = 'external_data'" role="tab" aria-expanded="true"><span
                                 class="bi bi-link"></span> Data Binding</a></li>
-                    <li role="presentation" [class.active]="runtime_tab == 'expressions'"><a id="expressions_tab_link" aria-controls="expressions" data-toggle="runtime_tab" (click)="runtime_tab = 'expressions'" role="tab" aria-expanded="true"><span class="bi bi-console"></span>
+                    <li class="nav-item" [class.active]="runtime_tab == 'expressions'"><a id="expressions_tab_link" class="nav-link" aria-controls="expressions" data-toggle="runtime_tab" (click)="runtime_tab = 'expressions'" role="tab" aria-expanded="true"><span class="bi bi-console"></span>
                             Expressions</a></li>
-                    <li role="presentation" [class.active]="runtime_tab == 'coverages'"><a id="coverages_tab_link" aria-controls="coverages" data-toggle="runtime_tab" (click)="runtime_tab = 'coverages'" role="tab" aria-expanded="true"><span class="bi bi-check"></span>
+                    <li class="nav-item" [class.active]="runtime_tab == 'coverages'"><a id="coverages_tab_link" class="nav-link" aria-controls="coverages" data-toggle="runtime_tab" (click)="runtime_tab = 'coverages'" role="tab" aria-expanded="true"><span class="bi bi-check"></span>
                             Applicability</a></li>
-                    <li role="presentation" [class.active]="runtime_tab == 'history'"><a id="coverages_tab_link" aria-controls="history" data-toggle="runtime_tab" (click)="runtime_tab = 'history'" role="tab" aria-expanded="true"><span class="bi bi-list"></span> History</a>
+                    <li class="nav-item" [class.active]="runtime_tab == 'history'"><a id="coverages_tab_link" class="nav-link" aria-controls="history" data-toggle="runtime_tab" (click)="runtime_tab = 'history'" role="tab" aria-expanded="true"><span class="bi bi-list"></span> History</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -214,10 +227,10 @@
         <div class="col-md-12">
             <div id="viewer_tabs" role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" [class.active]="viewer_tab == 'action_group'"><a id="actions_tab_link" aria-controls="action_group" data-toggle="viewer_tab" (click)="viewer_tab = 'action_group'" role="tab" aria-expanded="true"><span class="bi bi-list"></span> Actions</a>
+                    <li role="presentation" [class.active]="viewer_tab == 'action_group'"><a id="actions_tab_link" class="nav-link" aria-controls="action_group" data-toggle="viewer_tab" (click)="viewer_tab = 'action_group'" role="tab" aria-expanded="true"><span class="bi bi-list"></span> Actions</a>
                     </li>
-                    <li role="presentation" [class.active]="viewer_tab == 'preview'"><a id="preview_tab_link" aria-controls="preview" data-toggle="viewer_tab" (click)="viewer_tab = 'preview'" role="tab" aria-expanded="true"><span class="bi bi-eye-open"></span> Preview</a></li>
-                    <li role="presentation" [class.active]="viewer_tab == 'original'"><a id="actions_tab_link" aria-controls="original" data-toggle="viewer_tab" (click)="viewer_tab = 'original'" role="tab" aria-expanded="true"><span class="bi bi-chevron-left"></span>
+                    <li role="presentation" [class.active]="viewer_tab == 'preview'"><a id="preview_tab_link" class="nav-link" aria-controls="preview" data-toggle="viewer_tab" (click)="viewer_tab = 'preview'" role="tab" aria-expanded="true"><span class="bi bi-eye-open"></span> Preview</a></li>
+                    <li role="presentation" [class.active]="viewer_tab == 'original'"><a id="actions_tab_link" class="nav-link" aria-controls="original" data-toggle="viewer_tab" (click)="viewer_tab = 'original'" role="tab" aria-expanded="true"><span class="bi bi-chevron-left"></span>
                             Original XML</a></li>
                 </ul>
                 <div class="tab-content">
