@@ -4,12 +4,13 @@ import {Component, Input} from '@angular/core';
 
 import {Knart} from '../models/knart';
 import {Condition} from '../models/condition';
+import { BaseComponent } from './base.component';
 
 @Component({
     selector: 'conditions',
     templateUrl: '../views/conditions.html',
 })
-export class ConditionsComponent {
+export class ConditionsComponent  extends BaseComponent {
 
     @Input() knart: Knart | undefined;
 

@@ -2,18 +2,30 @@
             class="bi bi-plus"></span> Add</a>
     <div class="form-text">External data specified here can be used in runtime expressions.</div><br class="clearfix" />
     <div id="externalData" *ngIf="knart && knart.externalData.length > 0">
-        <div class="externalData well" *ngFor="let ed of knart.externalData">
-            <div class="btn-group float-end"><a class="btn btn-small btn-danger" (click)="deleteExternalData(ed)"><span
-                        class="bi bi-trash"></span></a></div>
+        <div class="externalData well mb-3 p-3" *ngFor="let ed of knart.externalData">
+
+            <div class="btn-group float-end mb-3">
+                <a class="btn btn-small btn-primary" (click)="moveUp(ed, knart.externalData)" *ngIf="canMoveUp(ed, knart.externalData)"><span
+                    class="bi bi-chevron-up"></span></a>
+                <a class="btn btn-small btn-primary" (click)="moveDown(ed, knart.externalData)" *ngIf="canMoveDown(ed, knart.externalData)"><span
+                    class="bi bi-chevron-down"></span></a>
+                <a class="btn btn-small btn-danger" (click)="deleteExternalData(ed)"><span class="bi bi-trash"></span></a>
+            </div>
+
             <div class="clearfix"></div>
-            <form class="form row">
-                <div class="col-sm-12 form-group"><label for="external_data_name">Data Name</label><input class="form-control" name="external_data_name" type="text" [(ngModel)]="ed.name" placeholder="Patient" required="true" />
-                    <div class="form-text">This is how the data element will be referenced by expressions.</div>
-                </div>
-                <div class="col-sm-12 form-group"><label for="external_data_content">Binding Expression</label><textarea class="form-control" name="external_data_content" rows="10" [(ngModel)]="ed.content" placeholder="&lt;elm:expression xsi:type=&quot;elm:SingletonFrom&quot;&gt;&lt;elm:operand xsi:type=&quot;elm:Retrieve&quot; dataType=&quot;vmr:EvaluatedPersion&quot;/&gt;&lt;/elm:expression&gt;"></textarea>
-                    <div class="form-text">This is the ELM expression (or similar blurb) that defines how the data will be bound at runtime.</div>
-                </div>
-            </form>
+
+            <div class="form-floating mb-3">
+                <input class="form-control" name="external_data_name" type="text" [(ngModel)]="ed.name" placeholder="Patient" required="true" />
+                <label for="external_data_name">Data Name</label>
+                <div class="form-text">This is how the data element will be referenced by expressions.</div>
+            </div>
+
+            <div class="form-floating">
+                <textarea class="form-control" name="external_data_content" rows="10" [(ngModel)]="ed.content" placeholder="&lt;elm:expression xsi:type=&quot;elm:SingletonFrom&quot;&gt;&lt;elm:operand xsi:type=&quot;elm:Retrieve&quot; dataType=&quot;vmr:EvaluatedPersion&quot;/&gt;&lt;/elm:expression&gt;"></textarea>
+                <label for="external_data_content">Binding Expression</label>
+                <div class="form-text">This is the ELM expression (or similar blurb) that defines how the data will be bound at runtime.</div>
+            </div>
+
         </div>
     </div>
 </div>

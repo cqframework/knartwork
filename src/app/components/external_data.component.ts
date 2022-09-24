@@ -1,15 +1,16 @@
 // Author: Preston Lee
 
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import {Knart} from '../models/knart';
-import {ExternalData} from '../models/external_data';
+import { Knart } from '../models/knart';
+import { ExternalData } from '../models/external_data';
+import { BaseComponent } from './base.component';
 
 @Component({
     selector: 'external_data',
     templateUrl: '../views/external_data.html'
 })
-export class ExternalDataComponent {
+export class ExternalDataComponent extends BaseComponent {
 
     @Input() knart: Knart | undefined;
 

@@ -2,20 +2,43 @@
             class="bi bi-plus"></span> Add</a>
     <div class="form-text">Defining how this document relates to various standards allows the artifact to be indexed for semantic search.</div><br class="clearfix" />
     <div id="coverages" *ngIf="knart && knart.coverages.length > 0">
-        <div class="coverage well" *ngFor="let c of knart.coverages">
-            <div class="btn-group float-end"><a class="btn btn-small btn-primary" (click)="moveUp(c, knart.coverages)" *ngIf="canMoveUp(c, knart.coverages)"><span class="bi bi-chevron-up"></span></a>
+        <div class="coverage well mb-3 p-3" *ngFor="let c of knart.coverages">
+
+            <div class="btn-group float-end mb-3"><a class="btn btn-small btn-primary" (click)="moveUp(c, knart.coverages)" *ngIf="canMoveUp(c, knart.coverages)"><span class="bi bi-chevron-up"></span></a>
                 <a class="btn btn-small btn-primary" (click)="moveDown(c, knart.coverages)" *ngIf="canMoveDown(c, knart.coverages)"><span class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteCoverage(c)"><span
                         class="bi bi-trash"></span></a></div>
             <div class="clearfix"></div>
-            <form class="form row">
-                <div class="col-sm-12 form-group"><label for="coverage_focus">Focus</label><input class="form-control" name="coverage_focus" type="text" [(ngModel)]="c.focus" placeholder="PatientAgeGroup" required="true" /></div>
-                <div class="col-sm-12 form-group"><label for="coverage_description">Description</label><textarea class="form-control" name="coverage_description" type="text" [(ngModel)]="c.description" placeholder="Population between the age of 2 months to 7 years"></textarea>
-                    <div class="form-text">This is the ELM expression (or similar blurb) that defines how the data will be bound at runtime.</div>
+            <div class="form-floating mb-3">
+                <input class="form-control" name="coverage_focus" type="text" [(ngModel)]="c.focus" placeholder="PatientAgeGroup" required="true" />
+                <label for="coverage_focus">Focus</label>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" name="coverage_description" type="text" [(ngModel)]="c.description" placeholder="Population between the age of 2 months to 7 years"></textarea>
+                <label for="coverage_description">Description</label>
+                <div class="form-text">This is the ELM expression (or similar blurb) that defines how the data will be bound at runtime.</div>
+            </div>
+            <form class="row">
+                <div class="col-sm-6">
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="coverage_value_code" type="text" [(ngModel)]="c.value.code" placeholder="D002675" />
+                        <label for="coverage_value_code">Code</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" name="coverage_value_code_system" type="text" [(ngModel)]="c.value.codeSystem" placeholder="2.16.840.1.113883.11.75" />
+                        <label for="coverage_value_code_system">Code System</label>
+                    </div>
                 </div>
-                <div class="col-sm-6 form-group"><label for="coverage_value_code">Code</label><input class="form-control" name="coverage_value_code" type="text" [(ngModel)]="c.value.code" placeholder="D002675" /></div>
-                <div class="col-sm-6 form-group"><label for="coverage_value_code_system">Code System</label><input class="form-control" name="coverage_value_code_system" type="text" [(ngModel)]="c.value.codeSystem" placeholder="2.16.840.1.113883.11.75" /></div>
-                <div class="col-sm-6 form-group"><label for="coverage_value_code_system_name">System Name</label><input class="form-control" name="coverage_value_code_system_name" type="text" [(ngModel)]="c.value.codeSystemName" placeholder="MeSH - AgeGroupObservationValue" /></div>
-                <div class="col-sm-6 form-group"><label for="coverage_value_display_name">Display Name</label><input class="form-control" name="coverage_value_display_name" type="text" [(ngModel)]="c.value.displayName" placeholder="child, preschool; 2 to 5 years" /></div>
+
+                <div class="col-sm-6">
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="coverage_value_code_system_name" type="text" [(ngModel)]="c.value.codeSystemName" placeholder="MeSH - AgeGroupObservationValue" />
+                        <label for="coverage_value_code_system_name">System Name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" name="coverage_value_display_name" type="text" [(ngModel)]="c.value.displayName" placeholder="child, preschool; 2 to 5 years" />
+                        <label for="coverage_value_display_name">Display Name</label>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

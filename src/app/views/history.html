@@ -2,18 +2,33 @@
             class="bi bi-plus"></span> Add</a>
     <div class="form-text">The audit trail of the artifact.</div><br class="clearfix" />
     <div id="lifeCycleEvents" *ngIf="knart && knart.lifeCycleEvents.length > 0">
-        <div class="lifeCycleEvent well" *ngFor="let e of knart.lifeCycleEvents">
-            <div class="btn-group float-end"><a class="btn btn-small btn-primary" (click)="moveUp(e, knart.lifeCycleEvents)" *ngIf="canMoveUp(e, knart.lifeCycleEvents)"><span
-                        class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(e, knart.lifeCycleEvents)" *ngIf="canMoveDown(e, knart.lifeCycleEvents)"><span
-                        class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteLifeCycleEvent(e)"><span class="bi bi-trash"></span></a></div>
-            <div class="clearfix"></div>
-            <form class="form row">
-                <div class="col-sm-6 form-group"><label for="life_cycle_event_type">Type</label><select class="form-control" name="life_cycle_event_type" [(ngModel)]="e.type">
+        <div class="lifeCycleEvent mb-3" *ngFor="let e of knart.lifeCycleEvents">
+
+
+
+            <div class="input-group">
+                <div class="form-floating">
+                    <select class="form-select" name="life_cycle_event_type" [(ngModel)]="e.type">
                         <option [value]="type" [selected]="e.type == type" *ngFor="let type of lifeCycleEventTypes()">
                             {{type}}</option>
-                    </select></div>
-                <div class="col-sm-6 form-group"><label for="life_cycle_event_datetime">Datetime</label><input class="form-control" name="life_cycle_event_datetime" type="text" [(ngModel)]="e.datetime" required="true" /></div>
-            </form>
+                        </select>
+                    <label for="life_cycle_event_type">Type</label>
+                </div>
+
+                <div class="form-floating">
+                    <input class="form-control" name="life_cycle_event_datetime" type="text" [(ngModel)]="e.datetime" required="true" />
+                    <label for="life_cycle_event_datetime">Datetime</label>
+                </div>
+
+                <!-- <div class="btn-group float-end"> -->
+                <a class="btn btn-small btn-primary" (click)="moveUp(e, knart.lifeCycleEvents)" *ngIf="canMoveUp(e, knart.lifeCycleEvents)"><span
+                            class="bi bi-chevron-up"></span></a>
+                <a class="btn btn-small btn-primary" (click)="moveDown(e, knart.lifeCycleEvents)" *ngIf="canMoveDown(e, knart.lifeCycleEvents)"><span
+                            class="bi bi-chevron-down"></span></a>
+                <a class="btn btn-small btn-danger" (click)="deleteLifeCycleEvent(e)"><span class="bi bi-trash"></span></a>
+                <!-- </div> -->
+
+            </div>
         </div>
     </div>
 </div>

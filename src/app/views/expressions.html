@@ -2,19 +2,32 @@
             class="bi bi-plus"></span> Add</a>
     <div class="form-text">Named expressions can be referenced through the artifact, allowing for reuse as well a improved readability.</div><br class="clearfix" />
     <div id="expressions" *ngIf="knart && knart.expressions.length > 0">
-        <div class="expression well" *ngFor="let e of knart.expressions">
-            <div class="btn-group float-end"><a class="btn btn-small btn-danger" (click)="deleteExpression(e)"><span
-                        class="bi bi-trash"></span></a></div>
+        <div class="expression well mb-3 p-3" *ngFor="let e of knart.expressions">
+
+            <div class="btn-group float-end mb-3">
+                <a class="btn btn-small btn-primary" (click)="moveUp(e, knart.expressions)" *ngIf="canMoveUp(e, knart.expressions)"><span
+                    class="bi bi-chevron-up"></span></a>
+                <a class="btn btn-small btn-primary" (click)="moveDown(e, knart.expressions)" *ngIf="canMoveDown(e, knart.expressions)"><span
+                    class="bi bi-chevron-down"></span></a>
+                <a class="btn btn-small btn-danger" (click)="deleteExpression(e)"><span class="bi bi-trash"></span></a>
+            </div>
+
             <div class="clearfix"></div>
-            <form class="form row">
-                <div class="col-sm-12 form-group"><label for="expression_name">Name</label><input class="form-control" name="expression_name" type="text" [(ngModel)]="e.name" placeholder="PatientAgeInMonths" />
-                    <div class="form-text">String by which the expression can be referenced.</div>
+
+
+            <div class="form-floating">
+                <input class="form-control" name="expression_name" type="text" [(ngModel)]="e.name" placeholder="PatientAgeInMonths" />
+                <label for="expression_name">Name</label>
+                <div class="form-text">String by which the expression can be referenced.</div>
+            </div>
+
+            <div class="form-floating">
+                <textarea class="form-control" name="expression_logic" rows="10" [(ngModel)]="e.logic" placeholder="&lt;elm:expression xsi:type=&quot;elm:DurationBetween&quot; precision=&quot;Month&quot;&gt;&lt;elm:annotation xsi:type=&quot;a:Annotation&quot;&gt;&lt;a:s&gt;Number of months from patient birth time to today&lt;/a:s&gt;&lt;/elm:annotation&gt;&lt;elm:operand xsi:type=&quot;elm:Property&quot; path=&quot;birthTime&quot;&gt;&lt;elm:source xsi:type=&quot;elm:ExpressionRef&quot; name=&quot;Patient&quot;/&gt;&lt;/elm:operand&gt;&lt;elm:operand xsi:type=&quot;elm:Today&quot; /&gt;&lt;/elm:expression&gt;"></textarea>
+                <label for="expression_logic">ELM Logic</label>
+                <div class="form-text">This must be a valid ELM expression, and may reference your bound data objects.
                 </div>
-                <div class="col-sm-12 form-group"><label for="expression_logic">ELM Logic</label><textarea class="form-control" name="expression_logic" rows="10" [(ngModel)]="e.logic" placeholder="&lt;elm:expression xsi:type=&quot;elm:DurationBetween&quot; precision=&quot;Month&quot;&gt;&lt;elm:annotation xsi:type=&quot;a:Annotation&quot;&gt;&lt;a:s&gt;Number of months from patient birth time to today&lt;/a:s&gt;&lt;/elm:annotation&gt;&lt;elm:operand xsi:type=&quot;elm:Property&quot; path=&quot;birthTime&quot;&gt;&lt;elm:source xsi:type=&quot;elm:ExpressionRef&quot; name=&quot;Patient&quot;/&gt;&lt;/elm:operand&gt;&lt;elm:operand xsi:type=&quot;elm:Today&quot; /&gt;&lt;/elm:expression&gt;"></textarea>
-                    <div class="form-text">This must be a valid ELM expression, and may reference your bound data objects.
-                    </div>
-                </div>
-            </form>
+            </div>
+
         </div>
     </div>
 </div>
