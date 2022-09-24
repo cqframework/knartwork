@@ -1,9 +1,10 @@
+// Author: Preston Lee
+
 import {Identifier} from './identifier';
 import {ModelReference} from './model_reference';
 import {Contribution} from './contribution';
 import {ActionGroup} from './actions/action_group';
 import {ArtifactType} from './artifact_type';
-import {Format} from './format';
 import {Status} from './status';
 import {RelatedResource} from './related_resource';
 import {SupportingEvidence} from './supporting_evidence';
@@ -32,7 +33,7 @@ export class Knart {
     relatedResources: Array<RelatedResource> = new Array<RelatedResource>();
     supportingEvidence: Array<SupportingEvidence> = new Array<SupportingEvidence>();
     externalData: Array<ExternalData> = new Array<ExternalData>();
-    literatureRefernce: Array<LiteratureReference> = new Array<LiteratureReference>();
+    literatureReference: Array<LiteratureReference> = new Array<LiteratureReference>();
     coverages: Array<Coverage> = new Array<Coverage>();
     conditions: Array<Condition> = new Array<Condition>();
     expressions: Array<Expression> = new Array<Expression>();
@@ -41,7 +42,7 @@ export class Knart {
     // The recursive part.
     actionGroup: ActionGroup = new ActionGroup();
 
-    document: Document;
+    document: Document | undefined;
 
 	// constructor() {
 	// 	this.lifeCycleEvents.push(new LifeCycleEvent());
@@ -55,8 +56,8 @@ export class Knart {
         return Status.ALL;
     }
 
-    static namespaces: XPathNSResolver = <any>function nsResolver(prefix) {
-        var ns = {
+    static namespaces: XPathNSResolver = <any>function nsResolver(prefix: string) {
+        var ns: {[key: string] : string} = {
             'k': 'urn:hl7-org:knowledgeartifact:r1',
             'vmr': 'urn:hl7-org:vmr:r2',
             'dt': 'urn:hl7-org:cdsdt:r2',

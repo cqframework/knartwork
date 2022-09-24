@@ -1,0 +1,14 @@
+<div class="container-fluid"><a class="btn btn-primary pull-right" (click)="createSupportingEvidence()"><span
+            class="bi bi-plus"></span> Add</a>
+    <p class="text-muted">Literature in support of this artifact may be declared here.</p><br class="clearfix" />
+    <div id="supportingEvidence" *ngIf="knart && knart.supportingEvidence.length > 0">
+        <div class="supportingEvidence" *ngFor="let se of knart.supportingEvidence">
+            <p class="clearfix"></p>
+            <form class="form row">
+                <div class="col-sm-9 form-group"><textarea class="form-control" name="model_reference_value" rows="8" [(ngModel)]="se.citation" placeholder="Citation Text" required="true"></textarea></div>
+                <div class="col-sm-3"><a class="btn btn-small btn-danger" (click)="deleteSupportingEvidence(se)"><span
+                            class="bi bi-trash"></span></a></div>
+            </form>
+        </div>
+    </div>
+</div>

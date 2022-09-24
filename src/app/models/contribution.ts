@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {Address} from './address';
 import {Name} from './name';
 import {Contact} from './contact';

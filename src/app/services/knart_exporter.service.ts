@@ -1,48 +1,28 @@
 import {Injectable, Inject} from '@angular/core';
-import {Http, Response} from '@angular/http';
-import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Observable';
+// import 'rxjs/add/operator/map';
 
 import {Knart} from '../models/knart';
-import {Identifier} from '../models/identifier';
-import {ModelReference} from '../models/model_reference';
-import {Contribution} from '../models/contribution';
 import {ActionGroup} from '../models/actions/action_group';
-import {ArtifactType} from '../models/artifact_type';
-import {Format} from '../models/format';
-import {Status} from '../models/status';
-import {RelatedResource} from '../models/related_resource';
-import {Resource} from '../models/resource';
-import {SupportingEvidence} from '../models/supporting_evidence';
-import {ExternalData} from '../models/external_data';
-import {Coverage} from '../models/coverage';
-import {Condition} from '../models/condition';
-import {Expression} from '../models/expression';
 
 import {Contact} from '../models/contact';
 import {Address} from '../models/address';
 import {Name} from '../models/name';
-import {Role} from '../models/role';
 import {Affiliation} from '../models/affiliation';
 
-import {Action} from '../models/actions/action';
-import {CollectInformationAction} from '../models/actions/collect_information_action';
-import {DeclareResponseAction} from '../models/actions/declare_response_action';
-import {CreateAction} from '../models/actions/create_action';
-import {ResponseItem} from '../models/actions/response_item';
 import {Value} from '../models/value';
 import { XmlExporterService } from './xml_exporter.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable()
 export class KnartExporterService extends XmlExporterService {
 
     // knart: Knart;
-    document: Document;
+    document: Document | undefined;
 
     private serializer: XMLSerializer = new XMLSerializer();
 
-    constructor( @Inject('Window') private window: Window, private http: Http) {
+    constructor( @Inject('Window') private window: Window, private http: HttpClient) {
         super();
     }
 
@@ -61,12 +41,13 @@ export class KnartExporterService extends XmlExporterService {
         kd.appendChild(this.createActionGroup(knart.actionGroup));
         return this.document;
     }
+
     createKnartElement(tag: string): Element {
-        return this.document.createElementNS(Knart.KNART_NAMESPACE, tag);
+        return this.document!.createElementNS(Knart.KNART_NAMESPACE, tag);
     }
 
     createDTElement(tag: string): Element {
-        return this.document.createElementNS('urn:hl7-org:cdsdt:r2', tag);
+        return this.document!.createElementNS('urn:hl7-org:cdsdt:r2', tag);
     }
 
     createConditions(knart: Knart): Element {

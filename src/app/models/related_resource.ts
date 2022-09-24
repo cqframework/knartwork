@@ -1,4 +1,5 @@
-import {Input} from '@angular/core';
+// Author: Preston Lee
+
 
 import {Relationship} from './relationship';
 import {Resource} from './resource';

@@ -1,5 +1,7 @@
+// Author: Preston Lee
+
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Manifest } from '../models/browser/manifest';

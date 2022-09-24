@@ -1,7 +1,8 @@
+// Author: Preston Lee
+
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
-import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Observable';
+// import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
 
 import {Knart} from '../models/knart';
 import {Identifier} from '../models/identifier';
@@ -9,7 +10,6 @@ import {ModelReference} from '../models/model_reference';
 import {Contribution} from '../models/contribution';
 import {ActionGroup} from '../models/actions/action_group';
 import {ArtifactType} from '../models/artifact_type';
-import {Format} from '../models/format';
 import {Status} from '../models/status';
 import {RelatedResource} from '../models/related_resource';
 import {Resource} from '../models/resource';
@@ -22,7 +22,6 @@ import {Expression} from '../models/expression';
 import {Contact} from '../models/contact';
 import {Address} from '../models/address';
 import {Name} from '../models/name';
-import {Role} from '../models/role';
 import {Affiliation} from '../models/affiliation';
 
 import {Action} from '../models/actions/action';
@@ -33,36 +32,37 @@ import {ResponseItem} from '../models/actions/response_item';
 import {Value} from '../models/value';
 import {LifeCycleEvent} from '../models/life_cycle_event';
 import { XmlImporterService } from './xml_importer.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable()
 export class KnartImporterService extends XmlImporterService {
 
-    knart: Knart;
+    knart: Knart = new Knart();
     private serializer: XMLSerializer = new XMLSerializer();
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
         super();
     }
 
     loadXMLFromURL(url: string): Observable<Response> {
-        return this.http.get(url); //.map(res => res.responseText);
+        return this.http.get<Response>(url); //.map(res => res.responseText);
     }
 
     getString(query: string, base: Node): string {
-        return this.knart.document.evaluate(query, base, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
+        return this.knart.document!.evaluate(query, base, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
     }
 
 
     getOrdered(query: string, base: Node): XPathResult {
-        return this.knart.document.evaluate(query, base, Knart.namespaces, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+        return this.knart.document!.evaluate(query, base, Knart.namespaces, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
     }
 
     loadFromXMLDocument(doc: Document): Knart {
         this.knart = new Knart();
         this.knart.document = doc;
         var result = doc.evaluate("/k:knowledgeDocument", doc, Knart.namespaces, XPathResult.ANY_TYPE, null);
-        var kd: Node = result.iterateNext();
+        var kd: Node = result.iterateNext()!;
         // console.log(kd);
 
         this.knart.title = this.getString("string(./k:metadata/k:title/@value)", kd);
@@ -87,7 +87,7 @@ export class KnartImporterService extends XmlImporterService {
         this.loadIdentifiers(kd);
 
         var actionGroup = doc.evaluate("./k:actionGroup", kd, Knart.namespaces, XPathResult.ANY_TYPE, null).iterateNext();
-        this.knart.actionGroup = this.loadActionGroup(actionGroup);
+        this.knart.actionGroup = this.loadActionGroup(actionGroup!);
 
         console.log(this.knart.title);
         console.log("Loaded KNART!");
@@ -99,7 +99,7 @@ export class KnartImporterService extends XmlImporterService {
         ag.title = this.getString('string(./k:title/@value)', agNode);
         let subElementNodes = this.getOrdered('./k:subElements/k:*', agNode);
         let subElementNode: Node;
-        while (subElementNode = subElementNodes.iterateNext()) {
+        while (subElementNode = subElementNodes.iterateNext()!) {
             let type: string = (subElementNode as any).nodeName;
             switch (type) {
                 case 'actionGroup':
@@ -131,13 +131,13 @@ export class KnartImporterService extends XmlImporterService {
             default:
                 console.log("Unsupported simpleAction type: " + type);
         }
-        return action;
+        return action!;
     }
 
     loadCollectInformationAction(ciaNode: Node): CollectInformationAction {
         let action = new CollectInformationAction();
 
-        let dcNode = this.getOrdered('./k:documentationConcept', ciaNode).iterateNext();
+        let dcNode = this.getOrdered('./k:documentationConcept', ciaNode).iterateNext()!;
         action.prompt = this.getString('string(./k:prompt/@value)', dcNode);
         action.responseDataType = this.getString('string(./k:responseDataType/@value)', dcNode);
         action.responseCardinality = this.getString('string(./k:responseCardinality/@value)', dcNode);
@@ -152,7 +152,7 @@ export class KnartImporterService extends XmlImporterService {
         // Question codes
         let itemCodeNodes = this.getOrdered('./k:itemCodes/k:itemCode', dcNode);
         var itemCodeNode: Node;
-        while (itemCodeNode = itemCodeNodes.iterateNext()) {
+        while (itemCodeNode = itemCodeNodes.iterateNext()!) {
             let ic = new Value();
             ic.code = this.getString('string(./@code)', itemCodeNode);
             ic.codeSystem = this.getString('string(./@codeSystem)', itemCodeNode);
@@ -163,7 +163,7 @@ export class KnartImporterService extends XmlImporterService {
         // Responses
         let itemNodes = this.getOrdered('./k:responseRange/k:item', dcNode);
         var itemNode: Node;
-        while (itemNode = itemNodes.iterateNext()) {
+        while (itemNode = itemNodes.iterateNext()!) {
             let item = new ResponseItem();
             item.type = this.getString('string(./k:value/@xsi:type)', itemNode);
             item.valueType = this.getString('string(./k:value/@valueType)', itemNode);
@@ -174,7 +174,7 @@ export class KnartImporterService extends XmlImporterService {
 
             let codeNodes = this.getOrdered('./k:codes/k:code', itemNode);
             var codeNode: Node;
-            while (codeNode = codeNodes.iterateNext()) {
+            while (codeNode = codeNodes.iterateNext()!) {
                 let code = new Value();
                 code.code = this.getString('string(./@code)', codeNode);
                 code.codeSystem = this.getString('string(./@codeSystem)', codeNode);
@@ -190,7 +190,7 @@ export class KnartImporterService extends XmlImporterService {
         let children = this.getOrdered(query, base);
         let childNode: Node;
         let tmp = '';
-        while (childNode = children.iterateNext()) {
+        while (childNode = children.iterateNext()!) {
             tmp += this.serializer.serializeToString(childNode) + "\n";
         }
         return tmp;
@@ -216,12 +216,12 @@ export class KnartImporterService extends XmlImporterService {
     loadRelatedResources(kd: Node) {
         let relatedResources = this.getOrdered("./k:metadata/k:relatedResources/k:relatedResource", kd);
         var rrNode: Node;
-        while (rrNode = relatedResources.iterateNext()) {
+        while (rrNode = relatedResources.iterateNext()!) {
             let rr = new RelatedResource();
             rr.relationship = this.getString('string(./k:relationship/@value)', rrNode);
             let resources = this.getOrdered('./k:resources/k:resource', rrNode);
             var rNode: Node;
-            while (rNode = resources.iterateNext()) {
+            while (rNode = resources.iterateNext()!) {
                 let resource = new Resource();
                 resource.title = this.getString('string(./k:title/@value)', rNode);
                 resource.location = this.getString('string(./k:location/@value)', rNode);
@@ -237,9 +237,9 @@ export class KnartImporterService extends XmlImporterService {
     loadSupportingEvidence(kd: Node) {
         let supportingEvidence = this.getOrdered("./k:metadata/k:supportingEvidence//k:citation/@value", kd);
         var node: Node;
-        while (node = supportingEvidence.iterateNext()) {
+        while (node = supportingEvidence.iterateNext()!) {
             let se = new SupportingEvidence();
-            se.citation = node.nodeValue;
+            se.citation = node.nodeValue!;
             this.knart.supportingEvidence.push(se);
         }
     }
@@ -247,7 +247,7 @@ export class KnartImporterService extends XmlImporterService {
     loadIdentifiers(kd: Node) {
         let identifiers = this.getOrdered("./k:metadata/k:identifiers/k:identifier", kd);
         var node: Node;
-        while (node = identifiers.iterateNext()) {
+        while (node = identifiers.iterateNext()!) {
             let i = new Identifier();
             i.root = this.getString('string(./@root)', node);
             i.version = this.getString('string(./@version)', node);
@@ -259,7 +259,7 @@ export class KnartImporterService extends XmlImporterService {
     loadCoverages(kd: Node) {
         let coverages = this.getOrdered("./k:metadata/k:applicability/k:coverage", kd);
         var node: Node;
-        while (node = coverages.iterateNext()) {
+        while (node = coverages.iterateNext()!) {
             let coverage = new Coverage();
             coverage.focus = this.getString('string(./k:focus/@value)', node);
             coverage.description = this.getString('string(./k:description/@value)', node);
@@ -275,7 +275,7 @@ export class KnartImporterService extends XmlImporterService {
     loadModelReferences(kd: Node) {
         let modelReferences = this.getOrdered("./k:metadata/k:dataModels/k:modelReference", kd);
         var node: Node;
-        while (node = modelReferences.iterateNext()) {
+        while (node = modelReferences.iterateNext()!) {
             let mr = new ModelReference();
             mr.description = this.getString('string(./k:description/@value)', node);
             mr.referencedModel = this.getString('string(./k:referencedModel/@value)', node);
@@ -286,7 +286,7 @@ export class KnartImporterService extends XmlImporterService {
     loadExternalData(kd: Node) {
         let externalDataDefs = this.getOrdered("./k:externalData/k:def", kd);
         var node: Node;
-        while (node = externalDataDefs.iterateNext()) {
+        while (node = externalDataDefs.iterateNext()!) {
             let ed = new ExternalData();
             ed.name = this.getString('string(./@name)', node);
             ed.content = this.serializer.serializeToString((node as any).children[0]);
@@ -297,7 +297,7 @@ export class KnartImporterService extends XmlImporterService {
     loadLifeCycleEvents(kd: Node) {
         let artifactLifeCycleEvents = this.getOrdered("./k:metadata/k:eventHistory/k:artifactLifeCycleEvent", kd);
         var node: Node;
-        while (node = artifactLifeCycleEvents.iterateNext()) {
+        while (node = artifactLifeCycleEvents.iterateNext()!) {
             let e = new LifeCycleEvent();
             e.type = this.getString('string(./k:eventType/@value)', node);
             e.datetime = this.getString('string(./k:eventDateTime/@value)', node);
@@ -308,7 +308,7 @@ export class KnartImporterService extends XmlImporterService {
     loadExpressions(kd: Node) {
         let expressionDefs = this.getOrdered("./k:expressions/k:def", kd);
         var node: Node;
-        while (node = expressionDefs.iterateNext()) {
+        while (node = expressionDefs.iterateNext()!) {
             let e = new Expression();
             e.name = this.getString('string(./@name)', node);
             e.logic = this.serializer.serializeToString((node as any).children[0]);
@@ -319,10 +319,10 @@ export class KnartImporterService extends XmlImporterService {
     loadConditions(kd: Node) {
         let conditionsNode = this.getOrdered("./k:conditions/k:condition", kd);
         var node: Node;
-        while (node = conditionsNode.iterateNext()) {
+        while (node = conditionsNode.iterateNext()!) {
             let condition = new Condition();
             condition.role = this.getString('string(./k:conditionRole/@value)', node);
-            let logicNode: Node = this.getOrdered('./k:logic', node).iterateNext();
+            let logicNode: Node = this.getOrdered('./k:logic', node).iterateNext()!;
             condition.logic = this.serializer.serializeToString(logicNode);
             this.knart.conditions.push(condition);
         }
@@ -331,14 +331,14 @@ export class KnartImporterService extends XmlImporterService {
     loadContributions(kd: Node) {
         let contributionsResult = this.getOrdered("./k:metadata/k:contributions/k:contribution", kd);
         var contributionNode: Node;
-        while (contributionNode = contributionsResult.iterateNext()) {
+        while (contributionNode = contributionsResult.iterateNext()!) {
             let contribution = new Contribution();
             contribution.type = this.getString('string(./k:contributor/@xsi:type)', contributionNode);
             contribution.role = this.getString('string(./k:role/@value)', contributionNode);
 
             let contactsResult = this.getOrdered('.//k:contacts/k:contact', contributionNode);
             var contactNode: Node;
-            while (contactNode = contactsResult.iterateNext()) {
+            while (contactNode = contactsResult.iterateNext()!) {
                 let contact = new Contact();
                 contact.use = this.getString('string(./@use)', contactNode);
                 contact.value = this.getString('string(./@value)', contactNode);
@@ -347,7 +347,7 @@ export class KnartImporterService extends XmlImporterService {
 
             let affiliationsResult = this.getOrdered('.//k:affiliation', contributionNode);
             var affiliationNode: Node;
-            while (affiliationNode = affiliationsResult.iterateNext()) {
+            while (affiliationNode = affiliationsResult.iterateNext()!) {
                 let affiliation = new Affiliation();
                 affiliation.name = this.getString('string(./k:name/@value)', affiliationNode);
                 contribution.affiliations.push(affiliation);
@@ -355,7 +355,7 @@ export class KnartImporterService extends XmlImporterService {
 
             let namesResult = this.getOrdered('.//k:name', contributionNode);
             var nameNode: Node;
-            while (nameNode = namesResult.iterateNext()) {
+            while (nameNode = namesResult.iterateNext()!) {
                 let name = new Name();
                 name.given = this.getString('string(./dt:part[@type="GIV"]/@value)', nameNode);
                 name.family = this.getString('string(./dt:part[@type="FAM"]/@value)', nameNode);
@@ -364,7 +364,7 @@ export class KnartImporterService extends XmlImporterService {
 
             let addressesResult = this.getOrdered('.//k:address', contributionNode);
             var addressNode: Node;
-            while (addressNode = addressesResult.iterateNext()) {
+            while (addressNode = addressesResult.iterateNext()!) {
                 let address = new Address();
                 address.street = this.getString('string(./dt:part[@type="SAL"]/@value)', addressNode);
                 address.city = this.getString('string(./dt:part[@type="CTY"]/@value)', addressNode);

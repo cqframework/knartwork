@@ -1,43 +1,46 @@
-import {Component, Output, Inject, OnInit, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import {Knart} from '../models/knart';
-import {ArtifactType} from '../models/artifact_type';
-import {Format} from '../models/format';
-import {Status} from '../models/status';
-import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
+// Author: Preston Lee
+
+import { Component, Output, Inject, OnInit, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Knart } from '../models/knart';
+import { ArtifactType } from '../models/artifact_type';
+import { Format } from '../models/format';
+import { Status } from '../models/status';
+import { ToastrService } from 'ngx-toastr';
 
 // import {window} from '@angular/browser';
 
-import {KnartImporterService} from '../services/knart_importer.service';
-import {KnartExporterService} from '../services/knart_exporter.service';
+import { KnartImporterService } from '../services/knart_importer.service';
+import { KnartExporterService } from '../services/knart_exporter.service';
 
-import {Http} from '@angular/http';
-import {ActivatedRoute} from '@angular/router';
-import { CESService, ActionEvent } from "context-event-client";
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+// import { CESService, ActionEvent } from "context-event-client";
 
 @Component({
     selector: 'home',
-    templateUrl: '../views/home.pug',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: '../views/home.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
 
-    editor_tab: 'metadata' | 'contributions' | 'related_resources' | 'model_references' | 'supporting_evidence';
-    runtime_tab: 'conditions' | 'expressions' | 'external_data' | 'coverages' | 'history';
-    viewer_tab: 'action_group' | "preview" | 'original';// | 'export';
+    editor_tab: 'metadata' | 'contributions' | 'related_resources' | 'model_references' | 'supporting_evidence' = 'metadata';
+    runtime_tab: 'conditions' | 'expressions' | 'external_data' | 'coverages' | 'history' = 'conditions';
+    viewer_tab: 'action_group' | "preview" | 'original' = 'action_group';// | 'export';
 
-    knart: Knart;
+    knart: Knart | undefined;
     documentFormat: Format = Format.HL7CDSKnowledgeArtifact13; // Just a default.
 
-    remoteUrl: string = null;
-    originalContentString: string;
-    originalFileName: string;
+    remoteUrl: string | undefined;
+    originalContentString: string | undefined;
+    originalFileName: string | undefined;
 
-    constructor( @Inject('Window') private window: Window,
-                 private route: ActivatedRoute,
-                 public toasterService: ToasterService,
-                 private xmlImporter: KnartImporterService,
-                 private xmlExporter: KnartExporterService,
-                 private ces: CESService) {
+    constructor(@Inject('Window') private window: Window,
+        private route: ActivatedRoute,
+        public toasterService: ToastrService,
+        private xmlImporter: KnartImporterService,
+        private xmlExporter: KnartExporterService
+        // private ces: CESService
+        ) {
         // console.log("HomeComponent has been initialized.");
         this.reset();
 
@@ -55,24 +58,15 @@ export class HomeComponent implements OnInit {
         if (url) {
             this.remoteUrl = url;
             this.loadRemoteUrl();
-        //     this.browserService.getManifest(this.repository).subscribe(data => {
-		// 		// this.toasterService.pop("success", "Loaded!", "Content manifest has been loaded from: " + this.repository);
-		// 		console.log(data);
-        //         this.manifest = data;
-        //     }, error => {
-        //         this.failureToLoad();
-        //     });
-        // } else {
-        //     this.failureToLoad();
         }
     }
 
     loadRemoteUrl() {
-      if (!!this.remoteUrl) {
-        this.loadRemoteFile(this.remoteUrl);
-      } else {
-          this.toasterService.pop('warning', "Need URL", "Please provide a URL to load.");
-      }
+        if (!!this.remoteUrl) {
+            this.loadRemoteFile(this.remoteUrl);
+        } else {
+            this.toasterService.warning('warning', "Need URL. Please provide a URL to load.");
+        }
     }
 
     filenameFor(url: string): string {
@@ -82,10 +76,11 @@ export class HomeComponent implements OnInit {
 
     loadRemoteFile(url: string) {
         this.xmlImporter.loadXMLFromURL(url).subscribe(data => {
-            let raw: string = data.text();
-            console.log('Loaded raw remote file from: ' + url);
-            this.loadFromContentString(raw);
-            this.originalFileName = this.filenameFor(url);
+            data.text().then(raw => {
+                console.log('Loaded raw remote file from: ' + url);
+                this.loadFromContentString(raw);
+                this.originalFileName = this.filenameFor(url);
+            });
         });
     }
 
@@ -94,41 +89,43 @@ export class HomeComponent implements OnInit {
     }
 
     reset() {
-        this.knart = null;
+        this.knart = undefined;
         this.editor_tab = 'metadata';
-        // this.editor_tab = 'supporting_evidence';
         this.runtime_tab = 'conditions';
-        // this.runtime_tab = 'coverages';
-        // this.viewer_tab = 'preview';
         this.viewer_tab = 'action_group';
-        this.remoteUrl = null;
-        this.originalContentString = null;
-        this.originalFileName = null;
+        this.remoteUrl = undefined;
+        this.originalContentString = undefined;
+        this.originalFileName = undefined;
     }
 
     download() {
-        this.toasterService.pop('warning', "Not Fully Implemented", "Some data will be missing from the export!");
-        let doc = this.xmlExporter.createXMLDocumentFrom(this.knart);
-        let serializer: XMLSerializer = new XMLSerializer();
-        let str = serializer.serializeToString(doc);
+        if (this.knart) {
 
-        console.log(doc);
+            this.toasterService.warning('warning', "Not Fully Implemented. Some data will be missing from the export!");
+            let doc = this.xmlExporter.createXMLDocumentFrom(this.knart);
+            let serializer: XMLSerializer = new XMLSerializer();
+            let str = serializer.serializeToString(doc);
 
-        // To open in a new tab. (Useful for debugging)
-        // window.open("data:text/json;charset=utf-8," + str);
+            console.log(doc);
 
-        // To download the file.
-        var pom = document.createElement('a');
-        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(str));
-        pom.setAttribute('download', this.originalFileName ? this.originalFileName : 'knart.xml');
-        pom.click();
+            // To open in a new tab. (Useful for debugging)
+            // window.open("data:text/json;charset=utf-8," + str);
+
+            // To download the file.
+            var pom = document.createElement('a');
+            pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(str));
+            pom.setAttribute('download', this.originalFileName ? this.originalFileName : 'knart.xml');
+            pom.click();
+        } else {
+            this.toasterService.error("Not Fully Implemented. Some data will be missing from the export!", 'Error');
+        }
     }
 
     revert(): void {
-        if (this.canRevert()) {
+        if (this.canRevert() && this.originalContentString) {
             this.loadFromContentString(this.originalContentString);
         } else {
-            this.toasterService.pop('warning', "Not Possible", "The original content isn't available, sorry!");
+            this.toasterService.warning('warning', "Not Possible. The original content isn't available, sorry!");
         }
     }
 
@@ -138,8 +135,8 @@ export class HomeComponent implements OnInit {
 
     createFromTemplate() {
         let k = new Knart();
-        k.title = null;
-        k.description = null;
+        k.title = '';
+        k.description = '';
         k.schemaIdentifier = Knart.KNART_NAMESPACE;
         // k.artifactType = ArtifactType.OrderSet.value;
         this.knart = k;
@@ -152,42 +149,42 @@ export class HomeComponent implements OnInit {
         try {
             this.knart = this.xmlImporter.loadFromXMLDocument(doc);
             this.originalContentString = content;
-            this.toasterService.pop('success', "Loaded!", "Go do your thing.");
+            this.toasterService.success('success', "Loaded! Go do your thing.");
         } catch (e) {
             console.log(e);
-            this.toasterService.pop('error', 'Well blarg.', "Your file couldn't read or parsed. Is it valid and well-formed?");
+            this.toasterService.error('error', "Well blarg. Your file couldn't read or parsed. Is it valid and well-formed?");
             this.reset();
         }
     }
 
-    openFile(event) {
+    openFile(event: any) {
         console.log("Reading...");
         let input = event.target;
         if (input.files.length > 0) {
             let reader = new FileReader();
             reader.onload = () => {
                 // this text is the content of the file
-                this.loadFromContentString(reader.result);
+                this.loadFromContentString(reader.result!.toString());
             }
             let file: File = input.files[0];
             reader.readAsText(file);
             this.originalFileName = file.name;
             console.log("File name: " + this.originalFileName);
 
-          this.ces.send(new ActionEvent(
-            "file-picker",
-            "knartwork://controllers/home",
-            "file://filename.xml/knowledgeDocument",
-            {"filename" : this.originalFileName}
-          ));
+            // this.ces.send(new ActionEvent(
+            //     "file-picker",
+            //     "knartwork://controllers/home",
+            //     "file://filename.xml/knowledgeDocument",
+            //     { "filename": this.originalFileName }
+            // ));
 
         } else {
             this.reset();
         }
     }
 
-    tabClicked(tab){
-      this.editor_tab = tab;
+    tabClicked(tab: 'metadata' | 'contributions' | 'related_resources' | 'model_references' | 'supporting_evidence') {
+        this.editor_tab = tab;
     }
 
 }

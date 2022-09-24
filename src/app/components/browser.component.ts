@@ -1,25 +1,28 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+// Author: Preston Lee
 
-import { ToasterService } from "angular2-toaster/angular2-toaster";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+
+import { ToastrService } from "ngx-toastr";
 
 import { BrowserService } from "../services/browser.service";
 import { Manifest } from "../models/browser/manifest";
 import { ManifestItem } from "../models/browser/manifest_item";
 
 
-import {plainToClass} from "class-transformer";
+import { plainToClass } from "class-transformer";
 
 @Component({
   selector: "browser",
-  templateUrl: "../views/browser.pug"
+  templateUrl: "../views/browser.html"
 })
 export class BrowserComponent implements OnInit {
-  repository: string;
-  manifest: Manifest;
+
+  repository: string | undefined;
+  manifest: Manifest | undefined;
   filter = "";
 
-  public static MIME_TYPE_MAP = {
+  public static MIME_TYPE_MAP: { [key: string]: string } = {
     "application/pdf": "PDF",
     "application/msword": "Word",
     "text/html": "HTML",
@@ -42,7 +45,7 @@ export class BrowserComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private toasterService: ToasterService,
+    private toasterService: ToastrService,
     private browserService: BrowserService
   ) {
     console.log("Browser initializing.");
@@ -55,9 +58,9 @@ export class BrowserComponent implements OnInit {
       let lower = this.filter.toLowerCase();
       if (i.name && i.name.toLowerCase().indexOf(lower) >= 0) {
         show = true;
-    } else if (i.mimeType && i.mimeType.toLowerCase().indexOf(lower) >= 0) {
+      } else if (i.mimeType && i.mimeType.toLowerCase().indexOf(lower) >= 0) {
         show = true;
-    } else if (i.path && i.path.toLowerCase().indexOf(lower) >= 0) {
+      } else if (i.path && i.path.toLowerCase().indexOf(lower) >= 0) {
         show = true;
       } else if (i.url && i.url.toLowerCase().indexOf(lower) >= 0) {
         show = true;
@@ -88,27 +91,33 @@ export class BrowserComponent implements OnInit {
       this.failureToLoad();
     }
   }
-  mimeTypeToName(type: string) {
+  mimeTypeToName(type: string): string {
     return BrowserComponent.MIME_TYPE_MAP[type] || type;
   }
   isKnartMimeType(type: string) {
     return BrowserComponent.KNART_MIME_TYPES.includes(type);
   }
-  getMimeTypesFor(manifest: Manifest): Array<String> {
+  getMimeTypesFor(manifest: Manifest): Array<string> {
     return Array.from(manifest.mimeTypes.keys()).sort();
   }
-  getTagsFor(manifest: Manifest): Array<String> {
+  getTagsFor(manifest: Manifest): Array<string> {
     return Array.from(manifest.tags.keys()).sort();
   }
+
   failureToLoad() {
     // this.toasterService.pop("error", "Uh oh", "The manifest file couldn't be loaded. Are you sure it's accessible from your browser environment? Check your browser console, and make sure the host has CORS enabled! URL: " + this.repository);
-    this.manifest = null;
+    this.manifest = undefined;
   }
+
   audit() {
-    this.toasterService.pop("success", "Starting audit..", "The availability of each resource is being verified.");
-    this.browserService.audit(this.repository, this.manifest);
+    this.toasterService.success("success", "Starting audit. The availability of each resource is being verified.");
+    if (this.repository && this.manifest) {
+      this.browserService.audit(this.repository, this.manifest);
+    }
   }
+
   stringify(obj: any): string {
     return JSON.stringify(obj, null, "\t").trim();
   }
+
 }

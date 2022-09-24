@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 export class ContactType {
 
     public static WP = new ContactType('WP', 'Work Phone');

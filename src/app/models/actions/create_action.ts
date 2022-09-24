@@ -1,7 +1,9 @@
+// Author: Preston Lee
+
 import {Action} from './action';
 
 export class CreateAction extends Action {
-	sentence: string;
-	sentenceType: string;
-	sentenceClassType: string;
+	sentence: string = '';
+	sentenceType: string = '';
+	sentenceClassType: string = '';
 }

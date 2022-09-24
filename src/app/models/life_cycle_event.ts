@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 export class LifeCycleEvent {
     type: string = LifeCycleEvent.CREATED; // Reasonable default
     datetime: string = '';

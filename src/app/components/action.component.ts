@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {BaseComponent} from './base.component';
 
 import {Action} from '../models/actions/action';
@@ -9,16 +11,16 @@ import {CreateAction} from '../models/actions/create_action';
 export abstract class ActionComponent extends BaseComponent {
 
     // Since instanceof does not work in Angular expressions
-    isDeclareResponseAction(action: Action): boolean {
+    isDeclareResponseAction(action: Action): action is DeclareResponseAction {
         return action instanceof DeclareResponseAction;
     }
-    isCollectInformationAction(action: Action): boolean {
+    isCollectInformationAction(action: Action): action is CollectInformationAction {
         return action instanceof CollectInformationAction;
     }
-    isCreateAction(action: Action): boolean {
+    isCreateAction(action: Action): action is CreateAction {
         return action instanceof CreateAction;
     }
-    isActionGroup(action: Action): boolean {
+    isActionGroup(action: Action): action is ActionGroup {
         return action instanceof ActionGroup;
     }
 }

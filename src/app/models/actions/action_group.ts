@@ -1,10 +1,11 @@
-import {Action} from './action';
+// Author: Preston Lee
 
-import {Value} from '../value';
+import { Action } from './action';
+import { Value } from '../value';
 
 export class ActionGroup extends Action {
 
-	title: string;
+	title: string = '';
 	representedConcepts: Array<Value> = new Array<Value>();
 	subElements: Array<Action> = new Array<Action>();
 }

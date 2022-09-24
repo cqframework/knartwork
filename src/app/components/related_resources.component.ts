@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
@@ -9,11 +11,11 @@ import {Resource} from '../models/resource';
 
 @Component({
     selector: 'related_resources',
-    templateUrl: '../views/related_resources.pug'
+    templateUrl: '../views/related_resources.html'
 })
 export class RelatedResourcesComponent extends BaseComponent {
 
-    @Input() knart: Knart;
+    @Input() knart: Knart | undefined;
 
     relationshipTypes(): Array<Relationship> {
         return Relationship.ALL
@@ -22,13 +24,13 @@ export class RelatedResourcesComponent extends BaseComponent {
     createRelatedResource() {
         let rr = new RelatedResource();
         // rr.resources.push(new Resource());
-        this.knart.relatedResources.push(rr);
+        this.knart?.relatedResources.push(rr);
     }
 
-    deleteRelatedResource(rr) {
-        let i: number = this.knart.relatedResources.indexOf(rr, 0);
-        if (i > -1) {
-            this.knart.relatedResources.splice(i, 1);
+    deleteRelatedResource(rr: RelatedResource) {
+        let i = this.knart?.relatedResources.indexOf(rr, 0);
+        if (i && i > -1) {
+            this.knart?.relatedResources.splice(i, 1);
         }
     }
 

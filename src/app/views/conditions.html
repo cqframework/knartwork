@@ -1,0 +1,20 @@
+<div class="container-fluid"><a class="btn btn-primary pull-right" (click)="createCondition()"><span
+            class="bi bi-plus"></span> Add</a>
+    <p class="text-muted">Conditions contain logical expressions that evaluate to true or false and control further execution of the artifact. They usually reference data bound at runtime.</p><br class="clearfix" />
+    <div id="conditions" *ngIf="knart && knart.conditions.length > 0">
+        <div class="condition well" *ngFor="let c of knart.conditions">
+            <div class="btn-group pull-right"><a class="btn btn-small btn-danger" (click)="deleteCondition(c)"><span
+                        class="bi bi-trash"></span></a></div>
+            <div class="clearfix"></div>
+            <form class="form row">
+                <div class="col-sm-12 form-group"><label for="condition_role">Role</label><input class="form-control" name="condition_role" type="text" [(ngModel)]="c.role" disabled="true" />
+                    <p class="text-muted">This isn't really useful in the current specification.</p>
+                </div>
+                <div class="col-sm-12 form-group"><label for="condition_logic">ELM Logic</label><textarea class="form-control" name="condition_logic" rows="10" [(ngModel)]="c.logic" placeholder="&lt;elm:annotation xsi:type=&quot;a:Annotation&quot;&gt;&lt;a:s&gt;Patient is between 2 months and 7 years of age&lt;/a:s&gt;&lt;/elm:annotation&gt;&lt;elm:operand xsi:type=&quot;elm:GreaterOrEqual&quot;&gt;&lt;elm:annotation xsi:type=&quot;a:Annotation&quot;&gt;&lt;a:s&gt;Patient is more than 2 months old&lt;/a:s&gt;&lt;/elm:annotation&gt;&lt;elm:operand xsi:type=&quot;elm:ExpressionRef&quot; name=&quot;PatientAgeInMonths&quot;&gt;&lt;/elm:operand&gt;&lt;elm:operand xsi:type=&quot;elm:Literal&quot; valueType=&quot;t:Integer&quot; value=&quot;2&quot; /&gt;&lt;/elm:operand&gt;&lt;elm:operand xsi:type=&quot;elm:LessOrEqual&quot;&gt;&lt;elm:annotation xsi:type=&quot;a:Annotation&quot;&gt;&lt;a:s&gt;Patient is less than 7 years old (or 84 months)&lt;/a:s&gt;&lt;/elm:annotation&gt;&lt;elm:operand xsi:type=&quot;elm:ExpressionRef&quot; name=&quot;PatientAgeInMonths&quot;&gt;&lt;/elm:operand&gt;&lt;elm:operand xsi:type=&quot;elm:Literal&quot; valueType=&quot;t:Integer&quot; value=&quot;84&quot; /&gt;&lt;/elm:operand&gt;"></textarea>
+                    <p class="text-muted">This must be a valid ELM expression, and may reference your bound data objects.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

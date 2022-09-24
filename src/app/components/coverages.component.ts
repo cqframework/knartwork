@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
@@ -7,21 +9,21 @@ import {Coverage} from '../models/coverage';
 
 @Component({
     selector: 'coverages',
-    templateUrl: '../views/coverages.pug'
+    templateUrl: '../views/coverages.html'
 })
 export class CoveragesComponent extends BaseComponent {
 
-    @Input() knart: Knart;
+    @Input() knart: Knart | undefined;
 
     createCoverage() {
         let c = new Coverage();
-        this.knart.coverages.push(c);
+        this.knart?.coverages.push(c);
     }
 
     deleteCoverage(c: Coverage) {
-        let i: number = this.knart.coverages.indexOf(c, 0);
-        if (i > -1) {
-            this.knart.coverages.splice(i, 1);
+        let i = this.knart?.coverages.indexOf(c, 0);
+        if (i && i > -1) {
+            this.knart?.coverages.splice(i, 1);
         }
     }
 

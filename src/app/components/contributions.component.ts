@@ -1,22 +1,24 @@
-import {Component, Input} from '@angular/core';
+// Author: Preston Lee
 
-import {BaseComponent} from './base.component';
+import { Component, Input } from '@angular/core';
 
-import {Knart} from '../models/knart';
-import {Contribution} from '../models/contribution';
-import {Address} from '../models/address';
-import {Contact} from '../models/contact';
-import {Name} from '../models/name';
-import {Role} from '../models/role';
-import {Affiliation} from '../models/affiliation';
+import { BaseComponent } from './base.component';
+
+import { Knart } from '../models/knart';
+import { Contribution } from '../models/contribution';
+import { Address } from '../models/address';
+import { Contact } from '../models/contact';
+import { Name } from '../models/name';
+import { Role } from '../models/role';
+import { Affiliation } from '../models/affiliation';
 
 @Component({
     selector: 'contributions',
-    templateUrl: '../views/contributions.pug'
+    templateUrl: '../views/contributions.html'
 })
 export class ContributionsComponent extends BaseComponent {
 
-    @Input() knart: Knart;
+    @Input() knart: Knart | undefined;
 
     contributorTypes(): Array<string> {
         return ["Person"];
@@ -27,13 +29,13 @@ export class ContributionsComponent extends BaseComponent {
 
     createContribution() {
         let c = new Contribution();
-        this.knart.contributions.push(c);
+        this.knart?.contributions.push(c);
     }
 
-    deleteContribution(c) {
-        let index: number = this.knart.contributions.indexOf(c, 0);
-        if (index > -1) {
-            this.knart.contributions.splice(index, 1);
+    deleteContribution(c: Contribution) {
+        let index = this.knart?.contributions.indexOf(c, 0);
+        if (index && index > -1) {
+            this.knart?.contributions.splice(index, 1);
         }
     }
 
@@ -41,9 +43,13 @@ export class ContributionsComponent extends BaseComponent {
         c.addresses.push(new Address());
     }
     deleteAddress(c: Contribution, a: Address) {
-        let cIndex: number = this.knart.contributions.indexOf(c);
-        let aIndex: number = this.knart.contributions[cIndex].addresses.indexOf(a);
-        this.knart.contributions[cIndex].addresses.splice(aIndex, 1);
+        let cIndex = this.knart?.contributions.indexOf(c);
+        if (cIndex) {
+            let aIndex = this.knart?.contributions[cIndex].addresses.indexOf(a);
+            if (aIndex) {
+                this.knart?.contributions[cIndex].addresses.splice(aIndex, 1);
+            }
+        }
     }
 
     createContact(contribution: Contribution) {
@@ -51,20 +57,27 @@ export class ContributionsComponent extends BaseComponent {
     }
 
     deleteContact(contribution: Contribution, contact: Contact) {
-        let contributionIndex: number = this.knart.contributions.indexOf(contribution);
-        let contactIndex: number = this.knart.contributions[contributionIndex].contacts.indexOf(contact);
-        this.knart.contributions[contributionIndex].contacts.splice(contactIndex, 1);
+        let contributionIndex = this.knart?.contributions.indexOf(contribution);
+        if (contributionIndex) {
+            let contactIndex = this.knart?.contributions[contributionIndex].contacts.indexOf(contact);
+            if (contactIndex) {
+                this.knart?.contributions[contributionIndex].contacts.splice(contactIndex, 1);
+            }
+        }
     }
-
 
     createName(contribution: Contribution) {
         contribution.names.push(new Name());
     }
 
     deleteName(contribution: Contribution, name: Name) {
-        let contributionIndex: number = this.knart.contributions.indexOf(contribution);
-        let nameIndex: number = this.knart.contributions[contributionIndex].names.indexOf(name);
-        this.knart.contributions[contributionIndex].names.splice(nameIndex, 1);
+        let contributionIndex = this.knart?.contributions.indexOf(contribution);
+        if (contributionIndex) {
+            let nameIndex = this.knart?.contributions[contributionIndex].names.indexOf(name);
+            if (nameIndex) {
+                this.knart?.contributions[contributionIndex].names.splice(nameIndex, 1);
+            }
+        }
     }
 
     createAffiliation(contribution: Contribution) {
@@ -72,9 +85,13 @@ export class ContributionsComponent extends BaseComponent {
     }
 
     deleteAffiliation(contribution: Contribution, affiliation: Affiliation) {
-        let contributionIndex: number = this.knart.contributions.indexOf(contribution);
-        let affiliationIndex: number = this.knart.contributions[contributionIndex].affiliations.indexOf(affiliation);
-        this.knart.contributions[contributionIndex].affiliations.splice(affiliationIndex, 1);
+        let contributionIndex = this.knart?.contributions.indexOf(contribution);
+        if (contributionIndex) {
+            let affiliationIndex = this.knart?.contributions[contributionIndex].affiliations.indexOf(affiliation);
+            if (affiliationIndex) {
+                this.knart?.contributions[contributionIndex].affiliations.splice(affiliationIndex, 1);
+            }
+        }
     }
 
 }

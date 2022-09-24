@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 export class Role {
 
     static AUTHOR = new Role('Author', 'Author');
@@ -16,6 +18,6 @@ export class Role {
                 s = n; break;
             }
         }
-        return s;
+        return s!;
     }
 }

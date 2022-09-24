@@ -1,12 +1,15 @@
+// Author: Preston Lee
+
 import { ManifestGroup } from "./manifest_group";
+import { ManifestItem } from "./manifest_item";
 
 export class Manifest {
-	name: string;
-	description: string;
-	groups: Array<ManifestGroup>;
+	name: string = '';
+	description: string = '';
+	groups: Array<ManifestGroup> = [];
 
-	mimeTypes: Map<String, Array<Object>>;
-	tags: Map<String, Array<Object>>;
+	mimeTypes: Map<string, Array<ManifestItem>> = new Map<string, Array<ManifestItem>>();
+	tags: Map<string, Array<ManifestItem>> = new Map<string, Array<ManifestItem>>();
 
 	public repackage() {
 		this.repackageByMimeType();
@@ -14,46 +17,50 @@ export class Manifest {
 	}
 
 	public repackageByMimeType() {
-		this.mimeTypes = new Map<String, Array<Object>>();
+		this.mimeTypes = new Map<string, Array<ManifestItem>>();
 		this.groups.forEach(g => {
-			if(g.items) {
+			if (g.items) {
 				g.items.forEach(i => {
 					if (this.mimeTypes.get(i.mimeType) == null) {
 						this.mimeTypes.set(i.mimeType, []);
 					}
-					let summary = {
+					let summary: ManifestItem = {
 						name: i.name,
 						path: i.path,
 						tags: i.tags || [],
 						url: i.url,
 						group: g.name,
-						status: g.status
+						status: g.status,
+						mimeType: i.mimeType,
+						audit: ''
 					}
-					this.mimeTypes.get(i.mimeType).push(summary);
+					this.mimeTypes.get(i.mimeType)?.push(summary);
 				});
 			}
 		});
 	}
 
 	public repackageByTag() {
-		this.tags = new Map<String, Array<Object>>();
+		this.tags = new Map<string, Array<ManifestItem>>();
 		this.groups.forEach(g => {
-			if(g.items) {
+			if (g.items) {
 				g.items.forEach(i => {
-					if(i.tags) {
+					if (i.tags) {
 						i.tags.forEach(t => {
 							if (this.tags.get(t) == null) {
 								this.tags.set(t, []);
 							}
-							let summary = {
+							let summary: ManifestItem = {
 								name: i.name,
 								path: i.path,
 								mimeType: i.mimeType,
+								tags: i.tags || [],
 								url: i.url,
 								group: g.name,
-								status: g.status
+								status: g.status, 
+								audit: ''
 							}
-							this.tags.get(t).push(summary);
+							this.tags.get(t)?.push(summary);
 						})
 					}
 				});

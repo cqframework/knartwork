@@ -1,0 +1,97 @@
+<div class="container-fluid"><a class="btn btn-primary pull-right" (click)="createContribution()"><span
+            class="bi bi-plus"></span> Add</a>
+    <p class="text-muted">Contributions attribute the people and organizations that have contributed to this work. You probably want to specify a primary author and contact information, at minimum, and may want to add your organization as well.</p><br class="clearfix" />
+    <div *ngIf="knart && knart.contributions.length > 0">
+        <div class="contribution well row" *ngFor="let contribution of knart.contributions">
+            <div class="col-sm-6 form-group"><select class="form-control" name="contribution_role_select" [(ngModel)]="contribution.role">
+                    <option [value]="role.code" [selected]="contribution.role == role.code"
+                        *ngFor="let role of roleTypes()">{{role.label}}</option>
+                </select></div>
+            <div class="col-sm-6">
+                <div class="pull-right"><button class="btn btn-small btn-danger" (click)="deleteContribution(contribution)"><span
+                            class="bi bi-trash"></span></button></div>
+            </div>
+            <div class="clearfix"></div>
+            <hr />
+            <div class="col-sm-6">
+                <section class="contacts">
+                    <h4>Names<a class="pull-right btn btn-primary btn-small" (click)="createName(contribution)"><span
+                                class="bi bi-plus"></span></a>
+                        <div class="clearfix"></div>
+                    </h4>
+                    <div class="name well" *ngFor="let name of contribution.names">
+                        <form class="form row" name="name_form">
+                            <div class="btn-group pull-right"><a class="btn btn-small btn-primary" (click)="moveUp(name, contribution.names)" *ngIf="canMoveUp(name, contribution.names)"><span
+                                        class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(name, contribution.names)" *ngIf="canMoveDown(name, contribution.names)"><span
+                                        class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteName(contribution, name)"><span
+                                        class="bi bi-trash"></span></a></div>
+                            <p class="clearfix"></p>
+                            <div class="col-sm-6"><input class="form-control" name="name_given" [(ngModel)]="name.given" placeholder="Given (e.g. John)" /></div>
+                            <div class="col-sm-6"><input class="form-control" name="name_family" [(ngModel)]="name.family" placeholder="Family (e.g. Doe)" /></div>
+                        </form>
+                    </div>
+                </section>
+                <section class="affiliations">
+                    <h4>Affiliations<a class="pull-right btn btn-primary btn-small" (click)="createAffiliation(contribution)"><span class="bi bi-plus"></span></a>
+                        <div class="clearfix"></div>
+                    </h4>
+                    <div class="affiliation well" *ngFor="let affiliation of contribution.affiliations">
+                        <form class="form row" name="affiliation_form">
+                            <div class="col-sm-8"><input class="form-control" name="affiliation_name" [(ngModel)]="affiliation.name" placeholder="Some Organization" /></div>
+                            <div class="col-sm-4">
+                                <div class="btn-group"><a class="btn btn-small btn-primary" (click)="moveUp(affiliation, contribution.affiliations)" *ngIf="canMoveUp(affiliation, contribution.affiliations)"><span
+                                            class="bi bi-chevron-up"></span></a>
+                                    <a class="btn btn-small btn-primary" (click)="moveDown(affiliation, contribution.affiliations)" *ngIf="canMoveDown(affiliation, contribution.affiliations)"><span class="bi bi-chevron-down"></span></a>
+                                    <a class="btn btn-small btn-danger" (click)="deleteAffiliation(contribution, affiliation)"><span class="bi bi-trash"></span></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <div class="col-sm-6">
+                <section class="addresses">
+                    <h4>Addresses<a class="pull-right btn btn-primary btn-small" (click)="createAddress(contribution)"><span class="bi bi-plus"></span></a>
+                        <div class="clearfix"></div>
+                    </h4>
+                    <div class="address well" *ngFor="let a of contribution.addresses">
+                        <form class="form row" name="address_form">
+                            <div class="col-sm-8"><input class="form-control" name="address_street" [(ngModel)]="a.street" placeholder="123 Fake Street" /></div>
+                            <div class="col-sm-4">
+                                <div class="btn-group"><a class="btn btn-small btn-primary" (click)="moveUp(a, contribution.addresses)" *ngIf="canMoveUp(a, contribution.addresses)"><span
+                                            class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(a, contribution.addresses)" *ngIf="canMoveDown(a, contribution.addresses)"><span
+                                            class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteAddress(contribution, a)"><span
+                                            class="bi bi-trash"></span></a></div>
+                            </div>
+                            <div class="col-sm-8"><input class="form-control" name="address_city" [(ngModel)]="a.city" placeholder="Phoenix" /></div>
+                            <div class="col-sm-4"><input class="form-control" name="address_state" [(ngModel)]="a.state" placeholder="AZ" /></div>
+                            <div class="col-sm-8"><input class="form-control" name="address_zip" [(ngModel)]="a.zip" placeholder="55555" /></div>
+                            <div class="col-sm-4"><input class="form-control" name="address_country" [(ngModel)]="a.country" placeholder="USA" /></div>
+                        </form>
+                    </div>
+                </section>
+                <section class="contacts">
+                    <h4>Contacts<a class="pull-right btn btn-primary btn-small" (click)="createContact(contribution)"><span class="bi bi-plus"></span></a>
+                        <div class="clearfix"></div>
+                    </h4>
+                    <div class="contact well" *ngFor="let contact of contribution.contacts">
+                        <form class="form row" name="contact_form">
+                            <div class="col-sm-8"><input class="form-control" name="contact_value" [(ngModel)]="contact.value" placeholder="123 Fake Street" /></div>
+                            <div class="col-sm-4">
+                                <div class="btn-group"><a class="btn btn-small btn-primary" (click)="moveUp(contact, contribution.contacts)" *ngIf="canMoveUp(contact, contribution.contacts)"><span
+                                            class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(contact, contribution.contacts)" *ngIf="canMoveDown(contact, contribution.contacts)"><span
+                                            class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteContact(contribution, contact)"><span
+                                            class="bi bi-trash"></span></a></div>
+                            </div>
+                            <div class="col-sm-8"><select class="form-control" id="contact_use_select" name="contactUse" [(ngModel)]="contact.use">
+                                    <option value="WP" [selected]="contact.use == 'WP'">Work Phone</option>
+                                    <option value="HP" [selected]="contact.use == 'HP'">Home Phone</option>
+                                    <option value="Email" [selected]="contact.use == 'Email'">Email Phone</option>
+                                </select></div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 export class Status {
 
     static DRAFT = new Status('Draft', 'Draft');
@@ -16,6 +18,6 @@ export class Status {
                 s = n; break;
             }
         }
-        return s;
+        return s!;
     }
 }

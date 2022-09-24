@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 export class Address {
     street: string = '';
     city: string = '';

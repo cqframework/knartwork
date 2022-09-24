@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 export enum AuthEventType {
   GENERIC = "GENERIC",
   LOGOUT = "LOGOUT",

@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {Component, Input} from '@angular/core';
 
 import {ActionComponent} from './action.component';
@@ -14,29 +16,27 @@ import {ResponseItem} from '../models/actions/response_item';
 
 @Component({
     selector: 'action_group',
-    templateUrl: '../views/action_group.pug'
+    templateUrl: '../views/action_group.html'
 })
 export class ActionGroupComponent extends ActionComponent {
 
-    @Input() knart: Knart;
-    @Input() actionGroup: ActionGroup;
+    @Input() knart: Knart | undefined;
+    @Input() actionGroup: ActionGroup | undefined;
 
     canDelete() {
-        return this.knart.actionGroup != this.actionGroup;
+        return this.knart && this.knart.actionGroup != this.actionGroup;
     }
 
     createRepresentedConcept() {
-        this.actionGroup.representedConcepts.push(new Value());
+        this.actionGroup?.representedConcepts.push(new Value());
     }
 
     deleteRepresentedConcept(rc: Value) {
-        let i: number = this.actionGroup.representedConcepts.indexOf(rc, 0);
-        if (i > -1) {
-            this.actionGroup.representedConcepts.splice(i, 1);
+        let i = this.actionGroup?.representedConcepts.indexOf(rc, 0);
+        if (i && i > -1) {
+            this.actionGroup?.representedConcepts.splice(i, 1);
         }
     }
-
-
 
     createItemCode(action: CollectInformationAction) {
         action.itemCodes.push(new Value());
@@ -48,7 +48,6 @@ export class ActionGroupComponent extends ActionComponent {
             action.itemCodes.splice(i, 1);
         }
     }
-
 
     createResponseItemCode(responseItem: ResponseItem) {
         responseItem.itemCodes.push(new Value());
@@ -63,16 +62,16 @@ export class ActionGroupComponent extends ActionComponent {
 
     // Action types
     createDeclareResponseAction() {
-        this.actionGroup.subElements.push(new DeclareResponseAction());
+        this.actionGroup?.subElements.push(new DeclareResponseAction());
     }
     createCollectInformationAction() {
-        this.actionGroup.subElements.push(new CollectInformationAction());
+        this.actionGroup?.subElements.push(new CollectInformationAction());
     }
     createCreateAction() {
-        this.actionGroup.subElements.push(new CreateAction());
+        this.actionGroup?.subElements.push(new CreateAction());
     }
     createActionGroup() {
-        this.actionGroup.subElements.push(new ActionGroup());
+        this.actionGroup?.subElements.push(new ActionGroup());
     }
 
     createResponseItem(action: CollectInformationAction) {
@@ -89,11 +88,10 @@ export class ActionGroupComponent extends ActionComponent {
     }
 
     deleteAction(action: Action) {
-        let i: number = this.actionGroup.subElements.indexOf(action, 0);
-        if (i > -1) {
-            this.actionGroup.subElements.splice(i, 1);
+        let i = this.actionGroup?.subElements.indexOf(action, 0);
+        if (i && i > -1) {
+            this.actionGroup?.subElements.splice(i, 1);
         }
     }
-
 
 }

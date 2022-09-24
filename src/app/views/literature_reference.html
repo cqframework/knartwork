@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <p class="text-muted">Literature References</p><br class="clearfix" />
+    <div id="literatureReference" *ngIf="knart && knart.literatureReference.length > 0">
+        <div class="literatureReference well" *ngFor="let lr of knart.literatureReference">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>{{lr.title}}</h4>
+                </div>
+                <div class="col-sm-12">
+                    <ul *ngIf="lr.references.length > 0">
+                        <li *ngFor="let i of lr.references"><a *ngIf="i.url" [href]="i.url" target="_blank">{{i.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

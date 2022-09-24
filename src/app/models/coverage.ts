@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {Value} from './value';
 
 export class Coverage {

@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {ExternalReference} from './external_reference'
 
 export class LiteratureReference {

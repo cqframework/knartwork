@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 export class ArtifactType {
 
     static DOCUMENTATION_TEMPLATE = new ArtifactType('Documentation Template', 'Questionnaire / Documentation Template');
@@ -16,6 +18,6 @@ export class ArtifactType {
                 t = n; break;
             }
         }
-        return t;
+        return t!;
     }
 }

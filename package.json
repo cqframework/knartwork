@@ -1,87 +1,54 @@
 {
-  "name": "knartwork",
-  "description": "Knartwork integrated knowledge environment.",
-  "version": "0.9.0",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/cqframework/knartwork.git"
-  },
-  "author": "Preston Lee",
-  "scripts": {
-    "ng": "ng",
-    "start": "npm run env-setup && ng serve --environment=env",
-    "build": "npm run env-setup  && ng build --prod --environment=env",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "env-setup": "node -e \"require('./additional-build-steps').env()\"",
-    "pug-rule": "node -e \"require('./additional-build-steps').pug()\"",
-    "postinstall": "npm run pug-rule && npm run env-setup"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "^5.2.11",
-    "@angular/common": "^5.2.11",
-    "@angular/compiler": "^5.2.11",
-    "@angular/core": "^5.2.11",
-    "@angular/forms": "^5.2.11",
-    "@angular/http": "^5.2.11",
-    "@angular/platform-browser": "^5.2.11",
-    "@angular/platform-browser-dynamic": "^5.2.11",
-    "@angular/router": "^5.2.11",
-    "@swimlane/ngx-graph": "^4.3.0",
-    "@types/core-js": "^0.9.43",
-    "@types/d3-shape": "^1.2.3",
-    "@types/eventsource": "^1.0.2",
-    "angular-in-memory-web-api": "^0.5.3",
-    "angular2-toaster": "^5.1.0",
-    "angular2-uuid": "^1.1.1",
-    "bootstrap": "^4.1.1",
-    "class-transformer": "^0.1.9",
-    "context-event-client": "^0.3.35",
-    "core-js": "^2.5.7",
-    "cql-ace-syntax": "latest",
-    "cql-runner": "latest",
-    "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
-    "ngx-bootstrap": "^2.0.5",
-    "popper": "^1.0.1",
-    "popper.js": "^1.12.9",
-    "reflect-metadata": "^0.1.12",
-    "rxjs": "^5.5.11",
-    "zone.js": "^0.8.19"
-  },
-  "devDependencies": {
-    "@angular/cli": "~1.7.4",
-    "@angular/compiler-cli": "^5.2.11",
-    "@angular/language-service": "^5.2.11",
-    "@types/jasmine": "^2.8.8",
-    "@types/jasminewd2": "~2.0.2",
-    "@types/node": "^6.0.113",
-    "codelyzer": "^4.0.1",
-    "concurrently": "^3.6.0",
-    "html-loader": "^0.5.5",
-    "jasmine-core": "~2.8.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "^2.0.3",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "^1.4.3",
-    "karma-jasmine": "^1.1.2",
-    "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "^5.3.2",
-    "pug": "^2.0.3",
-    "pug-html-loader": "^1.1.5",
-    "source-map-loader": "latest",
-    "ts-node": "~4.1.0",
-    "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
-  },
-  "bugs": {
-    "url": "https://github.com/cqframework/knartwork/issues"
-  },
-  "homepage": "https://github.com/cqframework/knartwork",
-  "directories": {
-    "example": "examples"
-  }
+    "name": "knartwork",
+    "description": "Knartwork integrated knowledge environment.",
+    "version": "0.9.0",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/cqframework/knartwork.git"
+    },
+    "author": "Preston Lee",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "watch": "ng build --watch --configuration development",
+        "test": "ng test"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "~14.2.3",
+        "@angular/cdk": "~14.2.2",
+        "@angular/common": "~14.2.3",
+        "@angular/compiler": "~14.2.3",
+        "@angular/core": "~14.2.3",
+        "@angular/forms": "~14.2.3",
+        "@angular/material": "~14.2.2",
+        "@angular/platform-browser": "~14.2.3",
+        "@angular/platform-browser-dynamic": "~14.2.3",
+        "@angular/router": "~14.2.3",
+        "bootstrap": "^5.2.1",
+        "bootstrap-icons": "^1.9.1",
+        "class-transformer": "^0.5.1",
+        "jquery": "^3.6.1",
+        "ngx-toastr": "^15.0.0",
+        "rxjs": "~7.5.6",
+        "tslib": "^2.4.0",
+        "uuid": "^9.0.0",
+        "zone.js": "~0.11.8"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "~14.2.3",
+        "@angular/cli": "~14.2.3",
+        "@angular/compiler-cli": "~14.2.3",
+        "@types/node": "^18.7.19",
+        "typescript": "~4.8.3"
+    },
+    "bugs": {
+        "url": "https://github.com/cqframework/knartwork/issues"
+    },
+    "homepage": "https://github.com/cqframework/knartwork",
+    "directories": {
+        "example": "examples"
+    }
 }

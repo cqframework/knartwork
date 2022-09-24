@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
@@ -7,21 +9,21 @@ import {ModelReference} from '../models/model_reference';
 
 @Component({
     selector: 'model_references',
-    templateUrl: '../views/model_references.pug'
+    templateUrl: '../views/model_references.html'
 })
 export class ModelReferencesComponent extends BaseComponent {
 
-    @Input() knart: Knart;
+    @Input() knart: Knart | undefined;
 
     createModelReference() {
         let mr = new ModelReference();
-        this.knart.modelReferences.push(mr);
+        this.knart?.modelReferences.push(mr);
     }
 
-    deleteModelReference(mr) {
-        let i: number = this.knart.modelReferences.indexOf(mr, 0);
-        if (i > -1) {
-            this.knart.modelReferences.splice(i, 1);
+    deleteModelReference(mr: ModelReference) {
+        let i = this.knart?.modelReferences.indexOf(mr, 0);
+        if (i && i > -1) {
+            this.knart?.modelReferences.splice(i, 1);
         }
     }
 

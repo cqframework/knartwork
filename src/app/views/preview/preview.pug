@@ -5,7 +5,7 @@
                 span.glyphicon.glyphicon-option-vertical
             | Summary
         hr
-        .collapse.show#preview_metadata
+        .collapse.in#preview_metadata
             h3
                 | {{knart.title}}
                 i  ({{knart.status}})
@@ -33,7 +33,7 @@
                 span.glyphicon.glyphicon-option-vertical
             | Contributions
         hr
-        .collapse.show#preview_contributions
+        .collapse.in#preview_contributions
             div.well.row("*ngFor"="let contribution of knart.contributions")
                 h3 {{contribution.role}}
                 hr
@@ -62,7 +62,7 @@
                 span.glyphicon.glyphicon-option-vertical
             | Model References
         hr
-        .collapse.show#preview_model_references
+        .collapse.in#preview_model_references
             div("*ngFor"="let mr of knart.modelReferences")
                 i {{mr.referencedModel}}
                 br
@@ -75,7 +75,7 @@
                 span.glyphicon.glyphicon-option-vertical
             | Supporting Evidence
         hr
-        .collapse.show#preview_supporting_evidence
+        .collapse.in#preview_supporting_evidence
             ul
                 li("*ngFor"="let se of knart.supportingEvidence") {{se.citation}}
 
@@ -86,7 +86,7 @@
                 span.glyphicon.glyphicon-option-vertical
             | Resources
         hr
-        .collapse.show#preview_resources
+        .collapse.in#preview_resources
             div("*ngFor"="let rr of knart.relatedResources")
                 i {{relationshipLabelForCode(rr.relationship)}}
                 ul
@@ -102,7 +102,7 @@
                 span.glyphicon.glyphicon-option-vertical
             | Conditions
         hr
-        .collapse.show#preview_conditions
+        .collapse.in#preview_conditions
             .condition("*ngFor"="let c of knart.conditions")
                 .well
                     h4 {{c.role}}
@@ -114,7 +114,7 @@
                 span.glyphicon.glyphicon-option-vertical
             | Data Binding
         hr
-        .collapse.show#preview_external_data
+        .collapse.in#preview_external_data
             .external_data("*ngFor"="let ed of knart.externalData")
                 h4 {{ed.name}}
                 pre(type="xml") {{ed.content}}
@@ -125,7 +125,7 @@
                 span.glyphicon.glyphicon-option-vertical
             | Expressions
         hr
-        .collapse.show#preview_expressions
+        .collapse.in#preview_expressions
             .expression("*ngFor"="let e of knart.expressions")
                 h4 {{e.name}}
                 pre(type="xml") {{e.logic}}
@@ -136,7 +136,7 @@
                 span.glyphicon.glyphicon-option-vertical
             | Applicability
         hr
-        .collapse.show.row#preview_coverages
+        .collapse.in.row#preview_coverages
             .col-sm-4.coverage("*ngFor"="let c of knart.coverages")
                 .well
                     h4
@@ -156,5 +156,5 @@
                 span.glyphicon.glyphicon-option-vertical
             | Actions
         hr
-        .collapse.show#preview_action_group
+        .collapse.in#preview_action_group
             preview_action_group("[knart]"="knart" "[actionGroup]"="knart.actionGroup")

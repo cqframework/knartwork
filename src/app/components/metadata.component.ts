@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
@@ -7,21 +9,21 @@ import {Identifier} from '../models/identifier';
 
 @Component({
     selector: 'metadata',
-    templateUrl: '../views/metadata.pug'
+    templateUrl: '../views/metadata.html'
 })
 export class MetadataComponent extends BaseComponent {
 
-    @Input() knart: Knart;
+    @Input() knart: Knart | undefined;
 
     createIdentifier() {
         let i = new Identifier();
-        this.knart.identifiers.push(i);
+        this.knart?.identifiers.push(i);
     }
 
-    deleteIdentifier(i) {
-        let index: number = this.knart.identifiers.indexOf(i, 0);
-        if (index > -1) {
-            this.knart.identifiers.splice(index, 1);
+    deleteIdentifier(i: Identifier) {
+        let index = this.knart?.identifiers.indexOf(i, 0);
+        if (index && index > -1) {
+            this.knart?.identifiers.splice(index, 1);
         }
     }
 

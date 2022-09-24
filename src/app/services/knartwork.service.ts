@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import {Injectable} from "@angular/core";
 
 @Injectable()

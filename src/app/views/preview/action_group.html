@@ -1,0 +1,95 @@
+<div *ngIf="actionGroup">
+    <h3>{{actionGroup.title}}</h3>
+    <h4>Represented Concepts</h4>
+    <div class="row">
+        <div class="col-sm-4 coverage" *ngFor="let rc of actionGroup.representedConcepts">
+            <div class="well">
+                <h4>{{rc.displayName}}</h4><small>{{rc.codeSystemName}}<i>, system:</i> {{rc.codeSystem}}<i>, code:</i>
+                    {{rc.code}}</small>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="action well" *ngFor="let action of actionGroup.subElements">
+            <div class="declare_response_action" *ngIf="isDeclareResponseAction(action)">
+                <h3>{{action.name}} (Response Declaration)</h3>
+            </div>
+            <div class="collect_information_action" *ngIf="isCollectInformationAction(action)">
+                <h3>{{action.prompt}} (Information Collection)</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><b>Text equivalent:</b> {{action.textEquivalent}}</p>
+                        <dl class="dl-horizontal">
+                            <dt>Cardinality</dt>
+                            <dd>{{action.responseCardinality}}</dd>
+                            <dt>Data Type</dt>
+                            <dd>{{action.responseDataType}}</dd>
+                            <dt>Response Binding</dt>
+                            <dd>{{action.responseBinding}}</dd>
+                            <dt>Minimum</dt>
+                            <dd>{{action.responseMinimum}}</dd>
+                            <dt>Maximum</dt>
+                            <dd>{{action.responseMaximum}}</dd>
+                        </dl>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>Question Codes</h4>
+                        <table class="table table-condensed table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Code System</th>
+                                    <th>System Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ic of action.itemCodes">
+                                    <td>{{ic.code}}</td>
+                                    <td>{{ic.codeSystem}}</td>
+                                    <td>{{ic.codeSystemName}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-12">
+                        <h4>Initial Value Expression</h4>
+                        <pre type="xml">{{action.initialValue}}</pre>
+                    </div>
+                    <div class="col-sm-12">
+                        <h4>Enumerated Responses &amp; Codes</h4>
+                        <table class="table table-condensed table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Value</th>
+                                    <th>Value Type</th>
+                                    <th>Display Text</th>
+                                    <th>Codes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ri of action.responseItems">
+                                    <td>{{ri.type}}</td>
+                                    <td>{{ri.value}}</td>
+                                    <td>{{ri.valueType}}</td>
+                                    <td>{{ri.displayText}}</td>
+                                    <td>
+                                        <p *ngFor="let ic of ri.itemCodes"><b>{{ic.codeSystemName}} {{ic.code}}</b><i>
+                                                (system: {{ic.codeSystem}})</i></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="create_action" *ngIf="isCreateAction(action)">
+                <h3>(Create Action)</h3>
+            </div>
+            <div class="action_group" *ngIf="isActionGroup(action)">
+                <h3>{{action.title}} (Sub Group)</h3>
+                <preview_action_group [knart]="knart" [actionGroup]="action"></preview_action_group>
+            </div>
+        </div>
+    </div>
+</div>

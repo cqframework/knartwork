@@ -1,20 +1,19 @@
+// Author: Preston Lee
+
 // Core
 import { Injectable } from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 // Environment build settings.
 import { environment } from '../../environments/environment';
 
 // RxsJS imports
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/map';
+import { Observable, Subject } from "rxjs";
 
 // Models
 import { AuthEvent, AuthEventType } from "../models/auth_event";
-import { Observable } from "rxjs/Observable";
-import { ToasterService } from "angular2-toaster";
-import "rxjs/add/observable/fromPromise";
-import "rxjs/add/observable/of";
+
+import { ToastrService } from "ngx-toastr";
 
 interface Tokens {
   token: string;
@@ -29,22 +28,22 @@ export class AuthenticationService {
   // We will use this single stream for all types of auth events.
   authEvents$ = new Subject();
   // Hold the client id we get from the environment config
-  CLIENT_ID = environment.KNARTWORK_OAUTH_CLIENT_ID;
+  // CLIENT_ID = environment.KNARTWORK_OAUTH_CLIENT_ID;
   constructor(protected http: HttpClient,
-              private toasterService: ToasterService) {
+    private toasterService: ToastrService) {
     this.authEvents$.subscribe({
       next: (v) => console.log('Auth event: ' + JSON.stringify(v))
     });
   }
 
-  getConformanceURL(conformanceURI): Observable<any>{
+  getConformanceURL(conformanceURI: string): Observable<any> {
     // let headers = new HttpHeaders({ 'Accept': 'application/json' })
     //   .set('Authorization', 'Bearer ' + localStorage.getItem('token'));
     // let params = new HttpParams();
     return this.http.get(conformanceURI);
   }
 
-  requestToken (type) : Observable<Tokens> {
+  requestToken(type: string): Observable<Tokens> {
     // Get our code and state from local storage
     let code: string = localStorage["code"];
     let stateId: string = localStorage["stateId"];
@@ -72,12 +71,12 @@ export class AuthenticationService {
         "application/x-www-form-urlencoded"
       )
     };
-    return this.http
-      .post(tokenUri, body, opts)
-      .map(resp => {
-        return({token: resp["access_token"], refreshToken: resp["refresh_token"]});
-      });
+    return this.http.post<Tokens>(tokenUri, body, opts);
+    // .subscribe(resp => {
+    //   return({token: resp["access_token"], refreshToken: resp["refresh_token"]});
+    // });
   }
+
   handleToken(): Observable<any> {
     // Get our code and state from local storage
     let code: string = localStorage["code"];
@@ -86,31 +85,32 @@ export class AuthenticationService {
     // Set our Service URL based on the state we get form storage.
     // If we do not have a valid state, redirect back to the launch component,
     // to re initiate the auth process.
-    if(state){
+    if (state) {
       //JSON.parse(state).serviceUri
       // Let's find out if we still have a valid access token...
       let localStorageToken = this.checkForToken();
-      if(!localStorageToken){
+      if (!localStorageToken) {
         this.requestToken('authorization_code').subscribe((tokens) => {
           this.setToken(tokens);
-          return Observable.of(tokens.token);
+          // return Observable.of(tokens.token);
+          return Observable.create(tokens.token);
         });
       } else {
         let eventData = { token: localStorageToken };
         this.emitAuthEvent(AuthEventType.TOKEN_ACQUIRED, eventData);
-        return Observable.of(localStorageToken);
+        return Observable.create(localStorageToken);
       }
-    } else {
-      this.toasterService.pop(
+    } //else {
+      this.toasterService.warning(
         'warning',
-        'Authentication Error',
-        'We could not authenticate this session. Please relaunch the app in SMART-on-FHIR mode.'
+        'Authentication Error. We could not authenticate this session. Please relaunch the app in SMART-on-FHIR mode.'
       );
-      return Observable.of('We could not authenticate this session. Please relaunch the app in SMART-on-FHIR mode.');
-    }
+      // new Observable('');
+      return Observable.create('We could not authenticate this session. Please relaunch the app in SMART-on-FHIR mode.');
+    // }
   }
 
-  setToken(tokens: Tokens){
+  setToken(tokens: Tokens) {
     localStorage.setItem(
       'token',
       tokens.token
@@ -123,12 +123,12 @@ export class AuthenticationService {
     this.emitAuthEvent(AuthEventType.TOKEN_ACQUIRED, eventData);
   }
 
-  renewToken(): Observable<any> {
-    return this.requestToken('refresh_token').map((tokens) => {
-      this.setToken(tokens);
-      return tokens.token;
-    });
-  }
+  // renewToken(): Observable<any> {
+  //   return this.requestToken('refresh_token').subscribe((tokens) => {
+  //     this.setToken(tokens);
+  //     return tokens.token;
+  //   });
+  // }
 
   checkForToken() {
     return localStorage.getItem('token')
@@ -136,12 +136,12 @@ export class AuthenticationService {
       : false;
   }
 
-  private logout(){
+  private logout() {
     localStorage.removeItem('token');
-    this.emitAuthEvent(AuthEventType.LOGOUT,{});
+    this.emitAuthEvent(AuthEventType.LOGOUT, {});
   };
 
-  private emitAuthEvent(type, data){
-    this.authEvents$.next(new AuthEvent(type,data));
+  private emitAuthEvent(type: AuthEventType, data: any) {
+    this.authEvents$.next(new AuthEvent(type, data));
   }
 }

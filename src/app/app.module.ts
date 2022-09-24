@@ -1,17 +1,17 @@
+// Author: Preston Lee
+
 // Core Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
-import * as EventSource from 'eventsource';
 
 // Routing
 import { Routes, RouterModule } from '@angular/router';
 
 // Third Party
-import { ToasterModule, ToasterService } from 'angular2-toaster/angular2-toaster';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SnomedctModule } from './modules/snomedct/snomedct.module';
 
 // Components
@@ -40,13 +40,11 @@ import { KnartworkService } from './services/knartwork.service';
 import { BrowserService } from './services/browser.service';
 import { KnartImporterService } from './services/knart_importer.service';
 import { KnartExporterService } from './services/knart_exporter.service';
-import { CESService as VanillaCESService } from './services/ces.service';
-import { CESService } from 'context-event-client';
-import { CESModule } from 'context-event-client';
 import { AuthenticationService } from "./services/authentication.service";
 
 
 import "reflect-metadata";
+import { CommonModule } from '@angular/common';
 
 const routing = RouterModule.forRoot(
   [
@@ -84,22 +82,19 @@ const routing = RouterModule.forRoot(
     BrowserModule,
     routing,
     FormsModule,
-    HttpModule,
     HttpClientModule,
+    CommonModule,
     BrowserAnimationsModule, // For Toaster
-    ToasterModule,
-    SnomedctModule,
-    CESModule
+    ToastrModule.forRoot(),
+    SnomedctModule
   ],
   providers: [
     AuthenticationService,
-    ToasterService,
+    ToastrService,
     KnartworkService,
     BrowserService,
     KnartImporterService,
     KnartExporterService,
-    VanillaCESService,
-    CESService,
     { provide: 'Window', useValue: window }
   ],
   bootstrap: [AppComponent]

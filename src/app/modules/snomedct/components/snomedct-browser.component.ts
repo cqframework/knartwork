@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 import { Component }      from '@angular/core';
 
 @Component({

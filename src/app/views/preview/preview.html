@@ -1,0 +1,147 @@
+<div class="container-fluid" *ngIf="knart">
+    <section>
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_metadata" aria-expanded="true" aria-controls="preview_metadata"><span
+                    class="bi bi-option"></span></a>Summary</h2>
+        <hr />
+        <div class="collapse in" id="preview_metadata">
+            <h3>{{knart.title}}<i> ({{knart.status}})</i></h3>
+            <p>{{knart.description}}</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <dl class="dl-horizontal"></dl>
+                    <dt>Schema</dt>
+                    <dd>{{knart.schemaIdentifier}}</dd>
+                    <dt>Type</dt>
+                    <dd>{{knart.artifactType}}</dd>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Identifiers</h4>
+                    <hr />
+                    <ol>
+                        <li *ngFor="let i of knart.identifiers">{{i.root}}<i> (version:
+                                {{i.version}})</i>&nbsp;&nbsp;extension: {{i.extension}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="knart.contributions.length > 0">
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_contributions" aria-expanded="true" aria-controls="preview_contributions"><span
+                    class="bi bi-option"></span></a>Contributions</h2>
+        <hr />
+        <div class="collapse in" id="preview_contributions">
+            <div class="well row" *ngFor="let contribution of knart.contributions">
+                <h3>{{contribution.role}}</h3>
+                <hr />
+                <div class="col-md-6">
+                    <h4>Names</h4>
+                    <ul>
+                        <li *ngFor="let name of contribution.names">{{name.given}} {{name.family}}</li>
+                    </ul>
+                    <h4>Addresses</h4>
+                    <address *ngFor="let address of contribution.addresses">
+                        <span>{{address.street}}</span><br /><span>{{address.city}},
+                            {{address.state}}</span><br /><span>{{address.zip}}, {{address.country}}</span></address>
+                </div>
+                <div class="col-md-6">
+                    <h4>Affiliations</h4>
+                    <ul>
+                        <li *ngFor="let affiliation of contribution.affiliations">{{affiliation.name}}</li>
+                    </ul>
+                    <h4>Contacts</h4>
+                    <div class="contact" *ngFor="let contact of contribution.contacts">{{contact.use}}: {{contact.value}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="knart.modelReferences.length > 0">
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_model_references" aria-expanded="true" aria-controls="preview_model_references"><span
+                    class="bi bi-option"></span></a>Model References</h2>
+        <hr />
+        <div class="collapse in" id="preview_model_references">
+            <div *ngFor="let mr of knart.modelReferences">
+                <i>{{mr.referencedModel}}</i><br /><small>{{mr.description}}</small></div>
+        </div>
+    </section>
+    <section *ngIf="knart.supportingEvidence.length > 0">
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_supporting_evidence" aria-expanded="true" aria-controls="preview_supporting_evidence"><span
+                    class="bi bi-option"></span></a>Supporting Evidence</h2>
+        <hr />
+        <div class="collapse in" id="preview_supporting_evidence">
+            <ul>
+                <li *ngFor="let se of knart.supportingEvidence">{{se.citation}}</li>
+            </ul>
+        </div>
+    </section>
+    <section *ngIf="knart.relatedResources.length > 0">
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_resources" aria-expanded="true" aria-controls="preview_resources"><span
+                    class="bi bi-option"></span></a>Resources</h2>
+        <hr />
+        <div class="collapse in" id="preview_resources">
+            <div *ngFor="let rr of knart.relatedResources"><i>{{relationshipLabelForCode(rr.relationship)}}</i>
+                <ul>
+                    <li *ngFor="let resource of rr.resources"><i>{{resource.title}}</i><b>
+                            {{resource.location}}</b><br /><small>{{resource.description}}</small></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="knart.conditions.length > 0">
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_conditions" aria-expanded="true" aria-controls="preview_conditions"><span
+                    class="bi bi-option"></span></a>Conditions</h2>
+        <hr />
+        <div class="collapse in" id="preview_conditions">
+            <div class="condition" *ngFor="let c of knart.conditions">
+                <div class="well">
+                    <h4>{{c.role}}</h4>
+                    <pre type="xml">{{c.logic}}</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="knart.externalData.length > 0">
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_external_data" aria-expanded="true" aria-controls="preview_external_data"><span
+                    class="bi bi-option"></span></a>Data Binding</h2>
+        <hr />
+        <div class="collapse in" id="preview_external_data">
+            <div class="external_data" *ngFor="let ed of knart.externalData">
+                <h4>{{ed.name}}</h4>
+                <pre type="xml">{{ed.content}}</pre>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="knart.expressions.length > 0">
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_expressions" aria-expanded="true" aria-controls="preview_expressions"><span
+                    class="bi bi-option"></span></a>Expressions</h2>
+        <hr />
+        <div class="collapse in" id="preview_expressions">
+            <div class="expression" *ngFor="let e of knart.expressions">
+                <h4>{{e.name}}</h4>
+                <pre type="xml">{{e.logic}}</pre>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="knart.coverages.length > 0">
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_coverages" aria-expanded="true" aria-controls="preview_coverages"><span
+                    class="bi bi-option"></span></a>Applicability</h2>
+        <hr />
+        <div class="collapse in row" id="preview_coverages">
+            <div class="col-sm-4 coverage" *ngFor="let c of knart.coverages">
+                <div class="well">
+                    <h4>{{c.value.displayName}}<i> ({{c.focus}})</i></h4><small>{{c.value.codeSystemName}}<i>,
+                            system:</i> {{c.value.codeSystem}}<i>, code:</i> {{c.value.code}}</small>
+                    <p>{{c.description}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2><a class="pull-right btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_action_group" aria-expanded="true" aria-controls="preview_action_group"><span
+                    class="bi bi-option"></span></a>Actions</h2>
+        <hr />
+        <div class="collapse in" id="preview_action_group">
+            <preview_action_group [knart]="knart" [actionGroup]="knart.actionGroup"></preview_action_group>
+        </div>
+    </section>
+</div>

@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 export class Relationship {
     public static DERIVED_FROM = new Relationship('DerivedFrom', 'Derived From');
     public static ADAPTED_FROM = new Relationship('AdaptedFrom', 'Adapted From');
@@ -17,6 +19,6 @@ export class Relationship {
                 s = n; break;
             }
         }
-        return s;
+        return s!;
     }
 }

@@ -1,0 +1,76 @@
+{
+    "name": "knartwork",
+    "description": "Knartwork integrated knowledge environment.",
+    "version": "0.9.0",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/cqframework/knartwork.git"
+    },
+    "author": "Preston Lee",
+    "scripts": {
+        "ng": "ng",
+        "start": "npm run env-setup && ng serve --environment=env",
+        "build": "npm run env-setup  && ng build --prod --environment=env",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "env-setup": "node -e \"require('./additional-build-steps').env()\"",
+        "pug-rule": "node -e \"require('./additional-build-steps').pug()\"",
+        "postinstall": "npm run pug-rule && npm run env-setup"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "^14.2.2",
+        "@angular/common": "^14.2.2",
+        "@angular/compiler": "^14.2.2",
+        "@angular/core": "^14.2.2",
+        "@angular/forms": "^14.2.2",
+        "@angular/platform-browser": "^14.2.2",
+        "@angular/platform-browser-dynamic": "^14.2.2",
+        "@angular/router": "^14.2.2",
+        "@swimlane/ngx-graph": "^8.0.2",
+        "@types/core-js": "^2.5.5",
+        "@types/d3-shape": "^3.1.0",
+        "@types/eventsource": "^1.1.9",
+        "angular-in-memory-web-api": "^0.14.0",
+        "ngx-toastr": "^15.0.0",
+        "uuid": "^9.0.0",
+        "bootstrap": "^5.2.1",
+        "class-transformer": "^0.5.1",
+        "context-event-client": "^0.4.1",
+        "core-js": "^3.25.2",
+        "font-awesome": "^4.7.0",
+        "jquery": "^3.6.1",
+        "ngx-bootstrap": "^9.0.0",
+        "popper": "^1.0.1",
+        "popper.js": "^1.12.9",
+        "reflect-metadata": "^0.1.13",
+        "rxjs": "^7.5.6",
+        "zone.js": "^0.11.8"
+    },
+    "devDependencies": {
+        "@angular/cli": "~14.2.3",
+        "@angular/compiler-cli": "^14.2.2",
+        "@angular/language-service": "^14.2.2",
+        "@types/jasmine": "^4.3.0",
+        "@types/jasminewd2": "~2.0.10",
+        "@types/node": "^18.7.18",
+        "codelyzer": "^6.0.2",
+        "concurrently": "^7.4.0",
+        "html-loader": "^4.1.0",
+        "pug": "^3.0.2",
+        "pug-html-loader": "^1.1.5",
+        "source-map-loader": "latest",
+        "ts-node": "~10.9.1",
+        "tslint": "~5.20.1",
+        "typescript": "~4.8.3"
+    },
+    "bugs": {
+        "url": "https://github.com/cqframework/knartwork/issues"
+    },
+    "homepage": "https://github.com/cqframework/knartwork",
+    "directories": {
+        "example": "examples"
+    }
+}

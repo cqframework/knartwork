@@ -1,3 +1,5 @@
+// Author: Preston Lee
+
 export abstract class BaseComponent {
 
     canMoveUp<T>(item: T, within: Array<T>): boolean {

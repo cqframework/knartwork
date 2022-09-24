@@ -1,0 +1,17 @@
+<div class="container-fluid"><a class="btn btn-primary pull-right" (click)="createModelReference()"><span
+            class="bi bi-plus"></span> Add</a>
+    <p class="text-muted">Any external data sets that you need to reference should be declared here.</p><br class="clearfix" />
+    <div id="modelReferences" *ngIf="knart && knart.modelReferences.length > 0">
+        <div class="modelReference well" *ngFor="let mr of knart.modelReferences">
+            <div class="btn-group pull-right"><a class="btn btn-small btn-primary" (click)="moveUp(mr, knart.modelReferences)" *ngIf="canMoveUp(mr, knart.modelReferences)"><span
+                        class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(mr, knart.modelReferences)" *ngIf="canMoveDown(mr, knart.modelReferences)"><span
+                        class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteModelReference(mr)"><span class="bi bi-trash"></span></a></div>
+            <div class="clearfix"></div>
+            <form class="form row">
+                <div class="col-sm-12 form-group"><label for="model_reference_value">Value</label><input class="form-control" name="model_reference_value" type="text" [(ngModel)]="mr.referencedModel" placeholder="urn:hl7-org:vmr:r2" required="true" /></div>
+                <div class="col-sm-12 form-group"><label for="model_reference_description">Description</label><textarea class="form-control" name="model_reference_description" type="text" [(ngModel)]="mr.description" placeholder="Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla."></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

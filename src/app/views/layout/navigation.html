@@ -1,0 +1,53 @@
+<nav class="navbar navbar-default" *ngIf="knart">
+    <div class="container-fluid">
+        <div class="navbar-header"><button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <div class="navbar-brand">KNART<span class="text-info">work</span><span class="subtitle"> knowledge artifact
+                    editor</span></div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span
+                            class="bi bi-file"></span> File<b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" (click)="download()"><span class="bi bi-cloud-download"></span>
+                                Download</a></li>
+                        <li class="divider"></li>
+                        <li><a (click)="revert()" *ngIf="canRevert()"><span class="bi bi-refresh"></span>
+                                Revert</a></li>
+                        <li><a href="#" (click)="reset()"><span class="bi bi-trash"></span> Close</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span
+                            class="bi bi-ok-circle"></span> Learn<b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=337" target="_blank"><span class="bi bi-globe"></span> HL7 CDS Knowledge
+                                Artifacts</a></li>
+                        <li><a href="https://www.hl7.org/fhir/2016Sep/clinicalreasoning-module.html" target="_blank"><span class="bi bi-fire"></span> HL7 FHIR Clinical
+                                Reasoning</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml')"><span
+                                    class="bi bi-folder-open"></span> Example: Documentation Template:
+                                FLACC</a></li>
+                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml')"><span
+                                    class="bi bi-folder-open"></span> Example: Documentation Template:
+                                UTI</a></li>
+                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/PHQ9_DocTemplateWithAssessment.xml')"><span
+                                    class="bi bi-folder-open"></span> Example: Documentation Template:
+                                PHQ-9 Assessment</a></li>
+                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/NQF0024A_NQF0421.xml')"><span
+                                    class="bi bi-folder-open"></span> Example: Rule: Weight Assessment and
+                                Counseling</a></li>
+                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/newMentor_HeD_NQF0068_ECArule_example.xml')"><span
+                                    class="bi bi-folder-open"></span> Example: Rule: Ischemic Vascular
+                                Disease</a></li>
+                        <li class="divider"></li>
+                        <li><a href="https://github.com/cqframework/knartwork" target="_blank"><span
+                                    class="bi bi-comment"></span> Bug Reports &amp; Feature Requests</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
