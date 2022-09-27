@@ -1,6 +1,6 @@
 // Author: Preston Lee
 
-import { Component, Output, Inject, OnInit, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Output, Inject, OnInit, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef, ApplicationRef } from '@angular/core';
 import { Knart } from '../models/knart';
 import { ArtifactType } from '../models/artifact_type';
 import { Format } from '../models/format';
@@ -14,6 +14,7 @@ import { KnartExporterService } from '../services/knart_exporter.service';
 
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
 // import { CESService, ActionEvent } from "context-event-client";
 
 @Component({
@@ -40,7 +41,7 @@ export class HomeComponent implements OnInit {
         private xmlImporter: KnartImporterService,
         private xmlExporter: KnartExporterService
         // private ces: CESService
-        ) {
+    ) {
         // console.log("HomeComponent has been initialized.");
         this.reset();
 
@@ -75,12 +76,13 @@ export class HomeComponent implements OnInit {
     }
 
     loadRemoteFile(url: string) {
-        this.xmlImporter.loadXMLFromURL(url).subscribe(data => {
-            data.text().then(raw => {
-                console.log('Loaded raw remote file from: ' + url);
-                this.loadFromContentString(raw);
-                this.originalFileName = this.filenameFor(url);
-            });
+        const obs = this.xmlImporter.loadXMLFromURL(url);
+        obs.subscribe((data) => {
+            console.log(data);
+            const raw = data;
+            console.log('Downloaded raw remote file from: ' + url);
+            this.loadFromContentString(data);
+            this.originalFileName = this.filenameFor(url);
         });
     }
 
@@ -147,12 +149,13 @@ export class HomeComponent implements OnInit {
         var parser = new DOMParser();
         var doc: Document = parser.parseFromString(content, "application/xml");
         try {
+            // this.knart = undefined;
             this.knart = this.xmlImporter.loadFromXMLDocument(doc);
             this.originalContentString = content;
-            this.toasterService.success('success', "Loaded! Go do your thing.");
+            this.toasterService.success('It may take a few seconds for the UI to refresh.', "Loaded! Go do your thing.");
         } catch (e) {
             console.log(e);
-            this.toasterService.error('error', "Well blarg. Your file couldn't read or parsed. Is it valid and well-formed?");
+            this.toasterService.error("Your file couldn't read or parsed. Is it valid and well-formed?", "Well blarg.");
             this.reset();
         }
     }

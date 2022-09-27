@@ -3,7 +3,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_metadata" aria-expanded="true" aria-controls="preview_metadata"><span
                     class="bi bi-option"></span></a>Summary</h2>
         <hr />
-        <div class="collapse in" id="preview_metadata">
+        <div class="collapse show" id="preview_metadata">
             <h3>{{knart.title}}<i> ({{knart.status}})</i></h3>
             <p>{{knart.description}}</p>
             <div class="row">
@@ -29,7 +29,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_contributions" aria-expanded="true" aria-controls="preview_contributions"><span
                     class="bi bi-option"></span></a>Contributions</h2>
         <hr />
-        <div class="collapse in" id="preview_contributions">
+        <div class="collapse show" id="preview_contributions">
             <div class="well row" *ngFor="let contribution of knart.contributions">
                 <h3>{{contribution.role}}</h3>
                 <hr />
@@ -59,7 +59,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_model_references" aria-expanded="true" aria-controls="preview_model_references"><span
                     class="bi bi-option"></span></a>Model References</h2>
         <hr />
-        <div class="collapse in" id="preview_model_references">
+        <div class="collapse show" id="preview_model_references">
             <div *ngFor="let mr of knart.modelReferences">
                 <i>{{mr.referencedModel}}</i><br /><small>{{mr.description}}</small></div>
         </div>
@@ -68,7 +68,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_supporting_evidence" aria-expanded="true" aria-controls="preview_supporting_evidence"><span
                     class="bi bi-option"></span></a>Supporting Evidence</h2>
         <hr />
-        <div class="collapse in" id="preview_supporting_evidence">
+        <div class="collapse show" id="preview_supporting_evidence">
             <ul>
                 <li *ngFor="let se of knart.supportingEvidence">{{se.citation}}</li>
             </ul>
@@ -78,7 +78,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_resources" aria-expanded="true" aria-controls="preview_resources"><span
                     class="bi bi-option"></span></a>Resources</h2>
         <hr />
-        <div class="collapse in" id="preview_resources">
+        <div class="collapse show" id="preview_resources">
             <div *ngFor="let rr of knart.relatedResources"><i>{{relationshipLabelForCode(rr.relationship)}}</i>
                 <ul>
                     <li *ngFor="let resource of rr.resources"><i>{{resource.title}}</i><b>
@@ -91,7 +91,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_conditions" aria-expanded="true" aria-controls="preview_conditions"><span
                     class="bi bi-option"></span></a>Conditions</h2>
         <hr />
-        <div class="collapse in" id="preview_conditions">
+        <div class="collapse show" id="preview_conditions">
             <div class="condition" *ngFor="let c of knart.conditions">
                 <div class="well">
                     <h4>{{c.role}}</h4>
@@ -104,7 +104,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_external_data" aria-expanded="true" aria-controls="preview_external_data"><span
                     class="bi bi-option"></span></a>Data Binding</h2>
         <hr />
-        <div class="collapse in" id="preview_external_data">
+        <div class="collapse show" id="preview_external_data">
             <div class="external_data" *ngFor="let ed of knart.externalData">
                 <h4>{{ed.name}}</h4>
                 <pre type="xml">{{ed.content}}</pre>
@@ -115,7 +115,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_expressions" aria-expanded="true" aria-controls="preview_expressions"><span
                     class="bi bi-option"></span></a>Expressions</h2>
         <hr />
-        <div class="collapse in" id="preview_expressions">
+        <div class="collapse show" id="preview_expressions">
             <div class="expression" *ngFor="let e of knart.expressions">
                 <h4>{{e.name}}</h4>
                 <pre type="xml">{{e.logic}}</pre>
@@ -126,7 +126,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_coverages" aria-expanded="true" aria-controls="preview_coverages"><span
                     class="bi bi-option"></span></a>Applicability</h2>
         <hr />
-        <div class="collapse in row" id="preview_coverages">
+        <div class="collapse show row" id="preview_coverages">
             <div class="col-sm-4 coverage" *ngFor="let c of knart.coverages">
                 <div class="well">
                     <h4>{{c.value.displayName}}<i> ({{c.focus}})</i></h4><small>{{c.value.codeSystemName}}<i>,
@@ -140,7 +140,7 @@
         <h2><a class="float-end btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#preview_action_group" aria-expanded="true" aria-controls="preview_action_group"><span
                     class="bi bi-option"></span></a>Actions</h2>
         <hr />
-        <div class="collapse in" id="preview_action_group">
+        <div class="collapse show" id="preview_action_group">
             <preview_action_group [knart]="knart" [actionGroup]="knart.actionGroup"></preview_action_group>
         </div>
     </section>

@@ -45,14 +45,13 @@ export class KnartImporterService extends XmlImporterService {
         super();
     }
 
-    loadXMLFromURL(url: string): Observable<Response> {
-        return this.http.get<Response>(url); //.map(res => res.responseText);
+    loadXMLFromURL(url: string) {
+        return this.http.get(url,{responseType: 'text'}); //.map(res => res.responseText);
     }
 
     getString(query: string, base: Node): string {
         return this.knart.document!.evaluate(query, base, Knart.namespaces, XPathResult.ANY_TYPE, null).stringValue;
     }
-
 
     getOrdered(query: string, base: Node): XPathResult {
         return this.knart.document!.evaluate(query, base, Knart.namespaces, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);

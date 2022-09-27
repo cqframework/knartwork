@@ -21,19 +21,21 @@ import {ResponseItem} from '../models/actions/response_item';
 export class ActionGroupComponent extends ActionComponent {
 
     @Input() knart: Knart | undefined;
-    @Input() actionGroup: ActionGroup | undefined;
+    @Input() actionGroup!: ActionGroup;
 
     canDelete() {
+        this.knart?.actionGroup
         return this.knart && this.knart.actionGroup != this.actionGroup;
     }
 
     createRepresentedConcept() {
+        console.log(this.actionGroup.representedConcepts.length);        
         this.actionGroup?.representedConcepts.push(new Value());
     }
 
     deleteRepresentedConcept(rc: Value) {
         let i = this.actionGroup?.representedConcepts.indexOf(rc, 0);
-        if (i !== undefined && i > -1) {
+        if (i !== undefined) {
             this.actionGroup?.representedConcepts.splice(i, 1);
         }
     }
@@ -43,7 +45,7 @@ export class ActionGroupComponent extends ActionComponent {
     }
 
     deleteItemCode(action: CollectInformationAction, itemCode: Value) {
-        let i: number = action.itemCodes.indexOf(itemCode, 0);
+        let i = action.itemCodes.indexOf(itemCode, 0);
         if (i > -1) {
             action.itemCodes.splice(i, 1);
         }
@@ -54,7 +56,7 @@ export class ActionGroupComponent extends ActionComponent {
     }
 
     deleteResponseItemCode(responseItem: ResponseItem, itemCode: Value) {
-        let i: number = responseItem.itemCodes.indexOf(itemCode, 0);
+        let i = responseItem.itemCodes.indexOf(itemCode, 0);
         if (i > -1) {
             responseItem.itemCodes.splice(i, 1);
         }
@@ -89,7 +91,7 @@ export class ActionGroupComponent extends ActionComponent {
 
     deleteAction(action: Action) {
         let i = this.actionGroup?.subElements.indexOf(action, 0);
-        if (i !== undefined && i > -1) {
+        if (i !== undefined) {
             this.actionGroup?.subElements.splice(i, 1);
         }
     }

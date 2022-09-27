@@ -1,126 +1,158 @@
 <div class="container-fluid" *ngIf="actionGroup">
-    <div class="form-group">
+    <div class="form-floating">
         <label for="title">Title</label>
         <input class="form-control" name="title" type="text" [(ngModel)]="actionGroup.title" placeholder="e.g. Symptoms" />
     </div>
     <div class="clearfix"></div>
     <hr />
     <h2>
-        <div class="btn-group float-end"><a class="btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#represented_concepts" aria-expanded="true" aria-controls="represented_concepts"><span
-                    class="bi bi-option"></span></a><a class="btn btn-primary" (click)="createRepresentedConcept()"><span class="bi bi-plus"></span> Add</a></div>
+        <div class="btn-group float-end">
+            <a class="btn btn-primary btn-small" type="button" data-bs-toggle="collapse" data-bs-target="#represented_concepts" aria-expanded="true" aria-controls="represented_concepts">
+                <span class="bi bi-eye"></span>
+            </a>
+            <a class="btn btn-primary" (click)="createRepresentedConcept()"><span class="bi bi-plus"></span> Add</a>
+        </div>
         Represented Concepts
     </h2>
     <div class="clearfix"></div>
     <hr />
-    <div class="collapse in" id="represented_concepts">
-        <div *ngIf="actionGroup.representedConcepts.length > 0">
-            <div class="contribution well row" *ngFor="let rc of actionGroup.representedConcepts">
-                <div class="float-end">
-                    <button class="btn btn-small btn-danger" (click)="deleteRepresentedConcept(rc)"><span
-                            class="bi bi-trash"></span></button>
+
+    <div class="collapse show" id="represented_concepts">
+        <!-- <div *ngIf="actionGroup.representedConcepts.length > 0"> -->
+        <div class="contribution well row mb-3 p-3" *ngFor="let rc of actionGroup.representedConcepts">
+            <div class="align-self-end">
+                <div class="btn-group mb-3">
+                    <a class="btn btn-small btn-primary" (click)="moveUp(rc,  actionGroup.representedConcepts)" *ngIf="canMoveUp(rc,  actionGroup.representedConcepts)"><span
+                            class="bi bi-chevron-up"></span></a>
+                    <a class="btn btn-small btn-primary" (click)="moveDown(rc,  actionGroup.representedConcepts)" *ngIf="canMoveDown(rc,  actionGroup.representedConcepts)"><span
+                            class="bi bi-chevron-down"></span></a>
+                    <a class="btn btn-small btn-danger" (click)="deleteRepresentedConcept(rc)"><span
+                            class="bi bi-trash"></span></a>
                 </div>
-                <div class="clearfix"></div>
-                <div class="col-sm-6 form-group">
-                    <label for="value_code">Code</label>
+            </div>
+
+            <!-- <div class="clearfix"></div> -->
+
+            <div class="col-sm-6">
+
+                <div class="form-floating mb-3">
                     <input class="form-control" name="value_code" type="text" [(ngModel)]="rc.code" placeholder="D002675" />
+                    <label for="value_code">Code</label>
                 </div>
-                <div class="col-sm-6 form-group">
-                    <label for="value_code_system">Code System</label>
-                    <input class="form-control" name="value_code_system" type="text" [(ngModel)]="rc.codeSystem" placeholder="2.16.840.1.113883.11.75" />
-                </div>
-                <div class="col-sm-6 form-group">
-                    <label for="value_code_system_name">System Name</label>
+
+                <div class="form-floating">
                     <input class="form-control" name="value_code_system_name" type="text" [(ngModel)]="rc.codeSystemName" placeholder="MeSH - AgeGroupObservationValue" />
+                    <label for="value_code_system_name">System Name</label>
                 </div>
-                <div class="col-sm-6 form-group">
-                    <label for="value_display_name">Display Name</label>
+            </div>
+            <div class="col-sm-6">
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="value_code_system" type="text" [(ngModel)]="rc.codeSystem" placeholder="2.16.840.1.113883.11.75" />
+                    <label for="value_code_system">Code System</label>
+                </div>
+                <div class="form-floating">
                     <input class="form-control" name="value_display_name" type="text" [(ngModel)]="rc.displayName" placeholder="child, preschool; 2 to 5 years" />
+                    <label for="value_display_name">Display Name</label>
                 </div>
             </div>
         </div>
+        <!-- </div> -->
     </div>
     <h2>
-        <div class="btn-group float-end"><a class="btn btn-default btn-small" type="button" data-toggle="collapse" data-target="#actions_collapse" aria-expanded="true" aria-controls="actions_collapse"><span
-                    class="bi bi-option"></span></a><a class="btn btn-primary" (click)="createDeclareResponseAction()"><span class="bi bi-plus"></span> Declare
-                Response</a><a class="btn btn-primary" (click)="createCollectInformationAction()"><span
-                    class="bi bi-plus"></span> Collection Information</a>
-            <a class="btn btn-primary" (click)="createActionGroup()"><span class="bi bi-plus"></span>
-                Action Group</a><a class="btn btn-primary" (click)="createCreateAction()"><span
-                    class="bi bi-plus"></span> Creation Stub</a>
+        <div class="btn-group float-end">
+            <a class="btn btn-primary btn-small" type="button" data-bs-toggle="collapse" data-bs-target="#actions_collapse" aria-expanded="true" aria-controls="actions_collapse">
+                <span class="bi bi-eye"></span></a>
+            <a class="btn btn-primary" (click)="createDeclareResponseAction()"><span class="bi bi-plus"></span> Declare
+                Response</a>
+            <a class="btn btn-primary" (click)="createCollectInformationAction()">
+                <span class="bi bi-plus"></span> Collection Information</a>
+            <a class="btn btn-primary" (click)="createActionGroup()">
+                <span class="bi bi-plus"></span> Action Group</a><a class="btn btn-primary" (click)="createCreateAction()"><span class="bi bi-plus"></span> Creation Stub</a>
         </div>Action List
     </h2>
     <div class="clearfix"></div>
     <hr />
-    <div class="collapse in" id="actions_collapse">
+
+    <div class="collapse show" id="actions_collapse">
         <div *ngIf="actionGroup.subElements.length > 0">
-            <div class="action well" *ngFor="let action of actionGroup.subElements">
-                <div class="btn-group float-end"><a class="btn btn-small btn-primary" (click)="moveUp(action, actionGroup.subElements)" *ngIf="canMoveUp(action, actionGroup.subElements)"><span
-                            class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(action, actionGroup.subElements)" *ngIf="canMoveDown(action, actionGroup.subElements)"><span
-                            class="bi bi-chevron-down"></span></a><a class="btn btn-small btn-danger" (click)="deleteAction(action)"><span class="bi bi-trash"></span></a></div>
-                <div class="declare_response_action" *ngIf="isDeclareResponseAction(action)">
-                    <h4>Response Declaration</h4>
-                    <div class="form-group" for="declare_response_name">Name
-                        <input class="form-control" name="declare_response_name" type="text" required="true" [(ngModel)]="action.name" placeholder="e.g. Responses" />
-                    </div>
+            <div class="action well mb-3 p-3" *ngFor="let action of actionGroup.subElements">
+
+                <div class="btn-group float-end">
+                    <a class="btn btn-small btn-primary" (click)="moveUp(action, actionGroup.subElements)" *ngIf="canMoveUp(action, actionGroup.subElements)"><span class="bi bi-chevron-up"></span></a>
+                    <a class="btn btn-small btn-primary" (click)="moveDown(action, actionGroup.subElements)" *ngIf="canMoveDown(action, actionGroup.subElements)"><span
+                            class="bi bi-chevron-down"></span></a>
+                    <a class="btn btn-small btn-danger" (click)="deleteAction(action)"><span
+                            class="bi bi-trash"></span></a>
                 </div>
+
+                <div class="declare_response_action" *ngIf="isDeclareResponseAction(action)">
+                    <h4 class="mb-3">Response Declaration</h4>
+                    <div class="form-floating ">
+                        <input class="form-control" name="declare_response_name" type="text" required="true" [(ngModel)]="action.name" placeholder="e.g. Responses" />
+                        <label for="declare_response_name">Name</label>
+                    </div>
+                    <!-- <div class="clearfix"></div> -->
+                </div>
+
                 <div class="collect_information_action" *ngIf="isCollectInformationAction(action)">
                     <h4>Information Collection</h4>
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="collect_information_prompt">Prompt</label>
+                            <div class="form-floating mb-3">
                                 <input class="form-control" name="collect_information_prompt" type="text" required="true" [(ngModel)]="action.prompt" placeholder="e.g. Quantity" />
+                                <label for="collect_information_prompt">Prompt</label>
                             </div>
-                            <div class="form-group">
-                                <label for="collect_information_text_equivalent">Text Equivalent</label>
+                            <div class="form-floating mb-3">
                                 <input class="form-control" name="collect_information_text_equivalent" type="text" required="true" [(ngModel)]="action.textEquivalent" placeholder="" />
+                                <label for="collect_information_text_equivalent">Text Equivalent</label>
                             </div>
-                            <div class="form-group">
-                                <label for="collect_information_response_binding">Response Binding</label>
+                            <div class="form-floating mb-3">
                                 <input class="form-control" name="collect_information_response_binding" type="text" required="true" [(ngModel)]="action.responseBinding" placeholder="e.g. TotalScore" />
+                                <label for="collect_information_response_binding">Response Binding</label>
                             </div>
-                            <div class="form-group">
-                                <label for="collect_information_response_data_type">Data Type</label>
-                                <select class="form-control" name="collect_information_response_data_type" [(ngModel)]="action.responseDataType">
+                            <div class="form-floating mb-3">
+                                <select class="form-select" name="collect_information_response_data_type" [(ngModel)]="action.responseDataType">
                                     <option value="String" [selected]="action.responseDataType == 'String'">String
                                     </option>
                                     <option value="Integer" [selected]="action.responseDataType == 'Integer'">Integer
                                     </option>
                                 </select>
+                                <label for="collect_information_response_data_type">Data Type</label>
                             </div>
-                            <div class="form-group">
-                                <label for="collect_information_response_minimum">Minimum</label>
+                            <div class="form-floating mb-3">
                                 <input class="form-control" name="collect_information_response_minimum" type="number" min="0" required="true" [(ngModel)]="action.responseMinimum" placeholder="0" />
+                                <label for="collect_information_response_minimum">Minimum</label>
                             </div>
-                            <div class="form-group">
-                                <label for="collect_information_response_maximum">Maximum</label>
+                            <div class="form-floating mb-3">
                                 <input class="form-control" name="collect_information_response_maximum" type="number" min="0" required="true" [(ngModel)]="action.responseMaximum" placeholder="42" />
+                                <label for="collect_information_response_maximum">Maximum</label>
                             </div>
-                            <div class="form-group">
-                                <label for="collect_information_response_cardinality">Cardinality</label>
-                                <select class="form-control" name="collect_information_response_cardinality" [(ngModel)]="action.responseCardinality">
+                            <div class="form-floating mb-3">
+                                <select class="form-select" name="collect_information_response_cardinality" [(ngModel)]="action.responseCardinality">
                                     <option value="Multiple" [selected]="action.responseCardinality! == 'Multiple'">
                                         Multiple</option>
                                     <option value="Single" [selected]="action.responseCardinality == 'Single'">Single
                                     </option>
                                 </select>
+                                <label for="collect_information_response_cardinality">Cardinality</label>
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <div class="form-group">
-                                <label for="collect_information_initial_value_type">Initial Value Type</label>
+                            <div class="form-floating mb-3">
                                 <input class="form-control" name="collect_information_initial_value_type" type="text" [(ngModel)]="action.initialValueType" placeholder="e.g. elm:Sum" />
+                                <label for="collect_information_initial_value_type">Initial Value Type</label>
                             </div>
-                            <div class="form-group">
-                                <label for="collect_information_initial_value">Initial Value Expression</label>
+                            <div class="form-floating mb-3">
                                 <textarea class="form-control" name="collect_information_initial_value" rows="4" [(ngModel)]="action.initialValue" placeholder="&lt;elm:source xsi:type=&quot;elm:List&quot;&gt;...&lt;/elm:source&gt;"></textarea>
+                                <label for="collect_information_initial_value">Initial Value Expression</label>
                             </div>
-                            <h5>
-                                <div class="float-end"><a class="btn btn-small btn-primary" (click)="createItemCode(action)"><span
-                                            class="bi bi-plus"></span></a></div>Question Codes
+                            <h5 class="mb-3">
+                                <div class="float-end"><a class="btn btn-small btn-primary" (click)="createItemCode(action)"><span class="bi bi-plus"></span></a></div>
+                                Question Codes
                             </h5>
                             <div class="clearfix"></div>
-                            <table class="table table-condensed" *ngIf="action.itemCodes.length > 0">
+                            <table class="table table-condensed mb-3" *ngIf="action.itemCodes.length > 0">
                                 <thead>
                                     <tr>
                                         <th>Code</th>
@@ -140,45 +172,86 @@
                                         <td>
                                             <input class="form-control" name="collect_information_item_code_system_name" [(ngModel)]="ic.codeSystemName" placeholder="LOINC" />
                                         </td>
-                                        <td><a class="btn btn-small btn-danger" (click)="deleteItemCode(action, ic)"><span
-                                                    class="bi bi-trash"></span></a></td>
+                                        <td>
+                                            <div class="btn-group">
+
+                                                <a class="btn btn-small btn-primary" (click)="moveUp(ic, action.itemCodes)" *ngIf="canMoveUp(ic, action.itemCodes)"><span
+                                                        class="bi bi-chevron-up"></span></a>
+                                                <a class="btn btn-small btn-primary" (click)="moveDown(ic, action.itemCodes)" *ngIf="canMoveDown(ic, action.itemCodes)"><span
+                                                        class="bi bi-chevron-down"></span></a>
+                                                <a class="btn btn-small btn-danger" (click)="deleteItemCode(action, ic)"><span
+                                                        class="bi bi-trash"></span></a>
+
+                                            </div>
+                                            <!-- <a class="btn btn-small btn-danger" (click)="deleteItemCode(action, ic)"><span
+                                                    class="bi bi-trash"></span></a> -->
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <h5>
-                                <div class="float-end"><a class="btn btn-small btn-primary" (click)="createResponseItem(action)"><span
-                                            class="bi bi-plus"></span></a></div>Enumerated Responses &amp; Codes
+
+                            <h5 class="mb-3">
+                                <div class="float-end">
+                                    <a class="btn btn-small btn-primary" (click)="createResponseItem(action)"><span
+                                            class="bi bi-plus"></span></a>
+                                </div>
+                                Enumerated Responses &amp; Codes
                             </h5>
                             <div class="clearfix"></div>
-                            <form class="well form" *ngFor="let ri of action.responseItems">
-                                <div class="col-sm-9 form-group">
-                                    <input class="form-control" name="collect_information_response_item_display_text" [(ngModel)]="ri.displayText" placeholder="Display text, e.g. No particular expression or smile" />
-                                </div>
-                                <div class="col-sm-3 form-group">
-                                    <div class="btn-group"><a class="btn btn-small btn-primary" (click)="moveUp(ri, action.responseItems)" *ngIf="canMoveUp(ri, action.responseItems)"><span
-                                                class="bi bi-chevron-up"></span></a><a class="btn btn-small btn-primary" (click)="moveDown(ri, action.responseItems)" *ngIf="canMoveDown(ri, action.responseItems)"><span
-                                                class="bi bi-chevron-down"></span></a>
-                                        <a class="float-end btn btn-small btn-danger" (click)="deleteResponseItem(action, ri)"><span
-                                                class="bi bi-trash"></span></a>
+
+                            <form class="well form row mb-3 p-3" *ngFor="let ri of action.responseItems">
+                                <div class="col-sm-6 mb-3">
+
+                                    <div class="form-floating">
+                                        <input class="form-control" name="collect_information_response_item_display_text" [(ngModel)]="ri.displayText" placeholder="Display text, e.g. No particular expression or smile" />
+                                        <label for="collect_information_response_item_display_text">Display Text</label>
                                     </div>
                                 </div>
-                                <div class="col-sm-3 form-group">
-                                    <select class="form-control" name="collect_information_response_item_type" [(ngModel)]="ri.type">
-                                        <option value="elm:Literal" [selected]="ri.type == 'elm:Literal'">elm:Literal
-                                        </option>
-                                    </select>
+                                <div class="col-sm-3 mb-3">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" name="collect_information_response_item_type" [(ngModel)]="ri.type">
+                                            <option value="elm:Literal" [selected]="ri.type == 'elm:Literal'">
+                                                elm:Literal
+                                            </option>
+                                        </select>
+                                        <label for="collect_information_response_item_type">Item Type</label>
+                                    </div>
                                 </div>
-                                <div class="col-sm-3 form-group">
-                                    <input class="form-control" name="collect_information_response_item_value" [(ngModel)]="ri.value" placeholder="e.g. 0" />
+                                <div class="col-sm-3">
+                                    <div class="btn-group">
+                                        <a class="btn btn-small btn-primary" (click)="moveUp(ri, action.responseItems)" *ngIf="canMoveUp(ri, action.responseItems)">
+                                            <span class="bi bi-chevron-up"></span></a>
+                                        <a class="btn btn-small btn-primary" (click)="moveDown(ri, action.responseItems)" *ngIf="canMoveDown(ri, action.responseItems)">
+                                            <span class="bi bi-chevron-down"></span></a>
+                                        <a class="float-end btn btn-small btn-danger" (click)="deleteResponseItem(action, ri)">
+                                            <span class="bi bi-trash"></span></a>
+                                    </div>
                                 </div>
-                                <div class="col-sm-3 form-group">
-                                    <select class="form-control" name="collect_information_response_value_type" [(ngModel)]="ri.valueType">
-                                        <option value="t:Integer" [selected]="ri.type == 't:Integer'">t:Integer</option>
-                                        <option value="t:String" [selected]="ri.type == 't:String'">t:String</option>
-                                    </select>
+                                <div class="col-sm-6 mb-3">
+
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" name="collect_information_response_item_value" [(ngModel)]="ri.value" placeholder="e.g. 0" />
+                                        <label for="collect_information_response_item_value">Value</label>
+                                    </div>
                                 </div>
-                                <div class="col-sm-3"><a class="btn btn-small btn-primary" (click)="createResponseItemCode(ri)"><span
-                                            class="bi bi-plus"></span>Code</a></div>
+                                <div class="col-sm-6 mb-3">
+                                    <div class="form-floating">
+                                        <select class="form-select" name="collect_information_response_value_type" [(ngModel)]="ri.valueType">
+                                            <option value="t:Integer" [selected]="ri.type == 't:Integer'">t:Integer
+                                            </option>
+                                            <option value="t:String" [selected]="ri.type == 't:String'">t:String
+                                            </option>
+                                        </select>
+                                        <label for="collect_information_response_value_type">Value Type</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 mb-3">
+                                    <div class="float-end">
+                                        <a class="btn btn-small btn-primary" (click)="createResponseItemCode(ri)"><span
+                                            class="bi bi-plus"></span> Code</a>
+                                    </div>
+                                </div>
                                 <div class="col-sm-12">
                                     <div class="clearfix"></div>
                                     <table class="table table-condensed" *ngIf="ri.itemCodes.length > 0">
@@ -212,17 +285,21 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="create_action" *ngIf="isCreateAction(action)">
-                    <h4>Create</h4>
-                    <div class="form-group" for="create_action_sentence_type">Sentence Type
+                    <h4 class="mb-3">Create</h4>
+                    <div class="form-floating mb-3" for="create_action_sentence_type">
                         <input class="form-control" name="create_action_sentence_type" type="text" [(ngModel)]="action.sentenceType" placeholder="e.g. elm:Query" />
+                        <label for="create_action_sentence_type">Sentence Type</label>
                     </div>
-                    <div class="form-group" for="create_action_sentence">Sentence
+                    <div class="form-floating" for="create_action_sentence">
                         <textarea class="form-control" name="create_action_sentence" rows="8" [(ngModel)]="action.sentence" placeholder="&lt;elm:source alias=&quot;O&quot;&gt;...&lt;/elm:source&gt;&lt;elm:return&gt;...&lt;/elm:return&gt;"></textarea>
+                        <label for="create_action_sentence">Sentence</label>
                     </div>
                 </div>
+
                 <div class="action_group" *ngIf="isActionGroup(action)">
-                    <h4>Sub Group</h4>
+                    <h4 class="mb-3">Sub Group</h4>
                     <action_group [knart]="knart" [actionGroup]="action"></action_group>
                 </div>
             </div>

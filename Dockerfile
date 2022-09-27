@@ -1,4 +1,4 @@
-FROM node:17-alpine AS builder
+FROM node:18-alpine AS builder
 LABEL maintainer="Preston Lee <preston.lee@prestonlee.com>"
 RUN mkdir -p /app
 WORKDIR /app

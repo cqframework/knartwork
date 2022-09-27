@@ -43,21 +43,23 @@
                         <li class="dropdown-item"><a href="https://www.hl7.org/fhir/2016Sep/clinicalreasoning-module.html" target="_blank"><span class="bi bi-fire"></span> HL7 FHIR Clinical
                                 Reasoning</a></li>
                         <li class="divider"></li>
-                        <li class="dropdown-item"><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Documentation Template:
-                                FLACC</a></li>
-                        <li class="dropdown-item"><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Documentation Template:
-                                UTI</a></li>
-                        <li class="dropdown-item"><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/PHQ9_DocTemplateWithAssessment.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Documentation Template:
-                                PHQ-9 Assessment</a></li>
-                        <li class="dropdown-item"><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/NQF0024A_NQF0421.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Rule: Weight Assessment and
-                                Counseling</a></li>
-                        <li class="dropdown-item"><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/newMentor_HeD_NQF0068_ECArule_example.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Rule: Ischemic Vascular
-                                Disease</a></li>
+                        <li class="dropdown-item">
+                            <a href="#" (click)="loadRemoteFile('/assets/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml')">
+                                <span class="bi bi-file-earmark"></span> Example: Documentation Template: FLACC</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="#" (click)="loadRemoteFile('/assets/examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml')">
+                                <span class="bi bi-file-earmark"></span> Example: Documentation Template: UTI</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="#" (click)="loadRemoteFile('/assets/examples/hl7-cds-ka-r1.3/PHQ9_DocTemplateWithAssessment.xml')"><span
+                                    class="bi bi-file-earmark"></span> Example: Documentation Template: PHQ-9 Assessment</a></li>
+                        <li class="dropdown-item">
+                            <a href="#" (click)="loadRemoteFile('/assets/examples/hl7-cds-ka-r1.3/NQF0024A_NQF0421.xml')"><span
+                                    class="bi bi-file-earmark"></span> Example: Rule: Weight Assessment and Counseling</a></li>
+                        <li class="dropdown-item">
+                            <a href="#" (click)="loadRemoteFile('/assets/examples/hl7-cds-ka-r1.3/newMentor_HeD_NQF0068_ECArule_example.xml')"><span
+                                    class="bi bi-file-earmark"></span> Example: Rule: Ischemic Vascular Disease</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -73,58 +75,6 @@
             </form> -->
         </div>
     </div>
-
-    <!-- <div class="container-fluid">
-        <div class="navbar-header"><button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            <div class="navbar-brand">KNART<span class="text-info">work</span><span class="subtitle"> knowledge artifact
-                    editor</span></div>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span
-                            class="bi bi-file"></span> File<b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" (click)="download()"><span class="bi bi-cloud-download"></span>
-                                Download</a></li>
-                        <li class="divider"></li>
-                        <li><a (click)="revert()" *ngIf="canRevert()"><span class="bi bi-refresh"></span>
-                                Revert</a></li>
-                        <li><a href="#" (click)="reset()"><span class="bi bi-trash"></span> Close</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span
-                            class="bi bi-ok-circle"></span> Learn<b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=337" target="_blank"><span class="bi bi-globe"></span> HL7 CDS Knowledge
-                                Artifacts</a></li>
-                        <li><a href="https://www.hl7.org/fhir/2016Sep/clinicalreasoning-module.html" target="_blank"><span class="bi bi-fire"></span> HL7 FHIR Clinical
-                                Reasoning</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/FLACC_DocTemplate.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Documentation Template:
-                                FLACC</a></li>
-                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/UTI_DocTemplate.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Documentation Template:
-                                UTI</a></li>
-                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/PHQ9_DocTemplateWithAssessment.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Documentation Template:
-                                PHQ-9 Assessment</a></li>
-                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/NQF0024A_NQF0421.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Rule: Weight Assessment and
-                                Counseling</a></li>
-                        <li><a href="#" (click)="loadRemoteFile('https://raw.githubusercontent.com/cqframework/knartwork/master/examples/hl7-cds-ka-r1.3/newMentor_HeD_NQF0068_ECArule_example.xml')"><span
-                                    class="bi bi-file-earmark"></span> Example: Rule: Ischemic Vascular
-                                Disease</a></li>
-                        <li class="divider"></li>
-                        <li><a href="https://github.com/cqframework/knartwork" target="_blank"><span
-                                    class="bi bi-comment"></span> Bug Reports &amp; Feature Requests</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div> -->
 </nav>
 
 <div class="container-fluid" *ngIf="!knart">
@@ -176,18 +126,15 @@
                         <a id="metadata_tab_link" class="nav-link" aria-controls="metadata" data-toggle="editor_tab" (click)="tabClicked('metadata')" role="tab" aria-expanded="true"><span
                                 class="bi bi-pencil"></span> Basics</a>
                     </li>
-                    <li role="presentation" [class.active]="editor_tab == 'contributions'"><a id="contributions_tab_link" class="nav-link" aria-controls="contributions" data-toggle="editor_tab" (click)="tabClicked('contributions')" role="tab" aria-expanded="true"><span
-                                class="bi bi-user"></span> Contributions</a></li>
+                    <li role="presentation" [class.active]="editor_tab == 'contributions'"><a id="contributions_tab_link" class="nav-link" aria-controls="contributions" data-toggle="editor_tab" (click)="tabClicked('contributions')" role="tab" aria-expanded="true"><span class="bi bi-user"></span> Contributions</a></li>
                     <li role="presentation" [class.active]="editor_tab == 'model_references'">
-                        <a id="model_references_tab_link" class="nav-link" aria-controls="model_references" data-toggle="editor_tab" (click)="tabClicked('model_references')" role="tab" aria-expanded="true"><span
-                                class="bi bi-paperclip"></span> Model Refs</a>
+                        <a id="model_references_tab_link" class="nav-link" aria-controls="model_references" data-toggle="editor_tab" (click)="tabClicked('model_references')" role="tab" aria-expanded="true"><span class="bi bi-paperclip"></span> Model Refs</a>
                     </li>
                     <li role="presentation" [class.active]="editor_tab == 'supporting_evidence'">
                         <a id="supporting_evidence_tab_link" class="nav-link" aria-controls="supporting_evidence" data-toggle="editor_tab" (click)="tabClicked('supporting_evidence')" role="tab" aria-expanded="true"><span class="bi bi-education"></span> Evidence</a>
                     </li>
                     <li role="presentation" [class.active]="editor_tab == 'related_resources'">
-                        <a id="related_resources_tab_link" class="nav-link" aria-controls="related_resources" data-toggle="editor_tab" (click)="tabClicked('related_resources')" role="tab" aria-expanded="true"><span
-                                class="bi bi-book"></span> Related Sources</a>
+                        <a id="related_resources_tab_link" class="nav-link" aria-controls="related_resources" data-toggle="editor_tab" (click)="tabClicked('related_resources')" role="tab" aria-expanded="true"><span class="bi bi-book"></span> Related Sources</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -202,15 +149,19 @@
         <div class="col-md-6">
             <div id="runtime_tabs" role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item" [class.active]="runtime_tab == 'conditions'"><a id="conditions_tab_link" class="nav-link" aria-controls="conditions" data-toggle="runtime_tab" (click)="runtime_tab = 'conditions'" role="tab" aria-expanded="true"><span class="bi bi-flash"></span>
+                    <li class="nav-item" [class.active]="runtime_tab == 'conditions'"><a id="conditions_tab_link" class="nav-link" aria-controls="conditions" data-toggle="runtime_tab" (click)="runtime_tab = 'conditions'" role="tab" aria-expanded="true"><span
+                                class="bi bi-flash"></span>
                             Conditions</a></li>
                     <li class="nav-item" [class.active]="runtime_tab == 'external_data'"><a id="external_data_tab_link" class="nav-link" aria-controls="external_data" data-toggle="runtime_tab" (click)="runtime_tab = 'external_data'" role="tab" aria-expanded="true"><span
                                 class="bi bi-link"></span> Data Binding</a></li>
-                    <li class="nav-item" [class.active]="runtime_tab == 'expressions'"><a id="expressions_tab_link" class="nav-link" aria-controls="expressions" data-toggle="runtime_tab" (click)="runtime_tab = 'expressions'" role="tab" aria-expanded="true"><span class="bi bi-console"></span>
+                    <li class="nav-item" [class.active]="runtime_tab == 'expressions'"><a id="expressions_tab_link" class="nav-link" aria-controls="expressions" data-toggle="runtime_tab" (click)="runtime_tab = 'expressions'" role="tab" aria-expanded="true"><span
+                                class="bi bi-console"></span>
                             Expressions</a></li>
-                    <li class="nav-item" [class.active]="runtime_tab == 'coverages'"><a id="coverages_tab_link" class="nav-link" aria-controls="coverages" data-toggle="runtime_tab" (click)="runtime_tab = 'coverages'" role="tab" aria-expanded="true"><span class="bi bi-check"></span>
+                    <li class="nav-item" [class.active]="runtime_tab == 'coverages'"><a id="coverages_tab_link" class="nav-link" aria-controls="coverages" data-toggle="runtime_tab" (click)="runtime_tab = 'coverages'" role="tab" aria-expanded="true"><span
+                                class="bi bi-check"></span>
                             Applicability</a></li>
-                    <li class="nav-item" [class.active]="runtime_tab == 'history'"><a id="coverages_tab_link" class="nav-link" aria-controls="history" data-toggle="runtime_tab" (click)="runtime_tab = 'history'" role="tab" aria-expanded="true"><span class="bi bi-list"></span> History</a>
+                    <li class="nav-item" [class.active]="runtime_tab == 'history'"><a id="coverages_tab_link" class="nav-link" aria-controls="history" data-toggle="runtime_tab" (click)="runtime_tab = 'history'" role="tab" aria-expanded="true"><span
+                                class="bi bi-list"></span> History</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -227,10 +178,13 @@
         <div class="col-md-12">
             <div id="viewer_tabs" role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" [class.active]="viewer_tab == 'action_group'"><a id="actions_tab_link" class="nav-link" aria-controls="action_group" data-toggle="viewer_tab" (click)="viewer_tab = 'action_group'" role="tab" aria-expanded="true"><span class="bi bi-list"></span> Actions</a>
+                    <li role="presentation" [class.active]="viewer_tab == 'action_group'"><a id="actions_tab_link" class="nav-link" aria-controls="action_group" data-toggle="viewer_tab" (click)="viewer_tab = 'action_group'" role="tab" aria-expanded="true"><span
+                                class="bi bi-list"></span> Actions</a>
                     </li>
-                    <li role="presentation" [class.active]="viewer_tab == 'preview'"><a id="preview_tab_link" class="nav-link" aria-controls="preview" data-toggle="viewer_tab" (click)="viewer_tab = 'preview'" role="tab" aria-expanded="true"><span class="bi bi-eye-open"></span> Preview</a></li>
-                    <li role="presentation" [class.active]="viewer_tab == 'original'"><a id="actions_tab_link" class="nav-link" aria-controls="original" data-toggle="viewer_tab" (click)="viewer_tab = 'original'" role="tab" aria-expanded="true"><span class="bi bi-chevron-left"></span>
+                    <li role="presentation" [class.active]="viewer_tab == 'preview'"><a id="preview_tab_link" class="nav-link" aria-controls="preview" data-toggle="viewer_tab" (click)="viewer_tab = 'preview'" role="tab" aria-expanded="true"><span
+                                class="bi bi-eye-open"></span> Preview</a></li>
+                    <li role="presentation" [class.active]="viewer_tab == 'original'"><a id="actions_tab_link" class="nav-link" aria-controls="original" data-toggle="viewer_tab" (click)="viewer_tab = 'original'" role="tab" aria-expanded="true"><span
+                                class="bi bi-chevron-left"></span>
                             Original XML</a></li>
                 </ul>
                 <div class="tab-content">
