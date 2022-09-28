@@ -1,7 +1,7 @@
 {
     "name": "knartwork",
     "description": "Knartwork integrated knowledge environment.",
-    "version": "0.9.0",
+    "version": "1.1.0",
     "license": "ISC",
     "repository": {
         "type": "git",
@@ -42,7 +42,7 @@
         "@angular/cli": "~14.2.3",
         "@angular/compiler-cli": "~14.2.3",
         "@types/node": "^18.7.23",
-        "typescript": "~4.8.3"
+        "typescript": "~4.8.4"
     },
     "bugs": {
         "url": "https://github.com/cqframework/knartwork/issues"

@@ -1,5 +1,7 @@
 # KNARTwork: The Community Knowledge Artifact Editor
 
+**Live free edition at https://knartwork.prestonlee.com**
+
 KNARTwork is a multi-purpose web application for authoring, viewing, and transforming knowledge artifact-like documents across popular specifications, primarily aimed healthcare-specific uses. By default, this application provides a purely standalone experience that does not use any standard-specific APIs (such as FHIR) or databases (such as RDBMS or NoSQL) systems, and may be used as-is by end users wanting to manage source documents as an out-of-band process using git/subversion, Dropbox, email etc. Server-side persistence options will be added as optional features as backend implementations emerge from the CDS community.
 
 Community contributions -- especially those specific to evolving clinical standards -- are highly encouraged! Please submit your pull requests (PRs) via the community's public GitHub project page.
@@ -16,7 +18,7 @@ This decoupling of repository structure allows authors to easily share entire li
 
 ## Developer Quick Start
 
-This is an [Angular](https://angular.io) project using `Angular CLI` as the build system, [pug](https://pugjs.org/api/getting-started.html) for HTML templates, [SASS](http://sass-lang.com) for CSS and [Bootstrap](http://getbootstrap.com/) for layout. `npm` is the package manager. Assuming you already have node installed via [Node Version Manager](https://github.com/nvm-sh/nvm) or similar:
+This is an [Angular](https://angular.io) project using the `Angular CLI` build system, [SCSS](http://sass-lang.com) for CSS, and [Bootstrap](http://getbootstrap.com/) for layout. `npm` is the package manager. Assuming you already have node installed via [Node Version Manager](https://github.com/nvm-sh/nvm) or similar:
 
 	npm i # to install project development dependencies
 	npm run start # to serve the project and automatically recompile on file changes
@@ -31,7 +33,7 @@ First, build:
 
 Then, assuming you've already familiar with [Docker](https://www.docker.com) and have it installed, you can plop the build into wicked-fast [nginx](http://nginx.org) web server image for multiple platforms using the including Dockerfile with:
 
-	docker buildx build --platform linux/arm64,linux/amd64 -t p3000/knartwork:latest . # use your own repo and tag strings :)
+	docker buildx build --platform linux/arm64,linux/amd64 -t p3000/knartwork:latest . --push # use your own repo and tag strings :)
 
 ## Production Deployment
 
