@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
 
     filenameFor(url: string): string {
         let path = url.substring(url.lastIndexOf("/") + 1);
-        return (path.match(/[^.]+(\.[^?#]+)?/) || [])[0];
+        return (path.match(/[^.]+(\.[^?#]+)?/) || [])[0]?.toString() || '';
     }
 
     loadRemoteFile(url: string) {

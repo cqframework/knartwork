@@ -3,17 +3,10 @@
 import {
 	Component,
 	OnInit,
-	ViewEncapsulation,
 	ElementRef,
-	Input,
-	Output,
-	SimpleChanges,
-	EventEmitter,
-	ViewChild
-} from "@angular/core";
+	SimpleChanges} from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 
-import { environment } from '../../environments/environment';
 import { AuthenticationService } from "../services/authentication.service";
 
 @Component({

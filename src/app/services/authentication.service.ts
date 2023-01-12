@@ -2,10 +2,7 @@
 
 // Core
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-
-// Environment build settings.
-import { environment } from '../../environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // RxsJS imports
 import { Observable, Subject } from "rxjs";
