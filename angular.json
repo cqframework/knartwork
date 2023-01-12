@@ -6,7 +6,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "app": {
+        "knartwork": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -23,7 +23,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/app",
+                        "outputPath": "dist/knartwork",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": [
@@ -79,10 +79,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "app:build:production"
+                            "browserTarget": "knartwork:build:production"
                         },
                         "development": {
-                            "browserTarget": "app:build:development"
+                            "browserTarget": "knartwork:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "app:build"
+                        "browserTarget": "knartwork:build"
                     }
                 },
                 "test": {

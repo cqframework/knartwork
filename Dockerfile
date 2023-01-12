@@ -1,15 +1,16 @@
-FROM node:18-alpine AS builder
-LABEL maintainer="Preston Lee <preston.lee@prestonlee.com>"
-RUN mkdir -p /app
+FROM node:19-alpine as builder
+LABEL maintainer="preston.lee@prestonlee.com"
+
+# Install dependencies first so they layer can be cached across builds.
+RUN mkdir /app
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm i
 
-COPY package.json .
-
-RUN npm install
+# Build
 COPY . .
-
-RUN npm run build 
-# --prod
+RUN npm run ng build --production
+#  -- --prod
 
 FROM nginx:stable-alpine
 
@@ -21,9 +22,8 @@ WORKDIR /usr/share/nginx/html
 # Remove any default nginx content
 RUN rm -rf *
 
-## Copy build from "builder" stage, as well as runtime configuration script public folder
-COPY --from=builder /app/dist/app .
-COPY --from=builder /app/configure-from-environment.sh .
+# Copy build from "builder" stage, as well as runtime configuration script public folder
+COPY --from=builder /app/dist/knartwork .
 
 # CMD ["./configure-from-environment.sh", "&&", "exec", "nginx", "-g", "'daemon off;'"]
-CMD /bin/sh /usr/share/nginx/html/configure-from-environment.sh && exec nginx -g 'daemon off;'
+CMD envsubst < assets/configuration.template.js > assets/configuration.js  && exec nginx -g 'daemon off;'
