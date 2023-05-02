@@ -1,4 +1,4 @@
-FROM node:19-alpine as builder
+FROM node:20-alpine as builder
 LABEL maintainer="preston.lee@prestonlee.com"
 
 # Install dependencies first so they layer can be cached across builds.
