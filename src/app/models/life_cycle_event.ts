@@ -1,8 +1,6 @@
 // Author: Preston Lee
 
 export class LifeCycleEvent {
-    type: string = LifeCycleEvent.CREATED; // Reasonable default
-    datetime: string = '';
 
     static CREATED = 'Created';
     static PRE_PUBLISHED = 'Pre-published';
@@ -10,6 +8,9 @@ export class LifeCycleEvent {
     static REVIEWED = 'Reviewed';
     static WITHDRAWN = 'Withdrawn';
     static SUPERSEDED = 'Superseded';
+
+    type: string = LifeCycleEvent.CREATED; // Reasonable default
+    datetime: string = '';
 
     static TYPES = [
         LifeCycleEvent.CREATED,
