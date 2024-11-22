@@ -8,7 +8,7 @@ Community contributions -- especially those specific to evolving clinical standa
 
 ## Repository Browsing
 
-If you have an existing library of KNARTs, KNARTwork supports browsing an opening your existing content through a special built-in launch page. To use it, create a manifest.json file like [this], and host it, along with your KNART files, on a website directory accessible to your users. This "repository" URL is then passed to KNARTwork's brower page as a url parameter. The website directory doesn't have to be on the public Internet.. just somewhere your users can access it from their local browsers. Be sure the server allows for "CORS" requests: otherwise KNARTwork won't be able to load the manifest and content.
+If you have an existing library of KNARTs, KNARTwork supports browsing an opening your existing content through a special built-in launch page. To use it, create a manifest.json file like [this](src/assets/examples/manifest.json), and host it, along with your KNART files, on a website directory accessible to your users. This "repository" URL is then passed to KNARTwork's brower page as a url parameter. The website directory doesn't have to be on the public Internet.. just somewhere your users can access it from their local browsers. Be sure the server allows for "CORS" requests: otherwise KNARTwork won't be able to load the manifest and content.
 
 KNARTwork comes with a fully working example of the manifest format, referencing example KNARTs from the HL7 specification. You can organize your content any way you want, as long as the "path" for each KNART is relative to the URL. Here is an example of a working repository-based launch:
 
@@ -74,7 +74,7 @@ Please add your name when making contributions!
 
 **The MIT License (MIT)**
 
-Copyright (c) 2016-2023 Preston Lee
+Copyright (c) 2016-2024 Preston Lee
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

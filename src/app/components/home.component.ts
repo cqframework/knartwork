@@ -175,7 +175,7 @@ export class HomeComponent implements OnInit {
             // this.knart = this.xmlImporter.loadFromXMLDocument(doc);
             // this.originalContentString = content;
             // this.toasterService.success('It may take a few seconds for the UI to refresh.', "Loaded! Go do your thing.");
-            // Load asynchronously to prevent UI blocking and Zone.js issues.
+            // Possible workaround for of loading asynchronously to prevent UI blocking and Zone.js issues.
             this.xmlImporter.loadFromXMLDocument(doc).then((knart) => {
                 this.knart = knart;
                 this.originalContentString = content;
