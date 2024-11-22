@@ -79,10 +79,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "knartwork:build:production"
+                            "buildTarget": "knartwork:build:production"
                         },
                         "development": {
-                            "browserTarget": "knartwork:build:development"
+                            "buildTarget": "knartwork:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "knartwork:build"
+                        "buildTarget": "knartwork:build"
                     }
                 },
                 "test": {

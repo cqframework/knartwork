@@ -6,10 +6,13 @@ import {BaseComponent} from './base.component';
 
 import {Knart} from '../models/knart';
 import {ModelReference} from '../models/model_reference';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'model_references',
-    templateUrl: '../views/model_references.html'
+    templateUrl: '../views/model_references.html',
+    imports: [CommonModule, FormsModule]
 })
 export class ModelReferencesComponent extends BaseComponent {
 

@@ -5,10 +5,13 @@ import {Component, Input} from '@angular/core';
 import {Knart} from '../models/knart';
 import {SupportingEvidence} from '../models/supporting_evidence';
 import { BaseComponent } from './base.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'supporting_evidence',
-    templateUrl: '../views/supporting_evidence.html'
+    templateUrl: '../views/supporting_evidence.html',
+    imports: [CommonModule, FormsModule]
 })
 export class SupportingEvidenceComponent extends BaseComponent {
 

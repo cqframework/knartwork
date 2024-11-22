@@ -8,10 +8,13 @@ import {Knart} from '../models/knart';
 import {RelatedResource} from '../models/related_resource';
 import {Relationship} from '../models/relationship';
 import {Resource} from '../models/resource';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'related_resources',
-    templateUrl: '../views/related_resources.html'
+    templateUrl: '../views/related_resources.html',
+    imports: [CommonModule, FormsModule]
 })
 export class RelatedResourcesComponent extends BaseComponent {
 

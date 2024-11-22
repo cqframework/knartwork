@@ -11,10 +11,13 @@ import { Contact } from '../models/contact';
 import { Name } from '../models/name';
 import { Role } from '../models/role';
 import { Affiliation } from '../models/affiliation';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'contributions',
-    templateUrl: '../views/contributions.html'
+    templateUrl: '../views/contributions.html',
+    imports: [CommonModule, FormsModule]
 })
 export class ContributionsComponent extends BaseComponent {
 

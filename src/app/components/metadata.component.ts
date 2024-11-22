@@ -6,10 +6,13 @@ import {BaseComponent} from './base.component';
 
 import {Knart} from '../models/knart';
 import {Identifier} from '../models/identifier';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'metadata',
-    templateUrl: '../views/metadata.html'
+    templateUrl: '../views/metadata.html',
+    imports: [CommonModule, FormsModule]
 })
 export class MetadataComponent extends BaseComponent {
 

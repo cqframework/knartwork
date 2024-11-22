@@ -4,10 +4,12 @@ import {Component, Input} from '@angular/core';
 
 import {Knart} from '../models/knart';
 import {LiteratureReference} from '../models/literature_reference';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'literature_reference',
-    templateUrl: '../views/literature_reference.html'
+    templateUrl: '../views/literature_reference.html',
+    imports: [CommonModule]
 })
 export class LiteratureReferenceComponent {
 

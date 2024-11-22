@@ -1,26 +1,50 @@
 // Author: Preston Lee
 
-import { Component, Output, Inject, OnInit, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef, ApplicationRef } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Knart } from '../models/knart';
-import { ArtifactType } from '../models/artifact_type';
 import { Format } from '../models/format';
-import { Status } from '../models/status';
 import { ToastrService } from 'ngx-toastr';
 
 // import {window} from '@angular/browser';
+import { of } from 'rxjs';
 
 import { KnartImporterService } from '../services/knart_importer.service';
 import { KnartExporterService } from '../services/knart_exporter.service';
 
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { MetadataComponent } from './metadata.component';
+import { ContributionsComponent } from './contributions.component';
+import { ModelReferencesComponent } from './model_references.component';
+import { SupportingEvidenceComponent } from './supporting_evidence.component';
+import { RelatedResourcesComponent } from './related_resources.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ConditionsComponent } from './conditions.component';
+import { ExternalDataComponent } from './external_data.component';
+import { ExpressionsComponent } from './expressions.component';
+import { CoveragesComponent } from './coverages.component';
+import { HistoryComponent } from './history.component';
+import { ActionGroupComponent } from './action_group.component';
+import { PreviewComponent } from './preview.component';
 // import { CESService, ActionEvent } from "context-event-client";
 
 @Component({
     selector: 'home',
     templateUrl: '../views/home.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    // changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, FormsModule,
+        MetadataComponent,
+        ContributionsComponent,
+        ModelReferencesComponent,
+        SupportingEvidenceComponent,
+        RelatedResourcesComponent,
+        ConditionsComponent,
+        ExternalDataComponent,
+        ExpressionsComponent,
+        CoveragesComponent,
+        HistoryComponent,
+        ActionGroupComponent,
+        PreviewComponent]
 })
 export class HomeComponent implements OnInit {
 
@@ -145,19 +169,27 @@ export class HomeComponent implements OnInit {
     }
 
     loadFromContentString(content: string) {
-        let knart = new Knart();
         var parser = new DOMParser();
         var doc: Document = parser.parseFromString(content, "application/xml");
-        try {
-            // this.knart = undefined;
-            this.knart = this.xmlImporter.loadFromXMLDocument(doc);
-            this.originalContentString = content;
-            this.toasterService.success('It may take a few seconds for the UI to refresh.', "Loaded! Go do your thing.");
-        } catch (e) {
-            console.log(e);
-            this.toasterService.error("Your file couldn't read or parsed. Is it valid and well-formed?", "Well blarg.");
-            this.reset();
-        }
+        // try {
+            // this.knart = this.xmlImporter.loadFromXMLDocument(doc);
+            // this.originalContentString = content;
+            // this.toasterService.success('It may take a few seconds for the UI to refresh.', "Loaded! Go do your thing.");
+            // Load asynchronously to prevent UI blocking and Zone.js issues.
+            this.xmlImporter.loadFromXMLDocument(doc).then((knart) => {
+                this.knart = knart;
+                this.originalContentString = content;
+                this.toasterService.success('It may take a few seconds for the UI to refresh.', "Loaded! Go do your thing.");
+            }).catch((e) => {   
+                console.log(e);
+                this.toasterService.error("Your file couldn't read or parsed. Is it valid and well-formed?", "Well blarg.");
+                this.reset();
+            });
+        // } catch (e) {
+        //     console.log(e);
+        //     this.toasterService.error("Your file couldn't read or parsed. Is it valid and well-formed?", "Well blarg.");
+        //     this.reset();
+        // }
     }
 
     openFile(event: any) {

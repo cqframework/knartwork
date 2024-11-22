@@ -1,6 +1,8 @@
 // Author: Preston Lee
 
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, HostListener } from '@angular/core';
+import { RouterModule } from '@angular/router';
 // import { CESService, ActionEvent, eventFilter } from "context-event-client";
 
 // import 'rxjs/add/operator/filter';
@@ -8,7 +10,8 @@ import { ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app',
   template: '<router-outlet></router-outlet>',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  imports: [CommonModule, RouterModule]
 })
 export class AppComponent implements OnInit {
   title = 'app';

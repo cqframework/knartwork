@@ -57,7 +57,7 @@ export class KnartImporterService extends XmlImporterService {
         return this.knart.document!.evaluate(query, base, Knart.namespaces, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
     }
 
-    loadFromXMLDocument(doc: Document): Knart {
+    async loadFromXMLDocument(doc: Document): Promise<Knart> {
         this.knart = new Knart();
         this.knart.document = doc;
         var result = doc.evaluate("/k:knowledgeDocument", doc, Knart.namespaces, XPathResult.ANY_TYPE, null);

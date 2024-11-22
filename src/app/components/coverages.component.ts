@@ -1,15 +1,18 @@
 // Author: Preston Lee
 
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import {BaseComponent} from './base.component';
+import { BaseComponent } from './base.component';
 
-import {Knart} from '../models/knart';
-import {Coverage} from '../models/coverage';
+import { Knart } from '../models/knart';
+import { Coverage } from '../models/coverage';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'coverages',
-    templateUrl: '../views/coverages.html'
+    templateUrl: '../views/coverages.html',
+    imports: [CommonModule, FormsModule]
 })
 export class CoveragesComponent extends BaseComponent {
 

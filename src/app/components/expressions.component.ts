@@ -5,10 +5,13 @@ import {Component, Input} from '@angular/core';
 import {Knart} from '../models/knart';
 import {Expression} from '../models/expression';
 import { BaseComponent } from './base.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'expressions',
-    templateUrl: '../views/expressions.html'
+    templateUrl: '../views/expressions.html',
+    imports: [CommonModule, FormsModule]
 })
 export class ExpressionsComponent extends BaseComponent {
 

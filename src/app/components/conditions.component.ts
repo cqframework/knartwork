@@ -5,10 +5,13 @@ import {Component, Input} from '@angular/core';
 import {Knart} from '../models/knart';
 import {Condition} from '../models/condition';
 import { BaseComponent } from './base.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'conditions',
     templateUrl: '../views/conditions.html',
+    imports: [CommonModule, FormsModule]
 })
 export class ConditionsComponent  extends BaseComponent {
 

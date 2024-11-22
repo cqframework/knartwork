@@ -1,7 +1,7 @@
 {
     "name": "knartwork",
     "description": "Knartwork integrated knowledge environment.",
-    "version": "1.2.0",
+    "version": "2.0.0",
     "license": "ISC",
     "repository": {
         "type": "git",
@@ -17,32 +17,32 @@
     },
     "private": true,
     "dependencies": {
-        "@angular/animations": "~16.1.7",
-        "@angular/cdk": "~16.1.6",
-        "@angular/common": "~16.1.7",
-        "@angular/compiler": "~16.1.7",
-        "@angular/core": "~16.1.7",
-        "@angular/forms": "~16.1.7",
-        "@angular/material": "~16.1.6",
-        "@angular/platform-browser": "~16.1.7",
-        "@angular/platform-browser-dynamic": "~16.1.7",
-        "@angular/router": "~16.1.7",
-        "bootstrap": "^5.3.1",
-        "bootstrap-icons": "^1.10.5",
+        "@angular/animations": "~19.0.0",
+        "@angular/cdk": "~19.0.0",
+        "@angular/common": "~19.0.0",
+        "@angular/compiler": "~19.0.0",
+        "@angular/core": "~19.0.0",
+        "@angular/forms": "~19.0.0",
+        "@angular/material": "~19.0.0",
+        "@angular/platform-browser": "~19.0.0",
+        "@angular/platform-browser-dynamic": "~19.0.0",
+        "@angular/router": "~19.0.0",
+        "bootstrap": "^5.3.3",
+        "bootstrap-icons": "^1.11.3",
         "class-transformer": "^0.5.1",
-        "jquery": "^3.7.0",
-        "ngx-toastr": "^17.0.2",
+        "jquery": "^3.7.1",
+        "ngx-toastr": "^19.0.0",
         "rxjs": "~7.8.1",
-        "tslib": "^2.6.1",
-        "uuid": "^9.0.0",
-        "zone.js": "~0.13.1"
+        "tslib": "^2.8.1",
+        "uuid": "^11.0.3",
+        "zone.js": "~0.15"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "~16.1.6",
-        "@angular/cli": "~16.1.6",
-        "@angular/compiler-cli": "~16.1.7",
-        "@types/node": "^20.4.5",
-        "typescript": "~5.1"
+        "@angular-devkit/build-angular": "~19.0.1",
+        "@angular/cli": "~19.0.1",
+        "@angular/compiler-cli": "~19.0.0",
+        "@types/node": "^22.9.1",
+        "typescript": "~5.6"
     },
     "bugs": {
         "url": "https://github.com/cqframework/knartwork/issues"

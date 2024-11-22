@@ -1,7 +1,7 @@
 // Author: Preston Lee
 
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterModule } from "@angular/router";
 
 import { ToastrService } from "ngx-toastr";
 
@@ -11,10 +11,13 @@ import { ManifestItem } from "../models/browser/manifest_item";
 
 
 import { plainToClass } from "class-transformer";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "browser",
-  templateUrl: "../views/browser.html"
+  templateUrl: "../views/browser.html",
+  imports: [CommonModule, FormsModule, RouterModule]
 })
 export class BrowserComponent implements OnInit {
 
