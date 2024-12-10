@@ -1,6 +1,10 @@
-dist
-node_modules
+.angulardist
 .browserslistrc
+.drone.yml
+.editorconfig
 .git
 .gitignore
+.vscode
+
+node_modules
 Dockerfile
