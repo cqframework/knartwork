@@ -55,10 +55,10 @@
                                                     target="_blank">{{i.name}}</a></td>
                                             <td>{{i.tags.join(',')}}</td>
                                             <td>{{mimeTypeToName(i.mimeType)}}</td>
-                                            <td><a *ngIf="isKnartMimeType(i.mimeType)" target="_blank"
+                                            <td><a *ngIf="isKnartMimeType(i.mimeType)" role="button" class="btn btn-sm btn-primary" target="_blank"
                                                     [routerLink]="['/']"
                                                     [queryParams]="{ url: (i.url || (repository + '/' + i.path))}"><i
-                                                        class="bi bi-folder-open"></i></a></td>
+                                                        class="bi bi-folder2-open"></i> Open</a></td>
                                         </tr>
                                     </ng-container>
                                 </tbody>
@@ -92,9 +92,9 @@
                                         <td>{{i.group}}</td>
                                         <td>{{i.status}}</td>
                                         <td>{{i.tags}}</td>
-                                        <td><a *ngIf="isKnartMimeType(i.mimeType)" target="_blank" [routerLink]="['/']"
+                                        <td><a *ngIf="isKnartMimeType(i.mimeType)" role="button" class="btn btn-sm btn-primary" target="_blank" [routerLink]="['/']"
                                                 [queryParams]="{ url: (i.url || (repository + '/' + i.path))}"><i
-                                                    class="bi bi-folder-open"></i></a></td>
+                                                    class="bi bi-folder2-open"></i> Open</a></td>
                                     </tr>
                                 </ng-container>
                             </tbody>
@@ -125,9 +125,9 @@
                                         <td>{{i.group}}</td>
                                         <td>{{i.status}}</td>
                                         <td>{{mimeTypeToName(i.mimeType)}}</td>
-                                        <td><a *ngIf="isKnartMimeType(i.mimeType)" target="_blank" [routerLink]="['/']"
+                                        <td><a *ngIf="isKnartMimeType(i.mimeType)" role="button" class="btn btn-sm btn-primary" target="_blank" [routerLink]="['/']"
                                                 [queryParams]="{ url: (i.url || (repository + '/' + i.path))}"><i
-                                                    class="bi bi-folder-open"></i></a></td>
+                                                    class="bi bi-folder2-open"></i> Open</a></td>
                                     </tr>
                                 </ng-container>
                             </tbody>

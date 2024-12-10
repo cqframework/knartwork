@@ -81,6 +81,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         let url = this.route.snapshot.queryParams["url"];
         if (url) {
+            this.toasterService.info('This may take a moment. Please wait...', "Loading from URL");
             this.remoteUrl = url;
             this.loadRemoteUrl();
         }
