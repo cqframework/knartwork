@@ -2,8 +2,8 @@
 
 import {Component, Input} from '@angular/core';
 
-import {Knart} from '../models/knart';
-import {SupportingEvidence} from '../models/supporting_evidence';
+import {Knart} from '../knart_model/knart';
+import {SupportingEvidence} from '../knart_model/supporting_evidence';
 import { BaseComponent } from './base.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

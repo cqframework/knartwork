@@ -1,26 +1,26 @@
 // Author: Preston Lee
 
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-
-import { AuthenticationService } from './app/services/authentication.service';
-import { ToastrService, ToastrModule } from 'ngx-toastr';
-import { KnartworkService } from './app/services/knartwork.service';
-import { BrowserService } from './app/services/browser.service';
-import { KnartImporterService } from './app/services/knart_importer.service';
-import { KnartExporterService } from './app/services/knart_exporter.service';
-import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './app/components/home.component';
-import { LaunchComponent } from './app/components/launch.component';
-import { ApiComponent } from './app/components/api.component';
-import { BrowserComponent } from './app/components/browser.component';
 import { FormsModule } from '@angular/forms';
 import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+
+import { ToastrService, ToastrModule } from 'ngx-toastr';
+
+import { AppComponent } from './app/app.component';
+import { AuthenticationService } from './app/services/authentication.service';
+import { KnartworkService } from './app/services/knartwork.service';
+import { BrowserService } from './app/browser/browser.service';
+import { KnartImporterService } from './app/services/knart_importer.service';
+import { KnartExporterService } from './app/services/knart_exporter.service';
+import { LaunchComponent } from './app/components/launch.component';
+import { ApiComponent } from './app/components/api.component';
+import { BrowserComponent } from './app/browser/browser.component';
+import { HomeComponent } from './app/home/home.component';
+
 
 const routing = RouterModule.forRoot(
   [

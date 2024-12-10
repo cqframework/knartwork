@@ -4,8 +4,8 @@ import { Component, Input } from '@angular/core';
 
 import { BaseComponent } from './base.component';
 
-import { Knart } from '../models/knart';
-import { LifeCycleEvent } from '../models/life_cycle_event';
+import { Knart } from '../knart_model/knart';
+import { LifeCycleEvent } from '../knart_model/life_cycle_event';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

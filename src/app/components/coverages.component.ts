@@ -4,8 +4,8 @@ import { Component, Input } from '@angular/core';
 
 import { BaseComponent } from './base.component';
 
-import { Knart } from '../models/knart';
-import { Coverage } from '../models/coverage';
+import { Knart } from '../knart_model/knart';
+import { Coverage } from '../knart_model/coverage';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

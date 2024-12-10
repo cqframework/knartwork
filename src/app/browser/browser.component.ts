@@ -5,9 +5,9 @@ import { ActivatedRoute, RouterModule } from "@angular/router";
 
 import { ToastrService } from "ngx-toastr";
 
-import { BrowserService } from "../services/browser.service";
-import { Manifest } from "../models/browser/manifest";
-import { ManifestItem } from "../models/browser/manifest_item";
+import { BrowserService } from "./browser.service";
+import { Manifest } from "../manifest/manifest";
+import { ManifestItem } from "../manifest/manifest_item";
 
 
 import { plainToClass } from "class-transformer";
@@ -16,7 +16,7 @@ import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "browser",
-  templateUrl: "../views/browser.html",
+  templateUrl: "browser.html",
   imports: [CommonModule, FormsModule, RouterModule]
 })
 export class BrowserComponent implements OnInit {

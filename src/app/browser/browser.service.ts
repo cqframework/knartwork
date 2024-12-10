@@ -4,8 +4,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { Manifest } from '../models/browser/manifest';
-import { ManifestItem } from "../models/browser/manifest_item";
+import { Manifest } from '../manifest/manifest';
+import { ManifestItem } from "../manifest/manifest_item";
 
 @Injectable()
 export class BrowserService {

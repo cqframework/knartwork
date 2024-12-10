@@ -4,13 +4,13 @@ import { Component, Input } from '@angular/core';
 
 import { BaseComponent } from './base.component';
 
-import { Knart } from '../models/knart';
-import { Contribution } from '../models/contribution';
-import { Address } from '../models/address';
-import { Contact } from '../models/contact';
-import { Name } from '../models/name';
-import { Role } from '../models/role';
-import { Affiliation } from '../models/affiliation';
+import { Knart } from '../knart_model/knart';
+import { Contribution } from '../knart_model/contribution';
+import { Address } from '../knart_model/address';
+import { Contact } from '../knart_model/contact';
+import { Name } from '../knart_model/name';
+import { Role } from '../knart_model/role';
+import { Affiliation } from '../knart_model/affiliation';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

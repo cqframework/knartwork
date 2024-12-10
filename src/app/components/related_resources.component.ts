@@ -4,10 +4,10 @@ import {Component, Input} from '@angular/core';
 
 import {BaseComponent} from './base.component';
 
-import {Knart} from '../models/knart';
-import {RelatedResource} from '../models/related_resource';
-import {Relationship} from '../models/relationship';
-import {Resource} from '../models/resource';
+import {Knart} from '../knart_model/knart';
+import {RelatedResource} from '../knart_model/related_resource';
+import {Relationship} from '../knart_model/relationship';
+import {Resource} from '../knart_model/resource';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 

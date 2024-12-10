@@ -1,15 +1,15 @@
 import {Injectable, Inject} from '@angular/core';
 // import 'rxjs/add/operator/map';
 
-import {Knart} from '../models/knart';
-import {ActionGroup} from '../models/actions/action_group';
+import {Knart} from '../knart_model/knart';
+import {ActionGroup} from '../knart_model/actions/action_group';
 
-import {Contact} from '../models/contact';
-import {Address} from '../models/address';
-import {Name} from '../models/name';
-import {Affiliation} from '../models/affiliation';
+import {Contact} from '../knart_model/contact';
+import {Address} from '../knart_model/address';
+import {Name} from '../knart_model/name';
+import {Affiliation} from '../knart_model/affiliation';
 
-import {Value} from '../models/value';
+import {Value} from '../knart_model/value';
 import { XmlExporterService } from './xml_exporter.service';
 import { HttpClient } from '@angular/common/http';
 

@@ -3,8 +3,8 @@
 import {Component, Input} from '@angular/core';
 
 import {ActionComponent} from './action.component';
-import {Knart} from '../models/knart';
-import {ActionGroup} from '../models/actions/action_group';
+import {Knart} from '../knart_model/knart';
+import {ActionGroup} from '../knart_model/actions/action_group';
 import { CommonModule } from '@angular/common';
 
 @Component({

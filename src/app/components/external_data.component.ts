@@ -2,8 +2,8 @@
 
 import { Component, Input } from '@angular/core';
 
-import { Knart } from '../models/knart';
-import { ExternalData } from '../models/external_data';
+import { Knart } from '../knart_model/knart';
+import { ExternalData } from '../knart_model/external_data';
 import { BaseComponent } from './base.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

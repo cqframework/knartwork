@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from "rxjs";
 
 // Models
-import { AuthEvent, AuthEventType } from "../models/auth_event";
+import { AuthEvent, AuthEventType } from "../knart_model/auth_event";
 
 import { ToastrService } from "ngx-toastr";
 

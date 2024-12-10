@@ -1,36 +1,36 @@
 // Author: Preston Lee
 
-import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Knart } from '../models/knart';
-import { Format } from '../models/format';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { Knart } from '../knart_model/knart';
+import { Format } from '../knart_model/format';
 import { ToastrService } from 'ngx-toastr';
 
-// import {window} from '@angular/browser';
-import { of } from 'rxjs';
 
 import { KnartImporterService } from '../services/knart_importer.service';
 import { KnartExporterService } from '../services/knart_exporter.service';
 
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { MetadataComponent } from './metadata.component';
-import { ContributionsComponent } from './contributions.component';
-import { ModelReferencesComponent } from './model_references.component';
-import { SupportingEvidenceComponent } from './supporting_evidence.component';
-import { RelatedResourcesComponent } from './related_resources.component';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ConditionsComponent } from './conditions.component';
-import { ExternalDataComponent } from './external_data.component';
-import { ExpressionsComponent } from './expressions.component';
-import { CoveragesComponent } from './coverages.component';
-import { HistoryComponent } from './history.component';
-import { ActionGroupComponent } from './action_group.component';
-import { PreviewComponent } from './preview.component';
+import { ActionGroupComponent } from '../components/action_group.component';
+import { ConditionsComponent } from '../components/conditions.component';
+import { ContributionsComponent } from '../components/contributions.component';
+import { CoveragesComponent } from '../components/coverages.component';
+import { ExpressionsComponent } from '../components/expressions.component';
+import { ExternalDataComponent } from '../components/external_data.component';
+import { HistoryComponent } from '../components/history.component';
+import { ModelReferencesComponent } from '../components/model_references.component';
+import { PreviewComponent } from '../components/preview.component';
+import { RelatedResourcesComponent } from '../components/related_resources.component';
+import { SupportingEvidenceComponent } from '../components/supporting_evidence.component';
+import { MetadataComponent } from '../metadata/metadata.component';
+
 // import { CESService, ActionEvent } from "context-event-client";
 
 @Component({
     selector: 'home',
-    templateUrl: '../views/home.html',
+    templateUrl: 'home.html',
     // changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule, FormsModule,
         MetadataComponent,

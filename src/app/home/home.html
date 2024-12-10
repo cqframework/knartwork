@@ -126,7 +126,9 @@
                         <a id="metadata_tab_link" class="nav-link" aria-controls="metadata" data-toggle="editor_tab" (click)="tabClicked('metadata')" role="tab" aria-expanded="true"><span
                                 class="bi bi-pencil"></span> Basics</a>
                     </li>
-                    <li role="presentation" [class.active]="editor_tab == 'contributions'"><a id="contributions_tab_link" class="nav-link" aria-controls="contributions" data-toggle="editor_tab" (click)="tabClicked('contributions')" role="tab" aria-expanded="true"><span class="bi bi-user"></span> Contributions</a></li>
+                    <li role="presentation" [class.active]="editor_tab == 'contributions'">
+                        <a id="contributions_tab_link" class="nav-link" aria-controls="contributions" data-toggle="editor_tab" (click)="tabClicked('contributions')" role="tab" aria-expanded="true"><span class="bi bi-user"></span> Contributions</a>
+                    </li>
                     <li role="presentation" [class.active]="editor_tab == 'model_references'">
                         <a id="model_references_tab_link" class="nav-link" aria-controls="model_references" data-toggle="editor_tab" (click)="tabClicked('model_references')" role="tab" aria-expanded="true"><span class="bi bi-paperclip"></span> Model Refs</a>
                     </li>

@@ -2,11 +2,11 @@
 
 import {BaseComponent} from './base.component';
 
-import {Action} from '../models/actions/action';
-import {ActionGroup} from '../models/actions/action_group';
-import {DeclareResponseAction} from '../models/actions/declare_response_action';
-import {CollectInformationAction} from '../models/actions/collect_information_action';
-import {CreateAction} from '../models/actions/create_action';
+import {Action} from '../knart_model/actions/action';
+import {ActionGroup} from '../knart_model/actions/action_group';
+import {DeclareResponseAction} from '../knart_model/actions/declare_response_action';
+import {CollectInformationAction} from '../knart_model/actions/collect_information_action';
+import {CreateAction} from '../knart_model/actions/create_action';
 
 export abstract class ActionComponent extends BaseComponent {
 

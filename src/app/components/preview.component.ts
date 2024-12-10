@@ -2,8 +2,8 @@
 
 import {Component, Input} from '@angular/core';
 
-import {Knart} from '../models/knart';
-import {Relationship} from '../models/relationship';
+import {Knart} from '../knart_model/knart';
+import {Relationship} from '../knart_model/relationship';
 import { CommonModule } from '@angular/common';
 import { PreviewActionGroupComponent } from './preview_action_group.component';
 

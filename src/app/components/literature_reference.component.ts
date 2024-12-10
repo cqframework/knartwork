@@ -2,8 +2,8 @@
 
 import {Component, Input} from '@angular/core';
 
-import {Knart} from '../models/knart';
-import {LiteratureReference} from '../models/literature_reference';
+import {Knart} from '../knart_model/knart';
+import {LiteratureReference} from '../knart_model/literature_reference';
 import { CommonModule } from '@angular/common';
 
 @Component({

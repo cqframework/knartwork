@@ -4,15 +4,15 @@ import {Component, Input} from '@angular/core';
 
 import {ActionComponent} from './action.component';
 
-import {Knart} from '../models/knart';
-import {Value} from '../models/value';
+import {Knart} from '../knart_model/knart';
+import {Value} from '../knart_model/value';
 
-import {Action} from '../models/actions/action';
-import {ActionGroup} from '../models/actions/action_group';
-import {DeclareResponseAction} from '../models/actions/declare_response_action';
-import {CollectInformationAction} from '../models/actions/collect_information_action';
-import {CreateAction} from '../models/actions/create_action';
-import {ResponseItem} from '../models/actions/response_item';
+import {Action} from '../knart_model/actions/action';
+import {ActionGroup} from '../knart_model/actions/action_group';
+import {DeclareResponseAction} from '../knart_model/actions/declare_response_action';
+import {CollectInformationAction} from '../knart_model/actions/collect_information_action';
+import {CreateAction} from '../knart_model/actions/create_action';
+import {ResponseItem} from '../knart_model/actions/response_item';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

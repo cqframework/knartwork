@@ -1,17 +1,17 @@
 // Author: Preston Lee
 
 import {Component, Input} from '@angular/core';
-
-import {BaseComponent} from './base.component';
-
-import {Knart} from '../models/knart';
-import {Identifier} from '../models/identifier';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import {Knart} from '../knart_model/knart';
+import {Identifier} from '../knart_model/identifier';
+
+import { BaseComponent } from '../components/base.component';
+
 @Component({
     selector: 'metadata',
-    templateUrl: '../views/metadata.html',
+    templateUrl: 'metadata.html',
     imports: [CommonModule, FormsModule]
 })
 export class MetadataComponent extends BaseComponent {
