@@ -42,7 +42,6 @@
                             "src/app/stylesheets/cosmo.css",
                             "src/app/stylesheets/main.scss",
                             "src/app/stylesheets/print.scss",
-                            "src/app/stylesheets/ribbons.scss"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
