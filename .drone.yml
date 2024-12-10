@@ -1,19 +1,64 @@
 ---
+name: latest-amd64
 kind: pipeline
 type: docker
+platform:
+  arch: amd64
+  os: linux
 steps:
-  # - name: build_project
-  #   image: node:20-alpine
-  #   commands:
-  #     - npm install
-  #     - npm run build
   - name: publish
     image: plugins/docker
     settings:
-      repo:
-        from_secret:  docker_repository
-      tags: [latest]
+      repo: p3000/knartwork
+      tags: [latest-linux-amd64]
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
+trigger:
+  branch:
+    - master
+---
+name: latest-arm64
+kind: pipeline
+type: docker
+platform:
+  arch: arm64
+  os: linux
+steps:
+  - name: publish
+    image: plugins/docker
+    settings:
+      repo: p3000/knartwork
+      tags: [latest-linux-arm64]
+      # auto_tag: true
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+trigger:
+  branch:
+    - master
+---
+name: manifest
+kind: pipeline
+type: docker
+depends_on:
+  - latest-amd64
+  - latest-arm64
+steps:
+  - name: publish-manifest
+    image: plugins/manifest
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      target: p3000/knartwork:latest
+      template: p3000/knartwork:latest-OS-ARCH
+      platforms:
+        - linux/amd64
+        - linux/arm64
+trigger:
+   status:
+     - success
