@@ -1,6 +1,6 @@
 # KNARTwork: The Community Knowledge Artifact Editor
 
-**Live free edition at https://knartwork.prestonlee.com**
+**Hosted free edition at https://knartwork.prestonlee.com**
 
 KNARTwork is a multi-purpose web application for authoring, viewing, and transforming knowledge artifact-like documents across popular specifications, primarily aimed healthcare-specific uses. By default, this application provides a purely standalone experience that does not use any standard-specific APIs (such as FHIR) or databases (such as RDBMS or NoSQL) systems, and may be used as-is by end users wanting to manage source documents as an out-of-band process using git/subversion, Dropbox, email etc. Server-side persistence options will be added as optional features as backend implementations emerge from the CDS community.
 
